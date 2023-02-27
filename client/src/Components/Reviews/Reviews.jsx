@@ -38,7 +38,7 @@ function Reviews() {
                     key={index}
                     style={{
                       cursor: "pointer",
-                      color: index < r.rating ? "yellow" : "black",
+                      color: index < r.rating ? "yellow" : "white",
                     }}
                   >
                     &#9733;

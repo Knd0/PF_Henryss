@@ -53,10 +53,6 @@ const getCarDetail = async (id) => {
 }
 const createCar = async ({ brand, model, year, price, img, ...restOfcar }, userId) => {
     if (!brand || !model || !year || !price ) return ('Missing info');
-    const existsCar = await Car.findOne({
-        where: { model }
-    });
-    if (existsCar) throw new Error('Existing car');
     const carCreate =  await Car.create({ brand, model, year, price, img, ...restOfcar});
     let searchUser = await User.findOne({
         where: { userId: userId }
@@ -66,7 +62,7 @@ const createCar = async ({ brand, model, year, price, img, ...restOfcar }, userI
         await User.update({ publications: searchUser.publications }, {
             where: { userId: userId }
         });
-    }
+    } else return ('this user does not exist')
     const brandDB =  await Brand.findOne({
         where: { brand }
     });
@@ -92,8 +88,8 @@ const deleteCarById = async(userId, id) => {
             const deleteImg = await deleteImage(car.img.public_id)
             }
 
-            await car.destroy();
-            return 'Car successful delete';
+        await car.destroy();
+        return 'Car successful delete';
         }
 
 
