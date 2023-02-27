@@ -26,7 +26,7 @@ function AdminEditUser() {
         return u
       }
   });
-  console.log("ESTO ES USER==========>",user)
+
  
   const [input,setInput] = useState({
     name:user[0].name,
@@ -34,10 +34,10 @@ function AdminEditUser() {
     email:user[0].email
   });
 
-  console.log("ESTO ES Input===========>",input);
+
 
  
-/*  console.log("ESTO ES ELEMENTO============>", elemento)  */
+
 
    function handleChange(e){
      e.preventDefault()

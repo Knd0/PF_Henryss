@@ -1,16 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination"
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { getCars, cleanState, orderByAlf, filterByBrand, filterByYear, orderByKM, orderByPrice, addFavorite, removeFavorite, getUsersDetails, getFavorites } from "../../Redux/actions";
+import { getCars, addFavorite, removeFavorite, getUsersDetails, getFavorites } from "../../Redux/actions";
 import Search from "../Search/Search";
 import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
-import { useNavigate } from 'react-router-dom';
+import { setPage } from "../../Redux/actions";
 import Filters from "../Filters/Filters";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -20,7 +19,7 @@ import img from "../Img/fondo-de-autos.webp";
 export default function Cars() {
     const dispatch = useDispatch()
     const allcars = useSelector((state) => state.cars)
-    const [currentPage, setCurrentPage] = useState(1)
+    const currentPage = useSelector((state) => state.currentPage);
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
     const indexOfFirstCar = indexOfLastCar - carsPerPage
@@ -41,6 +40,33 @@ export default function Cars() {
     const userDetails = useSelector((state) => state.usersDetails)
     const userId = userDetails.length ? userDetails[0].userId : null
     const favorites = userDetails.length ? userDetails[0].favorites : null
+    
+
+function updateSelectedOptionsIfNeeded() {
+    if (currentCars.length === 0) {
+      if (selectedOptionAlf !== "") {
+        setSelectedOptionAlf("");
+      }
+      if (selectedOptionPrice !== "") {
+        setSelectedOptionPrice("");
+      }
+      if (selectedOptionBrand !== "") {
+        setSelectedOptionBrand("");
+      }
+      if (selectedOptionYear !== "") {
+        setSelectedOptionYear("");
+      }
+      if (selectedOptionKm !== "") {
+        setSelectedOptionKm("");
+      }
+    }
+  }
+  
+  useEffect(() => {
+    
+    updateSelectedOptionsIfNeeded();
+  }, [  currentCars.length,  selectedOptionAlf,  selectedOptionPrice,  selectedOptionBrand,  selectedOptionYear,  selectedOptionKm,]);
+
 
     useEffect(() => {
         dispatch(getCars())
@@ -51,8 +77,8 @@ export default function Cars() {
 
 
     const page = (pageNumber) => {
-        setCurrentPage(pageNumber)
-    }
+      dispatch(setPage(pageNumber))
+  }
 
     useEffect(()=>{
         getFavorites(userId)
@@ -119,10 +145,9 @@ export default function Cars() {
           <Search />
         </div>
           <div className="relative grid grid-cols-5 gap-4">
-          <img src={img} alt="img" className="absolute top-0 left-0 h-full"/>
-            <div className="z-10 col-start-1 col-end-2">
+            <div className="z-10 col-start-1 col-end-2 bg-slate-200 rounded">
               <Filters
-                setCurrentPage={setCurrentPage}
+                setCurrentPage={page => dispatch(setPage(page))}
                 selectedOptionAlf={selectedOptionAlf}
                 setSelectedOptionAlf={setSelectedOptionAlf}
                 selectedOptionPrice={selectedOptionPrice}
@@ -149,7 +174,7 @@ export default function Cars() {
                             <label className={style.container}>
                               <input
                                 onChange={setFavorites}
-                                checked={favoritesState.includes(
+                                checked={favoritesState?.includes(
                                   e.carId.toString()
                                 )}
                                 type="checkbox"
@@ -212,7 +237,7 @@ export default function Cars() {
                   })
                 ) : (
                   <div className={style.cardModal}>
-                    <h1>nada</h1>
+                    {handleAlert()}
                   </div>
                 )}
               </div>
@@ -221,8 +246,8 @@ export default function Cars() {
 
             <div>
               <Pagination
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
+                // currentPage={currentPage}
+                // setCurrentPage={setCurrentPage}
                 maximo={maximo}
               />
             </div>

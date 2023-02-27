@@ -7,7 +7,6 @@ import LogoutButton from "../Login/Logout";
 import style from "./Navbar.module.css";
 import { createUs, getUsersDetails, cleanState } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import Loading from "../Loading/Loading"
 
 export default function Navbar() {
   const { user, isAuthenticated } = useAuth0();
@@ -52,7 +51,7 @@ export default function Navbar() {
       <nav className="flex items-center justify-between flex-wrap bg-white">
         <div className="flex items-center flex-shrink-0 text-white">
           <img src={img} alt="logo" className="w-20 mt-3 ml-3" />
-          <span className=" text-black ml-2 self-center text-xl font-mono whitespace-nowrap dark:text-white">
+          <span className=" text-black ml-2 self-center text-xl font-bold whitespace-nowrap dark:text-white">
             Radiator Springs
           </span>
         </div>
@@ -165,6 +164,27 @@ export default function Navbar() {
                 My Publications
               </Link>
             )}
+
+            {actualPage.Reviews ? (
+              <Link
+                to="/reviews "
+                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
+                name="createPost"
+                onClick={handleActualPage}
+              >
+                Reviews
+              </Link>
+            ) : (
+              <Link
+                to="/reviews"
+                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
+                name="createPost"
+                onClick={handleActualPage}
+              >
+                Reviews
+              </Link>
+            )}
+
 
             {actualPage.aboutUs ? (
               <Link
