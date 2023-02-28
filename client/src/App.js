@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route, Switch} from "react-router-dom"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Home from "./Components/Home/Home"
 import Cars from "./Components/Cars/Cars"
 import CarsDetails from "./Components/CarsDetails/CarsDetails"
@@ -15,18 +15,18 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <Switch>
-        <Route exact path= "/home" component = {Home}/>
-        <Route path= "/cars" component= {Cars}/>
-        <Route path= "/cars/:id" component= {CarsDetails}/>
-        <Route path= "/carscreate" component= {CarsCreate}/>
-        <Route path= "/carsedit" component= {CarsEdit}/>
-        <Route path= "/mypublications" component= {MyPublications}/>
-        <Route path= "/myfavorites" component= {MyFavorites}/>
-        <Route path= "/login" component= {Login}/>
-        <Route path= "/register" component= {Register}/>
-        <Route path= "/payment" component= {Payment}/>
-      </Switch>
+      <Routes>
+        <Route exact path= "/home" element= {<Home/>}/>
+        <Route path= "/cars" element= {<Cars/>}/>
+        <Route path= "/cars/:id" element= {<CarsDetails/>}/>
+        <Route path= "/carscreate" element= {<CarsCreate/>}/>
+        <Route path= "/carsedit" element= {<CarsEdit/>}/>
+        <Route path= "/mypublications" element= {<MyPublications/>}/>
+        <Route path= "/myfavorites" element= {<MyFavorites/>}/>
+        <Route path= "/login" element= {<Login/>}/>
+        <Route path= "/register" element= {<Register/>}/>
+        <Route path= "/payment" element= {<Payment/>}/>
+      </Routes>
     </div>
     </BrowserRouter>
   );
