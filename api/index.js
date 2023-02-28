@@ -1,4 +1,4 @@
-const server = require('./src/app.js');
+const server = require('./src/app');
 
 
 // Syncing all the models at once.
