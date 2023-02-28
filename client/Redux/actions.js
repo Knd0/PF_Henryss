@@ -1,4 +1,18 @@
-import { GET_CARS, CLEAN_STATE, ORDER_CARS_ALF, ORDER_CARS_KM, ORDER_CARS_PRICE, FILTER_BY_YEAR, FILTER_BY_BRAND, SET_PAGE, LOADING_ACTION, GET_CAR_BY_NAME, PUT_CAR, DELETE_CAR, POST_CAR, GET_CARS_DETAIL } from "../Redux/action-types";
+import { 
+    GET_CARS, 
+    CLEAN_STATE, 
+    ORDER_CARS_ALF, 
+    ORDER_CARS_KM, 
+    ORDER_CARS_PRICE, 
+    FILTER_BY_YEAR, 
+    FILTER_BY_BRAND, 
+    SET_PAGE, 
+    LOADING_ACTION, 
+    GET_CAR_BY_NAME, 
+    PUT_CAR, 
+    DELETE_CAR, 
+    POST_CAR, 
+    GET_CARS_DETAIL } from "../Redux/action-types";
 import axios from "axios";
 
 export function getCars() {
@@ -100,3 +114,24 @@ export function loadingAction(status) {
         payload: status
     }
 }
+
+export function deleteCar(id) {
+    return async (dispatch) => {
+      try {
+        const response = await axios.delete(`http://localhost:3001/cars/${id}`);
+        
+        if (response.status !== 200) {
+            throw new Error('Something went wrong');
+          }
+          
+        dispatch({ type: DELETE_CAR });
+      } catch (err) {
+        dispatch({ 
+            type: ERROR_OCCURRED,   //Esto sirve para los carteles de error de front, hay que verlo
+            payload: {
+                message: err.message,
+            }
+        })
+      }
+    };
+  };
