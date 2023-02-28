@@ -4,8 +4,9 @@ const getApiCars = () => {
     return data.cars;
 }
 
-const getCarByMake = (make) => {
-    const filteredCars = data.cars.filter((car) => car.make == make  );
+const getCarByBrand = (brand) => {
+    
+    const filteredCars = data.cars.filter((car) => car.brand == brand  );
     return filteredCars
 }
 
@@ -13,8 +14,14 @@ const getCarByModel = (model) => {
     const filteredCars = data.cars.filter((car) => car.model == model );
     return filteredCars
 }
+
+const getCarDetail = (id) => {
+    const filteredCars = data.cars.filter((car) => car.id == id );
+    return filteredCars
+}
 module.exports = {
     getApiCars,
-    getCarByMake,
+    getCarByBrand,
     getCarByModel,
+    getCarDetail
 }
