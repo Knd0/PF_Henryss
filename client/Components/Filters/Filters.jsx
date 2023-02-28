@@ -83,7 +83,7 @@ export default function Filters() {
             <select className={style.select} onChange={e => handleFilteredBrand(e)}>
                 <option></option>                      
                 {cars.map((car) => (
-                <option>{car.brand}</option>
+                <option value={car.id}>{car.brand}</option>
                 ))}
             </select>
         </div>
