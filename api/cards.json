@@ -1,7 +1,7 @@
 {
 	"cars": [{
 			"id": 1,
-			"brand": "Honda",
+			"make": "Honda",
 			"model": "Civic",
 			"year": 2014,
 			"price": 22000,
@@ -16,7 +16,7 @@
 		},
 		{
 			"id": 2,
-			"brand": "Ford",
+			"make": "Ford",
 			"model": "Mustang",
 			"year": 2006,
 			"price": 35000,
@@ -31,7 +31,7 @@
 		},
 		{
 			"id": 3,
-			"brand": "Chevrolet",
+			"make": "Chevrolet",
 			"model": "Corvette",
 			"year": 2010,
 			"price": 62000,
@@ -46,7 +46,7 @@
 		},
 		{
 			"id": 4,
-			"brand": "Tesla",
+			"make": "Tesla",
 			"model": "Model S",
 			"year": 2012,
 			"price": 80000,
@@ -61,7 +61,7 @@
 		},
 		{
 			"id": 5,
-			"brand": "Toyota",
+			"make": "Toyota",
 			"modelo": "RAV4",
 			"año": 2004,
 			"precio": 26000,
@@ -76,7 +76,7 @@
 		},
 		{
 			"id": 6,
-			"brand": "Toyota",
+			"make": "Toyota",
 			"model": "Corolla",
 			"year": 2014,
 			"price": 25000,
@@ -91,7 +91,7 @@
 		},
 		{
 			"id": 7,
-			"brand": "Jeep",
+			"make": "Jeep",
 			"model": "Wrangler",
 			"year": 2022,
 			"price": 30000,
@@ -106,7 +106,7 @@
 		},
 		{
 			"id": 8,
-			"brand": "Ford",
+			"make": "Ford",
 			"model": "F-150",
 			"year": 2022,
 			"price": 35000,
@@ -121,7 +121,7 @@
 		},
 		{
 			"id": 9,
-			"brand": "Toyota",
+			"make": "Toyota",
 			"model": "Prius",
 			"year": 2022,
 			"price": 25000,
