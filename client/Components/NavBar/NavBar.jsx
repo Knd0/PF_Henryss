@@ -21,11 +21,6 @@ function NavBar() {
                 <button className='navbar-button'>About Us</button>
             </Link>
         </div>
-        <div>
-            <Link to="/login">
-             <button className='navbar-button'>Login</button>
-             </Link>
-        </div>
       </ul>
     </nav>
   );
