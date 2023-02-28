@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import Card from "../Card/Card"
 import styles from "../css/Home.module.css"
+import Footer from '../Footer/Footer'
 
 
 export default function Home () {
@@ -157,6 +158,7 @@ export default function Home () {
     },
     ]
     return (
+        <>
         <div className={styles.cards} >
         {
             cars.length?cars.map(e => {
@@ -179,9 +181,13 @@ export default function Home () {
           
           </div>
         }
-        </div>   
+        </div>
+        
+        <Footer/>
+        </>
     )
 }
+
 
     
     
