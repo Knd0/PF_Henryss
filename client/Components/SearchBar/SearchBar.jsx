@@ -5,7 +5,7 @@ import { getCarByName, Loading } from "../../actions";
 import Loading from "../Loading/Loading";
 import "./SearchBar.css";
 
-export default function SearchBar({ Paginado }) {
+export default function SearchBar({ SetCurrentPage }) {
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.loading);
@@ -22,7 +22,7 @@ export default function SearchBar({ Paginado }) {
     dispatch(Loading());
     await dispatch(getCarByName(name));
     dispatch(Loading());
-    Paginado(1);
+    SetCurrentPage(1);
     setName("");
   }
 

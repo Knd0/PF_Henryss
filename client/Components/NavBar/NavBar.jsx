@@ -17,8 +17,8 @@ function NavBar() {
             </Link>
         </div>
         <div>
-            <Link to="/about-us">
-                <button className='navbar-button'>Abaut us</button>
+            <Link to="/aboutus">
+                <button className='navbar-button'>About Us</button>
             </Link>
         </div>
         <div>
