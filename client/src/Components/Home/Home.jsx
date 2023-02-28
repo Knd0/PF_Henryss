@@ -1,8 +1,11 @@
 import React from 'react'
+import Footer from '../Footer/Footer'
 
 export default function Home () {
-    return (
-        <h1>HOLA</h1>
+    return (<>
+            <Footer/>
+            </>
+        
     )
 }
 
