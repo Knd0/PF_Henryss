@@ -12,7 +12,7 @@ import {
     PUT_CAR, 
     DELETE_CAR, 
     POST_CAR, 
-    GET_CARS_DETAIL } from "../Redux/action-types";
+    GET_CARS_DETAIL } from "./action-types";
 import axios from "axios";
 
 export function getCars() {
