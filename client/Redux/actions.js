@@ -135,3 +135,19 @@ export function deleteCar(id) {
       }
     };
   };
+
+export function updateCar (id, payload) { 
+    async (dispatch) => {
+    try {
+      await axios.put(`http://localhost:3001/cars/${id}`, payload); 
+      return dispatch({ type: PUT_CAR }); 
+    } catch (err) {
+        dispatch({ 
+            type: ERROR_OCCURRED,   //Esto sirve para los carteles de error de front, hay que verlo
+            payload: {
+                message: err.message,
+            }
+        })
+    }
+  }
+};
