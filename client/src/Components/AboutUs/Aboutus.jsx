@@ -31,7 +31,7 @@ export default function Aboutus() {
             <ul class="flex justify-center mt-4 space-x-4">
               <li>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/francodeiriondo/"
                   class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                 >
                   <svg
@@ -46,7 +46,7 @@ export default function Aboutus() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/franco-de-iriondo-686585220/"
                   class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                 >
                   <svg
@@ -61,7 +61,7 @@ export default function Aboutus() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://github.com/Knd0"
                   class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                 >
                   <svg
@@ -87,7 +87,7 @@ export default function Aboutus() {
               alt="Helene Avatar"
             />
             <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              <a href="#">Helene Engels</a>
+              <a href="#">David Urquijo</a>
             </h3>
             <p>CTO/Co-founder</p>
             <ul class="flex justify-center mt-4 space-x-4">
@@ -149,7 +149,7 @@ export default function Aboutus() {
               alt="Jese Avatar"
             />
             <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              <a href="#">Jese Leos</a>
+              <a href="#">Dayanna Vidaurre</a>
             </h3>
             <p>SEO & Marketing</p>
             <ul class="flex justify-center mt-4 space-x-4">
@@ -270,7 +270,7 @@ export default function Aboutus() {
         <div class="grid gap-8 lg:gap-16  md:grid-cols-3 lg:grid-cols-3">
           <div class=" text-gray-500 dark:text-gray-400">
             <img
-              class="mx-auto mb-4 w-36 h-36 rounded-full"
+              class="mx-auto mb-4 mt-4 w-36 h-36 rounded-full"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png"
               alt="Sofia Avatar"
             />
@@ -332,7 +332,7 @@ export default function Aboutus() {
           </div>
           <div class="text-center text-gray-500 dark:text-gray-400">
             <img
-              class="mx-auto mb-4 w-36 h-36 rounded-full"
+              class="mx-auto mb-4 mt-4 w-36 h-36 rounded-full"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-lean.png"
               alt="Leslie Avatar"
             />
@@ -394,7 +394,7 @@ export default function Aboutus() {
           </div>
           <div class="text-center text-gray-500 dark:text-gray-400">
             <img
-              class="mx-auto mb-4 w-36 h-36 rounded-full"
+              class="mx-auto mb-4 mt-4 w-36 h-36 rounded-full"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
               alt="Michael Avatar"
             />
