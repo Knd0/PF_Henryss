@@ -20,14 +20,14 @@ function App() {
       <Routes>
         <Route exact path= "/home" element= {<Home/>}/>
         <Route path= "/cars" element= {<Cars/>}/>
-        <Route path= "/cars/:id" element= {<CarsDetails/>}/>
+        {/* <Route path= "/cars/:id" element= {<CarsDetails/>}/>
         <Route path= "/carscreate" element= {<CarsCreate/>}/>
         <Route path= "/carsedit" element= {<CarsEdit/>}/>
         <Route path= "/mypublications" element= {<MyPublications/>}/>
         <Route path= "/myfavorites" element= {<MyFavorites/>}/>
         <Route path= "/login" element= {<Login/>}/>
         <Route path= "/register" element= {<Register/>}/>
-        <Route path= "/payment" element= {<Payment/>}/>
+        <Route path= "/payment" element= {<Payment/>}/> */}
         <Route path= "/aboutus" element= {<AboutUs/>}/>
         <Route path= "*" element={<Page404/>}/>
       </Routes>
