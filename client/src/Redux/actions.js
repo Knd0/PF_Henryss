@@ -12,7 +12,8 @@ import {
     PUT_CAR, 
     DELETE_CAR, 
     POST_CAR, 
-    GET_CARS_DETAIL } from "./action-types";
+    GET_CARS_DETAIL,
+    ERROR_OCCURRED } from "./action-types";
 import axios from "axios";
 
 export function getCars() {
@@ -137,7 +138,7 @@ export function deleteCar(id) {
   };
 
 export function updateCar (id, payload) { 
-    async (dispatch) => {
+    return async (dispatch) => {
     try {
       await axios.put(`http://localhost:3001/cars/${id}`, payload); 
       return dispatch({ type: PUT_CAR }); 
