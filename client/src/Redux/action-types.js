@@ -24,4 +24,6 @@ export const DELETE_CAR = 'DELETE_CAR';
 
 export const POST_CAR = 'POST_CAR';
 
-export const CLEAN_STATE = 'CLEAN_STATE'
+export const CLEAN_STATE = 'CLEAN_STATE';
+
+export const ERROR_OCCURRED = 'ERROR_OCCURRED';

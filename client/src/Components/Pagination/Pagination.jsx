@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Paginado ({carsPerPage, allCars, paginado}){
+export default function Pagination ({carsPerPage, allcars, page}){
     const pageNumbers = []
 
-    for (let i = 1; i <= Math.ceil(allCars/carsPerPage); i++) {     
+    for (let i = 1; i <= Math.ceil(allcars/carsPerPage); i++) {     
         pageNumbers.push(i)                                               
     }                                                                     
 
@@ -13,7 +13,7 @@ export default function Paginado ({carsPerPage, allCars, paginado}){
                 {
                     pageNumbers && 
                     pageNumbers.map(number => (
-                        <button key={number} onClick={() => paginado(number)}>{number}</button>
+                        <button key={number} onClick={() => page(number)}>{number}</button>
                     ))
                 }
             </ul>
