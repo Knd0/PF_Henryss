@@ -3,12 +3,10 @@ import styles from "../Card/Card.module.css"
 
 export default function Card({ img, brand, model, year, price }) {
   return (
-    <div class= {styles.card}>
-      
-       <div> <img class={styles.img} src={img} alt="" /></div>
-
-       <div className={styles.flexItems}>
-      <h5 class={styles.titulo}>
+    <div>
+      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg mx-5 my-2 shadow dark:bg-gray-800 dark:border-gray-700">
+        <img class="p-15 rounded-t-lg" src={img} alt="" />
+        <h5 class="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
           {" "}
           Brand: <span className={styles.subtitulo} >{brand}</span>
         </h5>
