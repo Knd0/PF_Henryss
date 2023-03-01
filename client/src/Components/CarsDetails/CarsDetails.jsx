@@ -12,6 +12,8 @@ export default function CarsDetail() {
         dispatch(getCarsDetail(id))
     },[dispatch, id])
 
+    console.log(carDetail)
+
     // const carDetail = [{
     //         "id": 1,
     //         "brand": "Honda",
@@ -467,31 +469,31 @@ export default function CarsDetail() {
     if (Object.entries(carDetail).length !== 0) {
         return (
             <>
-                <img src={carDetail.img} alt="car" />
+                <img src={carDetail[0].img} alt="car" />
                 <div>
-                    <h4>Name car: {carDetail.brand} {carDetail.model}</h4>
-                    <h4>Price: {carDetail.price}</h4>
+                    <h4><strong>Name car:</strong> {carDetail[0].brand} {carDetail[0].model}</h4>
+                    <h4><strong>Price:</strong> {carDetail[0].price}</h4>
                     {/* <h4>Location: </h4>
                     <h4>Seller information: </h4>
                     <p></p> */}
                 </div>
                 <div>
                     <h3>Features:</h3>
-                    <h4>Brand: {carDetail.brand}</h4>
-                    <h4>Model: {carDetail.model}</h4>
-                    <h4>Year: {carDetail.year}</h4>
+                    <h4><strong>Brand:</strong> {carDetail[0].brand}</h4>
+                    <h4><strong>Model:</strong> {carDetail[0].model}</h4>
+                    <h4><strong>Year:</strong> {carDetail[0].year}</h4>
                     {/* <h4>Mileage: </h4>
                     <h4>Version: </h4>
                     <h4>Color: </h4>
                     <h4>Fuel: </h4>
                     <h4>Doors: </h4> */}
-                    <h4>Transmission: {carDetail.features.transmission}</h4>
+                    <h4><strong>Transmission:</strong> {carDetail[0].features.transmission}</h4>
                     {/* <h4>Type of bodywork: </h4>
                     <h4>Engine: </h4> */}
-                    <h4>Capacity: {carDetail.features.capacity}</h4>
-                    <h4>Drive: {carDetail.features.drive}</h4>
-                    <h4>Power: {carDetail.features.power}</h4>
-                    <h4>Engine: {carDetail.features.engine}</h4>
+                    {/* <h4>Capacity: {carDetail[0].features.capacity}</h4>
+                    <h4>Drive: {carDetail[0].features.drive}</h4>
+                    <h4>Power: {carDetail[0].features.power}</h4>
+                    <h4>Engine: {carDetail[0].features.engine}</h4> */}
                 </div>
                 {/* <div>
                     <h3>Description:</h3>
