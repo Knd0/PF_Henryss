@@ -6,3 +6,8 @@
     width: 90%;
     
 }
+
+.filtros{
+    display: flex;
+    justify-content: space-evenly;
+}

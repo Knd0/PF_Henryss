@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+/* import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCars, filterByBrand, filterByYear, orderByAlf, orderByKM, orderByPrice, cleanState } from "../../Redux/actions";
 import style from '../Filters/Filters.module.css'
@@ -6,6 +6,7 @@ import style from '../Filters/Filters.module.css'
 export default function Filters({setCurrentPage}) {
     const dispatch = useDispatch();
     const cars = useSelector((state) => state.cars);
+    //const [order, setOrder] = useState("");
 
     useEffect(() => {
         dispatch(getCars());
@@ -14,40 +15,45 @@ export default function Filters({setCurrentPage}) {
 
     function handleFilteredBrand(e) {
         dispatch(filterByBrand(e.target.value));
+       // setOrder(`Order ${e.target.value}`)
     }
 
     function handleFilteredYear(e) {
         dispatch(filterByYear(e.target.value));
+      // setOrder(`Order ${e.target.value}`)
     }
 
-    function handleSortAlf(e) {
+    /* function handleSortAlf(e) {
         e.preventDefault();
         dispatch(orderByAlf(e.target.value));
-        setCurrentPage(1);
-    }
-
+        setOrder(`Order ${e.target.value}`)
+      
+    } 
+ 
     function handleSortKM(e) {
         e.preventDefault();
         dispatch(orderByKM(e.target.value));
+        //setOrder(`Order ${e.target.value}`)
         setCurrentPage(1);
     }
 
     function handleSortPrice(e) {
         e.preventDefault();
         dispatch(orderByPrice(e.target.value));
+        //setOrder(`Order ${e.target.value}`)
         setCurrentPage(1);
     }
 
     return (
     <div className={style.filtros}>
         <div>
-            Order alphabetically:
+            {/* Order alphabetically:
             <select className={style.select} onChange={(e) => handleSortAlf(e)}>
                 <option value="All">All</option>
-                <option value="asc">A - Z</option>
+                <option value="atoz">A - Z</option>
                 <option value="desc">Z - A</option>
-            </select>
-        </div>
+            </select> 
+        </div> 
         <div>
             Order by price:
             <select className={style.select} onChange={(e) => handleSortPrice(e)}>
@@ -86,4 +92,4 @@ export default function Filters({setCurrentPage}) {
         </div>
     </div>
     )
-}
+} */

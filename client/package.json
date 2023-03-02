@@ -19,6 +19,7 @@
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
     "tailwind": "^4.0.0",
     "tw-elements": "^1.0.0-beta1",
