@@ -7,6 +7,7 @@ const getApiCars = () => {
 
 const getCarByBrand = (brand) => {
     
+
     let query = brand.toLowerCase()
    
     const filteredCars = data.cars.filter(j=>{
@@ -18,6 +19,7 @@ const getCarByBrand = (brand) => {
 }
 
 const getCarByModel = (model) => {
+
     let query = brand.toLowerCase()
    
     const filteredCars = data.cars.filter(j=>{

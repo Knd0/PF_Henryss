@@ -130,7 +130,7 @@ export default function Cars() {
             currentCars.map((e) => {
                 return (
                 <div>
-                    <Link to={`cars/${e.id}`}>
+                    <Link to={`${e.id}`}>
                     <Card
                         id={e.id}
                         brand={e.brand}

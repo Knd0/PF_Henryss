@@ -10,5 +10,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("flowbite/plugin"), require("tw-elements/dist/plugin")],
+  plugins: [require("flowbite/plugin"), require("tw-elements/dist/plugin"), require('@tailwindcss/forms'),],
 };
