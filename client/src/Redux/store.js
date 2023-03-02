@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
 import Reducer from "./reducer";
 import { saveState } from "./LocalStorage";
-import { persistStore, persistReducer } from "redux-persist";
+import { persistStore, persistReducer } from 'redux-persist5';;
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
