@@ -9,10 +9,12 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { getCars, cleanState, orderByAlf,filterByBrand,filterByYear,orderByKM,orderByPrice} from "../../Redux/actions";
 import Search from "../Search/Search";
+import swal from 'sweetalert';
+
 
 export default function Cars() {
     const dispatch = useDispatch()
-    const allcars = useSelector ((state) => state.allcars)
+    const allcars = useSelector ((state) => state.cars)
     const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
@@ -28,6 +30,7 @@ export default function Cars() {
 
     useEffect(() => {
         dispatch(cleanState());
+        dispatch(getCars())
     }, [dispatch]);
 
 
@@ -69,6 +72,14 @@ export default function Cars() {
         dispatch(orderByPrice(e.target.value));
         setOrder(`Order ${e.target.value}`)
         setCurrentPage(1);
+    }
+    function handleClick(e){
+       dispatch(getCars())
+       console.log("fghjk")
+    }
+    function handleAlert(){
+         dispatch(getCars())
+         swal ( "Oops" ,  "Car not found!" ,  "error" )
     }
 
 
@@ -138,8 +149,8 @@ export default function Cars() {
       <Search/>
       </div>
         <div className={style.cardconteiner}>
-            { (
-            currentCars?.map((e) => {
+            {currentCars.length ? (
+            currentCars.map((e) => {
                 return (
                 <div>
                     <Link to={`${e.id}`}>
@@ -155,6 +166,10 @@ export default function Cars() {
                 </div>
                 );
             })
+            ) : (
+            <div className={style.cardModal}>
+              {handleAlert()}
+        </div>
             )}
         </div>
         <Pagination
