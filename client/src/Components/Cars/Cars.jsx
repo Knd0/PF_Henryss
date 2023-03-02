@@ -7,6 +7,7 @@ import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
 import Filters from "../Filters/Filters";
 import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 import { getCars, cleanState } from "../../Redux/actions";
 
 export default function Cars() {
@@ -29,7 +30,7 @@ export default function Cars() {
 
     return (
         <>
-        
+        <Navbar />
         <Filters />
         <div className={style.cardconteiner}>
             {currentCars.length ? (
