@@ -6,6 +6,8 @@ import style from "../Cars/Cars.module.css"
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination"
 import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
+import { getCars, cleanState } from "../../Redux/actions";
 import { getCars, cleanState, orderByAlf,filterByBrand,filterByYear,orderByKM,orderByPrice} from "../../Redux/actions";
 import Search from "../Search/Search";
 
@@ -74,6 +76,8 @@ export default function Cars() {
 
     return (
         <>
+        <Navbar />
+        <Filters />
         <div className={style.filtros}>
         <div>
              Order alphabetically:
