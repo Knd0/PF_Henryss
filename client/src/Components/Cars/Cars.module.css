@@ -6,3 +6,12 @@
     width: 90%;
     
 }
+
+.filtros{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.select {
+    color: rgb(0, 0, 0); 
+}
