@@ -22,7 +22,7 @@ const initialState = {
   publications: [],
 };
 
-function rootReducer(state = initialState, action) {
+function Reducer(state = initialState, action) {
   switch (action.type) {
     case GET_CARS:
       return {
@@ -60,13 +60,13 @@ function rootReducer(state = initialState, action) {
       sortedcars =
         action.payload === "atoz"
           ? state.cars.sort(function (a, b) {
-              if (a.brand.toLowerCase() < b.brand.toLowerCase()) return -1;
-              if (a.brand.toLowerCase() > b.brand.toLowerCase()) return 1;
+              if (a.model.toLowerCase() < b.model.toLowerCase()) return -1;
+              if (a.model.toLowerCase() > b.model.toLowerCase()) return 1;
               return 0;
             })
           : state.cars.sort(function (a, b) {
-              if (a.brand.toLowerCase() < b.brand.toLowerCase()) return 1;
-              if (a.brand.toLowerCase() > b.brand.toLowerCase()) return -1;
+              if (a.model.toLowerCase() < b.model.toLowerCase()) return 1;
+              if (a.model.toLowerCase() > b.model.toLowerCase()) return -1;
               return 0;
             });
       return {
@@ -175,4 +175,4 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-export default rootReducer;
+export default Reducer;

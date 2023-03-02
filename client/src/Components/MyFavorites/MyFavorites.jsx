@@ -6,6 +6,7 @@ export default function MyFavorites() {
     return(
         <>
         <Navbar />
+        <Footer />
         </>
 
     )
