@@ -80,7 +80,7 @@ export default function Cars() {
         <div>
              Order alphabetically:
             <select className={style.select} onChange={(e) => handleSortAlf(e)}>
-                <option value="All"></option> 
+                <option value="All">All</option> 
                 <option value="atoz">A - Z</option>
                 <option value="desc">Z - A</option>
             </select> 
@@ -88,7 +88,7 @@ export default function Cars() {
         <div>
             Order by price:
             <select className={style.select} onChange={(e) => handleSortPrice(e)}>
-                <option value="All"></option> 
+                <option value="All">All</option> 
                 <option value="mayp">Minor to Major</option>
                 <option value="menp">Major to Minor</option>
             </select>
@@ -96,7 +96,7 @@ export default function Cars() {
         <div>
             Order by KM:
             <select className={style.select} onChange={(e) => handleSortKM(e)}>
-                <option value="All"></option>
+                <option value="All">All</option>
                 <option value="mayp">Minor to Major</option>
                 <option value="menp">Major to Minor</option>
             </select>
@@ -104,7 +104,7 @@ export default function Cars() {
         <div>
             Filter by year:
             <select className={style.select} onChange={e => handleFilteredYear(e)}>
-                <option value="All"></option>
+                <option value="All">All</option>
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
@@ -113,24 +113,24 @@ export default function Cars() {
         </div>
         <div>
             Filter by brand:
-            <select onChange={e => handleFilteredBrand(e)}>
-                <option value="All"></option>
-                <option value="Audi"></option>
-                <option value="Honda"></option>
-                <option value="DFSK"></option>
-                <option value="Subaru"></option>
-                <option value="BMW"></option>
-                <option value="Chevrolet"></option>
-                <option value="Nissan"></option>
-                <option value="Kia"></option>
-                <option value="Volkswagen"></option>
-                <option value="Porsche"></option>
-                <option value="Land Rover"></option>
-                <option value="Toyota"></option>
-                <option value="Mazda"></option>
-                <option value="Ford"></option>
-                <option value="Jeep"></option>
-                <option value="Tesla"></option>                         
+            <select className={style.select} onChange={e => handleFilteredBrand(e)}>
+                <option value="All">All</option>
+                <option value="Audi">Audi</option>
+                <option value="Honda">Honda</option>
+                <option value="DFSK">DFSK</option>
+                <option value="Subaru">Subaru</option>
+                <option value="BMW">BMW</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Kia">Kia</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Land Rover">Land Rover</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Mazda">Mazda</option>
+                <option value="Ford">Ford</option>
+                <option value="Jeep">Jeep</option>
+                <option value="Tesla">Tesla</option>                         
             </select>
         </div>
     </div>
@@ -157,7 +157,7 @@ export default function Cars() {
             })
             ) : (
             <div>
-                <h3>Loading...</h3>
+                <h3>Cars not found</h3>
             </div>
             )}
         </div>
