@@ -62,9 +62,9 @@
 		{
 			"id": 5,
 			"brand": "Toyota",
-			"modelo": "RAV4",
-			"año": 2004,
-			"precio": 26000,
+			"model": "RAV4",
+			"year": 2004,
+			"price": 26000,
 			"img": "https://www.mitsuiautomotriz.com/uploads/images/07e87-rav4-colores7.png",
 			"features": {
 				"engine": "2.5L 4 cilindros",
