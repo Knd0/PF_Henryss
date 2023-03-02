@@ -6,12 +6,12 @@ const getApiCars = () => {
 
 const getCarByBrand = (brand) => {
     
-    const filteredCars = data.cars.filter((car) => car.brand == brand  );
+    const filteredCars = data.cars.filter((car) => car.brand.toLowerCase().includes(brand.toLowerCase()));
     return filteredCars
 }
 
 const getCarByModel = (model) => {
-    const filteredCars = data.cars.filter((car) => car.model == model );
+    const filteredCars = data.cars.filter((car) => car.model.toLowerCase().includes(model.toLowerCase()));
     return filteredCars
 }
 
