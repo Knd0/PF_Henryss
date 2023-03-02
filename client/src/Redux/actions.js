@@ -101,11 +101,9 @@ export function getCarByName (model) {
           alert("not found")
           window.location.href = "https://pfhenryss-production.up.railway.app/cars"
        }
-       }catch(error){
-        alert(error)
-       }
+      
     }
-     }
+     
 }
 
 export function setCurrentPage(page) {
