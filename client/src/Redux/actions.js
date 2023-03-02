@@ -152,3 +152,27 @@ export function updateCar (id, payload) {
     }
   }
 };
+
+export function addFavorite(userId, carId) {
+    return async function(dispatch) {
+      dispatch({
+        type: 'ADD_FAVORITE',
+        payload: {
+          userId,
+          carId
+        }
+      })
+    }
+}
+  
+export function removeFavorite(userId, carId) {
+    return async function(dispatch) {
+      dispatch({
+        type: 'REMOVE_FAVORITE',
+        payload: {
+          userId,
+          carId
+        }
+      })
+    }
+  }
