@@ -97,6 +97,14 @@ export function getCarByName (model) {
     
         await axios.get(`https://pfhenryss-production.up.railway.app/cars?model=${model}`)
         .then(response => (dispatch({type: GET_CAR_BY_NAME, payload: response.data})))
+        if(!bla.length){
+          alert("not found")
+          window.location.href = "https://pfhenryss-production.up.railway.app/cars"
+       }
+       }catch(error){
+        alert(error)
+       }
+    }
      }
 }
 

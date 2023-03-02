@@ -22,6 +22,7 @@ export default function Cars() {
     const currentCars = allcars.slice(indexOfFirstCar,indexOfLastCar) 
     const [order, setOrder] = useState("");
     const cars = useSelector((state) => state.allcars);
+    const loading = useSelector((state) => state.loading);
   
 
     const page = (pageNumber) => {
