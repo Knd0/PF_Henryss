@@ -11,7 +11,7 @@ const getApiBrands = async () => {
 
         }
     })
-    return response
+    return await  response
 }
 
 const brandsToDb = async () => {

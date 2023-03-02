@@ -1,4 +1,5 @@
 const data = require('../../cards.json')
+console.log(data.cars)
 
 const getApiCars = () => {
     return data.cars;
@@ -6,12 +7,24 @@ const getApiCars = () => {
 
 const getCarByBrand = (brand) => {
     
-    const filteredCars = data.cars.filter((car) => car.brand == brand  );
+    let query = brand.toLowerCase()
+   
+    const filteredCars = data.cars.filter(j=>{
+        if(j.brand.toLowerCase().includes(query)){
+           return j
+        }
+     });
     return filteredCars
 }
 
 const getCarByModel = (model) => {
-    const filteredCars = data.cars.filter((car) => car.model == model );
+    let query = brand.toLowerCase()
+   
+    const filteredCars = data.cars.filter(j=>{
+        if(j.brand.toLowerCase().includes(query)){
+           return j
+        }
+     });
     return filteredCars
 }
 
