@@ -78,8 +78,38 @@ const createCard = (req, res) => {
 };
 
 
-const putCar = (req, res) => {
-    res.send('estoy en la ruta put')
+const putCar = (req, res,next) => {
+
+    const { id } = req.params;
+	const {  brand, price, model, img, year } = req.body;
+
+	try {
+		if (!id) return res.status(400).json({ msg: 'Id no provisto' });
+		const car =  Car.findByPk(id);
+		if (!car)
+			return res.status(404).json({ msg: 'Car not found' });
+
+		const updateCar =  car.update({
+
+			brand: brand || car.brand,
+            price: price || car.price,
+            model: model || car.model,
+            year:year || car.year,
+			img: img || car.img,
+
+		});
+
+		if (!updateCar)
+			return res.status(200).json({ msg: "car not updated" });
+
+		res.status(201).json({ msg: "the car was updated" });
+	} catch (error) {
+		next(error);
+	}
+
+
+
+
 }
 
 const deleteCar = (req, res) => {
