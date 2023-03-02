@@ -94,8 +94,16 @@ export function filterByBrand(payload) {
 
 export function getCarByName (model) {
     return async function(dispatch){
-        await axios.get(`https://pfhenryss-production.up.railway.app/cars?model=${model}`)
+       try{
+        var bla = await axios.get(`https://pfhenryss-production.up.railway.app/cars?model=${model}`)
         .then(response => (dispatch({type: GET_CAR_BY_NAME, payload: response.data})))
+        if(!bla.length){
+          alert("not found")
+          window.location.href = "https://pfhenryss-production.up.railway.app/cars"
+       }
+       }catch(error){
+        alert(error)
+       }
     }
 }
 
