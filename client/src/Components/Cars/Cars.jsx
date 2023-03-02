@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { getCars, cleanState, orderByAlf,filterByBrand,filterByYear,orderByKM,orderByPrice} from "../../Redux/actions";
 import Search from "../Search/Search";
+import Loading from "../Loading/Loading";
 
 export default function Cars() {
     const dispatch = useDispatch()
@@ -20,6 +21,7 @@ export default function Cars() {
     const currentCars = allcars.slice(indexOfFirstCar,indexOfLastCar) 
     const [order, setOrder] = useState("");
     const cars = useSelector((state) => state.allcars);
+    const loading = useSelector((state) => state.loading);
   
 
     const page = (pageNumber) => {
@@ -157,7 +159,7 @@ export default function Cars() {
             })
             ) : (
             <div>
-                <h3>Cars not found</h3>
+                <Loading/>
             </div>
             )}
         </div>
