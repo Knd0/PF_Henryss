@@ -21,7 +21,7 @@ const Search  = ()=>{
     function handleSubmit(e){
         e.preventDefault()
       if(!input){
-        alert("Please enter a brand")
+        alert("Please enter a car")
       }else{
         dispatch(getCarByName(input))
       }
@@ -32,7 +32,7 @@ const Search  = ()=>{
         <div>
          <div className={styles.flex_search_container}>
             <form onSubmit={(e)=>handleSubmit(e)}>
-            <input className={styles.input_search} onChange={(e)=>handleChange(e)} type="text" value={input} placeholder="Search brand..."/>
+            <input className={styles.input_search} onChange={(e)=>handleChange(e)} type="text" value={input} placeholder="Search car..."/>
             <button className={styles.button_search} type="submit">Search</button>   
            </form>
            </div>
