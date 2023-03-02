@@ -8,12 +8,14 @@ import Slider from "../Slider/Slider";
 import PRUEBA from "./Img/PRUEBA.jpg"
 import PRUEBA2 from "./Img/PRUEBA2.jpg"
 import PRUEBA3 from "./Img/PRUEBA3.jpg"
+import Card from"../Card/Card"
 
 
 
 export default function Home() {
     const dispatch = useDispatch()
     const allCars = useSelector ((state) => state.cars)
+   const cards3= allCars.slice(0,3)
     const images = [
       PRUEBA,
       PRUEBA2,
@@ -27,10 +29,22 @@ export default function Home() {
         <Slider images={images}></Slider>
       </div>
       <hr className={style.hr} />
-
-      <h5 class='text-[#dc2626]'>ACA HAY QUE PONER 3 CARDS</h5>
-      <Footer />
-  
+      <div className={style.card} class="w-full max-w-sm bg-white border border-gray-200 rounded-lg mx-5 my-2 shadow dark:bg-gray-800 dark:border-gray-700">
+      {cards3?.map(c=>{
+          return(
+            <div >
+            <Card
+              img={c.img}
+              brand={c.brand}
+              model={c.model}
+              price={c.price}
+            />
+            </div>
+          )
+      })}
+      </div>
+       
+         
     </>
   );
 }

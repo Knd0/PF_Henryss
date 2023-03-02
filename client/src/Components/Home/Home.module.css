@@ -11,3 +11,18 @@
 .hr {
   margin: 50px;
 }
+.card{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.card a{
+ display: none;
+  
+}
+.card p{
+  display: none;
+}
+.card h3{
+  margin: 0;
+}
