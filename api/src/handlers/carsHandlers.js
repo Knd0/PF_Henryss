@@ -7,7 +7,7 @@ const getCars = (req, res) => {
     try {
         if(brand){
             const response = getCarByBrand(brand);
-            res.status(200).send(response) 
+            res.status(200).send(response)          
         } 
         else if(model){
             const response = getCarByModel(model);
@@ -18,7 +18,7 @@ const getCars = (req, res) => {
             res.status(200).send(response)
         }
     } catch (error) {
-        res.status(400).json({ message: error.message })
+            res.status(400).json({ message: error.message })
     }
 }
 
