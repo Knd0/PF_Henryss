@@ -13,7 +13,7 @@ import Search from "../Search/Search";
 export default function Cars() {
     const dispatch = useDispatch()
     const allcars = useSelector ((state) => state.cars)
-   const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
     const indexOfFirstCar = indexOfLastCar - carsPerPage 
@@ -51,12 +51,12 @@ export default function Cars() {
       setCurrentPage(1);
     }
 
-    /* function handleSortAlf(e) {
+    function handleSortAlf(e) {
         e.preventDefault();
         dispatch(orderByAlf(e.target.value));
         setOrder(`Order ${e.target.value}`)
       
-    } */
+    } 
  
     function handleSortKM(e) {
         e.preventDefault();
