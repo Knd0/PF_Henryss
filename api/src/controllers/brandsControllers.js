@@ -4,10 +4,10 @@ const data = require('../../cards.json')
 
 
 const getApiBrands = async () => {
-    let response = data.map((car) => {
+    let response = data.cars.map((car) => {
         return {
             id: car.id,
-            name: car.name,
+            brand: car.brand,
 
         }
     })
@@ -15,7 +15,7 @@ const getApiBrands = async () => {
 }
 
 const brandsToDb = async () => {
-    const brands = await Brand.findAll();
+    let brands = await Brand.findAll();
     if(!brands.length){
         const info = await getApiBrands()
         await Brand.bulkCreate(info)
