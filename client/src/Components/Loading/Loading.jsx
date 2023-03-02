@@ -6,9 +6,20 @@ export default function Loading() {
     <div class="container">
         <div 
             class="spinner">
-
         </div>
+             <p>Loading ...</p>
+
   </div>
   )
 }
 
+//  const loading = useSelector((state) => state.loading);
+
+//  if (loading === true) {
+//    return (
+//     </div>
+//   </div>
+//   </div>
+//   </div>
+// } else {
+//     return <Loading />;
