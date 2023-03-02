@@ -97,7 +97,7 @@ export function getCarByName (model) {
     
         await axios.get(`https://pfhenryss-production.up.railway.app/cars?model=${model}`)
         .then(response => (dispatch({type: GET_CAR_BY_NAME, payload: response.data})))
-      
+      akodjaohdadada
     }
      
 }
