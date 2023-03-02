@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
+import style from '../Footer/Footer.module.css'
 
 export default function Footer(){
-    return(<>   
+    return(<div className={style.footer}>   
         <section class="bg-white">
             <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
                 <nav class="flex flex-wrap justify-center -mx-5 -my-2">
@@ -75,7 +76,7 @@ export default function Footer(){
                 </p>
             </div>
         </section>
-    </>
+    </div>
 
     )
 }
