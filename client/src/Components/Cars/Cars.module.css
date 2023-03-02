@@ -1,0 +1,13 @@
+.cardconteiner {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    
+}
+
+.filtros{
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -1,0 +1,19 @@
+.image {
+    width: 1600px;
+    height: 540px;
+    height: auto;
+    transition: 2s;
+}
+
+.carouserButton {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.buttons {
+    display: flex;
+    margin-top: 10px;
+}

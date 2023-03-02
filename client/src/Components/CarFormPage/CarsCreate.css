@@ -1,0 +1,57 @@
+.inputsContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.inputsContainer > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputsContainer > div:first-child {
+  margin-right: 10px;
+}
+
+.inputsContainer > div:last-child {
+  margin-left: 10px;
+}
+
+.textAreaClass {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%; /* Adjust this to control the maximum width of the textarea */
+    height: 200px; /* Adjust this to control the height of the textarea */
+    resize: none; /* Prevent the user from resizing the textarea */
+  }
+  
+  /* Add additional CSS styles for mobile devices */
+  @media (max-width: 480px) {
+    .textAreaClass {
+      max-width: 100%; /* Adjust this to control the maximum width of the textarea for mobile devices */
+      height: 100px; /* Adjust this to control the height of the textarea for mobile devices */
+    }
+  }
+
+
+label {
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: 7px;
+	color: black;
+	outline: none;
+	width: 80px;
+	text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+	

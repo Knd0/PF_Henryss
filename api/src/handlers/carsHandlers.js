@@ -1,12 +1,36 @@
+const { getApiCars, getCarByBrand, getCarByModel, getCarDetail } = require("../controllers/carsControllers")
 
 
 const getCars = (req, res) => {
-    res.send('estoy en la ruta getCars')
+    const { brand } = req.query
+    const { model } = req.query
+    try {
+        if(brand){
+            const response = getCarByBrand(brand);
+            res.status(200).send(response) 
+        } 
+        else if(model){
+            const response = getCarByModel(model);
+            res.status(200).send(response) 
+        }
+        else {
+            const response = getApiCars();
+            res.status(200).send(response)
+        }
+    } catch (error) {
+        res.status(400).json({ message: error.message })
+    }
 }
 
 
 const getCarById = (req, res) => {
-    res.send('estoy en la ruta por id')
+    const { id } = req.params
+    try {
+        const response = getCarDetail(id);
+        res.status(200).send(response)
+    } catch (error) {
+        res.status(400).json({ message: error.message })
+    }
 }
 
 const postCar = (req, res) => {
