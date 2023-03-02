@@ -1,5 +1,5 @@
 const data = require('../../cards.json')
-console.log(data.cars)
+
 
 const getApiCars = () => {
     return data.cars;
