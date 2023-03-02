@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 import { postCar } from "../../Redux/actions";
 import "./CarsCreate.css"
 import validateForm from "../Helpers/validateForm";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function CarsCreate() {
@@ -53,11 +55,19 @@ function onInputChange(e) { //cambio el estado segun el input
 function onSubmit(e) {
   e.preventDefault();
   if (Object.keys(errors).length > 0) { //chequeo si hay errores
-    alert("Please correct the errors");
+    toast.error('Please correct errors 🚦', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });;
     return;
   }
   dispatch(postCar(car)); //hago el post, despacho la action
-  alert("Car published");
   setCar({ //reseteo el estado
     brand: "",
     model: "",
@@ -77,7 +87,19 @@ function onSubmit(e) {
     capacity: "",
     description: "",
   });
-  navigate("/home");
+  toast.success('Car published! 🚗', {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",   
+    onClose: () => {
+      navigate("/");
+    }
+    });
 }
 
   return (
@@ -539,6 +561,7 @@ function onSubmit(e) {
       <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"> Publish </button>
       
     </form>
+      <ToastContainer />
     </body>
     </>
   );
