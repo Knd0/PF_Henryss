@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { postCar } from "../../Redux/actions";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 import "./CarsCreate.css"
 import validateForm from "../Helpers/validateForm";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function CarsCreate() {
@@ -53,11 +57,19 @@ function onInputChange(e) { //cambio el estado segun el input
 function onSubmit(e) {
   e.preventDefault();
   if (Object.keys(errors).length > 0) { //chequeo si hay errores
-    alert("Please correct the errors");
+    toast.error('Please correct errors 🚦', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });;
     return;
   }
   dispatch(postCar(car)); //hago el post, despacho la action
-  alert("Car published");
   setCar({ //reseteo el estado
     brand: "",
     model: "",
@@ -77,11 +89,24 @@ function onSubmit(e) {
     capacity: "",
     description: "",
   });
-  navigate("/home");
+  toast.success('Car published! 🚗', {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",   
+    onClose: () => {
+      navigate("/");
+    }
+    });
 }
 
   return (
-    <>    
+    <>
+    <Navbar/>
     <body className="bodyFormClass">
     <form  onSubmit={onSubmit}> 
     <div className="inputsContainer">
@@ -361,7 +386,7 @@ function onSubmit(e) {
       {!errors.img ? (
         <div >
           <label for="username-success" class="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">Image</label>
-          <input type="text" id="username-success" class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" 
+          <input type="file" id="username-success" class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" 
           placeholder="image url"
           onChange={onInputChange}
           name="img"
@@ -373,7 +398,7 @@ function onSubmit(e) {
         
           <div >
                 <label for="username-error" class="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Image</label>
-                <input type="text" id="username-error" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
+                <input type="file" id="username-error" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                 placeholder="image url"
                 onChange={onInputChange}
                 name="img"
@@ -536,10 +561,12 @@ function onSubmit(e) {
       
         {" "}
              
-      <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"> Publish </button>
+      <button type="submit" disabled={Object.keys(errors).length === 0 ? false : true} class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"> Publish </button>
       
     </form>
+      <ToastContainer />
     </body>
+    <Footer/>
     </>
   );
 }
