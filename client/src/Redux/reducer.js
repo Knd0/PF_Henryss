@@ -20,6 +20,7 @@ const initialState = {
   detail: {},
   favorites: [],
   publications: [],
+  loading: true,
 };
 
 function Reducer(state = initialState, action) {
@@ -170,6 +171,20 @@ function Reducer(state = initialState, action) {
         ...state,
         cars: [...state.cars, action.payload],
       };
+      case "LOADING_ACTION": {
+      const loading = state.loading;
+      if (loading === true) {
+        return {
+          ...state,
+          loading: false,
+        };
+      } else {
+        return {
+          ...state,
+          loading: true,
+        };
+      }
+    }
     default:
       return state;
   }
