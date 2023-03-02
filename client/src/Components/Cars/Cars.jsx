@@ -12,7 +12,7 @@ import Search from "../Search/Search";
 
 export default function Cars() {
     const dispatch = useDispatch()
-    const allcars = useSelector ((state) => state.cars)
+    const allcars = useSelector ((state) => state.allcars)
     const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
@@ -138,8 +138,8 @@ export default function Cars() {
       <Search/>
       </div>
         <div className={style.cardconteiner}>
-            {currentCars.length ? (
-            currentCars.map((e) => {
+            { (
+            currentCars?.map((e) => {
                 return (
                 <div>
                     <Link to={`${e.id}`}>
@@ -155,10 +155,6 @@ export default function Cars() {
                 </div>
                 );
             })
-            ) : (
-            <div>
-                <h3>Cars not found</h3>
-            </div>
             )}
         </div>
         <Pagination
