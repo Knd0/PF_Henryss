@@ -214,9 +214,9 @@ export default function Aboutus() {
                 alt="Joseph Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">Joseph Mcfall</a>
+                <a href="#">Ramon Gonzalez</a>
               </h3>
-              <p>Sales</p>
+              <p>CTO/Co-founder</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
