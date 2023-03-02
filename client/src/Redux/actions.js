@@ -99,7 +99,7 @@ export function getCarByName (model) {
         .then(response => (dispatch({type: GET_CAR_BY_NAME, payload: response.data})))
         if(!bla.length){
           alert("not found")
-          window.location.href = "http://localhost:3000/cars"
+          window.location.href = "https://pfhenryss-production.up.railway.app/cars"
        }
        }catch(error){
         alert(error)
