@@ -14,8 +14,8 @@
 .card{
     border-radius: 3%;
     background-color: rgba(255, 255, 255, 0.443);
-    height: 250px;
-    width: 270px;
+    height: 300px;
+    width: 300px;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -28,6 +28,7 @@
     border-radius: 4%;
     width: 8em;
     height: 5.5em;
+    margin: 0 auto;
         
 }
 
@@ -42,8 +43,23 @@
     white-space: nowrap;
 }
 
-.subtitle {
+.subtitulo {
     color: rgb(9, 57, 154);
     text-align: center;
     margin-bottom: 15px;
+}
+.card a{
+    padding: 6px;
+    background-color: rgb(9, 57, 154);
+    margin-top: 30px;
+    color: white;
+    display: inline-block;
+    border-radius: 6px;
+    
+}
+.flexItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

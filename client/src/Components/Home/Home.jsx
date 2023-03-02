@@ -8,6 +8,7 @@ import Slider from "../Slider/Slider";
 import PRUEBA from "./Img/PRUEBA.jpg"
 import PRUEBA2 from "./Img/PRUEBA2.jpg"
 import PRUEBA3 from "./Img/PRUEBA3.jpg"
+import Cars from "../Cars/Cars";
 
 
 
@@ -30,6 +31,8 @@ export default function Home() {
 
       <h5 class='text-[#dc2626]'>ACA HAY QUE PONER 3 CARDS</h5>
       <Footer />
+      <Cars/>
+  
     </>
   );
 }
