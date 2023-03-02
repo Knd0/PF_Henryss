@@ -1,0 +1,13 @@
+.containerSlider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 1600px;
+    height: 340px;
+    margin: auto;
+
+}
+
+.hr {
+  margin: 50px;
+}
