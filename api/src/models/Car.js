@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
     id:{
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
-        primaryKey: true
+        primaryKey: false
     },
     brand: {
         type: DataTypes.STRING,
@@ -21,31 +21,63 @@ module.exports = (sequelize) => {
     },
     year :{
         type: DataTypes.INTEGER,
-        allowNull : true
+        allowNull : false
     },
     price:{
         type: DataTypes.INTEGER,
-        allowNull : true
+        allowNull : false
+    },
+    place:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    phone:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    email:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    kilometers:{
+        type: DataTypes.INTEGER,
+        allowNull : false
+    },
+    color:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    fuel:{
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     img:{
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
+    },
+    engine:{
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     power:{
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     transmission:{
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     drive:{
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     capacity:{
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
+    },
+    description:{
+        type: DataTypes.STRING,
+        allowNull: false,
     },
 
     createInDb: {
