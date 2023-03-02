@@ -1,19 +1,25 @@
-/* import { createStore, applyMiddleware, compose } from 'redux';
-import{composeWithDevTools} from "redux-devtools-extension"
-import rootReducer from './reducer';
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
+import Reducer from "./reducer";
+import { saveState } from "./LocalStorage";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-export const store = createStore(rootReducer,
-    composeWithDevTools(
-       applyMiddleware(thunk)
-         // la librería redux-devtools-extension tiene composeWithDevTools
-       )                                                                             //
-   );
+const persistConfig = {
+  key: "root",
+  storage,
+};
 
- */
+const newReducer = persistReducer(persistConfig, Reducer);
 
-   import { createStore, applyMiddleware } from "redux"
-import thunk from "redux-thunk"
-import rootReducer from "./reducer"
+export const store = createStore(
+  newReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
-export const store = createStore(rootReducer, applyMiddleware(thunk))
+export const persistor = persistStore(store);
+
+store.subscribe(() => {
+  saveState(store.getState());
+});

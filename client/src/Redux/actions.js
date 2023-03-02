@@ -18,7 +18,7 @@ import axios from "axios";
 
 export function getCars() {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/cars`)
+        axios.get(`https://pfhenryss-production.up.railway.app/cars`)
             .then(response => response.data)
             .then(response => {
                 dispatch({ type: GET_CARS, payload: response })
@@ -32,7 +32,7 @@ export function getCars() {
 export function getCarsDetail(id) {
     return async function (dispatch) {
         try {
-            var json = await axios.get("http://localhost:3001/cars/" + id)
+            var json = await axios.get("https://pfhenryss-production.up.railway.app/cars/" + id)
             return dispatch({
                 type: GET_CARS_DETAIL,
                 payload: json.data
@@ -46,7 +46,7 @@ export function getCarsDetail(id) {
 export function postCar(body) {
     return async function (dispatch) {
         try {
-            var car = await axios.post(`http://localhost:3001/cars`, body);
+            var car = await axios.post(`https://pfhenryss-production.up.railway.app/cars`, body);
             return dispatch({
                 type: POST_CAR,
                 payload: car.data
@@ -92,9 +92,9 @@ export function filterByBrand(payload) {
     };
 }
 
-export function getCarByName (name) {
+export function getCarByName (model) {
     return async function(dispatch){
-        await axios.get(`http://localhost:3001/cars?name=${name}`)
+        await axios.get(`https://pfhenryss-production.up.railway.app/cars?model=${model}`)
         .then(response => (dispatch({type: GET_CAR_BY_NAME, payload: response.data})))
     }
 }
@@ -119,7 +119,7 @@ export function loadingAction(status) {
 export function deleteCar(id) {
     return async (dispatch) => {
       try {
-        const response = await axios.delete(`http://localhost:3001/cars/${id}`);
+        const response = await axios.delete(`https://pfhenryss-production.up.railway.app/cars/${id}`);
         
         if (response.status !== 200) {
             throw new Error('Something went wrong');
@@ -140,7 +140,7 @@ export function deleteCar(id) {
 export function updateCar (id, payload) { 
     return async (dispatch) => {
     try {
-      await axios.put(`http://localhost:3001/cars/${id}`, payload); 
+      await axios.put(`https://pfhenryss-production.up.railway.app/cars/${id}`, payload); 
       return dispatch({ type: PUT_CAR }); 
     } catch (err) {
         dispatch({ 
