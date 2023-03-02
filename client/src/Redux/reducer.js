@@ -28,35 +28,28 @@ function rootReducer (state = initialState, action){
             }
         case FILTER_BY_YEAR: 
             let allcars1 = [...state.allcars]
-            let carfilter2 = action.payload === "All" ? allcars1 : allcars1.filter((e) => e.year === action.payload)
+            let carfilter2 = action.payload === "All" ? allcars1 : allcars1.filter((e) => e.year === parseInt(action.payload))
             return {
                 ...state,
                 cars: carfilter2
             }
         case ORDER_CARS_ALF:
-            let sortedArr = action.payload === "asc" ?
-            state.cars.sort(function (a, b) { 
-                if(a.name > b.name) {              
-                    return 1
-                }
-                if(b.name > a.name) {
-                    return -1
-                }
-                return 0
+            let sortedcars = [...state.cars]       
+            sortedcars = action.payload === 'atoz' ?
+            state.cars.sort(function(a, b) {
+              if (a.brand.toLowerCase() < b.brand.toLowerCase()) return -1;
+            if (a.brand.toLowerCase() > b.brand.toLowerCase()) return 1;
+              return 0;
             }) :
-            state.cars.sort(function (a, b) {
-                if(a.name > b.name) {
-                    return -1
-                }
-                if(b.name > a.name) {
-                    return 1
-                }
-                return 0
-            })    
-            return {
-                ...state,
-                cars: sortedArr
-            }
+            state.cars.sort(function(a, b) {
+              if (a.brand.toLowerCase() < b.brand.toLowerCase()) return 1;
+            if (a.brand.toLowerCase() > b.brand.toLowerCase()) return -1;
+              return 0;
+            });
+            return{
+              ...state,
+              cars:sortedcars
+            };
         case ORDER_CARS_PRICE:
             let sortedArrPrice = action.payload === "mayp" ?
             state.cars.sort(function (a, b) {

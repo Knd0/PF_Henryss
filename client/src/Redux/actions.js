@@ -94,7 +94,7 @@ export function filterByBrand(payload) {
 
 export function getCarByName (name) {
     return async function(dispatch){
-        await axios.get(`http://localhost:3001/cars?name=` + name)
+        await axios.get(`http://localhost:3001/cars?name=${name}`)
         .then(response => (dispatch({type: GET_CAR_BY_NAME, payload: response.data})))
     }
 }
