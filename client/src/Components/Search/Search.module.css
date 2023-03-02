@@ -1,0 +1,15 @@
+.input_search{
+    border: 1px solid black;
+    padding: 15px;
+    width: 40%;
+    border-radius: 5px;
+}
+
+.button_search{
+    border: none;
+    background-color: #FF0000;
+    color: whitesmoke;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
