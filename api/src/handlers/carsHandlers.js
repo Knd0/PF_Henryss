@@ -2,11 +2,11 @@ const { getApiCars, getCarByBrand, getCarByModel, getCarDetail } = require("../c
 
 
 const getCars = (req, res) => {
-    const { brand } = req.query
-    const { model } = req.query
+    var { name } = req.query
+    var{ name } = req.query
     try {
-        if(brand){
-            const response = getCarByBrand(brand);
+        if(name){
+            const response = getCarByBrand(name);
             res.status(200).send(response) 
         } 
         else if(model){
