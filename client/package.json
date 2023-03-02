@@ -23,6 +23,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
+    "sweetalert": "^2.1.2",
     "tailwind": "^4.0.0",
     "tw-elements": "^1.0.0-beta1",
     "web-vitals": "^2.1.4"
