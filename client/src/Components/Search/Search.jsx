@@ -11,9 +11,7 @@ import styles from "../Search/Search.module.css";
 const Search  = ()=>{
     const[input, setInput]=useState("")
     const dispatch = useDispatch()
-
-    console.log(input)
-    
+      
     function handleChange(e){
         setInput(e.target.value)
     }

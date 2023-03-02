@@ -140,8 +140,8 @@ export default function Cars() {
       <Search/>
       </div>
         <div className={style.cardconteiner}>
-            { (
-            currentCars?.map((e) => {
+            {currentCars ?
+            currentCars.map((e) => {
                 return (
                 <div>
                     <Link to={`${e.id}`}>
@@ -156,7 +156,7 @@ export default function Cars() {
                     </Link>
                 </div>
                 );
-            })
+            }
             ) : (
             <div>
                 <Loading/>
