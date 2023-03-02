@@ -1,4 +1,4 @@
-const { getApiCars, getCarByBrand, getCarByModel, getCarDetail } = require("../controllers/carsControllers")
+const { getApiCars, getCarByBrand, getCarByModel, getCarDetail, deleteCarById } = require("../controllers/carsControllers")
 
 
 const getCars = (req, res) => {
@@ -7,11 +7,11 @@ const getCars = (req, res) => {
     try {
         if(brand){
             const response = getCarByBrand(brand);
-            res.status(200).send(response) 
-        } 
+            res.status(200).send(response)
+        }
         else if(model){
             const response = getCarByModel(model);
-            res.status(200).send(response) 
+            res.status(200).send(response)
         }
         else {
             const response = getApiCars();
@@ -33,17 +33,76 @@ const getCarById = (req, res) => {
     }
 }
 
-const postCar = (req, res) => {
-    res.send('estoy en la ruta post')
-}
+const createCard = (req, res) => {
+  const {
+    brand,
+    model,
+    year,
+    price,
+    img,
+  } = req.body;
+
+  try {
+    if (!brand) return res.status(400).json({ msg: "Brand not found" });
+    if (!model) return res.status(400).json({ msg: "model not found" });
+    if (!year) return res.status(400).json({ msg: "year not found" });
+    if (!price) return res.status(400).json({ msg: "price not found" });
+    if (!img) return res.status(400).json({ msg: "img not found" });
+
+     let existsCar = Car.findOne({
+        where: { brand: brand }
+    })
+
+    if (existsCar) return res.status(404).send(" Existing car")
+
+    let carCreate =  Car.create({
+        brand,
+        model,
+        year,
+        price,
+        img,
+
+    });
+
+    let brandDB =  Brand.findAll({
+        where: { name: brand }
+    });
+
+    carCreate.addBrand(brandDB);
+    res.status(201);
+
+
+  } catch (error){
+        throw new Error(error.message);
+  }
+};
+
 
 const putCar = (req, res) => {
     res.send('estoy en la ruta put')
 }
 
 const deleteCar = (req, res) => {
-    res.send('estoy en la ruta Delete')
-} 
+    try {
+        const { id } = req.params;
+        const result = deleteCarById(id);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = {
     getCars,
     getCarById,
