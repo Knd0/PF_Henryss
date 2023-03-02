@@ -92,9 +92,9 @@ export function filterByBrand(payload) {
     };
 }
 
-export function getCarByName (name) {
+export function getCarByName (model) {
     return async function(dispatch){
-        await axios.get(`http://localhost:3001/cars?name=${name}`)
+        await axios.get(`http://localhost:3001/cars?model=${model}`)
         .then(response => (dispatch({type: GET_CAR_BY_NAME, payload: response.data})))
     }
 }
