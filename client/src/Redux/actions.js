@@ -93,7 +93,8 @@ export function filterByBrand(payload) {
 }
 
 export function getCarByName (model) {
-    return async function(dispatch){
+  return async function(dispatch){
+      dispatch({type:"LOADING_ACTION"})
     
         await axios.get(`https://pfhenryss-production.up.railway.app/cars?model=${model}`)
         .then(response => (dispatch({type: GET_CAR_BY_NAME, payload: response.data})))
