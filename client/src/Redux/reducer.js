@@ -54,7 +54,7 @@ function Reducer(state = initialState, action) {
         cars: carfilter1,
       };
     case FILTER_BY_YEAR:
-      let allcars1 = [...state.allcars];
+      let allcars1 = [...state.cars];
       let carfilter2 =
         action.payload === "All"
           ? allcars1
