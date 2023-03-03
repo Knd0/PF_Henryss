@@ -13,3 +13,6 @@
     border-radius: 10px;
     cursor: pointer;
 }
+.flex_search_container{
+    position: relative;
+}

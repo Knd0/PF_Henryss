@@ -9,6 +9,8 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { getCars, cleanState, orderByAlf,filterByBrand,filterByYear,orderByKM,orderByPrice} from "../../Redux/actions";
 import Search from "../Search/Search";
+import swal from 'sweetalert';
+
 
 export default function Cars() {
     const dispatch = useDispatch()
@@ -20,6 +22,7 @@ export default function Cars() {
     const currentCars = allcars.slice(indexOfFirstCar,indexOfLastCar) 
     const [order, setOrder] = useState("");
     const cars = useSelector((state) => state.allcars);
+    const loading = useSelector((state) => state.loading);
   
 
     const page = (pageNumber) => {
@@ -28,6 +31,7 @@ export default function Cars() {
 
     useEffect(() => {
         dispatch(cleanState());
+        dispatch(getCars())
     }, [dispatch]);
 
 
@@ -69,6 +73,14 @@ export default function Cars() {
         dispatch(orderByPrice(e.target.value));
         setOrder(`Order ${e.target.value}`)
         setCurrentPage(1);
+    }
+    function handleClick(e){
+       dispatch(getCars())
+       console.log("fghjk")
+    }
+    function handleAlert(){
+         dispatch(getCars())
+         swal ( "Oops" ,  "Car not found!" ,  "error" )
     }
 
 
@@ -156,9 +168,9 @@ export default function Cars() {
                 );
             })
             ) : (
-            <div>
-                <h3>Cars not found</h3>
-            </div>
+            <div className={style.cardModal}>
+              {handleAlert()}
+        </div>
             )}
         </div>
         <Pagination
