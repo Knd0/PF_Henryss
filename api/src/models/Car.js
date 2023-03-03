@@ -77,6 +77,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    favorite:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false
+    },
     
     createInDb: {
         type: DataTypes.BOOLEAN,
