@@ -10,6 +10,7 @@ import Navbar from "../Navbar/Navbar";
 import { getCars, cleanState, orderByAlf,filterByBrand,filterByYear,orderByKM,orderByPrice} from "../../Redux/actions";
 import Search from "../Search/Search";
 import swal from 'sweetalert';
+import Loading from "../Loading/Loading";
 
 
 export default function Cars() {
@@ -22,7 +23,8 @@ export default function Cars() {
     const currentCars = allcars.slice(indexOfFirstCar,indexOfLastCar) 
     const [order, setOrder] = useState("");
     const cars = useSelector((state) => state.allcars);
-    const loading = useSelector((state) => state.loading);
+    const [loading, setLoading] = useState(true);
+
   
 
     const page = (pageNumber) => {
@@ -30,8 +32,12 @@ export default function Cars() {
     }
 
     useEffect(() => {
-        dispatch(cleanState());
-        dispatch(getCars())
+        const timeoutId = setTimeout(()=>{
+            dispatch(cleanState());
+            dispatch(getCars());
+            setLoading(false)
+        },1500)
+        return()=> clearTimeout(timeoutId)
     }, [dispatch]);
 
 
@@ -83,7 +89,7 @@ export default function Cars() {
          swal ( "Oops" ,  "Car not found!" ,  "error" )
     }
 
-
+    
     return (
         <>
         <Navbar />
@@ -149,36 +155,39 @@ export default function Cars() {
       <div>
       <Search/>
       </div>
+      <div>
+      {loading ? (
+        <Loading />
+      ) : currentCars.length ? (
         <div className={style.cardconteiner}>
-            {currentCars.length ? (
-            currentCars.map((e) => {
-                return (
-                <div>
-                    <Link to={`${e.id}`}>
-                    <Card
-                        id={e.id}
-                        brand={e.brand}
-                        img={e.img}
-                        model={e.model}
-                        year={e.year}
-                        price={e.price}
-                    />
-                    </Link>
-                </div>
-                );
-            })
-            ) : (
-            <div className={style.cardModal}>
-              {handleAlert()}
+          {currentCars.map((e) => {
+            return (
+              <div>
+                <Link to={`${e.id}`}>
+                  <Card
+                    id={e.id}
+                    brand={e.brand}
+                    img={e.img}
+                    model={e.model}
+                    year={e.year}
+                    price={e.price}
+                  />
+                </Link>
+              </div>
+            );
+          })}
         </div>
-            )}
-        </div>
+      ) : (
+        <div className={style.cardModal}>{handleAlert()}</div>
+      )}
+    </div>
         <Pagination
         carsPerPage = {carsPerPage}
         allcars = {allcars.length}
         page = {page}
         />
         <Footer />
+        
         </>
     );
 }
