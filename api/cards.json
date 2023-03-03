@@ -254,6 +254,7 @@
 				"power": "181 hp",
 				"transmission": "6-speed manual",
 				"drive": "rear-wheel",
+<<<<<<< HEAD
 				"capacity": "2 passengers",
 				"color":"white",
 				"kilometers":"",
@@ -263,6 +264,11 @@
 			"phone":"956245874",
 			"email":"marceAX7@gmail.com",
 			"description":"The MX-5 Miata features a sporty, aerodynamic appearance, with clean lines and a retractable soft top that can be easily opened and closed. Inside, the MX-5 Miata is compact yet comfortable, with sport seats and a host of advanced features, including a touchscreen infotainment and premium sound system."
+=======
+				"capacity": "2 passengers"
+				
+			}
+>>>>>>> 0f136bdfd04ee9b9922dbc0d83350847e9e6a435
 		},
 		{
 			"carId": 13,
@@ -276,6 +282,7 @@
 				"power": "203 hp",
 				"transmission": "8-speed automatic",
 				"drive": "front-wheel",
+<<<<<<< HEAD
 				"capacity": "5 passengers",
 				"color":"white",
 				"kilometers":"",
@@ -285,6 +292,11 @@
 			"phone":"985465124",
 			"email":"isaLC4@gmail.com",
 			"description":"The Toyota Camry is a full-size midsize sedan, which has been produced since the year 1982. It is a very popular vehicle in the automobile market and is known for its reliability, comfort, and safety."
+=======
+				"capacity": "5 passengers"
+				
+			}
+>>>>>>> 0f136bdfd04ee9b9922dbc0d83350847e9e6a435
 		},
 		{
 			"carId": 14,
