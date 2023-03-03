@@ -154,7 +154,7 @@ export default function Cars() {
             currentCars.map((e) => {
                 return (
                 <div>
-                    <Link to={`${e.id}`}>
+                   
                     <Card
                         id={e.id}
                         brand={e.brand}
@@ -163,13 +163,13 @@ export default function Cars() {
                         year={e.year}
                         price={e.price}
                     />
-                    </Link>
+                   
                 </div>
                 );
             })
             ) : (
             <div className={style.cardModal}>
-              {handleAlert()}
+               {handleAlert()} 
         </div>
             )}
         </div>
