@@ -6,8 +6,8 @@ const carsRouter = Router();
 carsRouter.get('/', getCars)
 carsRouter.get('/:id', getCarById)
 carsRouter.post('/', postCar)
-carsRouter.put('/', putCar)
-carsRouter.delete('/', deleteCar)
+carsRouter.put('/:id', putCar)
+carsRouter.delete('/:id', deleteCar)
 
 
 module.exports = carsRouter
