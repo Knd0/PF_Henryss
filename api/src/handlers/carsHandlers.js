@@ -126,13 +126,6 @@ const deleteCar = (req, res) => {
 
 
 
-
-
-
-
-
-
-
 module.exports = {
     getCars,
     getCarById,

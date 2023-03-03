@@ -5,6 +5,6 @@ const carsRoutes = require('./carsRoutes')
 const router = Router();
 
 router.use('/cars', carsRoutes);
-router.use('/brands', brandRoutes)
+router.use('/brands', brandRoutes);
 
 module.exports = router;
