@@ -386,7 +386,7 @@ function onSubmit(e) {
       {!errors.img ? (
         <div >
           <label for="username-success" class="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">Image</label>
-          <input type="file" id="username-success" class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" 
+          <input type="text" id="username-success" class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" 
           placeholder="image url"
           onChange={onInputChange}
           name="img"
@@ -398,7 +398,7 @@ function onSubmit(e) {
         
           <div >
                 <label for="username-error" class="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Image</label>
-                <input type="file" id="username-error" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
+                <input type="text" id="username-error" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                 placeholder="image url"
                 onChange={onInputChange}
                 name="img"
