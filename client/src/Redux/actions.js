@@ -9,12 +9,15 @@ import {
     SET_PAGE, 
     LOADING_ACTION, 
     GET_CAR_BY_NAME, 
+    ADD_TO_FAVORITE,
     PUT_CAR, 
     DELETE_CAR, 
     POST_CAR, 
     GET_CARS_DETAIL,
+    GET_CAR_BY_BRAND,
     ERROR_OCCURRED } from "./action-types";
 import axios from "axios";
+
 
 export function getCars() {
     return function (dispatch) {

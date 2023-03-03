@@ -8,6 +8,7 @@ import {
   FILTER_BY_BRAND,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
+  ADD_TO_FAVORITE,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -36,6 +37,7 @@ function Reducer(state = initialState, action) {
         ...state,
         cars: action.payload,
       };
+  
     case FILTER_BY_BRAND:
       let allcars = [...state.allcars];
       let carfilter1 =
