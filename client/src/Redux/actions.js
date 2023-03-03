@@ -178,3 +178,39 @@ export function removeFavorite(userId, carId) {
       })
     }
   }
+  export const allUsers = () => {
+    return async function (dispatch) {
+      try {
+        const allUsers = await axios.get(`https://pfhenryss-production.up.railway.app/user`)
+        dispatch({
+          type: 'ALL_USERS',
+          payload: allUsers.data
+        })
+      } catch (error) {
+        console.log('Error action allUsers',error);
+      }
+    }
+  }
+  export const createUs = (payload) => {
+    return async function (dispatch) {
+      try {
+        const newUs = await axios.post(`https://pfhenryss-production.up.railway.app/user`, payload)
+        dispatch({
+          type: 'CREATE_USER',
+          payload: newUs.data
+        })
+      } catch (error) {
+        console.log('error en action/createUser', error);
+      }
+    }
+  }
+
+  export function getUsersDetails (email) {
+    return async function(dispatch){
+      let json = await axios.get(`https://pfhenryss-production.up.railway.app/user/${email}`)
+      return dispatch({
+        type: "GET_USER_PROFILE",
+        payload: json.data,
+      })
+    }
+  }
