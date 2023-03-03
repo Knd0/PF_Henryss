@@ -16,6 +16,8 @@ const getApiBrands = async () => {
 
 const brandsToDb = async () => {
 
+
+
     let brands = await Brand.findAll();
     if(!brands.length){
         const info = await getApiBrands()

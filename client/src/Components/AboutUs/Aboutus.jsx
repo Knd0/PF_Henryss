@@ -28,13 +28,14 @@ export default function Aboutus() {
                 alt="Bonnie Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">Franco de Iriondo</a>
+                <a>Franco de Iriondo</a>
               </h3>
               <p>CEO/Co-founder</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
                     href="https://www.instagram.com/francodeiriondo/"
+                    target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -50,6 +51,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="https://www.linkedin.com/in/franco-de-iriondo-686585220/"
+                    target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -65,6 +67,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="https://github.com/Knd0"
+                    target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
                     <svg
@@ -90,13 +93,14 @@ export default function Aboutus() {
                 alt="Helene Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">David Urquijo</a>
+                <a>David Urquijo</a>
               </h3>
               <p>CTO/Co-founder</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -112,6 +116,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -127,6 +132,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
                     <svg
@@ -152,13 +158,14 @@ export default function Aboutus() {
                 alt="Jese Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">Dayanna Vidaurre</a>
+                <a>Dayanna Vidaurre</a>
               </h3>
               <p>SEO & Marketing</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -174,6 +181,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -189,6 +197,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
                     <svg
@@ -214,13 +223,14 @@ export default function Aboutus() {
                 alt="Joseph Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">Ramon Gonzalez</a>
+                <a>Ramon Gonzalez</a>
               </h3>
               <p>CTO/Co-founder</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -236,6 +246,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -251,6 +262,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
                     <svg
@@ -278,13 +290,14 @@ export default function Aboutus() {
                 alt="Sofia Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">Lana Byrd</a>
+                <a>Lana Byrd</a>
               </h3>
               <p>Web Designer</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -300,6 +313,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -315,6 +329,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
                     <svg
@@ -340,13 +355,14 @@ export default function Aboutus() {
                 alt="Leslie Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">Leslie Livingston</a>
+                <a>Leslie Livingston</a>
               </h3>
               <p>Graphic Designer</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -362,6 +378,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -377,6 +394,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
                     <svg
@@ -402,13 +420,14 @@ export default function Aboutus() {
                 alt="Michael Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">Michael Gough</a>
+                <a>Michael Gough</a>
               </h3>
               <p>React Developer</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -424,6 +443,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
                     <svg
@@ -439,6 +459,7 @@ export default function Aboutus() {
                 <li>
                   <a
                     href="#"
+                    target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
                     <svg
