@@ -8,4 +8,5 @@ const router = Router();
 router.use('/cars', carsRoutes);
 router.use('/brands', brandRoutes)
 router.use('/favorites', favoritesRoutes)
+
 module.exports = router;

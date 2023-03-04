@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { getFavorites, deleteFavorites } = require('../handlers/favoritesHandlers')
+const { getFavorites, deleteFavorites } = require('../handlers/favoritesHandler')
 
 const favoritesRouter = Router();
 
