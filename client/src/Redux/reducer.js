@@ -192,7 +192,7 @@ function Reducer(state = initialState, action) {
         loading: false,
       };
     
-    case "LOADING_ACTION": 
+    case 'LOADING_ACTION': 
         return {
           ...state,
           loading: true,

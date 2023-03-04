@@ -108,6 +108,7 @@ export function filterByBrand(payload) {
 
 export function getCarByName(model) {
   return async function (dispatch) {
+    dispatch({type: 'LOADING_ACTION'})
     await axios
       .get(`/cars?model=${model}`)
       .then((response) =>
@@ -118,6 +119,7 @@ export function getCarByName(model) {
 
 export function getCarByBrand(brand) {
   return async function (dispatch) {
+    dispatch({type: 'LOADING_ACTION'})
     await axios
       .get(`https://pfhenryss-production.up.railway.app/cars?brand=${brand}`)
       .then((response) =>
