@@ -1,7 +1,9 @@
 .card {
     width: 350px;
     height: 700px;
-    background-image: linear-gradient(163deg, #aeaeae 0%, #dbdbdb 100%);
+    border-width: 3px;
+    border-color: #0f2170;
+    background-color: linear-gradient(163deg, #362FD9 0%, #dbdbdb 100%);
     border-radius: 20px;
     transition: all .3s;
     opacity: 0.9;
@@ -11,6 +13,8 @@
 
 .card{
     border-radius: 3%;
+    border-width: 3px;
+    border-color: #0f2170;
     background-color: rgba(255, 255, 255, 0.443);
     height: 300px;
     width: 300px;
@@ -22,11 +26,20 @@
       
 }
 
+hr {
+    position: relative;
+    margin-top: 10px;
+    width: 3px;
+}
+
 .cardConteiner img{
-    border-radius: 4%;
-    width:100%;
+    border-radius: 4% 4% 0 0;
+    border-color: #0f2170;
+    border-bottom: 2px solid #BBE1FA;
+    width:99%;
     height: 200px;
     margin: 0 auto;
+    margin-right: 5px;
         
 }
 
@@ -36,7 +49,7 @@
     width: 350px;
     height: 400px;
     border-radius: 4%;
-    border: 1px solid rgba(128, 128, 128, 0.474);
+    border: 2px solid #BBE1FA;
 }
 
 .elementsContainerCard{
@@ -51,18 +64,17 @@
 }
 
 .titulo{
-    color: rgb(9, 154, 110);
+    color: #00a30b;
     font-weight: bolder;
     font-size: x-large;
     text-align: center;
-    margin: 10px 0px -15px 0px ;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
 
 .subtitulo {
-    color: rgb(9, 57, 154);
+    color: #0f2170;
     text-align: center;
     margin-bottom: 15px;
 }
@@ -80,3 +92,71 @@
     justify-content: center;
     align-items: center;
 }
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .container {
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+    transition: 100ms;
+    width: 7%;
+    margin: 0px;
+  }
+  
+  .checkmark {
+    top: 0;
+    left: 0;
+    height: 2em;
+    width: 2em;
+    transition: 100ms;
+    animation: dislike_effect 400ms ease;
+  }
+  
+  .container input:checked ~ .checkmark path {
+    fill: #FF5353;
+    stroke-width: 0;
+  }
+  
+  .container input:checked ~ .checkmark {
+    animation: like_effect 400ms ease;
+  }
+  
+  .container:hover {
+    transform: scale(1.1);
+  }
+  
+  @keyframes like_effect {
+    0% {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes dislike_effect {
+    0% {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
