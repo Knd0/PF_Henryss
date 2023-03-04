@@ -1,7 +1,7 @@
 import React from "react";
-import { getCars, getCarByName, getCardByBrand } from "../../Redux/actions";
+import { getCars, getCarByName, getCarByBrand } from "../../Redux/actions";
 import {useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import styles from "../Search/Search.module.css";
 import swal from 'sweetalert';
 
@@ -14,21 +14,38 @@ const Search  = ()=>{
     const[input, setInput]=useState("")
     const dispatch = useDispatch()
   
+    const allCars = useSelector((state) => state.allcars) 
+    const allBrands = allCars.map(car => car.brand)
+    const allModels = allCars.map(car => car.model)
+    
+    console.log(allModels)
+    
     function handleChange(e){
         setInput(e.target.value)
     }
    
 
-    function handleSubmit(e){
-        e.preventDefault()
-      if(!input){
+    function handleSubmit(e) {
+      e.preventDefault();
+    
+      if (!input) {
         swal("Please enter a car");
-      }else{
-         setBtonBackCar(true)
-        dispatch(getCarByName(input))
+      } else {
+        const lowercaseInput = input.toLowerCase();
+        if (allBrands.filter((brand) => brand.toLowerCase() === lowercaseInput).length > 0) {
+          setBtonBackCar(true);
+          dispatch(getCarByBrand(input));
+        } else if (allModels.filter((model) => model.toLowerCase() === lowercaseInput).length > 0) {
+          setBtonBackCar(true);
+          dispatch(getCarByName(input));
         }
-        setInput("")
+      }
+    
+      setInput("");
     }
+
+
+
     function handleClick(e){
        e.preventDefault()
        setBtonBackCar(false)
