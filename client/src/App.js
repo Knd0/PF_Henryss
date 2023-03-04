@@ -11,6 +11,8 @@ import Payment from "./Components/Payment/Payment";
 import AboutUs from "./Components/AboutUs/Aboutus";
 import Page404 from "./Components/Page404/Page404";
 import CarsCreate from "./Components/CarFormPage/CarsCreate";
+import axios from "axios";
+axios.defaults.baseURL = 'https://pfhenryss-production.up.railway.app/'
 
 function App() {
   return (

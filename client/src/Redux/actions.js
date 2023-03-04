@@ -26,7 +26,7 @@ import axios from "axios";
 export function getCars() {
   return function (dispatch) {
     axios
-      .get(`https://pfhenryss-production.up.railway.app/cars`)
+      .get(`/cars`)
       .then((response) => response.data)
       .then((response) => {
         dispatch({ type: GET_CARS, payload: response });
@@ -41,7 +41,7 @@ export function getCarsDetail(id) {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        "https://pfhenryss-production.up.railway.app/cars/" + id
+        "/cars/" + id
       );
       return dispatch({
         type: GET_CARS_DETAIL,
@@ -57,7 +57,7 @@ export function postCar(body) {
   return async function (dispatch) {
     try {
       var car = await axios.post(
-        `https://pfhenryss-production.up.railway.app/cars`,
+        `/cars`,
         body
       );
       return dispatch({
@@ -108,7 +108,7 @@ export function filterByBrand(payload) {
 export function getCarByName(model) {
   return async function (dispatch) {
     await axios
-      .get(`https://pfhenryss-production.up.railway.app/cars?model=${model}`)
+      .get(`/cars?model=${model}`)
       .then((response) =>
         dispatch({ type: GET_CAR_BY_NAME, payload: response.data })
       );
@@ -136,7 +136,7 @@ export function deleteCar(id) {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        `https://pfhenryss-production.up.railway.app/cars/${id}`
+        `/cars/${id}`
       );
 
       if (response.status !== 200) {
@@ -159,7 +159,7 @@ export function updateCar(id, payload) {
   return async (dispatch) => {
     try {
       await axios.put(
-        `https://pfhenryss-production.up.railway.app/cars/${id}`,
+        `/cars/${id}`,
         payload
       );
       return dispatch({ type: PUT_CAR });
@@ -201,7 +201,7 @@ export const allUsers = () => {
   return async function (dispatch) {
     try {
       const allUsers = await axios.get(
-        `https://pfhenryss-production.up.railway.app/user`
+        `/user`
       );
       dispatch({
         type: ALL_USERS,
@@ -216,7 +216,7 @@ export const createUs = (payload) => {
   return async function (dispatch) {
     try {
       const newUs = await axios.post(
-        `https://pfhenryss-production.up.railway.app/user`,
+        `/user`,
         payload
       );
       dispatch({
@@ -232,7 +232,7 @@ export const createUs = (payload) => {
 export function getUsersDetails(email) {
   return async function (dispatch) {
     let json = await axios.get(
-      `https://pfhenryss-production.up.railway.app/user/${email}`
+      `/user/${email}`
     );
     return dispatch({
       type: GET_USER_PROFILE,
