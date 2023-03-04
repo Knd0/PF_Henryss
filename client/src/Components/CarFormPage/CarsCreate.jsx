@@ -99,7 +99,7 @@ function onSubmit(e) {
     progress: undefined,
     theme: "colored",   
     onClose: () => {
-      navigate("/");
+      navigate("/cars");
     }
     });
 }
