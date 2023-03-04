@@ -24,7 +24,7 @@ export default function Cars() {
   const dispatch = useDispatch();
   const allcars = useSelector((state) => state.cars);
   const [currentPage, setCurrentPage] = useState(1);
-  const [carsPerPage, setCountriesPerPage] = useState(8);
+  const [carsPerPage, setCarsPerPage] = useState(8);
   const indexOfLastCar = currentPage * carsPerPage;
   const indexOfFirstCar = indexOfLastCar - carsPerPage;
   const currentCars = allcars.slice(indexOfFirstCar, indexOfLastCar);
@@ -156,7 +156,7 @@ export default function Cars() {
         </div>
       </div>
       <div>
-        <Search />
+        <Search page={page}/>
       </div>
       <div>
         {loading ? (
