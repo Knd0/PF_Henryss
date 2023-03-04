@@ -8,6 +8,7 @@ import {
   FILTER_BY_BRAND,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
+  GET_CAR_BY_BRAND,
   ADD_TO_FAVORITE,
   PUT_CAR,
   DELETE_CAR,
@@ -40,6 +41,12 @@ function Reducer(state = initialState, action) {
         allcars: action.payload,
       };
     case GET_CAR_BY_NAME:
+      return {
+        ...state,
+        cars: action.payload,
+      };
+
+    case GET_CAR_BY_BRAND:
       return {
         ...state,
         cars: action.payload,

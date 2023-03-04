@@ -9,6 +9,7 @@ import {
   SET_PAGE,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
+  GET_CAR_BY_BRAND,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -111,6 +112,16 @@ export function getCarByName(model) {
       .get(`/cars?model=${model}`)
       .then((response) =>
         dispatch({ type: GET_CAR_BY_NAME, payload: response.data })
+      );
+  };
+}
+
+export function getCarByBrand(brand) {
+  return async function (dispatch) {
+    await axios
+      .get(`https://pfhenryss-production.up.railway.app/cars?brand=${brand}`)
+      .then((response) =>
+        dispatch({ type: GET_CAR_BY_BRAND, payload: response.data })
       );
   };
 }
