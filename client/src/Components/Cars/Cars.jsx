@@ -59,18 +59,20 @@ export default function Cars() {
     setCurrentPage(1);
   }
 
-  function handleSortAlf(e) {
-    e.preventDefault();
-    dispatch(orderByAlf(e.target.value));
-    setOrder(`Order ${e.target.value}`);
-  }
-
-  function handleSortKM(e) {
-    e.preventDefault();
-    dispatch(orderByKM(e.target.value));
-    setOrder(`Order ${e.target.value}`);
-    setCurrentPage(1);
-  }
+    function handleSortAlf(e) {
+        e.preventDefault();
+        dispatch(orderByAlf(e.target.value));
+        setOrder(`Order ${e.target.value}`)
+        setCurrentPage(1);
+      
+    } 
+ 
+    function handleSortKM(e) {
+        e.preventDefault();
+        dispatch(orderByKM(e.target.value));
+        setOrder(`Order ${e.target.value}`)
+        setCurrentPage(1);
+    }
 
   function handleSortPrice(e) {
     e.preventDefault();
@@ -109,25 +111,32 @@ export default function Cars() {
           </select>
         </div>
         <div>
-          Order by KM:
-          <select className={style.select} onChange={(e) => handleSortKM(e)}>
-            <option value="All">All</option>
-            <option value="mayp">Minor to Major</option>
-            <option value="menp">Major to Minor</option>
-          </select>
+            Order by KM:
+            <select className={style.select} onChange={(e) => handleSortKM(e)}>
+                <option value="All">All</option>
+                <option value="maykm">Minor to Major</option>
+                <option value="menkm">Major to Minor</option>
+            </select>
         </div>
         <div>
-          Filter by year:
-          <select
-            className={style.select}
-            onChange={(e) => handleFilteredYear(e)}
-          >
-            <option value="All">All</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-          </select>
+            Filter by year:
+            <select className={style.select} onChange={e => handleFilteredYear(e)}>
+                <option value="All">All</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+            </select>
         </div>
         <div>
           Filter by brand:
@@ -168,12 +177,13 @@ export default function Cars() {
                 <div>
                   <Link to={`${e.id}`}>
                     <Card
-                      id={e.id}
-                      brand={e.brand}
-                      img={e.img}
-                      model={e.model}
-                      year={e.year}
-                      price={e.price}
+                        carId={e.carId}
+                        brand={e.brand}
+                        img={e.img}
+                        model={e.model}
+                        year={e.year}
+                        kilometers={e.kilometers}
+                        price={e.price}
                     />
                   </Link>
                 </div>

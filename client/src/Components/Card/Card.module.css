@@ -84,13 +84,15 @@ hr {
     
 }
 .divEnlaceCard{
-    margin-top: 20px;
+    position: absolute;
+    margin-top: 10px;
 }
 .flexItems{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .container input {
@@ -99,6 +101,7 @@ hr {
     cursor: pointer;
     height: 0;
     width: 0;
+    
   }
   
   .container {
@@ -118,6 +121,7 @@ hr {
     width: 2em;
     transition: 100ms;
     animation: dislike_effect 400ms ease;
+    
   }
   
   .container input:checked ~ .checkmark path {

@@ -11,11 +11,11 @@ import Loading from "../Loading/Loading";
 export default function CarsDetail() {
     const dispatch = useDispatch()
     const [isFav, setIsFav] = useState(false)
-    const { id } = useParams()
+    const { carId } = useParams()
     const carDetail = useSelector((state) => state.detail)
     useEffect(() => {
-        dispatch(getCarsDetail(id))
-    }, [dispatch, id])
+        dispatch(getCarsDetail(carId))
+    }, [dispatch, carId])
 
     const handleFavorite = (e) => {
         if(isFav) {
