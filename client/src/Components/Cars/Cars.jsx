@@ -58,6 +58,7 @@ export default function Cars() {
         e.preventDefault();
         dispatch(orderByAlf(e.target.value));
         setOrder(`Order ${e.target.value}`)
+        setCurrentPage(1);
       
     } 
  
@@ -109,8 +110,8 @@ export default function Cars() {
             Order by KM:
             <select className={style.select} onChange={(e) => handleSortKM(e)}>
                 <option value="All">All</option>
-                <option value="mayp">Minor to Major</option>
-                <option value="menp">Major to Minor</option>
+                <option value="maykm">Minor to Major</option>
+                <option value="menkm">Major to Minor</option>
             </select>
         </div>
         <div>
@@ -121,6 +122,16 @@ export default function Cars() {
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
             </select>
         </div>
         <div>
@@ -156,11 +167,12 @@ export default function Cars() {
                 <div>
                    
                     <Card
-                        id={e.id}
+                        carId={e.carId}
                         brand={e.brand}
                         img={e.img}
                         model={e.model}
                         year={e.year}
+                        kilometers={e.kilometers}
                         price={e.price}
                     />
                    

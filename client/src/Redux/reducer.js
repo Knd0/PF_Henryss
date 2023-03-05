@@ -63,11 +63,11 @@ function Reducer(state = initialState, action) {
         cars: carfilter1,
       };
     case FILTER_BY_YEAR:
-      let allcars1 = [...state.cars];
+      let cars = [...state.cars];
       let carfilter2 =
         action.payload === "All"
-          ? allcars1
-          : allcars1.filter((e) => e.year === parseInt(action.payload));
+          ? cars
+          : cars.filter((e) => e.year === parseInt(action.payload));
       return {
         ...state,
         cars: carfilter2,
@@ -117,21 +117,21 @@ function Reducer(state = initialState, action) {
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
-        action.payload === "mayp"
+        action.payload === "maykm"
           ? state.cars.sort(function (a, b) {
-              if (a.km > b.km) {
+              if (a.kilometers > b.kilometers) {
                 return 1;
               }
-              if (b.km > a.km) {
+              if (b.kilometers > a.kilometers) {
                 return -1;
               }
               return 0;
             })
           : state.cars.sort(function (a, b) {
-              if (a.km > b.km) {
+              if (a.kilometers > b.kilometers) {
                 return -1;
               }
-              if (b.km > a.km) {
+              if (b.kilometers > a.kilometers) {
                 return 1;
               }
               return 0;

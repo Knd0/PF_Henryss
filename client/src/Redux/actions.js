@@ -38,11 +38,11 @@ export function getCars() {
   };
 }
 
-export function getCarsDetail(id) {
+export function getCarsDetail(carId) {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        "/cars/" + id
+        "/cars/" + carId
       );
       return dispatch({
         type: GET_CARS_DETAIL,
@@ -143,11 +143,11 @@ export function loadingAction(status) {
   };
 }
 
-export function deleteCar(id) {
+export function deleteCar(carId) {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        `/cars/${id}`
+        `/cars/${carId}`
       );
 
       if (response.status !== 200) {
@@ -166,11 +166,11 @@ export function deleteCar(id) {
   };
 }
 
-export function updateCar(id, payload) {
+export function updateCar(carId, payload) {
   return async (dispatch) => {
     try {
       await axios.put(
-        `/cars/${id}`,
+        `/cars/${carId}`,
         payload
       );
       return dispatch({ type: PUT_CAR });
