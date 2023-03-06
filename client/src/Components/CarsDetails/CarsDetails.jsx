@@ -9,11 +9,11 @@ import Footer from "../Footer/Footer";
 export default function CarsDetail() {
     const dispatch = useDispatch()
     const [isFav, setIsFav] = useState(false)
-    const { carId } = useParams()
+    const {  id } = useParams()
     const carDetail = useSelector((state) => state.detail)
     useEffect(() => {
-        dispatch(getCarsDetail(carId))
-    }, [dispatch, carId])
+        dispatch(getCarsDetail(id))
+    }, [dispatch, id])
 
     const handleFavorite = (e) => {
         if(isFav) {
@@ -23,30 +23,30 @@ export default function CarsDetail() {
         }
     }
 
-    if (Object.entries(carDetail).length !== 0) {
+    if (carDetail?.length !== 0) {
         return (
             <>
                 <Navbar />
                 <div class="grid grid-cols-3 grid-rows-3">
                     <div class="col-span-2 row-start-1 row-span-2">
-                        <img src={carDetail[0].img} alt="car" />
+                        <img src={carDetail[0]?.img} alt="car" />
                     </div>
                     <div class="row-start-1 row-span-5 pt-12">
-                        <h4 class="text-2xl text-left pl-10">Name car: {carDetail[0].brand} {carDetail[0].model}</h4>
+                        <h4 class="text-2xl text-left pl-10">Name car: {carDetail[0]?.brand} {carDetail[0]?.model}</h4>
                         {
                             isFav?<button onClick={handleFavorite}>❤️</button>:<button onClick={handleFavorite}>🤍</button>
                         }
-                        <h4 class="text-2xl text-left pl-10">Price: {carDetail[0].price}</h4>
+                        <h4 class="text-2xl text-left pl-10">Price: {carDetail[0]?.price}</h4>
                         {/* <h4>Location: </h4>
                     <h4>Seller information: </h4>
                     <p></p> */}
                     </div>
                     <div class="col-span-2">
                         <h3 class="text-6xl text-left pl-10">Features:</h3>
-                        <h4 class="text-left pl-10 pt-3 font-bold">Brand: {carDetail[0].brand}</h4>
-                        <h4 class="text-left pl-10 pt-3 font-bold">Model: {carDetail[0].model}</h4>
-                        <h4 class="text-left pl-10 pt-3 font-bold">Year: {carDetail[0].year}</h4>
-                        <h4 class="text-left pl-10 pt-3 font-bold">Transmission: {carDetail[0].features.transmission}</h4>
+                        <h4 class="text-left pl-10 pt-3 font-bold">Brand: {carDetail[0]?.brand}</h4>
+                        <h4 class="text-left pl-10 pt-3 font-bold">Model: {carDetail[0]?.model}</h4>
+                        <h4 class="text-left pl-10 pt-3 font-bold">Year: {carDetail[0]?.year}</h4>
+                        <h4 class="text-left pl-10 pt-3 font-bold">Transmission: {carDetail[0]?.features?.transmission}</h4>
                         {/* <h4>Mileage: </h4>
                     <h4>Version: </h4>
                     <h4>Color: </h4>

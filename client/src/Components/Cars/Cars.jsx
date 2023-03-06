@@ -19,16 +19,14 @@ export default function Cars() {
     const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
-    const indexOfFirstCar = indexOfLastCar - carsPerPage 
-    const currentCars = allcars.slice(indexOfFirstCar,indexOfLastCar) 
+    const indexOfFirstCar = indexOfLastCar - carsPerPage
+    const currentCars = allcars.slice(indexOfFirstCar,indexOfLastCar)
     const [order, setOrder] = useState("");
     const cars = useSelector((state) => state.allcars);
     const loading = useSelector((state) => state.loading);
     const [input, setInput] = useState("");
     const maximo = allcars.length/carsPerPage
-   
-    
-  
+
 
     const page = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -45,7 +43,7 @@ export default function Cars() {
         dispatch(orderByAlf(e.target.value));
         setOrder(`Order ${e.target.value}`)
         setCurrentPage(1);
-      
+
     }
     function handleFilteredBrand(e) {
         dispatch(filterByBrand(e.target.value));
@@ -65,9 +63,9 @@ export default function Cars() {
         dispatch(orderByAlf(e.target.value));
         setOrder(`Order ${e.target.value}`)
         setCurrentPage(1);
-      
-    } 
- 
+
+    }
+
     function handleSortKM(e) {
         e.preventDefault();
         dispatch(orderByKM(e.target.value));
@@ -96,20 +94,22 @@ export default function Cars() {
     return (
         <>
         <Navbar />
-     
+
         <div className={style.filtros}>
         <div>
              Order alphabetically:
             <select className={style.select} onChange={(e) => handleSortAlf(e)}>
+
                 <option selected disabled>--select--</option> 
                 <option className={style.allSelect} value="All">All</option> 
                 <option value="atoz">A - Z</option>
                 <option value="desc">Z - A</option>
-            </select> 
-        </div> 
+            </select>
+        </div>
         <div>
             Order by price:
             <select className={style.select} onChange={(e) => handleSortPrice(e)}>
+
                 <option selected disabled>--select--</option>  
                 <option className={style.allSelect} value="All">All</option> 
                 <option value="mayp">Minor to Major</option>
@@ -152,22 +152,20 @@ export default function Cars() {
                 <option value="Mazda">Mazda</option>
                 <option value="Ford">Ford</option>
                 <option value="Jeep">Jeep</option>
-                <option value="Tesla">Tesla</option>                         
+                <option value="Tesla">Tesla</option>
             </select>
         </div>
     </div>
       <div>
       <Search/>
       </div>
-<div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo}/></div> 
         <div className={style.cardconteiner}> 
             {currentCars.length ? (
             currentCars.map((e) => {
                 return (
                 <div>
-                   
                     <Card
-                        carId={e.carId}
+                        carId={e.carId||e.id}
                         brand={e.brand}
                         img={e.img}
                         model={e.model}
@@ -175,7 +173,6 @@ export default function Cars() {
                         kilometers={e.kilometers}
                         price={e.price}
                     />
-                   
                 </div>
                 );
             })
@@ -184,9 +181,11 @@ export default function Cars() {
              {handleAlert()}   
              
               
+
         </div>
             }
         </div>
+  <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo}/></div> 
        
         <Footer />
         </>
