@@ -2,8 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 1600px;
-    height: 340px;
+    height: auto;
     margin: auto;
 
 }
