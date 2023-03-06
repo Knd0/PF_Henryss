@@ -1,16 +1,17 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Cars from "./Components/Cars/Cars";
 import CarsDetails from "./Components/CarsDetails/CarsDetails";
 import CarsEdit from "./Components/CarsEdit/CarsEdit";
 import MyPublications from "./Components/MyPublications/MyPublications";
 import MyFavorites from "./Components/MyFavorites/MyFavorites";
-import Register from "./Components/Register/Register";
 import Payment from "./Components/Payment/Payment";
 import AboutUs from "./Components/AboutUs/Aboutus";
 import Page404 from "./Components/Page404/Page404";
 import CarsCreate from "./Components/CarFormPage/CarsCreate";
+import axios from "axios";
+axios.defaults.baseURL = 'https://pfhenryss-production.up.railway.app/'
 
 function App() {
   return (
