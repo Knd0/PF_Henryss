@@ -6,14 +6,12 @@ import CarsDetails from "./Components/CarsDetails/CarsDetails";
 import CarsEdit from "./Components/CarsEdit/CarsEdit";
 import MyPublications from "./Components/MyPublications/MyPublications";
 import MyFavorites from "./Components/MyFavorites/MyFavorites";
-import Login from "./Components/Login/Login";
-import Register from "./Components/Register/Register";
 import Payment from "./Components/Payment/Payment";
 import AboutUs from "./Components/AboutUs/Aboutus";
 import Page404 from "./Components/Page404/Page404";
 import CarsCreate from "./Components/CarFormPage/CarsCreate";
 import axios from "axios";
-axios.defaults.baseURL = 'https://pfhenryss-production.up.railway.app/'
+axios.defaults.baseURL = "https://pfhenryss-production.up.railway.app/";
 // axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
 
 function App() {
@@ -28,8 +26,6 @@ function App() {
           <Route path="/carsedit" element={<CarsEdit />} />
           <Route path="/mypublications" element={<MyPublications />} />
           <Route path="/myfavorites" element={<MyFavorites />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<Page404 />} />
@@ -38,5 +34,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;
