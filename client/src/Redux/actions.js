@@ -9,6 +9,7 @@ import {
   SET_PAGE,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
+  GET_CAR_BY_BRAND,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -22,10 +23,11 @@ import {
 } from "./action-types";
 import axios from "axios";
 
+
 export function getCars() {
   return function (dispatch) {
     axios
-      .get(`https://pfhenryss-production.up.railway.app/cars`)
+      .get(`/cars`)
       .then((response) => response.data)
       .then((response) => {
         dispatch({ type: GET_CARS, payload: response });
@@ -36,11 +38,11 @@ export function getCars() {
   };
 }
 
-export function getCarsDetail(id) {
+export function getCarsDetail(carId) {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        "https://pfhenryss-production.up.railway.app/cars/" + id
+        "/cars/" + carId
       );
       return dispatch({
         type: GET_CARS_DETAIL,
@@ -56,7 +58,7 @@ export function postCar(body) {
   return async function (dispatch) {
     try {
       var car = await axios.post(
-        `https://pfhenryss-production.up.railway.app/cars`,
+        `/cars`,
         body
       );
       return dispatch({
@@ -107,9 +109,19 @@ export function filterByBrand(payload) {
 export function getCarByName(model) {
   return async function (dispatch) {
     await axios
-      .get(`https://pfhenryss-production.up.railway.app/cars?model=${model}`)
+      .get(`/cars?model=${model}`)
       .then((response) =>
         dispatch({ type: GET_CAR_BY_NAME, payload: response.data })
+      );
+  };
+}
+
+export function getCarByBrand(brand) {
+  return async function (dispatch) {
+    await axios
+      .get(`/cars?brand=${brand}`)
+      .then((response) =>
+        dispatch({ type: GET_CAR_BY_BRAND, payload: response.data })
       );
   };
 }
@@ -131,11 +143,11 @@ export function loadingAction(status) {
   };
 }
 
-export function deleteCar(id) {
+export function deleteCar(carId) {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        `https://pfhenryss-production.up.railway.app/cars/${id}`
+        `/cars/${carId}`
       );
 
       if (response.status !== 200) {
@@ -154,11 +166,11 @@ export function deleteCar(id) {
   };
 }
 
-export function updateCar(id, payload) {
+export function updateCar(carId, payload) {
   return async (dispatch) => {
     try {
       await axios.put(
-        `https://pfhenryss-production.up.railway.app/cars/${id}`,
+        `/cars/${carId}`,
         payload
       );
       return dispatch({ type: PUT_CAR });
@@ -200,7 +212,7 @@ export const allUsers = () => {
   return async function (dispatch) {
     try {
       const allUsers = await axios.get(
-        `https://pfhenryss-production.up.railway.app/user`
+        `/user`
       );
       dispatch({
         type: ALL_USERS,
@@ -215,7 +227,7 @@ export const createUs = (payload) => {
   return async function (dispatch) {
     try {
       const newUs = await axios.post(
-        `https://pfhenryss-production.up.railway.app/user`,
+        `/user`,
         payload
       );
       dispatch({
@@ -231,7 +243,7 @@ export const createUs = (payload) => {
 export function getUsersDetails(email) {
   return async function (dispatch) {
     let json = await axios.get(
-      `https://pfhenryss-production.up.railway.app/user/${email}`
+      `/user/${email}`
     );
     return dispatch({
       type: GET_USER_PROFILE,

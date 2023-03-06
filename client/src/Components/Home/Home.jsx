@@ -34,16 +34,16 @@ export default function Home() {
       <hr className={style.hr} />
       <div class="flex justify-center">
         {
-          allCars.slice(0, 3).map(e => <Link to={`/cars/${e.id}`}>
+          allCars.slice(0, 3).map(e =>
             <Card
-              id={e.id}
+              carId={e.carId||e.id}
               brand={e.brand}
               img={e.img}
               model={e.model}
               year={e.year}
               price={e.price}
             />
-          </Link>)
+         )
         }
       </div>
       <div class="flex justify-end mr-40">

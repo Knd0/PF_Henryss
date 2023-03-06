@@ -8,6 +8,7 @@ import {
   FILTER_BY_BRAND,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
+  GET_CAR_BY_BRAND,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -43,6 +44,13 @@ function Reducer(state = initialState, action) {
         ...state,
         cars: action.payload,
       };
+
+    case GET_CAR_BY_BRAND:
+      return {
+        ...state,
+        cars: action.payload,
+      };
+  
     case FILTER_BY_BRAND:
       let allcars = [...state.allcars];
       let carfilter1 =
@@ -54,11 +62,10 @@ function Reducer(state = initialState, action) {
         cars: carfilter1,
       };
     case FILTER_BY_YEAR:
-      let allcars1 = [...state.allcars];
+    
+      let allcars1 = [...state.cars];
       let carfilter2 =
-        action.payload === "All"
-          ? allcars1
-          : allcars1.filter((e) => e.year === parseInt(action.payload));
+      allcars1.filter((e) => e.year === parseInt(action.payload));
       return {
         ...state,
         cars: carfilter2,
@@ -82,6 +89,7 @@ function Reducer(state = initialState, action) {
         cars: sortedcars,
       };
     case ORDER_CARS_PRICE:
+     
       let sortedArrPrice =
         action.payload === "mayp"
           ? state.cars.sort(function (a, b) {
@@ -108,21 +116,21 @@ function Reducer(state = initialState, action) {
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
-        action.payload === "mayp"
+        action.payload === "maykm"
           ? state.cars.sort(function (a, b) {
-              if (a.km > b.km) {
+              if (a.kilometers > b.kilometers) {
                 return 1;
               }
-              if (b.km > a.km) {
+              if (b.kilometers > a.kilometers) {
                 return -1;
               }
               return 0;
             })
           : state.cars.sort(function (a, b) {
-              if (a.km > b.km) {
+              if (a.kilometers > b.kilometers) {
                 return -1;
               }
-              if (b.km > a.km) {
+              if (b.kilometers > a.kilometers) {
                 return 1;
               }
               return 0;
@@ -209,6 +217,7 @@ function Reducer(state = initialState, action) {
     default:
       return state;
   }
+
 }
 
 export default Reducer;

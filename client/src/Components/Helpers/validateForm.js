@@ -99,9 +99,9 @@ const validateForm = ({
     }
   
     else if (
-      typeof capacity !== "string" ||  capacity.length < 2 || capacity.length > 25
+      typeof capacity !== "string" ||  capacity.length < 1 || capacity.length > 25
     ){
-      errors.capacity = "Please write 2-25 characters";    
+      errors.capacity = "Please write 1-25 characters";    
     }
 
     else if (
