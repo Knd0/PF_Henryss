@@ -32,10 +32,10 @@ const Search  = ()=>{
         swal("Please enter a car");
       } else {
         const lowercaseInput = input.toLowerCase();
-        if (allBrands.filter((brand) => brand.toLowerCase() === lowercaseInput).length > 0) {
+        if (allBrands.filter((brand) => brand.toLowerCase().includes(lowercaseInput))) {
           setBtonBackCar(true);
           dispatch(getCarByBrand(input));
-        } else if (allModels.filter((model) => model.toLowerCase() === lowercaseInput).length > 0) {
+        } else if (allModels.filter((model) => model.toLowerCase().includes(lowercaseInput))) {
           setBtonBackCar(true);
           dispatch(getCarByName(input));
         }
