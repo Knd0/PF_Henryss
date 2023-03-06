@@ -8,7 +8,8 @@ import {
   FILTER_BY_BRAND,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
-  ADD_FAVORITE,
+  GET_CAR_BY_BRAND,
+  ADD_TO_FAVORITE,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -39,6 +40,12 @@ function Reducer(state = initialState, action) {
         allcars: action.payload,
       };
     case GET_CAR_BY_NAME:
+      return {
+        ...state,
+        cars: action.payload,
+      };
+
+    case GET_CAR_BY_BRAND:
       return {
         ...state,
         cars: action.payload,
@@ -108,21 +115,21 @@ function Reducer(state = initialState, action) {
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
-        action.payload === "mayp"
+        action.payload === "maykm"
           ? state.cars.sort(function (a, b) {
-              if (a.km > b.km) {
+              if (a.kilometers > b.kilometers) {
                 return 1;
               }
-              if (b.km > a.km) {
+              if (b.kilometers > a.kilometers) {
                 return -1;
               }
               return 0;
             })
           : state.cars.sort(function (a, b) {
-              if (a.km > b.km) {
+              if (a.kilometers > b.kilometers) {
                 return -1;
               }
-              if (b.km > a.km) {
+              if (b.kilometers > a.kilometers) {
                 return 1;
               }
               return 0;

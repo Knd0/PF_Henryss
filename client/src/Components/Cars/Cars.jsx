@@ -64,6 +64,7 @@ export default function Cars() {
         e.preventDefault();
         dispatch(orderByAlf(e.target.value));
         setOrder(`Order ${e.target.value}`)
+        setCurrentPage(1);
       
     } 
  
@@ -130,7 +131,6 @@ export default function Cars() {
             <input placeholder="yyyy" id="inputyear"  className={style.inputYear} onChange={e => handleChange(e)} type="text" />
             <button className={style.btnYear} type="submit">✔</button>
             </form>
-          
         </div>
         <div>
             Filter by brand:
@@ -167,11 +167,12 @@ export default function Cars() {
                 <div>
                    
                     <Card
-                        id={e.id}
+                        carId={e.carId}
                         brand={e.brand}
                         img={e.img}
                         model={e.model}
                         year={e.year}
+                        kilometers={e.kilometers}
                         price={e.price}
                     />
                    
