@@ -226,7 +226,7 @@ export default function Aboutus() {
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <a>Ramon Gonzalez</a>
               </h3>
-              <p>CTO/Co-founder</p>
+              <p>CEO/Co-founder</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
