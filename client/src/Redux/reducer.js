@@ -66,6 +66,9 @@ function Reducer(state = initialState, action) {
         cars: carfilter1,
       };
     case FILTER_BY_YEAR:
+      let allcars1 = [...state.cars];
+      let carfilter2 =
+      allcars1.filter((e) => e.year === parseInt(action.payload));
 <<<<<<< HEAD
       let allcars1 = [...state.cars];
       let carfilter2 =
