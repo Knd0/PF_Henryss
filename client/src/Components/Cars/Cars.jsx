@@ -108,7 +108,8 @@ export default function Cars() {
             Order by price: 
             <select className={style.select} onChange={(e) => handleSortPrice(e)}>
 
-                <option selected disabled>--select--</option>  
+                <option selected disabled>--select--</option>
+                <option value="All">All</option>   
                 <option value="mayp">Minor to Major</option>
                 <option value="menp">Major to Minor</option>
             </select>
@@ -116,7 +117,8 @@ export default function Cars() {
         <div>
             Order by KM:    
             <select className={style.select} onChange={(e) => handleSortKM(e)}>
-                <option selected disabled>--select--</option> 
+                <option selected disabled>--select--</option>
+                <option value="All">All</option>  
                 <option value="mayp">Minor to Major</option>
                 <option value="menp">Major to Minor</option>
             </select>
