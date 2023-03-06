@@ -6,6 +6,8 @@ import {useDispatch} from "react-redux";
 
 export default function Card({ img, brand, model, year, price, id }) {
   const dispatch = useDispatch()
+  console.log(id)
+
 function handleClick(e){
   e.preventDefault()
   dispatch(addFavorite(id))
@@ -20,13 +22,10 @@ function handleClick(e){
           Brand: <span className={styles.subtitulo} >{brand}</span>
         </h5>
   
-       
        <h3 class={styles.titulo}>
           {" "}
           Model: <span className={styles.subtitulo} >{model}</span>
         </h3>
-       
-
        
        <p class={styles.titulo}>
           {" "}
@@ -45,6 +44,7 @@ function handleClick(e){
           >
             Add to favorites
           </a>
+         
        </div>
         </div>
         

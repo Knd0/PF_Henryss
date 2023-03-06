@@ -8,7 +8,7 @@ import {
   FILTER_BY_BRAND,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
-  ADD_TO_FAVORITE,
+  ADD_FAVORITE,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -16,7 +16,6 @@ import {
   ALL_USERS,
   GET_USER_PROFILE,
   CREATE_USER,
-  ADD_FAVORITE,
   REMOVE_FAVORITE
 } from "./action-types";
 
@@ -56,11 +55,9 @@ function Reducer(state = initialState, action) {
         cars: carfilter1,
       };
     case FILTER_BY_YEAR:
-      let allcars1 = [...state.allcars];
+      let allcars1 = [...state.cars];
       let carfilter2 =
-        action.payload === "All"
-          ? allcars1
-          : allcars1.filter((e) => e.year === parseInt(action.payload));
+      allcars1.filter((e) => e.year === parseInt(action.payload));
       return {
         ...state,
         cars: carfilter2,
@@ -84,6 +81,7 @@ function Reducer(state = initialState, action) {
         cars: sortedcars,
       };
     case ORDER_CARS_PRICE:
+     
       let sortedArrPrice =
         action.payload === "mayp"
           ? state.cars.sort(function (a, b) {
@@ -211,6 +209,7 @@ function Reducer(state = initialState, action) {
     default:
       return state;
   }
+
 }
 
 export default Reducer;
