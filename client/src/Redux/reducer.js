@@ -9,7 +9,6 @@ import {
   LOADING_ACTION,
   GET_CAR_BY_NAME,
   GET_CAR_BY_BRAND,
-  ADD_TO_FAVORITE,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -59,11 +58,10 @@ function Reducer(state = initialState, action) {
         loading: false,
       };
     case FILTER_BY_YEAR:
-      let cars = [...state.cars];
+    
+      let allcars1 = [...state.cars];
       let carfilter2 =
-        action.payload === "All"
-          ? cars
-          : cars.filter((e) => e.year === parseInt(action.payload));
+      allcars1.filter((e) => e.year === parseInt(action.payload));
       return {
         ...state,
         cars: carfilter2,
@@ -89,6 +87,7 @@ function Reducer(state = initialState, action) {
         loading: false,
       };
     case ORDER_CARS_PRICE:
+     
       let sortedArrPrice =
         action.payload === "mayp"
           ? state.cars.sort(function (a, b) {
@@ -201,6 +200,7 @@ function Reducer(state = initialState, action) {
     default:
       return state;
   }
+
 }
 
 export default Reducer;

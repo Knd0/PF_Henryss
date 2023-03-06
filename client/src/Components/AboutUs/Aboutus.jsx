@@ -1,6 +1,8 @@
 import React from "react";
 import imgFranco from "../Img/Franco.png";
 import imgRamon from "../Img/Ramon.png";
+import imgSantiago from "../Img/Santiago.png";
+import imgDavid from "../Img/David.jpeg"
 import Navbar from "../Navbar/Navbar";
 
 export default function Aboutus() {
@@ -90,7 +92,7 @@ export default function Aboutus() {
             <div class="text-center text-gray-500 dark:text-gray-400">
               <img
                 class="mx-auto mb-4 w-36 h-36 rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png"
+                src={imgDavid}
                 alt="Helene Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -100,7 +102,7 @@ export default function Aboutus() {
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/esteban_urquijo15/"
                     target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -116,7 +118,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/david-urquijo-9567321b8/"
                     target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -132,7 +134,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://github.com/daurquijo"
                     target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
@@ -226,7 +228,7 @@ export default function Aboutus() {
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <a>Ramon Gonzalez</a>
               </h3>
-              <p>CTO/Co-founder</p>
+              <p>CEO/Co-founder</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
@@ -417,11 +419,11 @@ export default function Aboutus() {
             <div class="text-center text-gray-500 dark:text-gray-400">
               <img
                 class="mx-auto mb-4 mt-4 w-36 h-36 rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+                src={imgSantiago}
                 alt="Michael Avatar"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a>Michael Gough</a>
+                <a>Santiago Silvera</a>
               </h3>
               <p>React Developer</p>
               <ul class="flex justify-center mt-4 space-x-4">

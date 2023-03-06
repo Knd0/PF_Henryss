@@ -121,7 +121,7 @@ export function getCarByBrand(brand) {
   return async function (dispatch) {
     dispatch({type: 'LOADING_ACTION'})
     await axios
-      .get(`https://pfhenryss-production.up.railway.app/cars?brand=${brand}`)
+      .get(`/cars?brand=${brand}`)
       .then((response) =>
         dispatch({ type: GET_CAR_BY_BRAND, payload: response.data })
       );
