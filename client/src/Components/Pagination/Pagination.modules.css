@@ -1,48 +1,49 @@
 .page {
-  display: flex;
-  list-style: none;
-  flex-direction: row;
-  justify-content: center;
-  margin: auto;
-
-}
-
-/* .prevnext {
-  border-radius: 10px;
-  border: none;
-  background: transparent;
-  border-radius: 50%;
-  color: black;
-  cursor: pointer;
-  padding-left: 10px;
-}
-
-.prevnext:hover {
-  background-color: red;
-}
-
-.numberpage {
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  width: 2.5em;
-  height: 2.5em;
-  border-radius: 50%;
-  color: black;
-}
-
-.numberpage:hover {
-  background-color: red;
-}
-
-.pagactive,
-.numberpage:active {
-  background-color: rgb(255, 0, 0);
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    
+  }
   
+  /* .prevnext {
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    color: black;
+    cursor: pointer;
+    padding-left: 10px;
+  }
   
+  .prevnext:hover {
+    background-color: red;
+  }
   
-}
-
-.numberpage:focus {
-  background-color: red;
-} */
+  .numberpage {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    color: black;
+  }
+  
+  .numberpage:hover {
+    background-color: red;
+  }
+  
+  .pagactive,
+  .numberpage:active {
+    background-color: rgb(255, 0, 0);
+    
+    
+    
+  }
+  
+  .numberpage:focus {
+    background-color: red;
+  } */
+  
