@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector} from "react-redux";
-import style from "../Cars/Cars.module.css"
+import { useDispatch, useSelector} from "react-redux"
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination"
 import Footer from "../Footer/Footer";
@@ -10,6 +9,8 @@ import Navbar from "../Navbar/Navbar";
 import { getCars, cleanState, orderByAlf,filterByBrand,filterByYear,orderByKM,orderByPrice} from "../../Redux/actions";
 import Search from "../Search/Search";
 import swal from 'sweetalert';
+import style from "../Cars/Cars.module.css"
+import {useNavigate} from 'react-router-dom';
 
 
 export default function Cars() {
@@ -23,6 +24,8 @@ export default function Cars() {
     const [order, setOrder] = useState("");
     const cars = useSelector((state) => state.allcars);
     const loading = useSelector((state) => state.loading);
+    const [input, setInput] = useState("");
+    const maximo = allcars.length/carsPerPage
 
 
     const page = (pageNumber) => {
@@ -49,7 +52,8 @@ export default function Cars() {
     }
 
     function handleFilteredYear(e) {
-        dispatch(filterByYear(e.target.value));
+        e.preventDefault()
+        dispatch(filterByYear(input));
       setOrder(`Order ${e.target.value}`)
       setCurrentPage(1);
     }
@@ -75,15 +79,17 @@ export default function Cars() {
         setOrder(`Order ${e.target.value}`)
         setCurrentPage(1);
     }
-    function handleClick(e){
-       dispatch(getCars())
-       console.log("fghjk")
+    function handleChange(e){
+      e.preventDefault()
+     setInput(e.target.value)
     }
+    
     function handleAlert(){
+      
+         swal ( "Oops" ,  "Car not found!" ,"error")
          dispatch(getCars())
-         swal ( "Oops" ,  "Car not found!" ,  "error" )
     }
-
+   
 
     return (
         <>
@@ -91,33 +97,38 @@ export default function Cars() {
 
         <div className={style.filtros}>
         <div>
-             Order alphabetically:
+             Order alphabetically:  
             <select className={style.select} onChange={(e) => handleSortAlf(e)}>
-                <option value="All">All</option>
+
+                <option selected disabled>--select--</option> 
+                <option className={style.allSelect} value="All">All</option> 
                 <option value="atoz">A - Z</option>
                 <option value="desc">Z - A</option>
             </select>
         </div>
         <div>
-            Order by price:
+            Order by price: 
             <select className={style.select} onChange={(e) => handleSortPrice(e)}>
-                <option value="All">All</option>
+
+                <option selected disabled>--select--</option>  
+                <option className={style.allSelect} value="All">All</option> 
                 <option value="mayp">Minor to Major</option>
                 <option value="menp">Major to Minor</option>
             </select>
         </div>
         <div>
-            Order by KM:
+            Order by KM:    
             <select className={style.select} onChange={(e) => handleSortKM(e)}>
-                <option value="All">All</option>
-                <option value="maykm">Minor to Major</option>
-                <option value="menkm">Major to Minor</option>
+                <option selected disabled>--select--</option> 
+                <option className={style.allSelect} value="All">All</option>
+                <option value="mayp">Minor to Major</option>
+                <option value="menp">Major to Minor</option>
             </select>
         </div>
         <div>
-            Filter by year:
+            Filter by year: 
             <select className={style.select} onChange={e => handleFilteredYear(e)}>
-                <option value="All">All</option>
+                <option selected disabled>--select--</option>
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
@@ -135,9 +146,10 @@ export default function Cars() {
             </select>
         </div>
         <div>
-            Filter by brand:
+            Filter by brand:    
             <select className={style.select} onChange={e => handleFilteredBrand(e)}>
-                <option value="All">All</option>
+                 <option selected disabled>--select--</option> 
+                <option className={style.allSelect} value="All">All</option>
                 <option value="Audi">Audi</option>
                 <option value="Honda">Honda</option>
                 <option value="DFSK">DFSK</option>
@@ -160,7 +172,7 @@ export default function Cars() {
       <div>
       <Search/>
       </div>
-        <div className={style.cardconteiner}>
+        <div className={style.cardconteiner}> 
             {currentCars.length ? (
             currentCars.map((e) => {
                 return (
@@ -177,17 +189,17 @@ export default function Cars() {
                 </div>
                 );
             })
-            ) : (
+            ) : 
             <div className={style.cardModal}>
-               {handleAlert()}
+             {handleAlert()}   
+             
+              
+
         </div>
-            )}
+            }
         </div>
-        <Pagination
-        carsPerPage = {carsPerPage}
-        allcars = {allcars.length}
-        page = {page}
-        />
+  <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo}/></div> 
+       
         <Footer />
         </>
     );

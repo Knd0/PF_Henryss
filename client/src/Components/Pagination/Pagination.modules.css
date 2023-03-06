@@ -1,0 +1,38 @@
+.container_pagination65754463_jj {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    }
+  
+    button svg{
+      width: 10px;
+      height: 20px;
+    }
+ 
+    button {
+    
+        background-color: rgb(103, 103, 239);
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+  
+  }
+  button.disabled{
+    background-color: #474747;
+    cursor: no-drop;
+  }
+  
+  
+  .inputPaged_004566df{
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    border: 1px solid #242424;
+    border-radius: 3px;
+    cursor: pointer;
+  }
