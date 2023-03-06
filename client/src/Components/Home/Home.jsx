@@ -36,7 +36,7 @@ export default function Home() {
         {
           allCars.slice(0, 3).map(e =>
             <Card
-              id={e.id}
+              carId={e.carId||e.id}
               brand={e.brand}
               img={e.img}
               model={e.model}

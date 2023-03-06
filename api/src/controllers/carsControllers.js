@@ -62,7 +62,7 @@ const getCarByModel = async (model) => {
 
 const getCarDetail = async (id) => {
     const data = await getAllCars();
-    const filteredCars = data.filter((car) => car.id == id );
+    const filteredCars = data.filter((car) => car.id == id||car.carId==id );
     return filteredCars;
 }
 

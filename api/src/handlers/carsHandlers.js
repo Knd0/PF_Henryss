@@ -22,10 +22,10 @@ const getCars = async (req, res) => {
     }
 }
 
-const getCarById = (req, res) => {
+const getCarById = async (req, res) => {
     const { id } = req.params;
     try {
-        const response = getCarDetail(id);
+        const response = await getCarDetail(id);
         res.status(200).send(response);
     } catch (error) {
         res.status(400).json({ message: error.message });
