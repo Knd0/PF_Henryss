@@ -1,22 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux"
 import Card from "../Card/Card";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../Pagination/Pagination"
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import {
-  getCars,
-  cleanState,
-  orderByAlf,
-  filterByBrand,
-  filterByYear,
-  orderByKM,
-  orderByPrice,
-} from "../../Redux/actions";
+import { getCars, cleanState, orderByAlf,filterByBrand,filterByYear,orderByKM,orderByPrice} from "../../Redux/actions";
+import Search from "../Search/Search";
 import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
-
+import {useNavigate} from 'react-router-dom';
 
 
 export default function Cars() {
@@ -34,26 +28,15 @@ export default function Cars() {
     const maximo = allcars.length/carsPerPage
 
 
-  const page = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+    const page = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
-  useEffect(() => {
-    dispatch(cleanState());
-    dispatch(getCars());
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(cleanState());
+        dispatch(getCars())
+    }, [dispatch]);
 
-  function handleSortAlf(e) {
-    e.preventDefault();
-    dispatch(orderByAlf(e.target.value));
-    setOrder(`Order ${e.target.value}`);
-    setCurrentPage(1);
-  }
-  function handleFilteredBrand(e) {
-    dispatch(filterByBrand(e.target.value));
-    setOrder(`Order ${e.target.value}`);
-    setCurrentPage(1);
-  }
 
     function handleSortAlf(e) {
         e.preventDefault();
@@ -184,6 +167,9 @@ export default function Cars() {
                 <option value="Tesla">Tesla</option>
             </select>
         </div>
+    </div>
+      <div>
+      <Search/>
       </div>
         <div className={style.cardconteiner}> 
             {currentCars.length ? (
@@ -205,13 +191,13 @@ export default function Cars() {
             ) : 
             <div className={style.cardModal}>
              {handleAlert()}   
+             
+              
+
         </div>
             }
         </div>
-  <div><Pagination currentPage={currentPage}
-        carsPerPage={carsPerPage}
-        allcars={allcars.length}
-        page={page}/></div> 
+  <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo}/></div> 
        
         <Footer />
         </>
