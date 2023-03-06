@@ -8,12 +8,8 @@ import {
   FILTER_BY_BRAND,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
-<<<<<<< HEAD
-  ADD_FAVORITE,
-=======
   GET_CAR_BY_BRAND,
   ADD_TO_FAVORITE,
->>>>>>> fe4b95e4135cb89d3acd724f29cf67d59d0ab038
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -66,20 +62,10 @@ function Reducer(state = initialState, action) {
         cars: carfilter1,
       };
     case FILTER_BY_YEAR:
+    
       let allcars1 = [...state.cars];
       let carfilter2 =
       allcars1.filter((e) => e.year === parseInt(action.payload));
-<<<<<<< HEAD
-      let allcars1 = [...state.cars];
-      let carfilter2 =
-      allcars1.filter((e) => e.year === parseInt(action.payload));
-=======
-      let cars = [...state.cars];
-      let carfilter2 =
-        action.payload === "All"
-          ? cars
-          : cars.filter((e) => e.year === parseInt(action.payload));
->>>>>>> fe4b95e4135cb89d3acd724f29cf67d59d0ab038
       return {
         ...state,
         cars: carfilter2,
