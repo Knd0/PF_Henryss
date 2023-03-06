@@ -195,6 +195,7 @@ export default function Cars() {
         )}
       </div>
       <Pagination
+      currentPage={currentPage}
         carsPerPage={carsPerPage}
         allcars={allcars.length}
         page={page}
