@@ -7,4 +7,4 @@ favoritesRouter.get('/', getFavorites)
 favoritesRouter.delete('/', deleteFavorites)
 
 
-module.exports = favoritesRouter
+module.exports = carsRouter
