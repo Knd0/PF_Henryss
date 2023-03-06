@@ -32,10 +32,13 @@ const Search  = ()=>{
         swal("Please enter a car");
       } else {
         const lowercaseInput = input.toLowerCase();
-        if (allBrands.filter((brand) => brand.toLowerCase().includes(lowercaseInput))) {
+        const matchingBrands = allBrands.filter((brand) => brand.toLowerCase().includes(lowercaseInput));
+        const matchingModels = allModels.filter((model) => model.toLowerCase().includes(lowercaseInput));
+    
+        if (matchingBrands.length > 0) {
           setBtonBackCar(true);
           dispatch(getCarByBrand(input));
-        } else if (allModels.filter((model) => model.toLowerCase().includes(lowercaseInput))) {
+        } else if (matchingModels.length > 0) {
           setBtonBackCar(true);
           dispatch(getCarByName(input));
         }
