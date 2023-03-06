@@ -19,3 +19,23 @@
  margin-right:100% ;
  margin-top: 400px;
 }
+.allSelect{
+    display: none;
+}
+
+.inputYear{
+    width: 162px;
+    height: 40px;  
+}
+
+.btnYear{
+    color: rgba(16, 199, 16, 0.704);
+}
+
+.yearContainerFlex{
+   display: flex;
+}
+.labelYear{
+   margin: 0;
+   padding: 0;
+}
