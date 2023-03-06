@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCarsDetail } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import Loading from "../Loading/Loading";
+
 
 
 export default function CarsDetail() {
@@ -75,7 +77,7 @@ export default function CarsDetail() {
     else
         return (
             <>
-                <h1>loading...</h1>
+                <Loading/>
             </>
         )
 }

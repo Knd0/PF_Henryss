@@ -13,11 +13,6 @@ import {
   DELETE_CAR,
   POST_CAR,
   GET_CARS_DETAIL,
-  ALL_USERS,
-  GET_USER_PROFILE,
-  CREATE_USER,
-  ADD_FAVORITE,
-  REMOVE_FAVORITE
 } from "./action-types";
 
 const initialState = {
@@ -26,8 +21,6 @@ const initialState = {
   detail: {},
   favorites: [],
   publications: [],
-  users: [],
-  usersDetails: [],
   loading: true,
 };
 
@@ -38,11 +31,13 @@ function Reducer(state = initialState, action) {
         ...state,
         cars: action.payload,
         allcars: action.payload,
+        loading: false,
       };
     case GET_CAR_BY_NAME:
       return {
         ...state,
         cars: action.payload,
+        loading: false,
       };
 
     case GET_CAR_BY_BRAND:
@@ -60,6 +55,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: carfilter1,
+        loading: false,
       };
     case FILTER_BY_YEAR:
     
@@ -69,6 +65,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: carfilter2,
+        loading: false,
       };
     case ORDER_CARS_ALF:
       let sortedcars = [...state.cars];
@@ -87,6 +84,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: sortedcars,
+        loading: false,
       };
     case ORDER_CARS_PRICE:
      
@@ -113,6 +111,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: sortedArrPrice,
+        loading: false,
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
@@ -138,13 +137,15 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: sortedArrKM,
+        loading: false,
       };
     case GET_CARS_DETAIL:
       return {
         ...state,
         detail: action.payload,
+        loading: false,
       };
-    case ADD_FAVORITE: {
+    case "ADD_FAVORITE": {
       const user = action.payload.userId;
       const car = action.payload.carId;
       const userFavorites = state.favorites[user];
@@ -160,16 +161,19 @@ function Reducer(state = initialState, action) {
         return {
           ...state,
           favorites: { ...state.favorites, [user || "invitado"]: [car] },
+          loading: false,
         };
     }
-    case REMOVE_FAVORITE: {
+    case "REMOVE_FAVORITE": {
       const user = action.payload.userId;
       const car = action.payload.carId;
       return {
         ...state,
         favorites: {
           ...state.favorites,
-          [user || "invitado"]: state.favorites[user].filter((p) => p !== car),
+          [user || "invitado"]: state.favorites[user].filter(
+            (p) => p !== car
+          ),
         },
       };
     }
@@ -178,42 +182,21 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         detail: {},
+        loading: false,
       };
     case POST_CAR:
       return {
         ...state,
         cars: [...state.cars, action.payload],
+        loading: false,
       };
-    case LOADING_ACTION: {
-      const loading = state.loading;
-      if (loading === true) {
-        return {
-          ...state,
-          loading: false,
-        };
-      } else {
+    
+    case 'LOADING_ACTION': 
         return {
           ...state,
           loading: true,
         };
-      }
-    }
-    case ALL_USERS:
-      return {
-        ...state,
-        users: action.payload,
-      };
-    case CREATE_USER:
-      return {
-        ...state,
-        users: [...state.users, action.payload],
-      };
-    case GET_USER_PROFILE:
-      return {
-        ...state,
-        usersDetails: action.payload,
-      };
-
+    
     default:
       return state;
   }

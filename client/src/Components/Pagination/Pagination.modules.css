@@ -1,38 +1,49 @@
-.container_pagination65754463_jj {
+.page {
     display: flex;
-    align-items: center;
+    list-style: none;
+    flex-direction: row;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-    }
-  
-    button svg{
-      width: 10px;
-      height: 20px;
-    }
- 
-    button {
+    margin: auto;
     
-        background-color: rgb(103, 103, 239);
-        border: none;
-        padding: 5px 10px;
-        border-radius: 3px;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-  
-  }
-  button.disabled{
-    background-color: #474747;
-    cursor: no-drop;
   }
   
-  
-  .inputPaged_004566df{
-    height: 30px;
-    width: 50px;
-    text-align: center;
-    border: 1px solid #242424;
-    border-radius: 3px;
+  /* .prevnext {
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    color: black;
     cursor: pointer;
+    padding-left: 10px;
   }
+  
+  .prevnext:hover {
+    background-color: red;
+  }
+  
+  .numberpage {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    color: black;
+  }
+  
+  .numberpage:hover {
+    background-color: red;
+  }
+  
+  .pagactive,
+  .numberpage:active {
+    background-color: rgb(255, 0, 0);
+    
+    
+    
+  }
+  
+  .numberpage:focus {
+    background-color: red;
+  } */
+  
