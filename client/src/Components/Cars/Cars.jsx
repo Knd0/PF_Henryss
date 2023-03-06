@@ -97,7 +97,7 @@ export default function Cars() {
 
         <div className={style.filtros}>
         <div>
-             Order alphabetically:
+             Order alphabetically:  
             <select className={style.select} onChange={(e) => handleSortAlf(e)}>
 
                 <option selected disabled>--select--</option> 
@@ -107,7 +107,7 @@ export default function Cars() {
             </select>
         </div>
         <div>
-            Order by price:
+            Order by price: 
             <select className={style.select} onChange={(e) => handleSortPrice(e)}>
 
                 <option selected disabled>--select--</option>  
@@ -117,7 +117,7 @@ export default function Cars() {
             </select>
         </div>
         <div>
-            Order by KM:
+            Order by KM:    
             <select className={style.select} onChange={(e) => handleSortKM(e)}>
                 <option selected disabled>--select--</option> 
                 <option className={style.allSelect} value="All">All</option>
@@ -125,15 +125,28 @@ export default function Cars() {
                 <option value="menp">Major to Minor</option>
             </select>
         </div>
-        <div >
-        <div>  <label  className={style.labelYear} htmlFor="inputyear"> Year:</label></div>
-            <form className={style.yearContainerFlex} onSubmit={e => handleFilteredYear(e)} >
-            <input placeholder="yyyy" id="inputyear"  className={style.inputYear} onChange={e => handleChange(e)} type="text" />
-            <button className={style.btnYear} type="submit">✔</button>
-            </form>
+        <div>
+            Filter by year: 
+            <select className={style.select} onChange={e => handleFilteredYear(e)}>
+                <option selected disabled>--select--</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+            </select>
         </div>
         <div>
-            Filter by brand:
+            Filter by brand:    
             <select className={style.select} onChange={e => handleFilteredBrand(e)}>
                  <option selected disabled>--select--</option> 
                 <option className={style.allSelect} value="All">All</option>
