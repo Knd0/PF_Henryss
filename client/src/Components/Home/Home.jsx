@@ -41,6 +41,7 @@ export default function Home() {
               img={e.img}
               model={e.model}
               year={e.year}
+              kilometers={e.kilometers}
               price={e.price}
             />
          )
