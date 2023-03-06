@@ -144,7 +144,7 @@ function Reducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
-    case ADD_FAVORITE: {
+    case ADD_TO_FAVORITE: {
       const user = action.payload.userId;
       const car = action.payload.carId;
       const userFavorites = state.favorites[user];
