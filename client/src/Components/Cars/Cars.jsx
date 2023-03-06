@@ -53,7 +53,7 @@ export default function Cars() {
 
     function handleFilteredYear(e) {
         e.preventDefault()
-        dispatch(filterByYear(input));
+        dispatch(filterByYear(e.target.value));
       setOrder(`Order ${e.target.value}`)
       setCurrentPage(1);
     }
@@ -99,9 +99,7 @@ export default function Cars() {
         <div>
              Order alphabetically:  
             <select className={style.select} onChange={(e) => handleSortAlf(e)}>
-
                 <option selected disabled>--select--</option> 
-                <option className={style.allSelect} value="All">All</option> 
                 <option value="atoz">A - Z</option>
                 <option value="desc">Z - A</option>
             </select>
@@ -111,7 +109,6 @@ export default function Cars() {
             <select className={style.select} onChange={(e) => handleSortPrice(e)}>
 
                 <option selected disabled>--select--</option>  
-                <option className={style.allSelect} value="All">All</option> 
                 <option value="mayp">Minor to Major</option>
                 <option value="menp">Major to Minor</option>
             </select>
@@ -120,7 +117,6 @@ export default function Cars() {
             Order by KM:    
             <select className={style.select} onChange={(e) => handleSortKM(e)}>
                 <option selected disabled>--select--</option> 
-                <option className={style.allSelect} value="All">All</option>
                 <option value="mayp">Minor to Major</option>
                 <option value="menp">Major to Minor</option>
             </select>
@@ -129,6 +125,7 @@ export default function Cars() {
             Filter by year: 
             <select className={style.select} onChange={e => handleFilteredYear(e)}>
                 <option selected disabled>--select--</option>
+                <option value="All">All</option> 
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
@@ -149,7 +146,7 @@ export default function Cars() {
             Filter by brand:    
             <select className={style.select} onChange={e => handleFilteredBrand(e)}>
                  <option selected disabled>--select--</option> 
-                <option className={style.allSelect} value="All">All</option>
+                <option value="All">All</option>
                 <option value="Audi">Audi</option>
                 <option value="Honda">Honda</option>
                 <option value="DFSK">DFSK</option>
