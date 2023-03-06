@@ -19,9 +19,10 @@ module.exports = (sequelize) => {
     name: {
         type: DataTypes.STRING,
     },
-    // image: {
-    //     type: DataTypes.ARRAY,
-    // },
+    image: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        defaultValue: []
+    },
     admin: {
         type: DataTypes.BOOLEAN,
         default: false,
