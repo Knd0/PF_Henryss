@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
   // defino el modelo
 
     sequelize.define('Car', {
-    id:{
+    carId:{
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     kilometers:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull : false
     },
     color:{
