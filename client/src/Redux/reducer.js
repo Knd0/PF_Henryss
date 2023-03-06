@@ -16,6 +16,7 @@ import {
   ALL_USERS,
   GET_USER_PROFILE,
   CREATE_USER,
+  ADD_FAVORITE,
   REMOVE_FAVORITE
 } from "./action-types";
 
@@ -143,7 +144,7 @@ function Reducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
-    case ADD_TO_FAVORITE: {
+    case ADD_FAVORITE: {
       const user = action.payload.userId;
       const car = action.payload.carId;
       const userFavorites = state.favorites[user];
