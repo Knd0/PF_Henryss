@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import img from "../Img/Home.png";
 
 export default function Navbar() {
   const [barsDropDownMenu, setBarsDropDownMenu] = useState(false)
   const handleBarsDropDownMenu = () => {
-    console.log("Hola")
     barsDropDownMenu ? setBarsDropDownMenu(false) : setBarsDropDownMenu(true)
   }
   const [actualPage, setActualPage] = useState({})
-  const handleCurrentPage = (e) => {
+  const handleActualPage = (e) => {
+    console.log(actualPage)
     setActualPage({
       [e.target.name]:e.target.name
     })
-    console.log(actualPage)
   }
   return (
     <>
@@ -79,21 +77,35 @@ export default function Navbar() {
         </div>
         <div id='menu' class={barsDropDownMenu ? "w-full block flex-grow sm:flex sm:items-center sm:w-auto" : "w-full block flex-grow sm:flex sm:items-center sm:w-auto max-lg:hidden"}>
           <div class="text-sm sm:flex-grow">
-            <Link to="/" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="home" onClick={handleCurrentPage}>
+            {actualPage.home? <Link to="/" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="home" onClick={handleActualPage}>
               Home
-            </Link>
-            <Link to="/cars" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="cars" onClick={handleCurrentPage}>
+            </Link>:<Link to="/" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="home" onClick={handleActualPage}>
+              Home
+            </Link>}
+           
+            {actualPage.cars?<Link to="/cars" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="cars" onClick={handleActualPage}>
               Cars
-            </Link>
-            <Link to="/aboutus" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="aboutUs" onClick={handleCurrentPage}>
+            </Link>:<Link to="/cars" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="cars" onClick={handleActualPage}>
+              Cars
+            </Link>}
+
+            {actualPage.aboutUs?<Link to="/aboutus" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="aboutUs" onClick={handleActualPage}>
             About Us
-            </Link>
-            <Link to="/myfavorites" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="myFavorites" onClick={handleCurrentPage}>
+            </Link>:<Link to="/aboutus" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="aboutUs" onClick={handleActualPage}>
+            About Us
+            </Link>}
+
+            {actualPage.myFavorites?<Link to="/myfavorites" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="myFavorites" onClick={handleActualPage}>
               My Favorites
-            </Link>
-            <Link to="/carscreate" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="createYourOwnPublish" onClick={handleCurrentPage}>
-              Create your own Publish
-            </Link>
+            </Link>:<Link to="/myfavorites" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="myFavorites" onClick={handleActualPage}>
+              My Favorites
+            </Link>}
+
+            {actualPage.createPost?<Link to="/carscreate" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="createPost" onClick={handleActualPage}>
+              Create Post
+            </Link>:<Link to="/carscreate" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="createPost" onClick={handleActualPage}>
+              Create Post
+            </Link>}
           </div>
         </div>
 

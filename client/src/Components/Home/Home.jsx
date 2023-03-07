@@ -32,7 +32,7 @@ export default function Home() {
       <div className={style.containerSlider}>
         <Slider images={images}></Slider>
       </div>
-      <div class="w-full max-sm:flex max-sm:content-center max-sm:flex-col max-sm:content-center sm:grid sm:grid-cols-4 lg:flex lg:justify-arround">
+      <div class="w-full max-sm:flex max-sm:content-center max-sm:flex-col max-sm:content-center sm:grid sm:grid-cols-4 lg:flex lg:justify-arround max-w-screen-lg md:mx-auto mt-10">
         {/* {
 
           allCars.slice(0, 3).map(e =>
