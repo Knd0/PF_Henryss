@@ -43,7 +43,7 @@ export default function Card({
             <img
                 className={styles.img}
                 class="p-15 rounded-t-lg"
-                src={img}
+                src={img.secure_url}
                 alt=""
             />
             </Link>

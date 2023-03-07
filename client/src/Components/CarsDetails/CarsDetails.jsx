@@ -29,7 +29,7 @@ export default function CarsDetail() {
                 <Navbar />
                 <div class="grid grid-cols-3 grid-rows-3">
                     <div class="col-span-2 row-start-1 row-span-2">
-                        <img src={carDetail[0]?.img} alt="car" />
+                        <img src={carDetail[0]?.img.secure_url} alt="car" />
                     </div>
                     <div class="row-start-1 row-span-5 pt-12">
                         <h4 class="text-2xl text-left pl-10">Name car: {carDetail[0]?.brand} {carDetail[0]?.model}</h4>
