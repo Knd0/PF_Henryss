@@ -8,10 +8,16 @@ import {
   FILTER_BY_BRAND,
   LOADING_ACTION,
   GET_CAR_BY_NAME,
+  GET_CAR_BY_BRAND,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
   GET_CARS_DETAIL,
+  ALL_USERS,
+  GET_USER_PROFILE,
+  CREATE_USER,
+  ADD_FAVORITE,
+  REMOVE_FAVORITE
 } from "./action-types";
 
 const initialState = {
@@ -20,6 +26,8 @@ const initialState = {
   detail: {},
   favorites: [],
   publications: [],
+  users: [],
+  usersDetails: [],
   loading: true,
 };
 
@@ -36,6 +44,13 @@ function Reducer(state = initialState, action) {
         ...state,
         cars: action.payload,
       };
+
+    case GET_CAR_BY_BRAND:
+      return {
+        ...state,
+        cars: action.payload,
+      };
+  
     case FILTER_BY_BRAND:
       let allcars = [...state.allcars];
       let carfilter1 =
@@ -47,11 +62,10 @@ function Reducer(state = initialState, action) {
         cars: carfilter1,
       };
     case FILTER_BY_YEAR:
-      let allcars1 = [...state.allcars];
+    
+      let allcars1 = [...state.cars];
       let carfilter2 =
-        action.payload === "All"
-          ? allcars1
-          : allcars1.filter((e) => e.year === parseInt(action.payload));
+      allcars1.filter((e) => e.year === parseInt(action.payload));
       return {
         ...state,
         cars: carfilter2,
@@ -75,6 +89,7 @@ function Reducer(state = initialState, action) {
         cars: sortedcars,
       };
     case ORDER_CARS_PRICE:
+     
       let sortedArrPrice =
         action.payload === "mayp"
           ? state.cars.sort(function (a, b) {
@@ -101,21 +116,21 @@ function Reducer(state = initialState, action) {
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
-        action.payload === "mayp"
+        action.payload === "maykm"
           ? state.cars.sort(function (a, b) {
-              if (a.km > b.km) {
+              if (a.kilometers > b.kilometers) {
                 return 1;
               }
-              if (b.km > a.km) {
+              if (b.kilometers > a.kilometers) {
                 return -1;
               }
               return 0;
             })
           : state.cars.sort(function (a, b) {
-              if (a.km > b.km) {
+              if (a.kilometers > b.kilometers) {
                 return -1;
               }
-              if (b.km > a.km) {
+              if (b.kilometers > a.kilometers) {
                 return 1;
               }
               return 0;
@@ -129,7 +144,7 @@ function Reducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
-    case "ADD_FAVORITE": {
+    case ADD_FAVORITE: {
       const user = action.payload.userId;
       const car = action.payload.carId;
       const userFavorites = state.favorites[user];
@@ -147,16 +162,14 @@ function Reducer(state = initialState, action) {
           favorites: { ...state.favorites, [user || "invitado"]: [car] },
         };
     }
-    case "REMOVE_FAVORITE": {
+    case REMOVE_FAVORITE: {
       const user = action.payload.userId;
       const car = action.payload.carId;
       return {
         ...state,
         favorites: {
           ...state.favorites,
-          [user || "invitado"]: state.favorites[user].filter(
-            (p) => p !== car
-          ),
+          [user || "invitado"]: state.favorites[user].filter((p) => p !== car),
         },
       };
     }
@@ -171,7 +184,7 @@ function Reducer(state = initialState, action) {
         ...state,
         cars: [...state.cars, action.payload],
       };
-      case "LOADING_ACTION": {
+    case LOADING_ACTION: {
       const loading = state.loading;
       if (loading === true) {
         return {
@@ -185,9 +198,26 @@ function Reducer(state = initialState, action) {
         };
       }
     }
+    case ALL_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case CREATE_USER:
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+      };
+    case GET_USER_PROFILE:
+      return {
+        ...state,
+        usersDetails: action.payload,
+      };
+
     default:
       return state;
   }
+
 }
 
 export default Reducer;

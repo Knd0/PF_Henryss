@@ -10,12 +10,32 @@
 .filtros{
     display: flex;
     justify-content: space-evenly;
+    margin-top: 20px;
 }
 
 .select {
-    color: rgb(0, 0, 0); 
+    color: rgb(0, 0, 0);
+    margin-left: 5px;
 }
 .cardModal{
  margin-right:100% ;
  margin-top: 400px;
+}
+
+
+.inputYear{
+    width: 162px;
+    height: 40px;  
+}
+
+.btnYear{
+    color: rgba(16, 199, 16, 0.704);
+}
+
+.yearContainerFlex{
+   display: flex;
+}
+.labelYear{
+   margin: 0;
+   padding: 0;
 }
