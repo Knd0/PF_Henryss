@@ -72,6 +72,10 @@ export default function Card({
             $ <span className={styles.subtitulo}>{price}</span>
             </span>
 
+          <div>
+          <button>Delete</button>
+          </div>
+
             
         </div>
         </div>
