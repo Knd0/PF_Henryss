@@ -89,27 +89,30 @@ function Reducer(state = initialState, action) {
         cars: [...sortedcars],
       };
     case ORDER_CARS_PRICE:
+     const normalize = price => parseInt(price.replaceAll('.',''),10)
      
       let sortedArrPrice =
         action.payload === "mayp"
           ? state.cars.sort(function (a, b) {
-              if (a.price > b.price) {
+              if (normalize(a.price) > normalize(b.price)) {
                 return 1;
               }
-              if (b.price > a.price) {
+              if (normalize(b.price)> normalize(a.price)) {
                 return -1;
               }
               return 0;
             })
           : state.cars.sort(function (a, b) {
-              if (a.price > b.price) {
+              if (normalize(a.price) >normalize(b.price)) {
                 return -1;
               }
-              if (b.price > a.price) {
+              if (normalize(b.price) > normalize(a.price)) {
                 return 1;
               }
               return 0;
             });
+            console.log(action.payload)
+            console.log(sortedArrPrice)
       return {
         ...state,
         cars: [...sortedArrPrice]
