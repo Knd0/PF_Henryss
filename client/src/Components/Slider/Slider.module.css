@@ -1,6 +1,5 @@
 .image {
-    width: 1600px;
-    height: 540px;
+    width: 100%;
     height: auto;
     transition: 2s;
 }

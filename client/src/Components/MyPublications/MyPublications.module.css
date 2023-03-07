@@ -1,0 +1,49 @@
+.container{
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 65%;
+    border: 2px solid  rgba(255, 255, 255, 0.443);
+    background-color:rgba(193, 189, 189, 0.663)
+}
+
+
+.flexContainerPublications{
+   display: flex;
+ 
+}
+.descriptionContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+.deleteEditarContainer{
+   display: flex;
+}
+.deleteEditarContainer img{
+    cursor: pointer;
+    display: block;
+}
+.itemsContainerPublications{
+    display: flex; 
+}
+.flexContainerPublications img{
+   display: inline-block;
+ 
+}
+.itemsDescriptionContainerPublications{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.titulo{
+    color: #00a30b;
+    font-weight: bolder;
+    margin-left: 5px;
+}
+
+.subtitulo{
+    color: #0f2170;
+}

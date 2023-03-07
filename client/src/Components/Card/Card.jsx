@@ -43,7 +43,7 @@ export default function Card({
             <img
                 className={styles.img}
                 class="p-15 rounded-t-lg"
-                src={img}
+                src={img.secure_url}
                 alt=""
             />
             </Link>
@@ -71,6 +71,10 @@ export default function Card({
             <span class={styles.titulo}>
             $ <span className={styles.subtitulo}>{price}</span>
             </span>
+
+          <div>
+          <button>Delete</button>
+          </div>
 
             
         </div>
