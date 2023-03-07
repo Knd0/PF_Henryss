@@ -1,0 +1,18 @@
+.userContainerFlex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flexButtonsContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+span{
+    font-weight: 700;
+}
+
+button{
+     margin-left: 10px;
+    color: white;
+}
