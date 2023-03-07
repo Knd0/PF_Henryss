@@ -4,6 +4,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import img from "../Img/Home.png";
 import LoginButton from "../Login/Login"
 import LogoutButton from "../Login/Logout";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+import style from "./Navbar.module.css"
 
 export default function Navbar() {
   const { user, isAuthenticated} = useAuth0();
@@ -53,8 +56,9 @@ export default function Navbar() {
       {/* ------------------------------FUNCIONANDO---------------------------- */}
 
       <nav class="flex items-center justify-between flex-wrap bg-white">
-        <div class="flex items-center flex-shrink-0 text-white mr-4">
+        <div class="flex items-center flex-shrink-0 text-white">
           <img src={img} alt="logo" class="w-20 mt-3 ml-3" />
+          <span class=" text-black ml-2 self-center text-xl font-semibold whitespace-nowrap dark:text-white">Radiator Springs</span>
         </div>
         <div class="block sm:hidden">
           <button
@@ -81,8 +85,8 @@ export default function Navbar() {
           id="menu"
           class={
             barsDropDownMenu
-              ? " ml-10  sm:flex sm:items-center sm:w-auto"
-              : " ml-10  sm:flex sm:items-center sm:w-auto max-lg:hidden"
+              ? "  sm:flex sm:items-center sm:w-auto border-b-black-500"
+              : "  sm:flex sm:items-center sm:w-auto max-lg:hidden border-b-black-500"
           }
         >
           <div class="text-sm sm:flex-grow">
@@ -187,12 +191,15 @@ export default function Navbar() {
             )}
           </div>
         </div>
-        <div>
+        <div className={style.log}>
+        <div className={style.profile}>
         {isAuthenticated && (
             <Link to="/user">
-              <h5>Profile</h5>
+              <FontAwesomeIcon icon={solid('user')} />
+              Profile
             </Link>
           )}
+          </div>
           {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
         </div>
       </nav>

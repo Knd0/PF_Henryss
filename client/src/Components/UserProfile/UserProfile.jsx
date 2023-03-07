@@ -6,10 +6,8 @@ import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import styles from "../UserProfile/UserProfile.module.css";
-import {
-  AlternateEmail,
-  AccountBox
-} from "@mui/icons-material";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 export default function UserProfile() {
   const { user } = useAuth0();
@@ -21,23 +19,29 @@ export default function UserProfile() {
     user && dispatch(createUs(user));
   }, [dispatch, user]);
 
-  
   return (
     <>
       <Navbar />
       <div>
         <div className={styles.userContainerFlex}>
           <div>
-            <img className={styles.img} width={400} height={400} src={user.picture} alt="user.img" />
+            <img
+              className={styles.img}
+              width={400}
+              height={400}
+              src={user.picture}
+              alt="user.img"
+            />
           </div>
           <div>
-            
             <h5>
-            <AccountBox />Name: <span>{user.name}</span>
+            <FontAwesomeIcon icon={solid('user')} />
+              Name: <span>{user.name}</span>
             </h5>
-            
+
             <h5>
-            <AlternateEmail />Email: <span>{user.email}</span>
+            <FontAwesomeIcon icon={solid('envelope')} />
+              Email: <span>{user.email}</span>
             </h5>
           </div>
           <div>
