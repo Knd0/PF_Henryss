@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import img from "../Img/Home.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {LoginButton} from "../Login/Login"
+import LoginButton from "../Login/Login"
 import LogoutButton from "../Login/Logout";
 
 export default function Navbar() {
@@ -12,6 +11,7 @@ export default function Navbar() {
   const handleBarsDropDownMenu = () => {
     barsDropDownMenu ? setBarsDropDownMenu(false) : setBarsDropDownMenu(true);
   };
+  console.log(user);
   const [actualPage, setActualPage] = useState({});
   const handleActualPage = (e) => {
     console.log(actualPage);
@@ -53,7 +53,7 @@ export default function Navbar() {
       {/* ------------------------------FUNCIONANDO---------------------------- */}
 
       <nav class="flex items-center justify-between flex-wrap bg-white">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-4">
           <img src={img} alt="logo" class="w-20 mt-3 ml-3" />
         </div>
         <div class="block sm:hidden">
@@ -77,13 +77,12 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-        <LoginButton/>
         <div
           id="menu"
           class={
             barsDropDownMenu
-              ? "w-full block flex-grow sm:flex sm:items-center sm:w-auto"
-              : "w-full block flex-grow sm:flex sm:items-center sm:w-auto max-lg:hidden"
+              ? " ml-10  sm:flex sm:items-center sm:w-auto"
+              : " ml-10  sm:flex sm:items-center sm:w-auto max-lg:hidden"
           }
         >
           <div class="text-sm sm:flex-grow">
@@ -188,15 +187,13 @@ export default function Navbar() {
             )}
           </div>
         </div>
-
+        <div>
         {isAuthenticated && (
-            <Link to="/user/:{userId}">
-              <FontAwesomeIcon icon="fa-solid fa-user" />
+            <Link to="/user">
+              <h5>Profile</h5>
             </Link>
           )}
-           <div>
-          {isAuthenticated ? <LogoutButton /> : <LoginButton />}
-          <LoginButton/>
+          {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
         </div>
       </nav>
     </>

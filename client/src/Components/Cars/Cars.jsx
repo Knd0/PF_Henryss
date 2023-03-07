@@ -11,9 +11,11 @@ import Search from "../Search/Search";
 import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
 import {useNavigate} from 'react-router-dom';
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 
-export default function Cars() {
+
+function Cars() {
     const dispatch = useDispatch()
     const allcars = useSelector ((state) => state.cars)
     const [currentPage, setCurrentPage] = useState(1)
@@ -203,3 +205,5 @@ export default function Cars() {
         </>
     );
 }
+
+export default withAuthenticationRequired(Cars);

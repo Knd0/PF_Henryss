@@ -1,21 +1,11 @@
-import React from "react";
-import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { allUsers } from "../../Redux/actions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import React from "react";
 
-export const LoginButton = () => {
-  const dispatch = useDispatch();
-  const { loginWithRedirect } = useAuth0();
-  const handlelogin = () => {
-    loginWithRedirect();
-    dispatch(allUsers);
-  };
+const LoginButton = () => {
+  const {loginWithRedirect } = useAuth0();
+  
 
-  return (
-    <button type="button" onClick={() => handlelogin()}>
-        <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
-    </button>
-  );
+  return <button onClick={() => loginWithRedirect()}>Log In</button>;
 };
+
+export default LoginButton;
