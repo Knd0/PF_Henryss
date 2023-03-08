@@ -29,13 +29,13 @@ const MyPublications = () => {
     <>
       <div>
         <Navbar />
+        <Link to='/carscreate'>
+                <button>Create New Post</button>
+                </Link>
         {currentCars.length ? (
           currentCars.map((e) => {
             return (
               <div className={style.container}>
-                <Link to='/carscreate'>
-                <button>Create New Post</button>
-                </Link>
                 <div className={style.flexContainerPublications}>
                   <img width={200} height={200} src={e.img} alt="" />
 
