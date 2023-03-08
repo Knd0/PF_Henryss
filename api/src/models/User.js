@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
   },
-    username: {
+    nickname: {
       type: DataTypes.STRING,
     },
     email: {
@@ -20,7 +20,14 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
     },
-    image: {
+    picture: {
+      type: DataTypes.STRING,
+    },
+    publications: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: [],
+    },
+    favorites: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       defaultValue: [],
     },

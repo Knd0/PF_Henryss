@@ -60,7 +60,6 @@ const createCar = async ({ brand, model, year, price, img, ...restOfcar }) => {
         return carCreate;
 }
 
-
 const deleteCarById = async(id) => {
         const car = await Car.findByPk(id);
         if (!car) return ('Car not found');
