@@ -13,12 +13,12 @@ import style from"../MyFavorites/MyFavorites.module.css"
 
 export default function MyFavorites() {
     const dispatch = useDispatch()
-    const allcars = useSelector ((state) => state.cars)
+    const allcars = useSelector ((state) => state.favorites)
     const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
     const indexOfFirstCar = indexOfLastCar - carsPerPage
-    const currentCars = allcars.slice(indexOfFirstCar,indexOfLastCar)
+   // const currentCars = allcars.slice(indexOfFirstCar,indexOfLastCar)
     const [order, setOrder] = useState("");
     const cars = useSelector((state) => state.allcars);
     const loading = useSelector((state) => state.loading);
@@ -38,8 +38,8 @@ export default function MyFavorites() {
         <Navbar />
          <h1>My Favorites</h1>
         <div className={style.cardconteinerFavorite}>
-        {currentCars.length ? (
-          currentCars.map((e) => {
+        {allcars.length ? (
+          allcars.map((e) => {
             return (
               <div>
                 <Card
@@ -61,7 +61,7 @@ export default function MyFavorites() {
         )}
       </div>
       <div></div>
-      <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo}/></div> 
+   {/*    <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo}/></div>  */}
         <Footer />
         </>
 
