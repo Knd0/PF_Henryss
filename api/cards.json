@@ -5,7 +5,9 @@
 			"model": "Civic",
 			"year": 2022,
 			"price": "22.000",
-			"img": "https://s.aolcdn.com/os/ab/_cms/2022/11/14104754/2023-Honda-Civic-Type-R-Sonoma-action-front-three-quarter.jpg",
+			"img": {
+				"secure_url":"https://s.aolcdn.com/os/ab/_cms/2022/11/14104754/2023-Honda-Civic-Type-R-Sonoma-action-front-three-quarter.jpg"
+			},
 			"engine": "2.0L 4 cilindros",
 			"power": "158 hp",
 			"transmission": "CVT",
@@ -16,6 +18,7 @@
 			"fuel":"gasolina",
 			"place":"Lima",
 			"phone":"943598623",
+			"favorite":false,
 			"email":"vidaurredayanna@gmail.com",
 			"description":"The Honda Civic is a compact vehicle, in the C segment, manufactured by Honda since 1972 and it is the most important model of Honda in Europe. The eleventh generation is currently being marketed, presented in 2022, with a major redesign compared to the previous generation, which improves its interior design and adds important technological and connectivity systems."
 		},
@@ -25,7 +28,9 @@
 			"model": "Mustang",
 			"year": 2015,
 			"price": "35.000",
-			"img": "https://acnews.blob.core.windows.net/imggallery/800x600/GAZ_dd8de54ad2354da4b28945a66771fdd8.jpg",
+			"img": {
+				"secure_url":"https://acnews.blob.core.windows.net/imggallery/800x600/GAZ_dd8de54ad2354da4b28945a66771fdd8.jpg"
+			},
 			"engine": "2.3L 4 cilindros turbo",
 			"power": "310 hp",
 			"transmission": "automatic",
@@ -36,6 +41,7 @@
 			"fuel":"gasolina",
 			"place":"San borja",
 			"phone":"945625236",
+			"favorite":false,
 			"email":"kipacav157@wireps.com",
 			"description":"The Ford Mustang is a coupe, from the D segment, manufactured by Ford since 1964. Currently, its seventh generation has just been presented, known by its internal code S650, after a sixth generation on sale from 2015 to 2023. The Ford Mustang is characterized for having a very personal neoretro aesthetic and one of the best gasoline engines on the market. It is manufactured at the Ford plant in Flat Rock, USA."
 		},
@@ -45,7 +51,9 @@
 			"model": "Corvette",
 			"year": 2010,
 			"price": "62.000",
-			"img": "https://cdn.carbuzz.com/gallery-images/840x560/1023000/700/1023747.jpg",
+			"img": {
+				"secure_url":"https://cdn.carbuzz.com/gallery-images/840x560/1023000/700/1023747.jpg"
+			},
 			"engine": "6.2L V8",
 			"power": "490 hp",
 			"transmission": "Automatic",
@@ -56,6 +64,7 @@
 			"fuel":"Diesel",
 			"place":"Miraflores",
 			"phone":"985632454",
+			"favorite":false,
 			"email":"nbvb_rjkel78@pihey.com",
 			"description":"Cuando se piensa en el poder y la emoción que viene con la conducción de un coche deportivo, el Chevrolet Camaro viene a la mente. Uno de los más reconocidos deportivos de coches heredados en la carretera, el Camaro ha sido un elemento básico amado de entusiastas de los coches que quieren la combinación perfecta de estilo clásico y facilidad de conducción. Con una variedad de niveles de acabado, todas ellas con las mejores cualidades del diseño elegante y modernizado reimaginado, cada amante de los coches echará un vistazo a lo que el nuevo Chevy Camaro tiene que ofrecer."
 		},
@@ -65,7 +74,9 @@
 			"model": "Model S",
 			"year": 2012,
 			"price": "80.000",
-			"img": "https://www.worldenergytrade.com/images/stories/news/energias_alternativas/general/8188/tesla-model-s-2012-vs-model-s-2020-cuanto-ha-mejorado-8188.jpg",
+			"img": {
+				"secure_url":"https://www.worldenergytrade.com/images/stories/news/energias_alternativas/general/8188/tesla-model-s-2012-vs-model-s-2020-cuanto-ha-mejorado-8188.jpg"
+			},
 			"engine": "Eléctrico",
 			"power": "670 hp",
 			"transmission": "Automatic",
@@ -76,6 +87,7 @@
 			"fuel":"GLP",
 			"place":"Molina",
 			"phone":"987654123",
+			"favorite":false,
 			"email":"berzoc@hotmail.com",
 			"description":"The Tesla Model S is an electric saloon, in the E segment, manufactured by Tesla since 2012. Although it is a veteran product, it has undergone slight updates over the years. The Tesla Model S has five seats distributed in two rows of seats, but can optionally be equipped with seven seats thanks to a third row with two child seats. The Tesla Model S is produced at Tesla's manufacturing plant in Fremont, California (United States)."
 		},
@@ -85,7 +97,9 @@
 			"model": "RAV4",
 			"year": 2018,
 			"price": "26.000",
-			"img": "https://i.gaw.to/vehicles/photos/08/53/085300_2018_toyota_RAV4.jpg?1024x640",
+			"img": {
+				"secure_url":"https://i.gaw.to/vehicles/photos/08/53/085300_2018_toyota_RAV4.jpg?1024x640"
+			},
 			"engine": "2.5L 4 cilindros",
 			"power": "203 hp",
 			"transmission": "Automatic",
@@ -96,6 +110,7 @@
 			"fuel":"GLP",
 			"place":"los olivos",
 			"phone":"965475832",
+			"favorite":false,
 			"email":"david123@gmail.com",
 			"description":"El Toyota RAV4 es un SUV compacto híbrido fabricado por Toyota. Actualmente se comercializa su quinta generación desde al año 2018. Estamos ante un vehículo que destaca por combinar bajos consumos con unas capacidades off-road decente pese a que se hayan mermado en sus últimas generaciones. El Toyota RAV4 se fabrica en Aichi, Japón."
 		},
@@ -105,7 +120,8 @@
 			"model": "Corolla",
 			"year": 2014,
 			"price": "25.000",
-			"img": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/13q3/524200/2014-toyota-corolla-first-drive-review-car-and-driver-photo-530662-s-original.jpg",
+			"img": {
+				"secure_url":"https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/13q3/524200/2014-toyota-corolla-first-drive-review-car-and-driver-photo-530662-s-original.jpg"},
 			"engine": "1.8L 4 cilindros",
 			"power": "139 hp",
 			"transmission": "CVT",
@@ -116,6 +132,7 @@
 			"fuel":"gasolina",
 			"place":"San isidro",
 			"phone":"965234589",
+			"favorite":false,
 			"email":"lucasiri@gmail.com",
 			"description":"The Toyota Corolla is a compact, in the C segment, manufactured by Toyota since 1966. The twelfth generation is currently being marketed, presented in 2019. The Toyota Corolla is characterized as a car that has brought hybrid technology closer to common drivers with a good design, interior quality, efficiency, low consumption and a reasonable price. The brand has twelve plants where the model is manufactured, but in the case of Europe this process is carried out in the United Kingdom."
 		},
@@ -125,7 +142,8 @@
 			"model": "Wrangler",
 			"year": 2022,
 			"price": "30.000",
-			"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTUMdbEMYkNK6Ka8mP-8mfPLwShYJSywO6ww&usqp=CAU",
+			"img": {
+				"secure_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTUMdbEMYkNK6Ka8mP-8mfPLwShYJSywO6ww&usqp=CAU"},
 			"engine": "3.6L V6",
 			"power": "285 hp",
 			"transmission": "automatic",
@@ -136,6 +154,7 @@
 			"fuel":"Diesel",
 			"place":"Larcomar",
 			"phone":"954125634",
+			"favorite":false,
 			"email":"santi@gmail.com",
 			"description":"The Jeep Wrangler has a robust design and a boxy body with classic design features that make it easily recognizable. It is equipped with a four-wheel drive and suspension to enhance its off-road capability. The Wrangler is capable of climbing hills, crossing rivers, driving on rocky terrain and mud, making it a popular choice for those looking for outdoor adventures."
 		},
@@ -145,7 +164,8 @@
 			"model": "F-150",
 			"year": 2022,
 			"price": "35.000",
-			"img": "https://upload.wikimedia.org/wikipedia/commons/f/f0/2018_Ford_F-150_XLT_Crew_Cab%2C_front_11.10.19.jpg",
+			"img": {
+				"secure_url":"https://upload.wikimedia.org/wikipedia/commons/f/f0/2018_Ford_F-150_XLT_Crew_Cab%2C_front_11.10.19.jpg"},
 			"engine": "3.3L V8",
 			"power": "290 hp",
 			"transmission": "automatic",
@@ -156,6 +176,7 @@
 			"fuel":"GLP",
 			"place":"Lince",
 			"phone":"954123566",
+			"favorite":false,
 			"email":"frn133@gmail.com",
 			"description":"The styling of the Ford F-150 varies depending on the year and model of the vehicle, but overall it has a rugged, muscular appearance with strong, aggressive lines. It is available in different cabin and cargo box sizes to suit different transportation needs."
 		},
@@ -165,7 +186,8 @@
 			"model": "Prius",
 			"year": 2022,
 			"price": "25.000",
-			"img": "https://images.carexpert.com.au/resize/3000/-/app/uploads/2022/02/2022-Toyota-Prius-i-Tech_HERO.jpg",
+			"img": {
+				"secure_url":"https://images.carexpert.com.au/resize/3000/-/app/uploads/2022/02/2022-Toyota-Prius-i-Tech_HERO.jpg"},
 			"engine": "1.8L 4-cylinder + electric",
 			"power": "121 hp",
 			"transmission": "CVT",
@@ -176,6 +198,7 @@
 			"fuel":"gasolina",
 			"place":"Independencia",
 			"phone":"985626544",
+			"favorite":false,
 			"email":"henry@gmail.com",
 			"description":"The interior of the Toyota Prius is spacious and comfortable, with roomy seats and plenty of storage space. The latest Prius models feature advanced technology such as infotainment touchscreens, premium audio systems, advanced security systems and more."
 		},
@@ -185,7 +208,8 @@
 			"model": "GT-R",
 			"year": 2021,
 			"price": "130.000",
-			"img": "https://images.autotrader.com/hn/c/26530c9fe3cf48fea32a907718fccf60.jpg",
+			"img": {
+				"secure_url":"https://images.autotrader.com/hn/c/26530c9fe3cf48fea32a907718fccf60.jpg"},
 			"engine": "3.8L V6",
 			"power": "565 hp",
 			"transmission": "automatic",
@@ -196,6 +220,7 @@
 			"fuel":"GLP",
 			"place":"callao",
 			"phone":"985412635",
+			"favorite":false,
 			"email":"dayanna10@hotmail.com",
 			"description":"The GT-R features an aggressive, aerodynamic appearance, with straight lines and sharp angles. Inside, the GT-R is roomy and comfortable, with sport seats and advanced technology like infotainment screens, premium audio systems and more."
 		},
@@ -205,7 +230,8 @@
 			"model": "Sorento",
 			"year": 2020,
 			"price": "35.000",
-			"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8xd8ols-au0f51AfLks3i3IJisvZ-xaWEAl_MYttMG2fDwBXD8bBOWNnxaH6W_IUfhTg&usqp=CAU",
+			"img": {
+				"secure_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8xd8ols-au0f51AfLks3i3IJisvZ-xaWEAl_MYttMG2fDwBXD8bBOWNnxaH6W_IUfhTg&usqp=CAU"},
 			"engine": "2.5L 4-cylinder",
 			"power": "191 hp",
 			"transmission": "8-speed automatic",
@@ -216,6 +242,7 @@
 			"fuel":"gasolina",
 			"place":"La mar",
 			"phone":"985412866",
+			"favorite":false,
 			"email":"enr8954@gmail.com",
 			"description":"Kia Sorento is a midsize SUV with a modern design, spacious and comfortable interior, diverse powertrain options and advanced safety features. It is an excellent option for families or for those looking for a spacious and reliable vehicle."
 		},
@@ -225,7 +252,8 @@
 			"model": "MX-5 Miata",
 			"year": 2022,
 			"price": "28.000",
-			"img": "https://www.edmunds.com/assets/m/cs/blt66f7e9f6e25ba5d6/638e18712851885ebf745793/Edmunds_2022_Mazda_MX-5_Miata_RF_Red_Front_Quarter_View_1600.jpg",
+			"img": {
+				"secure_url":"https://www.edmunds.com/assets/m/cs/blt66f7e9f6e25ba5d6/638e18712851885ebf745793/Edmunds_2022_Mazda_MX-5_Miata_RF_Red_Front_Quarter_View_1600.jpg"},
 			"engine": "2.0L 4-cylinder",
 			"power": "181 hp",
 			"transmission": "6-speed manual",
@@ -235,6 +263,7 @@
 			"fuel":"GLP",
 			"place":"Cercado de Lima",
 			"phone":"956245874",
+			"favorite":false,
 			"email":"marceAX7@gmail.com",
 			"description":"The MX-5 Miata features a sporty, aerodynamic appearance, with clean lines and a retractable soft top that can be easily opened and closed. Inside, the MX-5 Miata is compact yet comfortable, with sport seats and a host of advanced features, including a touchscreen infotainment and premium sound system.",		"capacity": "2 passengers"
 
@@ -247,7 +276,8 @@
 			"model": "Camry",
 			"year": 2022,
 			"price": "26.000",
-			"img": "https://media.ed.edmunds-media.com/toyota/camry-hybrid/2021/oem/2021_toyota_camry-hybrid_sedan_xse_fq_oem_1_1600.jpg",
+			"img": {
+				"secure_url":"https://media.ed.edmunds-media.com/toyota/camry-hybrid/2021/oem/2021_toyota_camry-hybrid_sedan_xse_fq_oem_1_1600.jpg"},
 			"engine": "2.5L 4-cylinder",
 			"power": "203 hp",
 			"transmission": "8-speed automatic",
@@ -257,6 +287,7 @@
 			"fuel":"gasolina",
 			"place":"La victoria",
 			"phone":"985465124",
+			"favorite":false,
 			"email":"isaLC4@gmail.com",
 			"description":"The Toyota Camry is a full-size midsize sedan, which has been produced since the year 1982. It is a very popular vehicle in the automobile market and is known for its reliability, comfort, and safety.",
 			"capacity": "5 passengers"
@@ -268,7 +299,8 @@
 			"model": "Range Rover",
 			"year": 2021,
 			"price": "100.000",
-			"img": "https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/ExtraImages/20221207060326_Discovery_story.jpg&w=700&q=90&c=1",
+			"img": {
+				"secure_url":"https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/ExtraImages/20221207060326_Discovery_story.jpg&w=700&q=90&c=1"},
 			"engine": "3.0L inline 6-cylinder",
 			"power": "355 hp",
 			"transmission": "8-speed automatic",
@@ -279,6 +311,7 @@
 			"fuel":"Diesel",
 			"place":"Chorrillos",
 			"phone":"978452156",
+			"favorite":false,
 			"email":"thiagoG5@gmail.com",
 			"description":"Range Rover boasts a sleek and sophisticated design, with clean lines and a streamlined appearance. Inside, Range Rover is spacious and comfortable, with leather seats and a host of advanced features such as infotainment touchscreens, a premium sound system and more."
 		},
@@ -288,7 +321,8 @@
 			"model": "911 Carrera",
 			"year": 2022,
 			"price": "120.000",
-			"img": "https://hips.hearstapps.com/hmg-prod/images/2022-porsche-911-gt3-pdk-36-1618931369.jpg?crop=0.763xw:0.572xh;0.0929xw,0.298xh&resize=1200:*",
+			"img": {
+				"secure_url":"https://hips.hearstapps.com/hmg-prod/images/2022-porsche-911-gt3-pdk-36-1618931369.jpg?crop=0.763xw:0.572xh;0.0929xw,0.298xh&resize=1200:*"},
 			"engine": "3.0L twin-turbo flat-6",
 			"power": "379 hp",
 			"transmission": "8-speed automatic",
@@ -299,6 +333,7 @@
 			"fuel": "Diesel",
 			"place": "Lima",
 			"phone": "965412357",
+			"favorite":false,
 			"email": "josé@faceb00k@gmail.com",
 			"description": "The Porsche 911 Carrera is a high-end sports car that has been produced by the German brand Porsche since 1963. It is one of the brand's most recognizable and popular models, and has earned a reputation for exceptional performance and sporty styling. ."
     },
@@ -308,7 +343,8 @@
 			"model": "Golf",
 			"year": 2020,
 			"price": "25.000",
-			"img": "https://fotos.perfil.com/2019/10/23/volkswagen-golf-795872.jpg?_gl=1*hqlr34*_ga*MTk5MjE1NDM5Ni4xNjc4MDMzNzcz*_ga_ZVLDWW22SP*MTY3ODAzMzc3My4xLjAuMTY3ODAzMzc3My4wLjAuMA..&_ga=2.71795539.1984870010.1678033774-1992154396.1678033773",
+			"img": {
+				"secure_url":"https://fotos.perfil.com/2019/10/23/volkswagen-golf-795872.jpg?_gl=1*hqlr34*_ga*MTk5MjE1NDM5Ni4xNjc4MDMzNzcz*_ga_ZVLDWW22SP*MTY3ODAzMzc3My4xLjAuMTY3ODAzMzc3My4wLjAuMA..&_ga=2.71795539.1984870010.1678033774-1992154396.1678033773"},
 			"engine": "1.4L turbocharged 4-cylinder",
 			"power": "147 hp",
 			"transmission": "8-speed automatic",
@@ -319,6 +355,7 @@
 			"fuel":"gasolina",
 			"place":"cordova",
 			"phone":"954781254",
+			"favorite":false,
 			"email":"someone@gmail.com",
 			"description":"Volkswagen Golf has a classic and elegant style, with clean and aerodynamic lines. Inside, the Golf is spacious and comfortable, with ergonomic seats and a host of advanced features, such as an infotainment touchscreen, a high-quality sound system and more."
 		},
@@ -328,7 +365,8 @@
 			"model": "Outback",
 			"year": 2022,
 			"price": "33.000",
-			"img": "https://www.elcarrocolombiano.com/wp-content/uploads/2021/03/20210330-SUBARU-OUTBACK-WILDERNESS-2022-PORTADA.jpg",
+			"img": {
+				"secure_url":"https://www.elcarrocolombiano.com/wp-content/uploads/2021/03/20210330-SUBARU-OUTBACK-WILDERNESS-2022-PORTADA.jpg"},
 			"engine": "2.4L turbocharged 4-cylinder",
 			"power": "260 hp",
 			"transmission": "continuously variable",
@@ -339,6 +377,7 @@
 			"fuel":"gasolina",
 			"place":"San martin de porres",
 			"phone":"985623412",
+			"favorite":false,
 			"email":"frn745@gmail.com",
 			"description":"The ubaru Outback is a reliable and versatile midsize crossover known for its rugged styling, off-road performance and advanced safety features. With diverse powertrain options and a comfortable, stable ride, the Outback is an excellent choice for those looking for a car capable of handling a variety of conditions and terrain."
 		},
@@ -348,7 +387,8 @@
 			"model": "5 Series",
 			"year": 2022,
 			"price": "55.000",
-			"img": "https://inventory.dealersocket.com/api/photo/lRqGzONn/640x0/1660854137/u/ecl/r30r/6TrC/I4Fq/adwW/7JRi/Pw.jpg",
+			"img": {
+				"secure_url":"https://inventory.dealersocket.com/api/photo/lRqGzONn/640x0/1660854137/u/ecl/r30r/6TrC/I4Fq/adwW/7JRi/Pw.jpg"},
 			"engine": "2.0L turbocharged 4-cylinder",
 			"power": "248 hp",
 			"transmission": "8-speed automatic",
@@ -359,6 +399,7 @@
 			"fuel":"GLP",
 			"place":"Lima",
 			"phone":"985412587",
+			"favorite":false,
 			"email":"Saras45@gmail.com",
 			"description":"The BMW 5 Series is a luxury sedan produced by the German brand BMW. It is one of the brand's most popular and iconic models and has earned a reputation for performance, advanced technology and elegant design."
 		},
@@ -368,7 +409,8 @@
 			"model": "Rio",
 			"year": 2022,
 			"price": "17.000",
-			"img": "https://cdn.motor1.com/images/mgl/q4VYz/s3/lanzamiento-kia-rio-2022.webp",
+			"img": {
+				"secure_url":"https://cdn.motor1.com/images/mgl/q4VYz/s3/lanzamiento-kia-rio-2022.webp"},
 			"engine": "1.6L 4-cylinder",
 			"power": "120 hp",
 			"transmission": "continuously variable",
@@ -379,6 +421,7 @@
 			"fuel":"Diesel",
 			"place":"Cordova",
 			"phone":"956235412",
+			"favorite":false,
 			"email":"caro154@gmail.com",
 			"description":"Kia Rio es un automóvil compacto asequible, confiable y eficiente en combustible, conocido por su estilo elegante, características avanzadas y rendimiento sólido. Es una excelente opción para aquellos que buscan un automóvil práctico y económico para el día a día."
 		},
@@ -388,7 +431,8 @@
 			"model": "Frontier",
 			"year": 2022,
 			"price": "28.000",
-			"img": "https://cdn.motor1.com/images/mgl/8Anyme/s3/frontier.webp",
+			"img": {
+				"secure_url":"https://cdn.motor1.com/images/mgl/8Anyme/s3/frontier.webp"},
 			"engine": "3.8L V6",
 			"power": "310 hp",
 			"transmission": "9-speed automatic",
@@ -399,6 +443,7 @@
 			"fuel":"Diesel",
 			"place":"Chorrillos",
 			"phone":"954126545",
+			"favorite":false,
 			"email":"json123@gmail.com",
 			"description":"Nissan Frontier is a reliable and durable midsize pickup known for its cargo capacity, solid performance and advanced features. It is an excellent option for those looking for a practical and robust truck for work or daily use."
 		},
@@ -408,7 +453,8 @@
 			"model": "Malibu",
 			"year": 2021,
 			"price": "24.000",
-			"img": "https://hips.hearstapps.com/hmg-prod/images/2021-chevrolet-malibu-mmp-1-1598373352.jpg?crop=0.982xw:0.846xh;0.00641xw,0.122xh&resize=2048:*",
+			"img": {
+				"secure_url":"https://hips.hearstapps.com/hmg-prod/images/2021-chevrolet-malibu-mmp-1-1598373352.jpg?crop=0.982xw:0.846xh;0.00641xw,0.122xh&resize=2048:*"},
 			"engine": "1.5L turbocharged 4-cylinder",
 			"power": "160 hp",
 			"transmission": "continuously variable",
@@ -419,6 +465,7 @@
 			"fuel":"gasolina",
 			"place":"San Bartolo",
 			"phone":"941256387",
+			"favorite":false,
 			"email":"jld75@hotmail.com",
 			"description":"The Chevrolet Malibu is a sleek and sophisticated midsize sedan known for its smooth performance, advanced features and distinctive design. It is an excellent option for those looking for a practical and luxurious sedan for daily use."
 		},
@@ -428,7 +475,8 @@
 			"model": "Coupe",
 			"year": 2020,
 			"price": "50.000",
-			"img": "https://cdn.motor1.com/images/mgl/b0v73/s3/el-nuevo-bmw-serie-4-coupe-llegara-a-la-argentina-en-2021.webp",
+			"img": {
+				"secure_url":"https://cdn.motor1.com/images/mgl/b0v73/s3/el-nuevo-bmw-serie-4-coupe-llegara-a-la-argentina-en-2021.webp"},
 			"engine": "3.0L inline 6-cylinder",
 			"power": "382 hp",
 			"transmission": "8-speed automatic",
@@ -439,6 +487,7 @@
 			"fuel":"GLP",
 			"place":"gasolina",
 			"phone":"985475412",
+			"favorite":false,
 			"email":"sagi_25@gmail.com",
 			"description":"the BMW Coupe is a stylish and sophisticated sports car, known for its exceptional performance, advanced features and distinctive design. It is an excellent choice for those looking for a practical and luxurious sports car for daily use."
 		},
@@ -448,7 +497,8 @@
 			"model": "Forester",
 			"year": 2022,
 			"price": "25.000",
-			"img": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-subaru-forester-jdm-1623667914.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*",
+			"img": {
+				"secure_url":"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-subaru-forester-jdm-1623667914.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*"},
 			"engine": "2.5L 4-cylinder",
 			"power": "182 hp",
 			"transmission": "continuously variable",
@@ -459,6 +509,7 @@
 			"fuel":"Diesel",
 			"place":"Villa Maria",
 			"phone":"985645164",
+			"favorite":false,
 			"email":"day875@gmail.com",
 			"description":"The Subaru Forester is a rugged and versatile compact SUV known for its standard four-wheel drive, class-leading safety features, and stylish, comfortable design. It's an excellent choice for those looking for a practical and safe SUV for everyday use and outdoor adventures."
 		},
@@ -468,7 +519,8 @@
 			"model": "Glory",
 			"year": 2021,
 			"price": "17.000",
-			"img": "https://www.dfsk.com.pe/dfsk/site/artic/20220912/imag/foto_0000002120220912082240/ix5_modulo_3_disenio_exterior_desktop.jpg",
+			"img": {
+				"secure_url":"https://www.dfsk.com.pe/dfsk/site/artic/20220912/imag/foto_0000002120220912082240/ix5_modulo_3_disenio_exterior_desktop.jpg"},
 			"engine": "1.5L turbocharged 4-cylinder",
 			"power": "150 hp",
 			"transmission": "6-speed manual",
@@ -479,6 +531,7 @@
 			"fuel":"GLP",
 			"place":"Independencia",
 			"phone":"999888552",
+			"favorite":false,
 			"email":"soyhenry123@gmail.com",
 			"description":"The DFSK Glory is a modern and reliable compact car, known for its stylish and comfortable design, advanced features and reliable performance. It is an excellent option for those looking for a compact car for daily use."
 		},
@@ -488,7 +541,8 @@
 			"model": "City Sport",
 			"year": 2020,
 			"price": "22.000",
-			"img": "https://acnews.blob.core.windows.net/imgnews/extralarge/NAZ_6f011c4d6d7a484fb05f3041031d2373.jpg",
+			"img": {
+				"secure_url":"https://acnews.blob.core.windows.net/imgnews/extralarge/NAZ_6f011c4d6d7a484fb05f3041031d2373.jpg"},
 			"engine": "1.5L turbocharged 4-cylinder",
 			"power": "180 hp",
 			"transmission": "continuously variable",
@@ -499,6 +553,7 @@
 			"fuel":"gasolina",
 			"place":"Los olivos",
 			"phone":"998844511",
+			"favorite":false,
 			"email":"sagi_15@gmail.com",
 			"description":"The Honda City Sport features an aerodynamic body with sporty lines, LED headlights and a distinctive front grille. Inside, the City Sport is spacious and comfortable, with high-quality seats and a host of advanced features, such as a touchscreen infotainment system, automatic climate control and more."
 		},
@@ -508,7 +563,8 @@
 			"model": "Sedan",
 			"year": 2022,
 			"price": "45.000",
-			"img": "https://img.motoryracing.com/noticias/portada/34000/34230-n.jpg",
+			"img": {
+				"secure_url":"https://img.motoryracing.com/noticias/portada/34000/34230-n.jpg"},
 			"engine": "2.0L turbocharged 4-cylinder",
 			"power": "248 hp",
 			"transmission": "7-speed automatic",
@@ -519,6 +575,7 @@
 			"fuel":"GLP",
 			"place":"La marina",
 			"phone":"963852741",
+			"favorite":false,
 			"email":"dayanna10?15@hotmail.com",
 			"description":"Audi sedans feature clean, elegant lines, with a distinctive front grille and high-quality LED headlights. Inside, Audi sedans are spacious and comfortable, with high-quality finishes and a wide range of advanced features, such as premium infotainment systems, automatic climate control and more."
 		},
@@ -528,7 +585,8 @@
 			"model": "Cayman",
 			"year": 2022,
 			"price": "70.000",
-			"img": "https://acnews.blob.core.windows.net/imgnews/extralarge/NAZ_551fac8a76324886b6e1dabbea48dc59.jpg",
+			"img": {
+				"secure_url":"https://acnews.blob.core.windows.net/imgnews/extralarge/NAZ_551fac8a76324886b6e1dabbea48dc59.jpg"},
 			"engine": "2.0L turbocharged 4-cylinder",
 			"power": "300 hp",
 			"transmission": "7-speed automatic",
@@ -539,6 +597,7 @@
 			"fuel":"gasolina",
 			"place":"Chilca",
 			"phone":"987456321",
+			"favorite":false,
 			"email":"data_js@gmail.com",
 			"description":"the Porsche Cayman is equipped with a powerful gasoline engine that provides quick acceleration and outstanding performance. In addition, it has a sports suspension system and high-performance brakes for an exhilarating ride and precise handling."
 		},
@@ -548,7 +607,8 @@
 			"model": "Grand Cherokee",
 			"year": 2022,
 			"price": "35.000",
-			"img": "https://acnews.blob.core.windows.net/imgnews/extralarge/NAZ_03b18f8b36db47a081166f9592ad36ac.jpg",
+			"img": {
+				"secure_url":"https://acnews.blob.core.windows.net/imgnews/extralarge/NAZ_03b18f8b36db47a081166f9592ad36ac.jpg"},
 			"engine": "3.6L V6",
 			"power": "285 hp",
 			"transmission": "6-speed manual",
@@ -559,6 +619,7 @@
 			"fuel":"Diesel",
 			"place":"Miraflores",
 			"phone":"951753852",
+			"favorite":false,
 			"email":"carlos85@gmail.com",
 			"description":"Jeep 4x4 vehicles are characterized by their great off-road capability, with a chassis and suspension designed to offer optimal performance in rugged terrain. In addition, they are equipped with four-wheel drive systems, allowing them to function in a wide variety of terrain and weather conditions."
 		},
@@ -568,7 +629,8 @@
 			"model": "Picanto",
 			"year": 2022,
 			"price": "14.000",
-			"img": "https://www.diariomotor.com/imagenes/2020/11/kia-picanto-2022-04-61e5a56eb176b-1024x652.jpg",
+			"img": {
+				"secure_url":"https://www.diariomotor.com/imagenes/2020/11/kia-picanto-2022-04-61e5a56eb176b-1024x652.jpg"},
 			"engine": "1.0L 3-cylinder",
 			"power": "67 hp",
 			"transmission": "5-speed manual",
@@ -579,6 +641,7 @@
 			"fuel":"GLP",
 			"place":"Miraflores",
 			"phone":"985412563",
+			"favorite":false,
 			"email":"carlos85@gmail.com",
 			"description":"Kia Picanto is a compact and efficient vehicle, ideal for urban driving. It stands out for its modern and attractive design, its comfort, safety and technology on board."
 		},
@@ -588,7 +651,8 @@
 			"model": "Fiesta",
 			"year": 2022,
 			"price": "16.000",
-			"img": "https://www.megautos.com/wp-content/uploads/2021/09/Ford-Fiesta-2022-ST-Line-dinamica.jpg",
+			"img": {
+				"secure_url":"https://www.megautos.com/wp-content/uploads/2021/09/Ford-Fiesta-2022-ST-Line-dinamica.jpg"},
 			"engine": "1.6L 4-cylinder",
 			"power": "120 hp",
 			"transmission": "5-speed manual",
@@ -599,6 +663,7 @@
 			"fuel":"gasolina",
 			"place":"Comas",
 			"phone":"984265869",
+			"favorite":false,
 			"email":"dayana10_15@hotmail.com",
 			"description":"the Ford Fiesta is a compact and versatile vehicle, designed to offer a pleasant and efficient driving experience in the city. It boasts a modern design, safety features, and advanced technology, making it an excellent choice for those looking for a practical and reliable vehicle."
 		}

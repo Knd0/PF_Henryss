@@ -1,22 +1,29 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import img from "../Img/Home.png";
+import LoginButton from "../Login/Login"
+import LogoutButton from "../Login/Logout";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+import style from "./Navbar.module.css"
 
 export default function Navbar() {
-  const [barsDropDownMenu, setBarsDropDownMenu] = useState(false)
+  const { user, isAuthenticated} = useAuth0();
+  const [barsDropDownMenu, setBarsDropDownMenu] = useState(false);
   const handleBarsDropDownMenu = () => {
-    barsDropDownMenu ? setBarsDropDownMenu(false) : setBarsDropDownMenu(true)
-  }
-  const [actualPage, setActualPage] = useState({})
+    barsDropDownMenu ? setBarsDropDownMenu(false) : setBarsDropDownMenu(true);
+  };
+  console.log(user);
+  const [actualPage, setActualPage] = useState({});
   const handleActualPage = (e) => {
-    console.log(actualPage)
+    console.log(actualPage);
     setActualPage({
-      [e.target.name]:e.target.name
-    })
-  }
+      [e.target.name]: e.target.name,
+    });
+  };
   return (
     <>
-
       {/* ------------------------------FUNCIONANDO---------------------------- */}
 
       {/* <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -49,17 +56,16 @@ export default function Navbar() {
       {/* ------------------------------FUNCIONANDO---------------------------- */}
 
       <nav class="flex items-center justify-between flex-wrap bg-white">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <div class="flex items-center flex-shrink-0 text-white">
           <img src={img} alt="logo" class="w-20 mt-3 ml-3" />
+          <span class=" text-black ml-2 self-center text-xl font-semibold whitespace-nowrap dark:text-white">Radiator Springs</span>
         </div>
         <div class="block sm:hidden">
           <button
-            type="button"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={handleBarsDropDownMenu}
+            id="boton"
+            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           >
-            Login
-          </button>
-          <button onClick={handleBarsDropDownMenu} id='boton' class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
             <svg
               class="w-6 h-6"
               aria-hidden="true"
@@ -75,50 +81,128 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-        <div id='menu' class={barsDropDownMenu ? "w-full block flex-grow sm:flex sm:items-center sm:w-auto" : "w-full block flex-grow sm:flex sm:items-center sm:w-auto max-lg:hidden"}>
+        <div
+          id="menu"
+          class={
+            barsDropDownMenu
+              ? "  sm:flex sm:items-center sm:w-auto border-b-black-500"
+              : "  sm:flex sm:items-center sm:w-auto max-lg:hidden border-b-black-500"
+          }
+        >
           <div class="text-sm sm:flex-grow">
-            {actualPage.home? <Link to="/" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="home" onClick={handleActualPage}>
-              Home
-            </Link>:<Link to="/" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="home" onClick={handleActualPage}>
-              Home
-            </Link>}
-           
-            {actualPage.cars?<Link to="/cars" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="cars" onClick={handleActualPage}>
-              Cars
-            </Link>:<Link to="/cars" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="cars" onClick={handleActualPage}>
-              Cars
-            </Link>}
+            {actualPage.home ? (
+              <Link
+                to="/"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
+                name="home"
+                onClick={handleActualPage}
+              >
+                Home
+              </Link>
+            ) : (
+              <Link
+                to="/"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
+                name="home"
+                onClick={handleActualPage}
+              >
+                Home
+              </Link>
+            )}
 
-            {actualPage.aboutUs?<Link to="/aboutus" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="aboutUs" onClick={handleActualPage}>
-            About Us
-            </Link>:<Link to="/aboutus" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="aboutUs" onClick={handleActualPage}>
-            About Us
-            </Link>}
+            {actualPage.cars ? (
+              <Link
+                to="/cars"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
+                name="cars"
+                onClick={handleActualPage}
+              >
+                Cars
+              </Link>
+            ) : (
+              <Link
+                to="/cars"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
+                name="cars"
+                onClick={handleActualPage}
+              >
+                Cars
+              </Link>
+            )}
 
-            {actualPage.myFavorites?<Link to="/myfavorites" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="myFavorites" onClick={handleActualPage}>
-              My Favorites
-            </Link>:<Link to="/myfavorites" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="myFavorites" onClick={handleActualPage}>
-              My Favorites
-            </Link>}
+            {actualPage.myFavorites ? (
+              <Link
+                to="/myfavorites"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
+                name="myFavorites"
+                onClick={handleActualPage}
+              >
+                My Favorites
+              </Link>
+            ) : (
+              <Link
+                to="/myfavorites"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
+                name="myFavorites"
+                onClick={handleActualPage}
+              >
+                My Favorites
+              </Link>
+            )}
 
-            {actualPage.createPost?<Link to="/carscreate" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline" name="createPost" onClick={handleActualPage}>
-              Create Post
-            </Link>:<Link to="/carscreate" class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4" name="createPost" onClick={handleActualPage}>
-              Create Post
-            </Link>}
+            {actualPage.createPost ? (
+              <Link
+                to="/carscreate"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
+                name="createPost"
+                onClick={handleActualPage}
+              >
+                Create Post
+              </Link>
+            ) : (
+              <Link
+                to="/carscreate"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
+                name="createPost"
+                onClick={handleActualPage}
+              >
+                Create Post
+              </Link>
+            )}
+
+            {actualPage.aboutUs ? (
+              <Link
+                to="/aboutus"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
+                name="aboutUs"
+                onClick={handleActualPage}
+              >
+                About Us
+              </Link>
+            ) : (
+              <Link
+                to="/aboutus"
+                class="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
+                name="aboutUs"
+                onClick={handleActualPage}
+              >
+                About Us
+              </Link>
+            )}
           </div>
         </div>
-
-        <button
-          type="button"
-          class="max-sm:hidden my-auto self-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Login
-        </button>
+        <div className={style.log}>
+        <div className={style.profile}>
+        {isAuthenticated && (
+            <Link to="/user">
+              <FontAwesomeIcon icon={solid('user')} />
+              Profile
+            </Link>
+          )}
+          </div>
+          {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
+        </div>
       </nav>
-
-
-
     </>
   );
 }

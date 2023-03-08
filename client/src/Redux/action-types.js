@@ -39,3 +39,5 @@ export const ALL_USERS = 'ALL_USERS';
 export const CREATE_USER = 'CREATE_USER';
 
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';
+
+export const GET_CAR_FAVORITES = 'GET_CAR_FAVORITES';

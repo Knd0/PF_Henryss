@@ -4,10 +4,15 @@
     justify-content: space-evenly;
     height: auto;
     margin: auto;
-
 }
 
+.hideButton button{
+  display: none;
+}
 
+.homeFlexCardContainer{
+  display: flex;
+}
 .hr {
   margin: 50px;
 }

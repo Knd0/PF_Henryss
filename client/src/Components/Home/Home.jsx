@@ -47,7 +47,9 @@ export default function Home() {
             />
           )
         } */}
-        <div class="flex justify-center sm:col-span-2 sm:w-2/4 sm:mx-auto">
+        <div className={style.homeFlexCardContainer}>
+
+        <div className={style.hideButton}>
           <Card
             carId={allCars[0].carId || allCars[0].id}
             brand={allCars[0].brand}
@@ -58,7 +60,8 @@ export default function Home() {
             price={allCars[0].price}
           />
         </div>
-        <div class="flex justify-center sm:col-start-3 sm:col-span-5 sm:w-2/4 sm:mx-auto">
+
+        <div  className={style.hideButton} >
           <Card
             carId={allCars[1].carId || allCars[1].id}
             brand={allCars[1].brand}
@@ -68,8 +71,11 @@ export default function Home() {
             kilometers={allCars[1].kilometers}
             price={allCars[1].price}
           />
+          </div>
         </div>
-        <div class="flex justify-center sm:col-start-1 sm:col-span-4 sm:mx-auto">
+
+        <div  className={style.hideButton}>
+          
           <Card
             carId={allCars[2].carId || allCars[2].id}
             brand={allCars[2].brand}
@@ -79,8 +85,11 @@ export default function Home() {
             kilometers={allCars[2].kilometers}
             price={allCars[2].price}
           />
+        
         </div>
-      </div>
+
+        </div>
+
       <div class="flex justify-center">
         <Link to="/cars"><button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See more...</button></Link>
       </div>
