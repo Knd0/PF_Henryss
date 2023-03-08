@@ -18,8 +18,6 @@ const Search  = ()=>{
     const allBrands = allCars.map(car => car.brand)
     const allModels = allCars.map(car => car.model)
     
-    console.log(allModels)
-    
     function handleChange(e){
         setInput(e.target.value)
     }

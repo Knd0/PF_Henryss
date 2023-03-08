@@ -188,13 +188,18 @@ export function updateCar(carId, payload) {
 
 export function addFavorite(userId, carId) {
   return async function (dispatch) {
-    dispatch({
-      type: ADD_FAVORITE,
-      payload: {
-        userId,
-        carId,
-      },
-    });
+    try {
+      await axios.post(`/user`, userId, carId);
+      dispatch({
+        type: ADD_FAVORITE,
+        payload: {
+          userId,
+          carId,
+        },
+      });
+    } catch (error) {
+      console.log(error)
+    }
   };
 }
 
@@ -244,7 +249,6 @@ export const allUsers = () => {
 export const createUs = (payload) => {
   return async function (dispatch) {
     try {
-      console.log("Sending user data to server:", payload); // Agregar este mensaje de registro
       const newUs = await axios.post(
         `/user`,
         payload
