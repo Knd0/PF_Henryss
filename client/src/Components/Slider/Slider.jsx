@@ -32,14 +32,6 @@ export default function Slider({ images }) {
     }, 500);
   };
 
-  const previous = () => {
-    selectNewImage(selectedIndex, images, false);
-  };
-
-  const next = () => {
-    selectNewImage(selectedIndex, images);
-  };
-
   return (
     <div className={styles.all}>
       <img

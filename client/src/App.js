@@ -30,7 +30,7 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<Page404 />} />
-          <Route path="/user/:id" element={<UserProfile />} />
+          <Route path="/user" element={<UserProfile />} />
         </Routes>
       </div>
     </BrowserRouter>
