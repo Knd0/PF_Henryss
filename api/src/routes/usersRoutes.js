@@ -4,8 +4,8 @@ const { createUser, getAllUsers, getUserByEmail } = require("../handlers/usersHa
 
 const userRouter = Router();
 
-userRouter.post('/user', createUser);
-userRouter.get('/user', getAllUsers);
-userRouter.get('/user/:email', getUserByEmail);
+userRouter.post('/', createUser);
+userRouter.get('/', getAllUsers);
+userRouter.get('/:email', getUserByEmail);
 
 module.exports = userRouter;

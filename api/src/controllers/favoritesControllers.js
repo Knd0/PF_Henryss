@@ -1,22 +1,12 @@
 const { Car } = require('../db')
-
+const data = require('../../cards.json')
 
 const getDbFavorites = () => {
     return data.cars;
 }
 
 const deleteDbFavorites = (id) => {
-    try {
-        const cars = Car.findByPk(id);
-        if (!cars) {
-            throw new Error("Not found ");
-        } else {
-            cars.detroy()
-            return { msg: "Car successful delete" };
-        }
-    } catch(error) {
-        throw new Error(error.message);
-    }
+    return ('controller delete favorite')
 }
 
 module.exports = {
