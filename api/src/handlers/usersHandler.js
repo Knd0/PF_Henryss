@@ -1,9 +1,9 @@
 const { getUsersDb, getUserDb, createUserDb } = require('../controllers/usersControllers')
 
 const createUser = async (req, res) => {
-    const { username, email, name, image } = req.body
+    const { nickname, email, name, picture } = req.body
     try {
-        const response = await createUserDb(username, email, name, image)
+        const response = await createUserDb(nickname, email, name, picture)
         res.status(200).send(response)
     } catch (error) {
         res.status(400).json({ message: error.message })
