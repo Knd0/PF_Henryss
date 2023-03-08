@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { getCars, cleanState}  from "../../Redux/actions";
+import { getCars, cleanState }  from "../../Redux/actions";
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
 import style from"../MyFavorites/MyFavorites.module.css"
@@ -13,7 +13,7 @@ import style from"../MyFavorites/MyFavorites.module.css"
 
 export default function MyFavorites() {
     const dispatch = useDispatch()
-    const allcars = useSelector ((state) => state.favorites)
+    const favorites = useSelector ((state) => state.favorites)
     const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
@@ -23,7 +23,7 @@ export default function MyFavorites() {
     const cars = useSelector((state) => state.allcars);
     const loading = useSelector((state) => state.loading);
     const [input, setInput] = useState("");
-    const maximo = allcars.length/carsPerPage
+    const maximo = favorites.length/carsPerPage
 
     useEffect(() => {
         dispatch(cleanState());
@@ -38,8 +38,8 @@ export default function MyFavorites() {
         <Navbar />
          <h1>My Favorites</h1>
         <div className={style.cardconteinerFavorite}>
-        {allcars.length ? (
-          allcars.map((e) => {
+        {favorites.length ? (
+          favorites.map((e) => {
             return (
               <div>
                 <Card
