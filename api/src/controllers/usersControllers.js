@@ -22,14 +22,17 @@ const getUserDb = async (email) => {
     return filteredUsers
 }
 
-const createUserDb = ( username, email, name, image ) => {
-    if(!username || !email || !name || !image ) return ("Misssing info")
+const createUserDb = ( nickname, email, name, picture ) => {
+    if(!nickname) return ("Misssing nickname")
+    if(!email) return ("Misssing email")
+    if(!name) return ("Misssing name")
+    if(!picture) return ("Misssing picture")
     let searchUser = User.findOne({
         where: { name: name }
     });
     if (!searchUser) return (" Existing car")
 
-    let userCreate =  User.create({ username, email, name, image });
+    let userCreate =  User.create({ nickname, email, name, picture });
     return userCreate;
 }
 
