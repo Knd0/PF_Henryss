@@ -5,12 +5,4 @@ We've utilized a wide range of cutting-edge technologies to bring this project t
 
 Our platform features intuitive search and filtering options, so users can quickly find the car of their dreams. Sellers can easily create and manage listings, with features like image uploads and detailed descriptions. And thanks to our integration with Mercadopago, buyers can securely and easily make payments directly on our platform.
 
-Here are some screenshots of our E-commerce platform:
-
-Home page
-
-Listing page
-
-Checkout page
-
 We're incredibly proud of what we've accomplished with this project and hope you enjoy exploring our platform!
