@@ -40,6 +40,51 @@ const validateForm = ({
   
     else if (isNaN(year) || !onlyNumbers.test(year) || year < 1886 || year > 2023)
       errors.year = "Must be between 1886-2023";
+
+    else if (
+      typeof color !== "string" || color.length < 2 || color.length > 25 || onlyLetters.test(color) 
+    ){
+      errors.color = "Up to 2-25 letters";    
+    }
+
+    else if (!onlyNumbers.test(kilometers) || kilometers < 0)
+      errors.kilometers = "Kilometers can't be less than 0";
+
+    else if (
+      typeof power !== "string" || power.length < 2 || power.length > 25 
+    ){
+      errors.power = "Please write 2-25 letters/numbers";    
+    }     
+
+    else if (
+      typeof engine !== "string" ||  engine.length < 2 || engine.length > 25
+    ){
+      errors.engine = "Please write 2-25 characters";    
+    }
+
+    else if (
+      fuel === "--select--" || !fuel
+    ){
+      errors.fuel = "Please choose an option";    
+    }
+
+    else if (
+      transmission === "--select--" || !transmission
+    ){
+      errors.transmission = "Please choose an option";    
+    }
+
+    else if (
+      drive === "--select--" || !drive
+    ){
+      errors.drive = "Please choose an option";    
+    }
+
+    else if (
+      capacity === "--select--" || !capacity
+    ){
+      errors.capacity = "Please choose an option";    
+    }
   
     else if (isNaN(price) || !onlyNumbers.test(price) || price < 1)
       errors.price = "Price must be more than 0";
@@ -50,60 +95,15 @@ const validateForm = ({
       errors.place = "Please write between 2-25 letters";    
     }
 
+    // else if (!urlRegex.test(img))
+    //   errors.img = "Provide a valid URL for the image"; 
+    else if (!onlyEmail.test(email))
+      errors.email = "Provide a valid email address";       
+
     else if (!onlyphone.test(phone) || phone.length < 7 || phone.length > 16)
       errors.phone = "Only + and numbers, 7-16 characters";
-
-    else if (!onlyEmail.test(email))
-      errors.email = "Provide a valid email address";
-
-    else if (!onlyNumbers.test(kilometers) || kilometers < 0)
-      errors.kilometers = "Kilometers can't be less than 0";
-
-    else if (
-      typeof color !== "string" || color.length < 2 || color.length > 25 || onlyLetters.test(color) 
-    ){
-      errors.color = "Up to 2-25 letters";    
-    }
-
-    else if (
-        typeof fuel !== "string" || fuel.length < 2 || fuel.length > 25 || onlyLetters.test(fuel) 
-      ){
-        errors.fuel = "Please write between 2-25 letters";    
-      }
-
-    else if (!urlRegex.test(img))
-      errors.img = "Provide a valid URL for the image";
   
-    else if (
-      typeof engine !== "string" ||  engine.length < 2 || engine.length > 25
-    ){
-      errors.engine = "Please write 2-25 characters";    
-    }
     
-    else if (
-      typeof power !== "string" || power.length < 2 || power.length > 25 
-    ){
-      errors.power = "Please write 2-25 letters/numbers";    
-    }
-  
-    else if (
-      typeof transmission !== "string" ||  transmission.length < 2 || transmission.length > 25
-    ){
-      errors.transmission = "Please write 2-25 characters";    
-    }
-  
-    else if (
-      typeof drive !== "string" ||  drive.length < 2 || drive.length > 25
-    ){
-      errors.drive = "Please write 2-25 characters";    
-    }
-  
-    else if (
-      typeof capacity !== "string" ||  capacity.length < 1 || capacity.length > 25
-    ){
-      errors.capacity = "Please write 1-25 characters";    
-    }
-
     else if (
       typeof description !== "string" ||  description.length > 250
     ){
