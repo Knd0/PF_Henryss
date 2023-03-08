@@ -240,19 +240,22 @@ export const allUsers = () => {
     }
   };
 };
+
 export const createUs = (payload) => {
   return async function (dispatch) {
     try {
+      console.log("Sending user data to server:", payload); // Agregar este mensaje de registro
       const newUs = await axios.post(
         `/user`,
         payload
       );
-      dispatch({
+      console.log("Server response:", newUs.data); // Agregar este mensaje de registro
+      return dispatch({
         type: CREATE_USER,
         payload: newUs.data,
       });
     } catch (error) {
-      console.log("error en action/createUser", error);
+      console.log(error);
     }
   };
 };

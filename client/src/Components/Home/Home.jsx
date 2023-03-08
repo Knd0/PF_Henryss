@@ -7,18 +7,34 @@ import Slider from "../Slider/Slider";
 import PRUEBA from "./Img/PRUEBA.jpg"
 import PRUEBA2 from "./Img/PRUEBA2.jpg"
 import PRUEBA3 from "./Img/PRUEBA3.jpg"
-import { getCars } from "../../Redux/actions";
+import { getCars, createUs } from "../../Redux/actions";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 
 
 export default function Home() {
+  const { user } = useAuth0();
   const dispatch = useDispatch()
   const allCars = useSelector((state) => state.cars)
   useEffect(() => {
-    dispatch(getCars())
+    if (user) {
+      const payload = {
+        nickname: user.nickname,
+        email: user.email,
+        name: user.name,
+        picture: user.picture,
+      };
+      dispatch(createUs(payload));
+    }
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    dispatch(getCars());
   }, [dispatch])
+
   const images = [
     PRUEBA,
     PRUEBA2,
