@@ -1,11 +1,10 @@
-import { React, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { React, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { getCars, filterByBrand, filterByYear, orderByAlf, orderByKM, orderByPrice, cleanState } from "../../Redux/actions";
 import style from '../Filters/Filters.module.css'
 
 export default function Filters() {
     const dispatch = useDispatch();
-    const cars = useSelector((state) => state.cars);
     // const [order, setOrder] = useState("");
 
     useEffect(() => {
