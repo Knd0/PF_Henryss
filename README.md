@@ -1,4 +1,4 @@
-### Henry's Bootcamp Final Project - E-commerce
+# Henry's Bootcamp Final Project - E-commerce
 Welcome to our final project for Henry's Bootcamp! Our team has created an E-commerce platform where users can buy and sell cars. Whether you're a car enthusiast looking for your dream ride or a seller looking to reach a wider audience, our platform has got you covered.
 
 We've utilized a wide range of cutting-edge technologies to bring this project to life. Our front-end is built with React, Redux, HTML5, CSS3, JavaScript, and Bootstrap. On the back-end, we're using Node.js, Express, PostgreSQL, Sequelize, Auth0, and Mercadopago for payment processing. We've also used Git for version control, Railway for database hosting, and Vercel for deployment. To create a modern, sleek design, we've leveraged the power of TailwindCSS.
