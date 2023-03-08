@@ -1,15 +1,15 @@
-const { Car } = require('../db')
-const data = require('../../cards.json')
+const { getAllCars, getCarDetail } = require('./carsControllers')
 
-const getDbFavorites = () => {
-    return data.cars;
+
+const getDbFavorites = async () => {
+    const data = await getAllCars()
+    const filteredFavorites = data.filter((car) => car.favorite === true)
+    if(filteredFavorites.length) return filteredFavorites
+    else return('You dont have favorites yet')
 }
 
-const deleteDbFavorites = (id) => {
-    return ('controller delete favorite')
-}
+
 
 module.exports = {
-    deleteDbFavorites,
-    getDbFavorites
+    getDbFavorites,
 }
