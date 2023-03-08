@@ -26,17 +26,18 @@ export default function Home() {
   ];
 
   return (
-    <>
+    <div class="flex flex-col">
+
       <Navbar />
       <div className={style.containerSlider}>
         <Slider images={images}></Slider>
       </div>
-      <hr className={style.hr} />
-      <div class="flex justify-center">
-        {
+      <div class="w-full max-sm:flex max-sm:content-center max-sm:flex-col max-sm:content-center sm:grid sm:grid-cols-4 lg:flex lg:justify-arround max-w-screen-lg md:mx-auto mt-10">
+        {/* {
+
           allCars.slice(0, 3).map(e =>
             <Card
-              carId={e.carId||e.id}
+              carId={e.carId || e.id}
               brand={e.brand}
               img={e.img}
               model={e.model}
@@ -44,14 +45,55 @@ export default function Home() {
               kilometers={e.kilometers}
               price={e.price}
             />
-         )
-        }
-      </div>
-      <div class="flex justify-end mr-40">
-        <Link to="/cars"><button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See more...</button></Link>
+          )
+        } */}
+        <div className={style.homeFlexCardContainer}>
+
+        <div className={style.hideButton}>
+          <Card
+            carId={allCars[0].carId || allCars[0].id}
+            brand={allCars[0].brand}
+            img={allCars[0].img}
+            model={allCars[0].model}
+            year={allCars[0].year}
+            kilometers={allCars[0].kilometers}
+            price={allCars[0].price}
+          />
+        </div>
+
+        <div  className={style.hideButton} >
+          <Card
+            carId={allCars[1].carId || allCars[1].id}
+            brand={allCars[1].brand}
+            img={allCars[1].img}
+            model={allCars[1].model}
+            year={allCars[1].year}
+            kilometers={allCars[1].kilometers}
+            price={allCars[1].price}
+          />
+          </div>
+        </div>
+
+        <div  className={style.hideButton}>
+          
+          <Card
+            carId={allCars[2].carId || allCars[2].id}
+            brand={allCars[2].brand}
+            img={allCars[2].img}
+            model={allCars[2].model}
+            year={allCars[2].year}
+            kilometers={allCars[2].kilometers}
+            price={allCars[2].price}
+          />
+        
+        </div>
+
+        </div>
+
+      <div class="flex justify-center">
+        <Link to="/cars"><button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See more...</button></Link>
       </div>
       <Footer />
-
-    </>
+    </div>
   );
 }

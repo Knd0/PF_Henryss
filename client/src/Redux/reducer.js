@@ -86,7 +86,7 @@ function Reducer(state = initialState, action) {
             });
       return {
         ...state,
-        cars: sortedcars,
+        cars: [...sortedcars],
       };
     case ORDER_CARS_PRICE:
      
@@ -112,7 +112,7 @@ function Reducer(state = initialState, action) {
             });
       return {
         ...state,
-        cars: sortedArrPrice,
+        cars: [...sortedArrPrice]
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
@@ -135,9 +135,9 @@ function Reducer(state = initialState, action) {
               }
               return 0;
             });
-      return {
+            return {
         ...state,
-        cars: sortedArrKM,
+        cars: [...sortedArrKM],
       };
     case GET_CARS_DETAIL:
       return {

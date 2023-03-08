@@ -1,5 +1,6 @@
 const data = require('../../cards.json');
 const { Car, Brand } = require('../db')
+const { deleteImage } = require('../utils/cloudinary')
 
 const getDbCars = async () => {
     return await Car.findAll({
@@ -46,7 +47,7 @@ const getCarDetail = async (id) => {
 }
 
 const createCar = async ({ brand, model, year, price, img, ...restOfcar }) => {
-        if (!brand || !model || !year || !price || !img) throw new Error('Misssing info');
+        if (!brand || !model || !year || !price ) return ('Misssing info');
         const existsCar = await Car.findOne({
             where: { model }
         });
@@ -62,8 +63,11 @@ const createCar = async ({ brand, model, year, price, img, ...restOfcar }) => {
 
 const deleteCarById = async(id) => {
         const car = await Car.findByPk(id);
-        if (!car) return ('Not found');
+        if (!car) return ('Car not found');
         else {
+            if(car.img.public_id){
+            const deleteImg = await deleteImage(car.img.public_id)
+            }
             await car.destroy();
             return 'Car successful delete';
         }

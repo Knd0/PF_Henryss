@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
         allowNull : false
     },
     price:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull : false
     },
     place:{
@@ -52,8 +52,7 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     img:{
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.JSON
     },
     engine:{
         type: DataTypes.STRING,
@@ -82,8 +81,7 @@ module.exports = (sequelize) => {
 
     favorite:{
         type: DataTypes.BOOLEAN,
-        defaultValue: true,
-        allowNull: false
+        defaultValue: false,
     },
 
     createInDb: {

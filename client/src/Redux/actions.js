@@ -20,6 +20,7 @@ import {
   ALL_USERS,
   CREATE_USER,
   GET_USER_PROFILE,
+  GET_CAR_FAVORITES
 } from "./action-types";
 import axios from "axios";
 
@@ -194,6 +195,22 @@ export function addFavorite(userId, carId) {
         carId,
       },
     });
+  };
+}
+
+export const getFavorites = () => {
+  return async function (dispatch) {
+    try {
+      const allFavorites = await axios.get(
+        `/favorites`
+      );
+      dispatch({
+        type: GET_CAR_FAVORITES,
+        payload: allFavorites.data,
+      });
+    } catch (error) {
+      console.log("Error action allFavorites", error);
+    }
   };
 }
 

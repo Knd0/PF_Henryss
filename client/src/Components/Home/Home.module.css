@@ -2,13 +2,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 1600px;
-    height: 340px;
+    height: auto;
     margin: auto;
-
 }
 
+.hideButton button{
+  display: none;
+}
 
+.homeFlexCardContainer{
+  display: flex;
+}
 .hr {
   margin: 50px;
 }

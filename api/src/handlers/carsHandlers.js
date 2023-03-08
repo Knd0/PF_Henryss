@@ -1,5 +1,6 @@
-const { getCarByBrand, getCarByModel, getCarDetail, deleteCarById, createCar, editCar, getAllCars } = require("../controllers/carsControllers.js")
-
+const { getCarByBrand, getCarByModel, getCarDetail, deleteCarById, createCar, editCar, getAllCars } = require("../controllers/carsControllers.js");
+const { uploadImage } = require("../utils/cloudinary.js");
+const fs = require('fs-extra')
 
 const getCars = async (req, res) => {
     const { brand, model } = req.query;
@@ -35,8 +36,16 @@ const getCarById = async (req, res) => {
 const postCar = async (req, res) => {
     const { body: car } = req;
     try {
-        const result = await createCar(car);
-        res.status(200).json(result);
+        if(req.files?.img){
+            const result = await uploadImage(req.files.img.tempFilePath)
+            car.img = {
+                public_id: result.public_id,
+                secure_url: result.secure_url
+            }
+            await fs.unlink(req.files.img.tempFilePath)
+        }
+        const create = await createCar(car);
+        res.status(200).json(create);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

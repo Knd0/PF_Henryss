@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../Card/Card.module.css";
 import { Link } from "react-router-dom";
-import { addFavorite } from "../../Redux/actions";
+import { addFavorite, removeFavorite } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 
 export default function Card({
@@ -17,6 +17,11 @@ export default function Card({
     function handleChange(e) {
         e.preventDefault();
         dispatch(addFavorite(carId));
+    }
+
+    function handleDeleteFavorite(e,id){
+        e.preventDefault()
+        dispatch(removeFavorite(id))
     }
 
     return (
@@ -43,7 +48,7 @@ export default function Card({
             <img
                 className={styles.img}
                 class="p-15 rounded-t-lg"
-                src={img}
+                src={img.secure_url}
                 alt=""
             />
             </Link>
@@ -71,6 +76,10 @@ export default function Card({
             <span class={styles.titulo}>
             $ <span className={styles.subtitulo}>{price}</span>
             </span>
+
+          <div>
+          <button onClick={(e)=>handleDeleteFavorite(e,carId)} id="boton" className={styles.deleteB}>Delete</button>
+          </div>
 
             
         </div>
