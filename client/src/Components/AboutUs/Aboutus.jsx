@@ -3,6 +3,7 @@ import imgFranco from "../Img/Franco.png";
 import imgRamon from "../Img/Ramon.png";
 import imgSantiago from "../Img/Santiago.png";
 import imgDavid from "../Img/David.jpeg"
+import imgLucas from "../Img/Lucas.png"
 import Navbar from "../Navbar/Navbar";
 
 export default function Aboutus() {
@@ -289,17 +290,17 @@ export default function Aboutus() {
             <div class=" text-gray-500 dark:text-gray-400">
               <img
                 class="mx-auto mb-4 mt-4 w-36 h-36 rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png"
-                alt="Sofia Avatar"
+                src={imgLucas}
+                alt="Lucas Iriarte"
               />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a>Lana Byrd</a>
+                <a>Lucas Iriarte</a>
               </h3>
               <p>Web Designer</p>
               <ul class="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/lucas_iriarte12/"
                     target="_blank"
                     class="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -315,7 +316,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/lucas-iriarte-8a552a256/"
                     target="_blank"
                     class="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -331,7 +332,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://github.com/LucasIriarte"
                     target="_blank"
                     class="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
