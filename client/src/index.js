@@ -8,9 +8,6 @@ import { Provider } from "react-redux";
 import { persistor, store } from "../src/Redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
-const domain = process.env.DOMAIN;
-const clientid = process.env.CLIENTID;
-
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>

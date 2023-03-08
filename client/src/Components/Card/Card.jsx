@@ -19,9 +19,9 @@ export default function Card({
         dispatch(addFavorite(carId));
     }
 
-    function handleDeleteFavorite(e,id){
+    function handleDeleteFavorite(e, carId){
         e.preventDefault()
-        dispatch(removeFavorite(id))
+        dispatch(removeFavorite(carId))
     }
 
     return (
