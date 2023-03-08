@@ -102,7 +102,7 @@ export default function CarsDetail() {
                     </div>
                     <div className="col-span-2 flex-col">
                         <h2 className="font-medium text-lg mt-20 mb-2 text-left ml-10">Description:</h2>
-                        <p className="text-left ml-10">{carDetail[0].description}</p>
+                        <p className="text-left ml-10">{carDetail[0]?.description}</p>
                     </div>
                     <div class="col-span-2 mt-8">
                         <input type="text" className="rounded-md h-10"/>
