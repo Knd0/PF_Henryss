@@ -66,8 +66,6 @@ export default function Cars() {
             setSelectedOptionKm("");
         })
     }
-
-console.log(currentPage,'holapapafrtita')
     return (
         <>
             <Navbar />
@@ -92,8 +90,9 @@ console.log(currentPage,'holapapafrtita')
                 {currentCars.length ? (
                     currentCars.map((e) => {
                         return (
-                            <div>
+                            <div key={e.carId}>
                                 <Card
+                                    
                                     carId={e.carId || e.id}
                                     brand={e.brand}
                                     img={e.img}

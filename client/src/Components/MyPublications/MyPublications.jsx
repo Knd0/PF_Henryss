@@ -35,7 +35,7 @@ const MyPublications = () => {
         {currentCars.length ? (
           currentCars.map((e) => {
             return (
-              <div className={style.container}>
+              <div key={e.carId} className={style.container}>
                 <div className={style.flexContainerPublications}>
                   <img width={200} height={200} src={e.img.secure_url} alt="" />
 
