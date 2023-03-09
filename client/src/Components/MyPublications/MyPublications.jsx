@@ -37,7 +37,7 @@ const MyPublications = () => {
             return (
               <div className={style.container}>
                 <div className={style.flexContainerPublications}>
-                  <img width={200} height={200} src={e.img.secure_url} alt="" />
+                 <Link to={`/carsedit/${e.carId}`}><img width={200} height={200} src={e.img.secure_url} alt="" /></Link>
 
                   <div className={style.itemsDescriptionContainerPublications}>
                     <div className={style.itemsContainerPublications}>
