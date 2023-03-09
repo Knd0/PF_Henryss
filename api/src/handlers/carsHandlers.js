@@ -34,6 +34,7 @@ const getCarById = async (req, res) => {
 }
 
 const postCar = async (req, res) => {
+    const { userId } = req.params
     const { body: car } = req;
     try {
         if(req.files?.img){
@@ -44,7 +45,7 @@ const postCar = async (req, res) => {
             }
             await fs.unlink(req.files.img.tempFilePath)
         }
-        const create = await createCar(car);
+        const create = await createCar(car, userId);
         res.status(200).json(create);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -52,7 +53,7 @@ const postCar = async (req, res) => {
 }
 
 const putCar = async (req, res) => {
-    const { id } = req.params;
+    const { userId, id } = req.params;
 	try {
         if(id){
 		    const response = await editCar(id, req.body);
@@ -65,7 +66,7 @@ const putCar = async (req, res) => {
 }
 
 const deleteCar = async (req, res) => {
-    const { id } = req.params;
+    const { userId, id } = req.params;
     try {
         const response = await deleteCarById(id);
         res.status(200).json({message:response});
