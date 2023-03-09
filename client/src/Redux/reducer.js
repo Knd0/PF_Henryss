@@ -39,17 +39,20 @@ function Reducer(state = initialState, action) {
         ...state,
         cars: action.payload,
         allcars: action.payload,
+        loading: false,
       };
     case GET_CAR_BY_NAME:
       return {
         ...state,
         cars: action.payload,
+        loading: false,
       };
 
     case GET_CAR_BY_BRAND:
       return {
         ...state,
         cars: action.payload,
+        loading: false,
       };
   
     case FILTER_BY_BRAND:
@@ -90,27 +93,30 @@ function Reducer(state = initialState, action) {
         cars: [...sortedcars],
       };
     case ORDER_CARS_PRICE:
+     const normalize = price => parseInt(price.replaceAll('.',''),10)
      
       let sortedArrPrice =
-        action.payload === "menp"
-          ? state.cars.sort(function(a,b) {
-            if(a.price < b.price) {
-                return -1
-            }
-            if( a.price > b.price){
-                return 1
-            }
-            return 0
-        }) : 
-        state.cars.sort(function(a,b) {
-            if(a.price < b.price) {
-                return 1
-            }
-            if( a.price > b.price){
-                return -1
-            }
-            return 0
-        })
+        action.payload === "mayp"
+          ? state.cars.sort(function (a, b) {
+              if (normalize(a.price) > normalize(b.price)) {
+                return 1;
+              }
+              if (normalize(b.price)> normalize(a.price)) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.cars.sort(function (a, b) {
+              if (normalize(a.price) >normalize(b.price)) {
+                return -1;
+              }
+              if (normalize(b.price) > normalize(a.price)) {
+                return 1;
+              }
+              return 0;
+            });
+            console.log(action.payload)
+            console.log(sortedArrPrice)
       return {
         ...state,
         cars: [...sortedArrPrice]
@@ -186,18 +192,12 @@ function Reducer(state = initialState, action) {
         cars: [...state.cars, action.payload],
       };
     case LOADING_ACTION: {
-      const loading = state.loading;
-      if (loading === true) {
-        return {
-          ...state,
-          loading: false,
-        };
-      } else {
+  
         return {
           ...state,
           loading: true,
         };
-      }
+      
     }
     case ALL_USERS:
       return {
