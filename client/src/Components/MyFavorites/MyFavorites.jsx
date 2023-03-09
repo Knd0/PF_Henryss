@@ -23,18 +23,11 @@ export default function MyFavorites() {
     const cars = useSelector((state) => state.allcars);
     const loading = useSelector((state) => state.loading);
     const [input, setInput] = useState("");
-
-
-    console.log(favorites)
-
     
     useEffect(() => {
         dispatch(cleanState());
         dispatch(getCars())
     }, [dispatch]);
-
-
-   
   
     return(
         <>
