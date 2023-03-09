@@ -189,13 +189,18 @@ export function updateCar(carId, payload) {
 
 export function addFavorite(userId, carId) {
   return async function (dispatch) {
-    dispatch({
-      type: ADD_FAVORITE,
-      payload: {
-        userId,
-        carId,
-      },
-    });
+    try {
+      await axios.post(`/user`, userId, carId);
+      dispatch({
+        type: ADD_FAVORITE,
+        payload: {
+          userId,
+          carId,
+        },
+      });
+    } catch (error) {
+      console.log(error)
+    }
   };
 }
 
@@ -241,6 +246,7 @@ export const allUsers = () => {
     }
   };
 };
+
 export const createUs = (payload) => {
   return async function (dispatch) {
     try {
@@ -248,12 +254,13 @@ export const createUs = (payload) => {
         `/user`,
         payload
       );
-      dispatch({
+      console.log("Server response:", newUs.data); // Agregar este mensaje de registro
+      return dispatch({
         type: CREATE_USER,
         payload: newUs.data,
       });
     } catch (error) {
-      console.log("error en action/createUser", error);
+      console.log(error);
     }
   };
 };

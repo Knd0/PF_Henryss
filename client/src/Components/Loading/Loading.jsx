@@ -3,9 +3,9 @@ import "./Loading.css";
 
 export default function Loading() {
   return (
-    <div class="container">
+    <div className="container">
         <div 
-            class="spinner">
+            className="spinner">
         </div>
              <p>Loading ...</p>
 

@@ -22,16 +22,25 @@ const getUserDb = async (email) => {
     return filteredUsers
 }
 
-const createUserDb = ( username, email, name, image ) => {
-    if(!username || !email || !name || !image ) return ("Misssing info")
-    let searchUser = User.findOne({
+const createUserDb = async (nickname, email, name, picture) => {
+    if (!nickname) return "Missing nickname";
+    if (!email) return "Missing email";
+    if (!name) return "Missing name";
+    if (!picture) return "Missing picture";
+    
+    try {
+      let searchUser = await User.findOne({
         where: { name: name }
-    });
-    if (!searchUser) return (" Existing car")
-
-    let userCreate =  User.create({ username, email, name, image });
-    return userCreate;
-}
+      });
+      
+      if (searchUser) return "Existing user";
+      
+      let userCreate = await User.create({ nickname, email, name, picture });
+      return userCreate;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
 
 
 module.exports = {

@@ -13,7 +13,7 @@ import style from"../MyFavorites/MyFavorites.module.css"
 
 export default function MyFavorites() {
     const dispatch = useDispatch()
-    const favorites = useSelector ((state) => state.favorites)
+    const favorites = useSelector((state) => state.usersDetails.favorites) // antes era: const favorites = useSelector ((state) => state.favorites)
     const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
@@ -25,6 +25,9 @@ export default function MyFavorites() {
     const [input, setInput] = useState("");
     const maximo = favorites.length/carsPerPage
 
+    console.log(favorites)
+
+    
     useEffect(() => {
         dispatch(cleanState());
         dispatch(getCars())
