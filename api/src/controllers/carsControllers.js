@@ -47,7 +47,7 @@ const getCarDetail = async (id) => {
 }
 
 const createCar = async ({ brand, model, year, price, img, ...restOfcar }) => {
-        if (!brand || !model || !year || !price ) return ('Misssing info');
+        if (!brand || !model || !year || !price ) return ('Missing info');
         const existsCar = await Car.findOne({
             where: { model }
         });
@@ -59,7 +59,6 @@ const createCar = async ({ brand, model, year, price, img, ...restOfcar }) => {
         await carCreate.addBrand(brandDB);
         return carCreate;
 }
-
 
 const deleteCarById = async(id) => {
         const car = await Car.findByPk(id);

@@ -1,25 +1,25 @@
-const { Car } = require('../db')
+const User = require('../models/User')
+const { getAllCars, getCarDetail } = require('./carsControllers')
 
 
-const getDbFavorites = () => {
-    return data.cars;
+const getDbFavorites = async () => {
+    const data = await getAllCars()
+    const filteredFavorites = data.filter((car) => car.favorite === true)
+    if(filteredFavorites.length) return filteredFavorites
+    else return('You dont have favorites yet')
 }
 
-const deleteDbFavorites = (id) => {
-    try {
-        const cars = Car.findByPk(id);
-        if (!cars) {
-            throw new Error("Not found ");
-        } else {
-            cars.detroy()
-            return { msg: "Car successful delete" };
+const addFavorites = async (userId, carId) => {
+    let searchUser = User.findOne({
+        where: { userId: userId }
+    });
+        if(searchUser){
+            console.log(searchUser);
         }
-    } catch(error) {
-        throw new Error(error.message);
-    }
+
 }
+
 
 module.exports = {
-    deleteDbFavorites,
-    getDbFavorites
+    getDbFavorites,
 }

@@ -7,18 +7,34 @@ import Slider from "../Slider/Slider";
 import PRUEBA from "./Img/PRUEBA.jpg"
 import PRUEBA2 from "./Img/PRUEBA2.jpg"
 import PRUEBA3 from "./Img/PRUEBA3.jpg"
-import { getCars } from "../../Redux/actions";
+import { getCars, createUs } from "../../Redux/actions";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 
 
 export default function Home() {
+  const { user } = useAuth0();
   const dispatch = useDispatch()
-  const allCars = useSelector((state) => state.cars)
+  const allCars = useSelector((state) => state.allcars)
   useEffect(() => {
-    dispatch(getCars())
+    if (user) {
+      const payload = {
+        nickname: user.nickname,
+        email: user.email,
+        name: user.name,
+        picture: user.picture,
+      };
+      dispatch(createUs(payload));
+    }
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    dispatch(getCars());
   }, [dispatch])
+
   const images = [
     PRUEBA,
     PRUEBA2,
@@ -26,13 +42,13 @@ export default function Home() {
   ];
 
   return (
-    <div class="flex flex-col">
+    <div className="flex flex-col">
 
       <Navbar />
       <div className={style.containerSlider}>
         <Slider images={images}></Slider>
       </div>
-      <div class="w-full max-sm:flex max-sm:content-center max-sm:flex-col max-sm:content-center sm:grid sm:grid-cols-4 lg:flex lg:justify-arround max-w-screen-lg md:mx-auto mt-10">
+      <div className="w-full max-sm:flex max-sm:content-center max-sm:flex-col max-sm:content-center sm:grid sm:grid-cols-4 lg:flex lg:justify-arround max-w-screen-lg md:mx-auto mt-10">
         {/* {
 
           allCars.slice(0, 3).map(e =>
@@ -47,7 +63,9 @@ export default function Home() {
             />
           )
         } */}
-        <div class="flex justify-center sm:col-span-2 sm:w-2/4 sm:mx-auto">
+        <div className={style.homeFlexCardContainer}>
+
+        <div className={style.hideButton}>
           <Card
             carId={allCars[0].carId || allCars[0].id}
             brand={allCars[0].brand}
@@ -58,7 +76,8 @@ export default function Home() {
             price={allCars[0].price}
           />
         </div>
-        <div class="flex justify-center sm:col-start-3 sm:col-span-5 sm:w-2/4 sm:mx-auto">
+
+        <div  className={style.hideButton} >
           <Card
             carId={allCars[1].carId || allCars[1].id}
             brand={allCars[1].brand}
@@ -68,8 +87,11 @@ export default function Home() {
             kilometers={allCars[1].kilometers}
             price={allCars[1].price}
           />
+          </div>
         </div>
-        <div class="flex justify-center sm:col-start-1 sm:col-span-4 sm:mx-auto">
+
+        <div  className={style.hideButton}>
+          
           <Card
             carId={allCars[2].carId || allCars[2].id}
             brand={allCars[2].brand}
@@ -79,10 +101,13 @@ export default function Home() {
             kilometers={allCars[2].kilometers}
             price={allCars[2].price}
           />
+        
         </div>
-      </div>
-      <div class="flex justify-center">
-        <Link to="/cars"><button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See more...</button></Link>
+
+        </div>
+
+      <div className="flex justify-center">
+        <Link to="/cars"><button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See more...</button></Link>
       </div>
       <Footer />
     </div>

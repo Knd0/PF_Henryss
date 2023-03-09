@@ -1,5 +1,7 @@
 export const GET_CARS = 'GET_CARS';
 
+export const ADD_TO_PUBLICATIONS = 'ADD_TO_PUBLICATIONS';
+
 export const GET_CARS_DETAIL = 'GET_CARS_DETAIL';
 
 export const ORDER_CARS_ALF = 'ORDER_CARS_ALF';
@@ -39,3 +41,5 @@ export const ALL_USERS = 'ALL_USERS';
 export const CREATE_USER = 'CREATE_USER';
 
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';
+
+export const GET_CAR_FAVORITES = 'GET_CAR_FAVORITES';

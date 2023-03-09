@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router-dom';
 import Filters from "../Filters/Filters";
 
 
+
+
 export default function Cars() {
     const dispatch = useDispatch()
     const allcars = useSelector((state) => state.cars)
@@ -103,7 +105,7 @@ console.log(selectedOptionPrice)
                     })
                 ) :
                     <div className={style.cardModal}>
-                        {handleAlert()}
+                       <h1>nada</h1>
 
 
 
@@ -116,3 +118,5 @@ console.log(selectedOptionPrice)
         </>
     );
 }
+
+

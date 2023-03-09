@@ -4,11 +4,12 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("User", {
-    userId: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-    },
-    username: {
+    userId:{
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+  },
+    nickname: {
       type: DataTypes.STRING,
     },
     email: {
@@ -19,7 +20,14 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
     },
-    image: {
+    picture: {
+      type: DataTypes.STRING,
+    },
+    publications: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: [],
+    },
+    favorites: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       defaultValue: [],
     },
