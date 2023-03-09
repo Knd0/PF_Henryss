@@ -6,14 +6,16 @@ import { useSelector,useDispatch } from "react-redux";
 import { getCars, cleanState }  from "../../Redux/actions";
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
-import style from"../MyFavorites/MyFavorites.module.css"
+import style from"../MyFavorites/MyFavorites.module.css";
+import swal from 'sweetalert';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
 
 export default function MyFavorites() {
     const dispatch = useDispatch()
-    const favorites = useSelector((state) => state.usersDetails.favorites) // antes era: const favorites = useSelector ((state) => state.favorites)
+    const favorites = useSelector ((state) => state.favorites)
     const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
@@ -24,6 +26,7 @@ export default function MyFavorites() {
     const loading = useSelector((state) => state.loading);
     const [input, setInput] = useState("");
     const maximo = favorites.length/carsPerPage
+    const {isAuthenticated} = useAuth0()
 
     console.log(favorites)
 
@@ -33,15 +36,36 @@ export default function MyFavorites() {
         dispatch(getCars())
     }, [dispatch]);
 
-
-   
-  
+    
     return(
         <>
         <Navbar />
          <h1>My Favorites</h1>
         <div className={style.cardconteinerFavorite}>
-        {favorites.length ? (
+
+        {
+          isAuthenticated?favorites.length?
+          favorites.map((e) => {
+            return (
+              <div>
+                <Card
+                  carId={e.carId || e.id}
+                  brand={e.brand}
+                  img={e.img}
+                  model={e.model}
+                  year={e.year}
+                  kilometers={e.kilometers}
+                  price={e.price}
+                />
+              </div>
+            );
+          }): (
+            <div className={style.cardModal}>
+                <h3>Nothing to show 🤔</h3>
+            </div>
+          ):<h1>Este sitio es solo para los registrados</h1>
+        }
+        {/* {favorites.length ? (
           favorites.map((e) => {
             return (
               <div>
@@ -61,7 +85,7 @@ export default function MyFavorites() {
           <div className={style.cardModal}>
               <h3>Nothing to show 🤔</h3>
           </div>
-        )}
+        )} */}
       </div>
       <div></div>
    {/*    <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo}/></div>  */}
