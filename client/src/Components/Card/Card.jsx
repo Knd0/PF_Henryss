@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../Card/Card.module.css";
 import { Link } from "react-router-dom";
-import { addFavorite, removeFavorite } from "../../Redux/actions";
+import { addFavorite, removeFavorite,  addToPublications } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 
 export default function Card({
@@ -18,6 +18,10 @@ export default function Card({
         e.preventDefault();
         dispatch(addFavorite(carId));
     }
+
+    useEffect(()=>{
+        dispatch(addToPublications(carId))
+    },[dispatch])
 
     function handleDeleteFavorite(e, carId){
         e.preventDefault()

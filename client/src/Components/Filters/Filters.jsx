@@ -1,11 +1,22 @@
 import { React, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCars, filterByBrand, filterByYear, orderByAlf, orderByKM, orderByPrice, cleanState } from "../../Redux/actions";
 import style from '../Filters/Filters.module.css'
 
 export default function Filters() {
     const dispatch = useDispatch();
     // const [order, setOrder] = useState("");
+    const cars =useSelector((state)=>state.allcars)
+    let arr = [];
+    for (let i = 0; i < cars.length; i++) {
+      for (let j = i + 1; j < cars.length; j++) {
+        if (cars[i].year !== cars[j].year && !arr.includes(cars[j].year)) {
+          arr.push(cars[j].year);
+        }
+      }
+    }
+ 
+      console.log("ESTO ES ARR ===============>",arr)
 
     useEffect(() => {
         dispatch(getCars());
@@ -93,20 +104,13 @@ export default function Filters() {
                 <select className={style.select} onChange={e => handleFilteredYear(e)}>
                     <option selected disabled>--select--</option>
                     <option value="All">All</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                    <option value="2017">2017</option>
-                    <option value="2016">2016</option>
-                    <option value="2015">2015</option>
-                    <option value="2014">2014</option>
-                    <option value="2013">2013</option>
-                    <option value="2012">2012</option>
-                    <option value="2011">2011</option>
-                    <option value="2010">2010</option>
+                     {arr?.map((a)=>{
+                        return(
+                            <option>{a}</option>
+                        )
+                     })}
+                        
+                     
                 </select>
             </div>
             <div>

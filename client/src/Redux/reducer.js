@@ -17,7 +17,8 @@ import {
   GET_USER_PROFILE,
   CREATE_USER,
   ADD_FAVORITE,
-  REMOVE_FAVORITE
+  REMOVE_FAVORITE,
+  ADD_TO_PUBLICATIONS
 } from "./action-types";
 
 const initialState = {
@@ -63,8 +64,8 @@ function Reducer(state = initialState, action) {
       };
     case FILTER_BY_YEAR:
     
-      let allcars1 = [...state.cars];
-      let carfilter2 =
+      let allcars1 = [...state.allcars];
+      let carfilter2 =action.payload=="All"? allcars1:
       allcars1.filter((e) => e.year === parseInt(action.payload));
       return {
         ...state,
@@ -75,13 +76,13 @@ function Reducer(state = initialState, action) {
       sortedcars =
         action.payload === "atoz"
           ? state.cars.sort(function (a, b) {
-              if (a.model.toLowerCase() < b.model.toLowerCase()) return -1;
-              if (a.model.toLowerCase() > b.model.toLowerCase()) return 1;
+              if (a.brand.toLowerCase() < b.brand.toLowerCase()) return -1;
+              if (a.brand.toLowerCase() > b.brand.toLowerCase()) return 1;
               return 0;
             })
           : state.cars.sort(function (a, b) {
-              if (a.model.toLowerCase() < b.model.toLowerCase()) return 1;
-              if (a.model.toLowerCase() > b.model.toLowerCase()) return -1;
+              if (a.brand.toLowerCase() < b.brand.toLowerCase()) return 1;
+              if (a.brand.toLowerCase() > b.brand.toLowerCase()) return -1;
               return 0;
             });
       return {
@@ -91,25 +92,25 @@ function Reducer(state = initialState, action) {
     case ORDER_CARS_PRICE:
      
       let sortedArrPrice =
-        action.payload === "mayp"
-          ? state.cars.sort(function (a, b) {
-              if (a.price > b.price) {
-                return 1;
-              }
-              if (b.price > a.price) {
-                return -1;
-              }
-              return 0;
-            })
-          : state.cars.sort(function (a, b) {
-              if (a.price > b.price) {
-                return -1;
-              }
-              if (b.price > a.price) {
-                return 1;
-              }
-              return 0;
-            });
+        action.payload === "menp"
+          ? state.cars.sort(function(a,b) {
+            if(a.price < b.price) {
+                return -1
+            }
+            if( a.price > b.price){
+                return 1
+            }
+            return 0
+        }) : 
+        state.cars.sort(function(a,b) {
+            if(a.price < b.price) {
+                return 1
+            }
+            if( a.price > b.price){
+                return -1
+            }
+            return 0
+        })
       return {
         ...state,
         cars: [...sortedArrPrice]
@@ -213,6 +214,18 @@ function Reducer(state = initialState, action) {
         ...state,
         usersDetails: action.payload,
       };
+
+    case ADD_TO_PUBLICATIONS:
+      const cars = [...state.cars]
+     const res =  cars.filter(c=>{
+        if(c.carId===action.payload){
+          return c
+        }
+      })
+      return{
+        ...state,
+        publications:state.publications.concat()
+      }
 
     default:
       return state;

@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch()
-  const allCars = useSelector((state) => state.cars)
+  const allCars = useSelector((state) => state.allcars)
   useEffect(() => {
     dispatch(getCars())
   }, [dispatch])
