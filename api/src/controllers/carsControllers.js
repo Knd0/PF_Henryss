@@ -1,5 +1,5 @@
 const data = require('../../cards.json');
-const { Car, Brand } = require('../db')
+const { Car, Brand, User } = require('../db')
 const { deleteImage } = require('../utils/cloudinary')
 
 const getDbCars = async () => {
@@ -45,41 +45,69 @@ const getCarDetail = async (id) => {
     const filteredCars = data.filter((car) => car.id == id||car.carId==id );
     return filteredCars;
 }
-
-const createCar = async ({ brand, model, year, price, img, ...restOfcar }) => {
-        if (!brand || !model || !year || !price ) return ('Misssing info');
-        const existsCar = await Car.findOne({
-            where: { model }
+const createCar = async ({ brand, model, year, price, img, ...restOfcar }, userId) => {
+    if (!brand || !model || !year || !price ) return ('Missing info');
+    const existsCar = await Car.findOne({
+        where: { model }
+    });
+    if (existsCar) throw new Error('Existing car');
+    const carCreate =  await Car.create({ brand, model, year, price, img, ...restOfcar});
+    let searchUser = await User.findOne({
+        where: { userId: userId }
+    });
+    if (searchUser) {
+        // if (!searchUser.publications) {
+        //     searchUser.publications = [];
+        // }
+        searchUser.publications.push(carCreate.carId);
+        await User.update({ publications: searchUser.publications }, {
+            where: { userId: userId }
         });
-        if (existsCar) throw new Error('Existing car');
-        const carCreate =  await Car.create({ brand, model, year, price, img, ...restOfcar});
-        const brandDB =  await Brand.findOne({
-            where: { brand }
-        });
-        await carCreate.addBrand(brandDB);
-        return carCreate;
+    }
+    const brandDB =  await Brand.findOne({
+        where: { brand }
+    });
+    await carCreate.addBrand(brandDB);
+    return carCreate;
 }
 
 
-const deleteCarById = async(id) => {
+
+const deleteCarById = async(userId, id) => {
         const car = await Car.findByPk(id);
+        let searchUser = await User.findOne({
+            where: { userId: userId }
+        });
+        if(searchUser){
+            if(searchUser.publications.indexOf(id) === -1) return ('you can not delete this car')
+            else {
+                searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
+            }
+        }
         if (!car) return ('Car not found');
-        else {
-            if(car.img.public_id){
+        if(car.img.public_id) {
             const deleteImg = await deleteImage(car.img.public_id)
             }
+
             await car.destroy();
             return 'Car successful delete';
         }
-}
 
 
-const editCar = async (id, carUpdates) => {
+const editCar = async (userId, id, carUpdates) => {
         if (!id) return ('Id not provided');
         const car = await Car.findByPk(id);
         if (!car) return ('Car not found');
-        await car.update({...carUpdates});
+        let searchUser = await User.findOne({
+            where: { userId: userId }
+        });
+        if(searchUser){
+            if(searchUser.publications.indexOf(id) === -1) return ('you can not edit this car')
+            else {
+                await car.update({...carUpdates});
         return 'The car was updated';
+            }
+        }
 }
 
 

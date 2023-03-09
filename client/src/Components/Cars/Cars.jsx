@@ -12,7 +12,7 @@ import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
 import { useNavigate } from 'react-router-dom';
 import Filters from "../Filters/Filters";
-
+import Loading from "../Loading/Loading";
 
 
 
@@ -29,6 +29,12 @@ export default function Cars() {
     // const loading = useSelector((state) => state.loading);
     // const [input, setInput] = useState("");
     const maximo = allcars.length / carsPerPage
+    const [selectedOptionAlf, setSelectedOptionAlf] = useState("");
+    const [selectedOptionPrice, setSelectedOptionPrice] = useState("");
+    const [selectedOptionBrand, setSelectedOptionBrand] = useState("");
+    const [selectedOptionYear, setSelectedOptionYear] = useState("");
+    const [selectedOptionKm, setSelectedOptionKm] = useState("");
+    const loading = useSelector((state)=> state.loading)
 
 
     const page = (pageNumber) => {
@@ -40,26 +46,53 @@ export default function Cars() {
         dispatch(getCars())
     }, [dispatch]);
 
+//     useEffect(()=>{
+//         if (currentPage !== 1){
+//            setCurrentPage(1) 
+//         }
+        
+//     },[currentPage, setCurrentPage, selectedOptionPrice, selectedOptionKm ,selectedOptionYear, selectedOptionBrand, selectedOptionAlf])
+// console.log(selectedOptionPrice)
+
     function handleAlert() {
 
-        swal("Oops", "Car not found!", "error")
         dispatch(getCars())
+        swal("Oops", "Car not found!", "error").then (() => {
+
+            setSelectedOptionAlf("")
+            setSelectedOptionPrice("")
+            setSelectedOptionBrand("")
+            setSelectedOptionYear("");
+            setSelectedOptionKm("");
+        })
     }
-
-
     return (
         <>
             <Navbar />
-            <Filters/>
+            <Filters
+            selectedOptionAlf = {selectedOptionAlf}
+            setSelectedOptionAlf ={ setSelectedOptionAlf}
+            selectedOptionPrice={selectedOptionPrice}
+            setSelectedOptionPrice={setSelectedOptionPrice}
+            selectedOptionBrand ={selectedOptionBrand}
+            setSelectedOptionBrand={setSelectedOptionBrand}
+            selectedOptionYear ={selectedOptionYear}
+            setSelectedOptionYear ={setSelectedOptionYear}
+            selectedOptionKm ={selectedOptionKm}
+            setSelectedOptionKm ={setSelectedOptionKm}
+            />
             <div>
                 <Search />
             </div>
-            <div className={style.cardconteiner}>
+            <div>
+            {loading ? <Loading/>: 
+            (<div className={style.cardconteiner}>
                 {currentCars.length ? (
                     currentCars.map((e) => {
                         return (
-                            <div>
+                            <div key={e.carId}>
                                 <Card
+                                    
                                     carId={e.carId || e.id}
                                     brand={e.brand}
                                     img={e.img}
@@ -73,14 +106,15 @@ export default function Cars() {
                     })
                 ) :
                     <div className={style.cardModal}>
-                        {handleAlert()}
+                       <h1>nada</h1>
 
 
 
                     </div>
                 }
+            </div>)}
             </div>
-            <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo} /></div>
+            <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div>
 
             <Footer />
         </>

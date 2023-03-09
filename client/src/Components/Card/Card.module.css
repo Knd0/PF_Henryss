@@ -114,6 +114,12 @@ hr {
     width: 7%;
     margin: 0px;
   }
+  .checkmarkNotRegistered {
+    top: 0;
+    left: 0;
+    height: 2em;
+    width: 2em;
+  }
   
   .checkmark {
     top: 0;

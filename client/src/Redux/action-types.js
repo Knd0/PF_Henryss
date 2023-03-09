@@ -1,5 +1,7 @@
 export const GET_CARS = 'GET_CARS';
 
+export const ADD_TO_PUBLICATIONS = 'ADD_TO_PUBLICATIONS';
+
 export const GET_CARS_DETAIL = 'GET_CARS_DETAIL';
 
 export const ORDER_CARS_ALF = 'ORDER_CARS_ALF';
