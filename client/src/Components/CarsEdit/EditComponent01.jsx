@@ -89,7 +89,6 @@ export function EditComponent01 (props) {
                         onChange={onInputChange}
                         name="year"
                         defaultValue={bla[0].year}
-                        onBlur={handleBlur}
                         />
 
                       </div>
@@ -118,7 +117,6 @@ export function EditComponent01 (props) {
                         onChange={onInputChange}
                         name="color"
                         defaultValue={bla[0].color}
-                        onBlur={handleBlur}
                         />
 
                       </div>
