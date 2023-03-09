@@ -73,7 +73,7 @@ export default function Cars() {
                     })
                 ) :
                     <div className={style.cardModal}>
-                        {handleAlert()}
+                       <h1>nada</h1>
 
 
 

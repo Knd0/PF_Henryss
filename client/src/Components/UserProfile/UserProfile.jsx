@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsersDetails, createUs } from "../../Redux/actions.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
@@ -12,12 +11,6 @@ import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/
 export default function UserProfile() {
   const { user } = useAuth0();
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.usersDetails);
-
-  useEffect(() => {
-    dispatch(getUsersDetails(user.email));
-    user && dispatch(createUs(user));
-  }, [dispatch, user]);
 
   return (
     <>
