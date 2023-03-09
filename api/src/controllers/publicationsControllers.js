@@ -16,6 +16,7 @@ const getPublications = async (userId) => {
     return await Promise.all(promises)
 }
 
+
 module.exports = {
     getPublications
 }
