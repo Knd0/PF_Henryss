@@ -12,7 +12,7 @@ import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
 import { useNavigate } from 'react-router-dom';
 import Filters from "../Filters/Filters";
-
+import Loading from "../Loading/Loading";
 
 
 
@@ -34,7 +34,7 @@ export default function Cars() {
     const [selectedOptionBrand, setSelectedOptionBrand] = useState("");
     const [selectedOptionYear, setSelectedOptionYear] = useState("");
     const [selectedOptionKm, setSelectedOptionKm] = useState("");
-    
+    const loading = useSelector((state)=> state.loading)
 
 
     const page = (pageNumber) => {
@@ -46,13 +46,13 @@ export default function Cars() {
         dispatch(getCars())
     }, [dispatch]);
 
-    useEffect(()=>{
-        if (currentPage !== 1){
-           setCurrentPage(1) 
-        }
+//     useEffect(()=>{
+//         if (currentPage !== 1){
+//            setCurrentPage(1) 
+//         }
         
-    },[currentPage, setCurrentPage, selectedOptionPrice, selectedOptionKm ,selectedOptionYear, selectedOptionBrand, selectedOptionAlf])
-console.log(selectedOptionPrice)
+//     },[currentPage, setCurrentPage, selectedOptionPrice, selectedOptionKm ,selectedOptionYear, selectedOptionBrand, selectedOptionAlf])
+// console.log(selectedOptionPrice)
 
     function handleAlert() {
 
@@ -67,7 +67,7 @@ console.log(selectedOptionPrice)
         })
     }
 
-
+console.log(currentPage,'holapapafrtita')
     return (
         <>
             <Navbar />
@@ -86,7 +86,9 @@ console.log(selectedOptionPrice)
             <div>
                 <Search />
             </div>
-            <div className={style.cardconteiner}>
+            <div>
+            {loading ? <Loading/>: 
+            (<div className={style.cardconteiner}>
                 {currentCars.length ? (
                     currentCars.map((e) => {
                         return (
@@ -111,8 +113,9 @@ console.log(selectedOptionPrice)
 
                     </div>
                 }
+            </div>)}
             </div>
-            <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo} /></div>
+            <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div>
 
             <Footer />
         </>

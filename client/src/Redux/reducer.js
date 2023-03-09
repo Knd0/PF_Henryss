@@ -39,17 +39,20 @@ function Reducer(state = initialState, action) {
         ...state,
         cars: action.payload,
         allcars: action.payload,
+        loading: false,
       };
     case GET_CAR_BY_NAME:
       return {
         ...state,
         cars: action.payload,
+        loading: false,
       };
 
     case GET_CAR_BY_BRAND:
       return {
         ...state,
         cars: action.payload,
+        loading: false,
       };
   
     case FILTER_BY_BRAND:
@@ -189,18 +192,12 @@ function Reducer(state = initialState, action) {
         cars: [...state.cars, action.payload],
       };
     case LOADING_ACTION: {
-      const loading = state.loading;
-      if (loading === true) {
-        return {
-          ...state,
-          loading: false,
-        };
-      } else {
+  
         return {
           ...state,
           loading: true,
         };
-      }
+      
     }
     case ALL_USERS:
       return {

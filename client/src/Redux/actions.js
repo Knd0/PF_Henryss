@@ -28,6 +28,7 @@ import axios from "axios";
 
 export function getCars() {
   return function (dispatch) {
+    dispatch({type: LOADING_ACTION })
     axios
       .get(`/cars`)
       .then((response) => response.data)
@@ -42,6 +43,7 @@ export function getCars() {
 
 export function getCarsDetail(carId) {
   return async function (dispatch) {
+    dispatch({type: LOADING_ACTION })
     try {
       var json = await axios.get(
         "/cars/" + carId
@@ -110,6 +112,7 @@ export function filterByBrand(payload) {
 
 export function getCarByName(model) {
   return async function (dispatch) {
+    dispatch({type: LOADING_ACTION })
     await axios
       .get(`/cars?model=${model}`)
       .then((response) =>
@@ -120,6 +123,7 @@ export function getCarByName(model) {
 
 export function getCarByBrand(brand) {
   return async function (dispatch) {
+    dispatch({type: LOADING_ACTION })
     await axios
       .get(`/cars?brand=${brand}`)
       .then((response) =>
