@@ -1,5 +1,5 @@
 const data = require('../../cards.json');
-const { Car, Brand } = require('../db')
+const { Car, Brand, User } = require('../db')
 const { deleteImage } = require('../utils/cloudinary')
 
 const getDbCars = async () => {
@@ -45,20 +45,33 @@ const getCarDetail = async (id) => {
     const filteredCars = data.filter((car) => car.id == id||car.carId==id );
     return filteredCars;
 }
-
-const createCar = async ({ brand, model, year, price, img, ...restOfcar }) => {
-        if (!brand || !model || !year || !price ) return ('Missing info');
-        const existsCar = await Car.findOne({
-            where: { model }
+const createCar = async ({ brand, model, year, price, img, ...restOfcar }, userId) => {
+    if (!brand || !model || !year || !price ) return ('Missing info');
+    const existsCar = await Car.findOne({
+        where: { model }
+    });
+    if (existsCar) throw new Error('Existing car');
+    const carCreate =  await Car.create({ brand, model, year, price, img, ...restOfcar});
+    let searchUser = await User.findOne({
+        where: { userId: userId }
+    });
+    if (searchUser) {
+        // if (!searchUser.publications) {
+        //     searchUser.publications = [];
+        // }
+        searchUser.publications.push(carCreate.carId);
+        await User.update({ publications: searchUser.publications }, {
+            where: { userId: userId }
         });
-        if (existsCar) throw new Error('Existing car');
-        const carCreate =  await Car.create({ brand, model, year, price, img, ...restOfcar});
-        const brandDB =  await Brand.findOne({
-            where: { brand }
-        });
-        await carCreate.addBrand(brandDB);
-        return carCreate;
+    }
+    const brandDB =  await Brand.findOne({
+        where: { brand }
+    });
+    await carCreate.addBrand(brandDB);
+    return carCreate;
 }
+
+
 
 const deleteCarById = async(id) => {
         const car = await Car.findByPk(id);
