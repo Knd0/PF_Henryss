@@ -20,7 +20,8 @@ import {
   ALL_USERS,
   CREATE_USER,
   GET_USER_PROFILE,
-  GET_CAR_FAVORITES
+  GET_CAR_FAVORITES,
+  ADD_TO_PUBLICATIONS
 } from "./action-types";
 import axios from "axios";
 
@@ -274,4 +275,11 @@ export function getUsersDetails(email) {
       payload: json.data,
     });
   };
+}
+
+export function addToPublications(id){
+  return{
+    type:ADD_TO_PUBLICATIONS,
+    payload:id
+  }
 }
