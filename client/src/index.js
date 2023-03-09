@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import * as ReactDOMClient from 'react-dom/client';
 import "./index.css";
 import App from "../src/App";
 import reportWebVitals from "./reportWebVitals";
@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { persistor, store } from "../src/Redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOMClient.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
