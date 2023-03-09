@@ -41,7 +41,7 @@ export default function MyFavorites() {
         <Navbar />
          <h1>My Favorites</h1>
         <div className={style.cardconteinerFavorite}>
-        {favorites.length ? (
+        {favorites ? (
           favorites.map((e) => {
             return (
               <div>
