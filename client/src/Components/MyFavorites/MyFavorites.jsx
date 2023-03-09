@@ -23,7 +23,7 @@ export default function MyFavorites() {
     const cars = useSelector((state) => state.allcars);
     const loading = useSelector((state) => state.loading);
     const [input, setInput] = useState("");
-    const maximo = favorites.length/carsPerPage
+
 
     console.log(favorites)
 
