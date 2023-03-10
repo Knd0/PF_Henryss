@@ -100,6 +100,7 @@ export default function Cars() {
                                     kilometers={e.kilometers}
                                     price={e.price}
                                 />
+                                {console.log(e.img.secure_url)}
                             </div>
                         );
                     })
