@@ -94,7 +94,7 @@ export default function Cars() {
                                     
                                     carId={e.carId || e.id}
                                     brand={e.brand}
-                                    // img={e.img.secure_url}
+                                    img={e.img.secure_url}
                                     model={e.model}
                                     year={e.year}
                                     kilometers={e.kilometers}
