@@ -12,6 +12,7 @@ import CarsCreate from "./Components/CarFormPage/CarsCreate";
 import CarsEdit from "./Components/CarsEdit/CarsEdit"
 import UserProfile from "./Components/UserProfile/UserProfile";
 import axios from "axios";
+import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
 axios.defaults.baseURL = 'https://pfhenryss-production.up.railway.app/'
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
           <Route path="/cars/:id" element={<CarsDetails />} />
            <Route path="/carsedit/:id" element={<CarsEdit />} /> 
           <Route path="/mypublications" element={<MyPublications />} />
-          <Route path="/myfavorites" element={<MyFavorites />} />
+          <Route path="/myfavorites" element={<ProtectedRoute component={MyFavorites}/>} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/user" element={<UserProfile />} />

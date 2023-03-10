@@ -185,7 +185,7 @@ export function updateCar(carId, payload) {
 export function addFavorite(userId, carId) {
   return async function (dispatch) {
     try {
-      await axios.post(`/user`, { userId, carId }); // Se corrige el segundo argumento
+      await axios.post(`/favorites/${userId}/${carId}`, { userId, carId }); // Se corrige el segundo argumento
       dispatch({
         type: ADD_FAVORITE,
         payload: {
@@ -216,7 +216,7 @@ export const getFavorites = () => {
 export function removeFavorite(userId, carId) {
   return async function (dispatch) {
     try {
-      await axios.delete(`/favorites/${userId}`, { data: { carId } });
+      await axios.delete(`/favorites/${userId}/${carId}`, { userId, carId });
       dispatch({
         type: REMOVE_FAVORITE,
         payload: {
