@@ -22,6 +22,7 @@ import {
   GET_USER_PROFILE,
   GET_CAR_FAVORITES,
   ADD_TO_PUBLICATIONS,
+  FILTER_BY_YEAR_AND_BRAND
 } from "./action-types";
 import axios from "axios";
 
@@ -90,19 +91,15 @@ export function orderByPrice(payload) {
   };
 }
 
-export function filterByYear(payload) {
-  return {
-    type: FILTER_BY_YEAR,
-    payload,
-  };
+
+export function filterByYearAndBrand(year, brand){
+  return{
+    type: FILTER_BY_YEAR_AND_BRAND,
+    year,
+    brand,
+  }
 }
 
-export function filterByBrand(payload) {
-  return {
-    type: FILTER_BY_BRAND,
-    payload,
-  };
-}
 
 export function getCarByName(model) {
   return async function (dispatch) {
