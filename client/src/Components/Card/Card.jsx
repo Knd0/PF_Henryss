@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-import React  from "react";
-import styles from "../Card/Card.module.css";
-import { Link } from "react-router-dom";
-import { addFavorite, removeFavorite, addToPublications } from "../../Redux/actions";
-import { useDispatch} from "react-redux";
-=======
+
 import React, { useEffect, useState } from "react";
 import styles from "../Card/Card.module.css";
 import { Link } from "react-router-dom";
 import { addFavorite, removeFavorite, addToPublications, getUsersDetails } from "../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
->>>>>>> 7b0a70a779a85950de86bf9771975a026c253bd2
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 
@@ -28,14 +21,6 @@ export default function Card({
   const favotites =useSelector((state)=>state.favotites)
   console.log("ESTO ES FAVORITES==================>",favotites) */
   const dispatch = useDispatch();
-<<<<<<< HEAD
-  function handleChange(e) {
-    e.preventDefault();
-    dispatch(addFavorite(carId));
-  }
-
-=======
->>>>>>> 7b0a70a779a85950de86bf9771975a026c253bd2
   function handleDeleteFavorite(e, carId) {
     e.preventDefault();
     dispatch(removeFavorite(carId));
@@ -50,11 +35,6 @@ export default function Card({
       button: "Ok"
     })
   }
-<<<<<<< HEAD
-
-
-
-=======
   const [checkbox, setCheckbox] = useState({id:carId, checked:false})
   const usersDetails = useSelector((state) => state.usersDetails)
   const handleChange = (e) => {
@@ -75,7 +55,6 @@ export default function Card({
   }
   
   
->>>>>>> 7b0a70a779a85950de86bf9771975a026c253bd2
   return (
     <div className={styles.cardConteiner}>
       <div className={styles.elementsContainerCard}>
