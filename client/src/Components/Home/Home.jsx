@@ -11,6 +11,7 @@ import { getCars, createUs } from "../../Redux/actions";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { all } from "axios";
 
 
 
@@ -49,27 +50,13 @@ export default function Home() {
         <Slider images={images}></Slider>
       </div>
       <div className="w-full max-sm:flex max-sm:content-center max-sm:flex-col max-sm:content-center sm:grid sm:grid-cols-4 lg:flex lg:justify-arround max-w-screen-lg md:mx-auto mt-10">
-        {/* {
-
-          allCars.slice(0, 3).map(e =>
-            <Card
-              carId={e.carId || e.id}
-              brand={e.brand}
-              img={e.img}
-              model={e.model}
-              year={e.year}
-              kilometers={e.kilometers}
-              price={e.price}
-            />
-          )
-        } */}
         <div className={style.homeFlexCardContainer}>
 
         <div className={style.hideButton}>
           <Card
             carId={allCars[0].carId || allCars[0].id}
             brand={allCars[0].brand}
-            img={allCars[0].img}
+            img={allCars[0].img.secure_url}
             model={allCars[0].model}
             year={allCars[0].year}
             kilometers={allCars[0].kilometers}
@@ -81,7 +68,7 @@ export default function Home() {
           <Card
             carId={allCars[1].carId || allCars[1].id}
             brand={allCars[1].brand}
-            img={allCars[1].img}
+            img={allCars[1].img.secure_url}
             model={allCars[1].model}
             year={allCars[1].year}
             kilometers={allCars[1].kilometers}
@@ -95,7 +82,7 @@ export default function Home() {
           <Card
             carId={allCars[2].carId || allCars[2].id}
             brand={allCars[2].brand}
-            img={allCars[2].img}
+            img={allCars[2].img.secure_url}
             model={allCars[2].model}
             year={allCars[2].year}
             kilometers={allCars[2].kilometers}
