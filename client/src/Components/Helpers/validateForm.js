@@ -102,6 +102,9 @@ const validateForm = ({
 
     else if (!onlyphone.test(phone) || phone.length < 7 || phone.length > 16)
       errors.phone = "Only + and numbers, 7-16 characters";
+
+      else if (!img)
+      errors.img = "Only + and numbers, 7-16 characters";
   
     
     else if (
