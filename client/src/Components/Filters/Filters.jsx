@@ -6,7 +6,7 @@ import style from '../Filters/Filters.module.css'
 
 export default function Filters(props) {
     
-    const [filterBrand, setFilterBrand] = useState("");
+const [filterBrand, setFilterBrand] = useState("");
 const [filterYear, setFilterYear] = useState("");
     const dispatch = useDispatch();
     // const [order, setOrder] = useState("");
@@ -51,23 +51,17 @@ const [filterYear, setFilterYear] = useState("");
     //     // setCurrentPage(1);
     // }
 
-   
-    // function handlefilterByYearAndBrand (brand, year){
-    //     const selectedBrand = brand.target.value;
-    //     const selectedYear = year.target.value;
-    //     props.setSelectedOptionBrand(selectedBrand);
-    //     props.setSelectedOptionYear(selectedYear);
-    //     dispatch(filterByYearAndBrand(selectedYear, selectedBrand));
-    //     setFilterBrand(selectedBrand);
-    //     setFilterYear(selectedYear);
-    // }
+  
     function handlefilterByYearAndBrand(e){
     if (e.target.name === "brand") {
-        props.setSelectedOptionBrand(e.target.value);
+        setFilterBrand(e.target.value);
       } else {
-        props.setSelectedOptionYear(e.target.value);
+       setFilterYear(e.target.value);
       }
-      dispatch(filterByYearAndBrand(props.selectedOptionBrand, props.selectedOptionYear));
+      dispatch(filterByYearAndBrand(
+        e.target.name === 'year' ? e.target.value : filterYear,
+        e.target.name === 'brand' ? e.target.value : filterBrand,
+        ))
     }
 
     // function handleSortAlf(e) {
@@ -133,7 +127,7 @@ const [filterYear, setFilterYear] = useState("");
             </div>
             <div>
                 Filter by year:
-                <select className={style.select} value={ props.selectedOptionYear} onChange={e => handlefilterByYearAndBrand(e)}>
+                <select className={style.select} name='year' value={ filterYear} onChange={e => handlefilterByYearAndBrand(e)}>
                     <option value="" disabled>--select--</option>
                     <option value="All">All</option>
                      {arr?.map((a)=>{
@@ -147,7 +141,7 @@ const [filterYear, setFilterYear] = useState("");
             </div>
             <div>
                 Filter by brand:
-                <select className={style.select} value={ props.selectedOptionBrand} onChange={e => handlefilterByYearAndBrand(e)}>
+                <select className={style.select} name='brand' value={ filterBrand} onChange={e => handlefilterByYearAndBrand(e)}>
                     <option value="" disabled>--select--</option>
                     <option value="All">All</option>
                     <option value="Audi">Audi</option>

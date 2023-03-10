@@ -49,68 +49,24 @@ function Reducer(state = initialState, action) {
         loading: false,
       };
 
-    // case GET_CAR_BY_BRAND:
-    //   return {
-    //     ...state,
-    //     cars: action.payload,
-    //     loading: false,
-    //   };
-  
-    // case FILTER_BY_BRAND:
-    //   let allcars = [...state.allcars];
-    //   let carfilter1 =
-    //     action.payload === "All"
-    //       ? allcars
-    //       : allcars.filter((e) => e.brand === action.payload);
-    //   return {
-    //     ...state,
-    //     cars: carfilter1,
-    //   };
-    // case FILTER_BY_YEAR:
-    
-    //   let allcars1 = [...state.allcars];
-    //   let carfilter2 =action.payload=="All"? allcars1:
-    //   allcars1.filter((e) => e.year === parseInt(action.payload));
-    //   return {
-    //     ...state,
-    //     cars: carfilter2,
-    //   };
-    // case FILTER_BY_YEAR_AND_BRAND:
-    //   let allcars = [...state.allcars];
-    //   let carfilter = allcars;
-    
-    //   if (action.payload.brand !== "All") {
-    //     carfilter = carfilter.filter((e) => e.brand === action.payload.brand);
-    //   }
-    
-    //   if (action.payload.year !== "All") {
-    //     carfilter = carfilter.filter((e) => e.year === parseInt(action.payload.year));
-    //   }
-    
-    //   return {
-    //     ...state,
-    //     cars: carfilter,
-    //   };
+   
     case FILTER_BY_YEAR_AND_BRAND:
-    const { brand, year } = action.payload;
-    let allCars = [...state.allCars];
+  let allcars = [...state.allcars];
+  let carfilter = allcars;
+  console.log(action)
+  if (action.brand !== "" && action.brand !== "All") {
+    carfilter = carfilter.filter((e) => e.brand === action.brand);
+  }
   
-    let carFilter = allCars.filter((car) => {
-      if (brand === "All" && year === "All") {
-        return true;
-      } else if (brand === "All" && year !== "All") {
-        return car.year === parseInt(year);
-      } else if (brand !== "All" && year === "All") {
-        return car.brand === brand;
-      } else {
-        return car.brand === brand && car.year === parseInt(year);
-      }
-    });
+  if (action.year !== "" && action.year !== "All") {
+    carfilter = carfilter.filter((e) => e.year === parseInt(action.year));
+  }
   
-    return {
-      ...state,
-      cars: carFilter,
-    };
+  return {
+    ...state,
+    cars: carfilter,
+  };
+    
       
 
     case ORDER_CARS_ALF:

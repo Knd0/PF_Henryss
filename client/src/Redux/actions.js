@@ -91,53 +91,14 @@ export function orderByPrice(payload) {
   };
 }
 
-// export function filterByYear(payload) {
-//   return {
-//     type: FILTER_BY_YEAR,
-//     payload,
-//   };
-// }
 
-// export function filterByBrand(payload) {
-//   return {
-//     type: FILTER_BY_BRAND,
-//     payload,
-//   };
-// }
-// export function filterByYear(year) {
-//   return {
-//     type: FILTER_BY_YEAR,
-//     payload: year
-//   };
-// }
-
-// export function filterByBrand(brand) {
-//   return {
-//     type: FILTER_BY_BRAND,
-//     payload: brand
-//   };
-// }
-
-// export function filterByYearAndBrand(yearFilter, brandFilter){
-//   return{
-//     type: FILTER_BY_YEAR_AND_BRAND,
-//     yearFilter,
-//     brandFilter,
-//   }
-// }
-export const filterByYearAndBrand = (brand, year) => (dispatch, getState) => {
-  let allCars = [...getState().cars.allCars];
-  let filteredCars =
-    brand === "All"
-      ? allCars.filter((e) => e.year === parseInt(year))
-      : allCars.filter(
-          (e) => e.brand === brand && e.year === parseInt(year)
-        );
-  dispatch({
+export function filterByYearAndBrand(year, brand){
+  return{
     type: FILTER_BY_YEAR_AND_BRAND,
-    payload: filteredCars,
-  });
-};
+    year,
+    brand,
+  }
+}
 
 
 export function getCarByName(model) {
