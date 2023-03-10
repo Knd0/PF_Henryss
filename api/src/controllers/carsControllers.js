@@ -73,25 +73,41 @@ const createCar = async ({ brand, model, year, price, img, ...restOfcar }, userI
 
 
 
-const deleteCarById = async(id) => {
+const deleteCarById = async(userId, id) => {
         const car = await Car.findByPk(id);
+        let searchUser = await User.findOne({
+            where: { userId: userId }
+        });
+        if(searchUser){
+            if(searchUser.publications.indexOf(id) === -1) return ('you can not delete this car')
+            else {
+                searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
+            }
+        }
         if (!car) return ('Car not found');
-        else {
-            if(car.img.public_id){
+        if(car.img.public_id) {
             const deleteImg = await deleteImage(car.img.public_id)
             }
+
             await car.destroy();
             return 'Car successful delete';
         }
-}
 
 
-const editCar = async (id, carUpdates) => {
+const editCar = async (userId, id, carUpdates) => {
         if (!id) return ('Id not provided');
         const car = await Car.findByPk(id);
         if (!car) return ('Car not found');
-        await car.update({...carUpdates});
+        let searchUser = await User.findOne({
+            where: { userId: userId }
+        });
+        if(searchUser){
+            if(searchUser.publications.indexOf(id) === -1) return ('you can not edit this car')
+            else {
+                await car.update({...carUpdates});
         return 'The car was updated';
+            }
+        }
 }
 
 
