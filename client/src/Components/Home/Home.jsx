@@ -7,7 +7,7 @@ import Slider from "../Slider/Slider";
 import PRUEBA from "./Img/PRUEBA.jpg"
 import PRUEBA2 from "./Img/PRUEBA2.jpg"
 import PRUEBA3 from "./Img/PRUEBA3.jpg"
-import { getCars, createUs } from "../../Redux/actions";
+import { getCars, createUs, cleanState } from "../../Redux/actions";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -34,6 +34,7 @@ export default function Home() {
   }, [dispatch, user]);
 
   useEffect(() => {
+    dispatch(cleanState())
     dispatch(getCars());
   }, [])
 
