@@ -7,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 
 export default function Card({
-  // img,
+  img,
   brand,
   model,
   year,
@@ -89,8 +89,8 @@ export default function Card({
         }
         <Link to={`/cars/${carId}`}>
           {" "}
-          {/* <img className="p-15 rounded-t-lg" loading="lazy" src={img} alt="img" />
-          {console.log(img)} */}
+          <img className="p-15 rounded-t-lg" src={img} alt="img" />
+          {console.log(img)}
         </Link>
         <hr />
         <h5 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
