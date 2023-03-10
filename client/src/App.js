@@ -9,11 +9,10 @@ import MyFavorites from "./Components/MyFavorites/MyFavorites";
 import AboutUs from "./Components/AboutUs/Aboutus";
 import Page404 from "./Components/Page404/Page404";
 import CarsCreate from "./Components/CarFormPage/CarsCreate";
-import CarsEdit from "./Components/CarsEdit/CarsEdit"
 import UserProfile from "./Components/UserProfile/UserProfile";
 import axios from "axios";
-import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
-axios.defaults.baseURL = 'https://pfhenryss-production.up.railway.app'
+axios.defaults.baseURL = 'https://pfhenryss-production.up.railway.app/'
+// axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
 
 function App() {
   return (
@@ -24,9 +23,9 @@ function App() {
           <Route path="/cars" element={<Cars />} />
           <Route path="/carscreate" element={<CarsCreate />} />
           <Route path="/cars/:id" element={<CarsDetails />} />
-           <Route path="/carsedit/:id" element={<CarsEdit />} /> 
+          {/* <Route path="/carsedit" element={<CarsEdit />} /> */}
           <Route path="/mypublications" element={<MyPublications />} />
-          <Route path="/myfavorites" element={<ProtectedRoute component={MyFavorites}/>} />
+          <Route path="/myfavorites" element={<MyFavorites />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/user" element={<UserProfile />} />

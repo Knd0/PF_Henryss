@@ -42,6 +42,7 @@ export default function Cars() {
     }
 
     useEffect(() => {
+        dispatch(cleanState())
         dispatch(getCars())
     }, [dispatch]);
 
@@ -91,7 +92,6 @@ export default function Cars() {
                         return (
                             <div key={e.carId}>
                                 <Card
-                                    
                                     carId={e.carId || e.id}
                                     brand={e.brand}
                                     img={e.img.secure_url}

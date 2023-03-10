@@ -21,7 +21,7 @@ const getApiCars = () => {
 }
 
 const getAllCars = async () => {
-        const apiData = await getApiCars();
+        const apiData =  getApiCars();
         const DbData = await getDbCars();
         const response = [...DbData,...apiData ];
         return response;

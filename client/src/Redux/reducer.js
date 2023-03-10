@@ -18,7 +18,8 @@ import {
   CREATE_USER,
   ADD_FAVORITE,
   REMOVE_FAVORITE,
-  ADD_TO_PUBLICATIONS
+  ADD_TO_PUBLICATIONS,
+  FILTER_BY_YEAR_AND_BRAND
 } from "./action-types";
 
 const initialState = {
@@ -48,32 +49,26 @@ function Reducer(state = initialState, action) {
         loading: false,
       };
 
-    case GET_CAR_BY_BRAND:
-      return {
-        ...state,
-        cars: action.payload,
-        loading: false,
-      };
+   
+    case FILTER_BY_YEAR_AND_BRAND:
+  let allcars = [...state.allcars];
+  let carfilter = allcars;
+  console.log(action)
+  if (action.brand !== "" && action.brand !== "All") {
+    carfilter = carfilter.filter((e) => e.brand === action.brand);
+  }
   
-    case FILTER_BY_BRAND:
-      let allcars = [...state.allcars];
-      let carfilter1 =
-        action.payload === "All"
-          ? allcars
-          : allcars.filter((e) => e.brand === action.payload);
-      return {
-        ...state,
-        cars: carfilter1,
-      };
-    case FILTER_BY_YEAR:
+  if (action.year !== "" && action.year !== "All") {
+    carfilter = carfilter.filter((e) => e.year === parseInt(action.year));
+  }
+  
+  return {
+    ...state,
+    cars: carfilter,
+  };
     
-      let allcars1 = [...state.allcars];
-      let carfilter2 =action.payload=="All"? allcars1:
-      allcars1.filter((e) => e.year === parseInt(action.payload));
-      return {
-        ...state,
-        cars: carfilter2,
-      };
+      
+
     case ORDER_CARS_ALF:
       let sortedcars = [...state.cars];
       sortedcars =
