@@ -13,7 +13,7 @@ import CarsEdit from "./Components/CarsEdit/CarsEdit"
 import UserProfile from "./Components/UserProfile/UserProfile";
 import axios from "axios";
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
-axios.defaults.baseURL = 'http://localhost:3001/'
+axios.defaults.baseURL = 'https://pfhenryss-production.up.railway.app'
 
 function App() {
   return (
