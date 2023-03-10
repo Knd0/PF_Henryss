@@ -27,7 +27,6 @@ export default function MyFavorites() {
   const loading = useSelector((state) => state.loading);
   const [input, setInput] = useState("");
   const maximo = favorites.length / carsPerPage
-  const { isAuthenticated } = useAuth0()
 
   console.log(favorites)
 
@@ -45,7 +44,7 @@ export default function MyFavorites() {
       <div className={style.cardconteinerFavorite}>
 
         {
-          isAuthenticated ? favorites.length ?
+           favorites.length ?
             favorites.map((e) => {
               return (
                 <div>
@@ -64,32 +63,8 @@ export default function MyFavorites() {
               <div className={style.cardModal}>
                 <h3>Nothing to show 🤔</h3>
               </div>
-            ) :
-            <>
-              <h2>This site is exclusively for registered users.</h2>
-            </>
+            ) 
         }
-        {/* {favorites.length ? (
-          favorites.map((e) => {
-            return (
-              <div>
-                <Card
-                  carId={e.carId || e.id}
-                  brand={e.brand}
-                  img={e.img}
-                  model={e.model}
-                  year={e.year}
-                  kilometers={e.kilometers}
-                  price={e.price}
-                />
-              </div>
-            );
-          })
-        ) : (
-          <div className={style.cardModal}>
-              <h3>Nothing to show 🤔</h3>
-          </div>
-        )} */}
       </div>
       <div></div>
       {/*    <div><Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo}/></div>  */}
