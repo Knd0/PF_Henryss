@@ -21,7 +21,7 @@ const getApiCars = () => {
 }
 
 const getAllCars = async () => {
-        const apiData = getApiCars();
+        const apiData = await getApiCars();
         const DbData = await getDbCars();
         const response = [...DbData,...apiData ];
         return response;
@@ -56,9 +56,6 @@ const createCar = async ({ brand, model, year, price, img, ...restOfcar }, userI
         where: { userId: userId }
     });
     if (searchUser) {
-        // if (!searchUser.publications) {
-        //     searchUser.publications = [];
-        // }
         searchUser.publications.push(carCreate.carId);
         await User.update({ publications: searchUser.publications }, {
             where: { userId: userId }
