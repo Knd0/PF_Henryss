@@ -41,6 +41,7 @@ Car.belongsToMany(Brand, { through: "car_brand" });
 Brand.belongsToMany(Car, { through: "car_brand" });
 User.belongsToMany(Car, { through: "user_car" });
 
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
