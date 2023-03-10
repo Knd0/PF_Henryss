@@ -21,7 +21,8 @@ import {
   CREATE_USER,
   GET_USER_PROFILE,
   GET_CAR_FAVORITES,
-  ADD_TO_PUBLICATIONS
+  ADD_TO_PUBLICATIONS,
+  FILTER_BY_YEAR_AND_BRAND
 } from "./action-types";
 import axios from "axios";
 
@@ -96,19 +97,54 @@ export function orderByPrice(payload) {
   };
 }
 
-export function filterByYear(payload) {
-  return {
-    type: FILTER_BY_YEAR,
-    payload,
-  };
-}
+// export function filterByYear(payload) {
+//   return {
+//     type: FILTER_BY_YEAR,
+//     payload,
+//   };
+// }
 
-export function filterByBrand(payload) {
-  return {
-    type: FILTER_BY_BRAND,
-    payload,
-  };
-}
+// export function filterByBrand(payload) {
+//   return {
+//     type: FILTER_BY_BRAND,
+//     payload,
+//   };
+// }
+// export function filterByYear(year) {
+//   return {
+//     type: FILTER_BY_YEAR,
+//     payload: year
+//   };
+// }
+
+// export function filterByBrand(brand) {
+//   return {
+//     type: FILTER_BY_BRAND,
+//     payload: brand
+//   };
+// }
+
+// export function filterByYearAndBrand(yearFilter, brandFilter){
+//   return{
+//     type: FILTER_BY_YEAR_AND_BRAND,
+//     yearFilter,
+//     brandFilter,
+//   }
+// }
+export const filterByYearAndBrand = (brand, year) => (dispatch, getState) => {
+  let allCars = [...getState().cars.allCars];
+  let filteredCars =
+    brand === "All"
+      ? allCars.filter((e) => e.year === parseInt(year))
+      : allCars.filter(
+          (e) => e.brand === brand && e.year === parseInt(year)
+        );
+  dispatch({
+    type: FILTER_BY_YEAR_AND_BRAND,
+    payload: filteredCars,
+  });
+};
+
 
 export function getCarByName(model) {
   return async function (dispatch) {

@@ -1,9 +1,13 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCars, filterByBrand, filterByYear, orderByAlf, orderByKM, orderByPrice, cleanState } from "../../Redux/actions";
+import { getCars, orderByAlf, orderByKM, orderByPrice, cleanState, filterByYearAndBrand } from "../../Redux/actions";
 import style from '../Filters/Filters.module.css'
 
+
 export default function Filters(props) {
+    
+    const [filterBrand, setFilterBrand] = useState("");
+const [filterYear, setFilterYear] = useState("");
     const dispatch = useDispatch();
     // const [order, setOrder] = useState("");
     const cars =useSelector((state)=>state.allcars)
@@ -34,19 +38,38 @@ export default function Filters(props) {
         props.setSelectedOptionKm("")
 
     }
-    function handleFilteredBrand(e) {
-        props.setSelectedOptionBrand(e.target.value);
-        dispatch(filterByBrand(e.target.value));
-        // setOrder(`Order ${e.target.value}`)
-        // setCurrentPage(1);
-    }
+    // function handleFilteredBrand(e) {
+    //     props.setSelectedOptionBrand(e.target.value);
+    //     dispatch(filterByBrand(e.target.value));
+    //     // setOrder(`Order ${e.target.value}`)
+    //     // setCurrentPage(1);
+    // }
 
-    function handleFilteredYear(e) {
+    // function handleFilteredYear(e) {
+    //     props.setSelectedOptionYear(e.target.value);
+    //     e.preventDefault()
+    //     dispatch(filterByYear(e.target.value));
+    //     // setOrder(`Order ${e.target.value}`)
+    //     // setCurrentPage(1);
+    // }
+
+   
+    // function handlefilterByYearAndBrand (brand, year){
+    //     const selectedBrand = brand.target.value;
+    //     const selectedYear = year.target.value;
+    //     props.setSelectedOptionBrand(selectedBrand);
+    //     props.setSelectedOptionYear(selectedYear);
+    //     dispatch(filterByYearAndBrand(selectedYear, selectedBrand));
+    //     setFilterBrand(selectedBrand);
+    //     setFilterYear(selectedYear);
+    // }
+    function handlefilterByYearAndBrand(e){
+    if (e.target.name === "brand") {
+        props.setSelectedOptionBrand(e.target.value);
+      } else {
         props.setSelectedOptionYear(e.target.value);
-        e.preventDefault()
-        dispatch(filterByYear(e.target.value));
-        // setOrder(`Order ${e.target.value}`)
-        // setCurrentPage(1);
+      }
+      dispatch(filterByYearAndBrand(props.selectedOptionBrand, props.selectedOptionYear));
     }
 
     // function handleSortAlf(e) {
@@ -112,7 +135,7 @@ export default function Filters(props) {
             </div>
             <div>
                 Filter by year:
-                <select className={style.select} value={ props.selectedOptionYear} onChange={e => handleFilteredYear(e)}>
+                <select className={style.select} value={ props.selectedOptionYear} onChange={e => handlefilterByYearAndBrand(e)}>
                     <option value="" disabled>--select--</option>
                     <option value="All">All</option>
                      {arr?.map((a)=>{
@@ -126,7 +149,7 @@ export default function Filters(props) {
             </div>
             <div>
                 Filter by brand:
-                <select className={style.select} value={ props.selectedOptionBrand} onChange={e => handleFilteredBrand(e)}>
+                <select className={style.select} value={ props.selectedOptionBrand} onChange={e => handlefilterByYearAndBrand(e)}>
                     <option value="" disabled>--select--</option>
                     <option value="All">All</option>
                     <option value="Audi">Audi</option>
