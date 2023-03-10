@@ -42,7 +42,6 @@ export default function Cars() {
     }
 
     useEffect(() => {
-        dispatch(cleanState());
         dispatch(getCars())
     }, [dispatch]);
 
@@ -95,7 +94,7 @@ export default function Cars() {
                                     
                                     carId={e.carId || e.id}
                                     brand={e.brand}
-                                    img={e.img}
+                                    img={e.img.secure_url}
                                     model={e.model}
                                     year={e.year}
                                     kilometers={e.kilometers}
