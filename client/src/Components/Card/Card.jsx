@@ -89,7 +89,8 @@ export default function Card({
         }
         <Link to={`/cars/${carId}`}>
           {" "}
-          <img className="p-15 rounded-t-lg" src={img.secure_url} alt="" />
+          <img className="p-15 rounded-t-lg" src={img} alt="img" />
+          
         </Link>
         <hr />
         <h5 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">

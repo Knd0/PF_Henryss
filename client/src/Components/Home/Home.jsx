@@ -11,6 +11,7 @@ import { getCars, createUs } from "../../Redux/actions";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { all } from "axios";
 
 
 
@@ -49,20 +50,6 @@ export default function Home() {
         <Slider images={images}></Slider>
       </div>
       <div className="w-full max-sm:flex max-sm:content-center max-sm:flex-col max-sm:content-center sm:grid sm:grid-cols-4 lg:flex lg:justify-arround max-w-screen-lg md:mx-auto mt-10">
-        {/* {
-
-          allCars.slice(0, 3).map(e =>
-            <Card
-              carId={e.carId || e.id}
-              brand={e.brand}
-              img={e.img}
-              model={e.model}
-              year={e.year}
-              kilometers={e.kilometers}
-              price={e.price}
-            />
-          )
-        } */}
         <div className={style.homeFlexCardContainer}>
 
         <div className={style.hideButton}>
