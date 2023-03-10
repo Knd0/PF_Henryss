@@ -42,6 +42,7 @@ export default function Cars() {
     }
 
     useEffect(() => {
+        dispatch(cleanState())
         dispatch(getCars())
     }, [dispatch]);
 
