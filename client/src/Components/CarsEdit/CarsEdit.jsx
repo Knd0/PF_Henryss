@@ -27,14 +27,22 @@ export default function CarsEdit() {
   const [showSixComponent, setShowSixComponent] = useState(false);
   let id = useParams()
   let value = id["id"]; // Sintaxis de corchetes
-  const cars= useSelector((state)=>state.cars)
+  const cars= useSelector((state)=>state.publications)
+  console.log(cars)
+  var contenido = document.querySelectorAll("input");
+  console.log("ESTO ES CONTENIDO ======================>>>>",contenido)
+ var res =  contenido.forEach(c=>c[0])
+ console.log("ESTO ES RES ======================>>>>",res)
+
 
 
   let bla = cars.filter(c => {
-    return c.carId.toString() === value.toString();
+      if( c.carId.toString() === value.toString()){
+        return c
+      }
   });
 
-  console.log("ESTO ES BLA======================>>>>",bla)
+  console.log("ESTO ES BLA EN CARS EDIT ======================>>>>",bla)
 
 
   const handleBackComponent02 = () => {

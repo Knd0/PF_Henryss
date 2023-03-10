@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import styles from "../Card/Card.module.css";
 import { Link } from "react-router-dom";
 import { addFavorite, removeFavorite, addToPublications } from "../../Redux/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 
@@ -15,11 +15,16 @@ export default function Card({
   carId,
   kilometers,
 }) {
+
+ /*  const[isFav,setIsFav]=useState(false)
+  const favotites =useSelector((state)=>state.favotites)
+  console.log("ESTO ES FAVORITES==================>",favotites) */
   const dispatch = useDispatch();
   function handleChange(e) {
     e.preventDefault();
     dispatch(addFavorite(carId));
   }
+
   function handleDeleteFavorite(e, carId) {
     e.preventDefault();
     dispatch(removeFavorite(carId));
@@ -33,6 +38,7 @@ export default function Card({
       button: "Ok"
     })
   }
+
 
 
   return (
@@ -49,7 +55,7 @@ export default function Card({
                     d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
                     stroke-width="20px"
                     stroke="#000"
-                    fill="white"
+                    fill ="white"
                   ></path>
                 </svg>
               </div>
