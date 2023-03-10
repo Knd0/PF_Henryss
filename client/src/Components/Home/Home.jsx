@@ -19,7 +19,7 @@ import { all } from "axios";
 export default function Home() {
   const { user } = useAuth0();
   const dispatch = useDispatch()
-  const allCars = useSelector((state) => state.allcars)
+  const allCars = useSelector((state) => state.cars)
   useEffect(() => {
     if (user) {
       const payload = {
