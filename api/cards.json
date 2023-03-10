@@ -1,6 +1,6 @@
 {
 	"cars": [{
-			"carId": 1,
+			
 			"brand": "Honda",
 			"model": "Civic",
 			"year": 2022,
@@ -23,7 +23,7 @@
 			"description":"The Honda Civic is a compact vehicle, in the C segment, manufactured by Honda since 1972 and it is the most important model of Honda in Europe. The eleventh generation is currently being marketed, presented in 2022, with a major redesign compared to the previous generation, which improves its interior design and adds important technological and connectivity systems."
 		},
 		{
-			"carId": 2,
+			
 			"brand": "Ford",
 			"model": "Mustang",
 			"year": 2015,
@@ -46,7 +46,7 @@
 			"description":"The Ford Mustang is a coupe, from the D segment, manufactured by Ford since 1964. Currently, its seventh generation has just been presented, known by its internal code S650, after a sixth generation on sale from 2015 to 2023. The Ford Mustang is characterized for having a very personal neoretro aesthetic and one of the best gasoline engines on the market. It is manufactured at the Ford plant in Flat Rock, USA."
 		},
 		{
-			"carId": 3,
+			
 			"brand": "Chevrolet",
 			"model": "Corvette",
 			"year": 2010,
@@ -69,7 +69,7 @@
 			"description":"Cuando se piensa en el poder y la emoción que viene con la conducción de un coche deportivo, el Chevrolet Camaro viene a la mente. Uno de los más reconocidos deportivos de coches heredados en la carretera, el Camaro ha sido un elemento básico amado de entusiastas de los coches que quieren la combinación perfecta de estilo clásico y facilidad de conducción. Con una variedad de niveles de acabado, todas ellas con las mejores cualidades del diseño elegante y modernizado reimaginado, cada amante de los coches echará un vistazo a lo que el nuevo Chevy Camaro tiene que ofrecer."
 		},
 		{
-			"carId": 4,
+			
 			"brand": "Tesla",
 			"model": "Model S",
 			"year": 2012,
@@ -92,7 +92,7 @@
 			"description":"The Tesla Model S is an electric saloon, in the E segment, manufactured by Tesla since 2012. Although it is a veteran product, it has undergone slight updates over the years. The Tesla Model S has five seats distributed in two rows of seats, but can optionally be equipped with seven seats thanks to a third row with two child seats. The Tesla Model S is produced at Tesla's manufacturing plant in Fremont, California (United States)."
 		},
 		{
-			"carId": 5,
+			
 			"brand": "Toyota",
 			"model": "RAV4",
 			"year": 2018,
@@ -115,7 +115,7 @@
 			"description":"El Toyota RAV4 es un SUV compacto híbrido fabricado por Toyota. Actualmente se comercializa su quinta generación desde al año 2018. Estamos ante un vehículo que destaca por combinar bajos consumos con unas capacidades off-road decente pese a que se hayan mermado en sus últimas generaciones. El Toyota RAV4 se fabrica en Aichi, Japón."
 		},
 		{
-			"carId": 6,
+			
 			"brand": "Toyota",
 			"model": "Corolla",
 			"year": 2014,
@@ -137,7 +137,7 @@
 			"description":"The Toyota Corolla is a compact, in the C segment, manufactured by Toyota since 1966. The twelfth generation is currently being marketed, presented in 2019. The Toyota Corolla is characterized as a car that has brought hybrid technology closer to common drivers with a good design, interior quality, efficiency, low consumption and a reasonable price. The brand has twelve plants where the model is manufactured, but in the case of Europe this process is carried out in the United Kingdom."
 		},
 		{
-			"carId": 7,
+			
 			"brand": "Jeep",
 			"model": "Wrangler",
 			"year": 2022,
@@ -159,7 +159,7 @@
 			"description":"The Jeep Wrangler has a robust design and a boxy body with classic design features that make it easily recognizable. It is equipped with a four-wheel drive and suspension to enhance its off-road capability. The Wrangler is capable of climbing hills, crossing rivers, driving on rocky terrain and mud, making it a popular choice for those looking for outdoor adventures."
 		},
 		{
-			"carId": 8,
+			
 			"brand": "Ford",
 			"model": "F-150",
 			"year": 2022,
@@ -181,7 +181,7 @@
 			"description":"The styling of the Ford F-150 varies depending on the year and model of the vehicle, but overall it has a rugged, muscular appearance with strong, aggressive lines. It is available in different cabin and cargo box sizes to suit different transportation needs."
 		},
 		{
-			"carId": 9,
+			
 			"brand": "Toyota",
 			"model": "Prius",
 			"year": 2022,
@@ -203,7 +203,7 @@
 			"description":"The interior of the Toyota Prius is spacious and comfortable, with roomy seats and plenty of storage space. The latest Prius models feature advanced technology such as infotainment touchscreens, premium audio systems, advanced security systems and more."
 		},
 		{
-			"carId": 10,
+			
 			"brand": "Nissan",
 			"model": "GT-R",
 			"year": 2021,
@@ -225,7 +225,7 @@
 			"description":"The GT-R features an aggressive, aerodynamic appearance, with straight lines and sharp angles. Inside, the GT-R is roomy and comfortable, with sport seats and advanced technology like infotainment screens, premium audio systems and more."
 		},
 		{
-			"carId": 11,
+			
 			"brand": "Kia",
 			"model": "Sorento",
 			"year": 2020,
@@ -247,7 +247,7 @@
 			"description":"Kia Sorento is a midsize SUV with a modern design, spacious and comfortable interior, diverse powertrain options and advanced safety features. It is an excellent option for families or for those looking for a spacious and reliable vehicle."
 		},
 		{
-			"carId": 12,
+			
 			"brand": "Mazda",
 			"model": "MX-5 Miata",
 			"year": 2022,
@@ -271,7 +271,7 @@
 
 		},
 		{
-			"carId": 13,
+			
 			"brand": "Toyota",
 			"model": "Camry",
 			"year": 2022,
@@ -294,7 +294,7 @@
 
 		},
 		{
-			"carId": 14,
+			
 			"brand": "Land Rover",
 			"model": "Range Rover",
 			"year": 2021,
@@ -316,7 +316,7 @@
 			"description":"Range Rover boasts a sleek and sophisticated design, with clean lines and a streamlined appearance. Inside, Range Rover is spacious and comfortable, with leather seats and a host of advanced features such as infotainment touchscreens, a premium sound system and more."
 		},
 		{
-			"carId": 15,
+			
 			"brand": "Porsche",
 			"model": "911 Carrera",
 			"year": 2022,
@@ -338,7 +338,7 @@
 			"description": "The Porsche 911 Carrera is a high-end sports car that has been produced by the German brand Porsche since 1963. It is one of the brand's most recognizable and popular models, and has earned a reputation for exceptional performance and sporty styling. ."
     },
 		{
-			"carId": 16,
+			
 			"brand": "Volkswagen",
 			"model": "Golf",
 			"year": 2020,
@@ -360,7 +360,7 @@
 			"description":"Volkswagen Golf has a classic and elegant style, with clean and aerodynamic lines. Inside, the Golf is spacious and comfortable, with ergonomic seats and a host of advanced features, such as an infotainment touchscreen, a high-quality sound system and more."
 		},
 		{
-			"carId": 17,
+			
 			"brand": "Subaru",
 			"model": "Outback",
 			"year": 2022,
@@ -382,7 +382,7 @@
 			"description":"The ubaru Outback is a reliable and versatile midsize crossover known for its rugged styling, off-road performance and advanced safety features. With diverse powertrain options and a comfortable, stable ride, the Outback is an excellent choice for those looking for a car capable of handling a variety of conditions and terrain."
 		},
 		{
-			"carId": 18,
+			
 			"brand": "BMW",
 			"model": "5 Series",
 			"year": 2022,
@@ -404,7 +404,7 @@
 			"description":"The BMW 5 Series is a luxury sedan produced by the German brand BMW. It is one of the brand's most popular and iconic models and has earned a reputation for performance, advanced technology and elegant design."
 		},
 		{
-			"carId": 19,
+			
 			"brand": "Kia",
 			"model": "Rio",
 			"year": 2022,
@@ -426,7 +426,7 @@
 			"description":"Kia Rio es un automóvil compacto asequible, confiable y eficiente en combustible, conocido por su estilo elegante, características avanzadas y rendimiento sólido. Es una excelente opción para aquellos que buscan un automóvil práctico y económico para el día a día."
 		},
 		{
-			"carId": 20,
+			
 			"brand": "Nissan",
 			"model": "Frontier",
 			"year": 2022,
@@ -448,7 +448,7 @@
 			"description":"Nissan Frontier is a reliable and durable midsize pickup known for its cargo capacity, solid performance and advanced features. It is an excellent option for those looking for a practical and robust truck for work or daily use."
 		},
 		{
-			"carId": 21,
+			
 			"brand": "Chevrolet",
 			"model": "Malibu",
 			"year": 2021,
@@ -470,7 +470,7 @@
 			"description":"The Chevrolet Malibu is a sleek and sophisticated midsize sedan known for its smooth performance, advanced features and distinctive design. It is an excellent option for those looking for a practical and luxurious sedan for daily use."
 		},
 		{
-			"carId": 22,
+			
 			"brand": "BMW",
 			"model": "Coupe",
 			"year": 2020,
@@ -492,7 +492,7 @@
 			"description":"the BMW Coupe is a stylish and sophisticated sports car, known for its exceptional performance, advanced features and distinctive design. It is an excellent choice for those looking for a practical and luxurious sports car for daily use."
 		},
 		{
-			"carId": 23,
+			
 			"brand": "Subaru",
 			"model": "Forester",
 			"year": 2022,
@@ -514,7 +514,7 @@
 			"description":"The Subaru Forester is a rugged and versatile compact SUV known for its standard four-wheel drive, class-leading safety features, and stylish, comfortable design. It's an excellent choice for those looking for a practical and safe SUV for everyday use and outdoor adventures."
 		},
 		{
-			"carId": 24,
+			
 			"brand": "DFSK",
 			"model": "Glory",
 			"year": 2021,
@@ -536,7 +536,7 @@
 			"description":"The DFSK Glory is a modern and reliable compact car, known for its stylish and comfortable design, advanced features and reliable performance. It is an excellent option for those looking for a compact car for daily use."
 		},
 		{
-			"carId": 25,
+			
 			"brand": "Honda",
 			"model": "City Sport",
 			"year": 2020,
@@ -558,7 +558,7 @@
 			"description":"The Honda City Sport features an aerodynamic body with sporty lines, LED headlights and a distinctive front grille. Inside, the City Sport is spacious and comfortable, with high-quality seats and a host of advanced features, such as a touchscreen infotainment system, automatic climate control and more."
 		},
 		{
-			"carId": 26,
+			
 			"brand": "Audi",
 			"model": "Sedan",
 			"year": 2022,
@@ -580,7 +580,7 @@
 			"description":"Audi sedans feature clean, elegant lines, with a distinctive front grille and high-quality LED headlights. Inside, Audi sedans are spacious and comfortable, with high-quality finishes and a wide range of advanced features, such as premium infotainment systems, automatic climate control and more."
 		},
 		{
-			"carId": 27,
+			
 			"brand": "Porsche",
 			"model": "Cayman",
 			"year": 2022,
@@ -602,7 +602,7 @@
 			"description":"the Porsche Cayman is equipped with a powerful gasoline engine that provides quick acceleration and outstanding performance. In addition, it has a sports suspension system and high-performance brakes for an exhilarating ride and precise handling."
 		},
 		{
-			"carId": 28,
+			
 			"brand": "Jeep",
 			"model": "Grand Cherokee",
 			"year": 2022,
@@ -624,7 +624,7 @@
 			"description":"Jeep 4x4 vehicles are characterized by their great off-road capability, with a chassis and suspension designed to offer optimal performance in rugged terrain. In addition, they are equipped with four-wheel drive systems, allowing them to function in a wide variety of terrain and weather conditions."
 		},
 		{
-			"carId": 29,
+			
 			"brand": "Kia",
 			"model": "Picanto",
 			"year": 2022,
@@ -646,7 +646,7 @@
 			"description":"Kia Picanto is a compact and efficient vehicle, ideal for urban driving. It stands out for its modern and attractive design, its comfort, safety and technology on board."
 		},
 		{
-			"carId": 30,
+			
 			"brand": "Ford",
 			"model": "Fiesta",
 			"year": 2022,
