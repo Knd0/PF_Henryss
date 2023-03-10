@@ -76,6 +76,7 @@ export default function Home() {
           />
           </div>
         </div>
+        {console.log(allCars[1].img.secure_url)}
 
         <div  className={style.hideButton}>
           
