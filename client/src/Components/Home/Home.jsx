@@ -56,7 +56,7 @@ export default function Home() {
           <Card
             carId={allCars[0].carId || allCars[0].id}
             brand={allCars[0].brand}
-            img={allCars[0].img.secure_url}
+            // img={allCars[0].img.secure_url}
             model={allCars[0].model}
             year={allCars[0].year}
             kilometers={allCars[0].kilometers}
@@ -68,7 +68,7 @@ export default function Home() {
           <Card
             carId={allCars[1].carId || allCars[1].id}
             brand={allCars[1].brand}
-            img={allCars[1].img.secure_url}
+            // img={allCars[1].img.secure_url}
             model={allCars[1].model}
             year={allCars[1].year}
             kilometers={allCars[1].kilometers}
@@ -76,14 +76,13 @@ export default function Home() {
           />
           </div>
         </div>
-        {console.log(allCars[1].img.secure_url)}
 
         <div  className={style.hideButton}>
           
           <Card
             carId={allCars[2].carId || allCars[2].id}
             brand={allCars[2].brand}
-            img={allCars[2].img.secure_url}
+            // img={allCars[2].img.secure_url}
             model={allCars[2].model}
             year={allCars[2].year}
             kilometers={allCars[2].kilometers}
