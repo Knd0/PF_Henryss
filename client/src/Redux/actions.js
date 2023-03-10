@@ -26,10 +26,9 @@ import {
 } from "./action-types";
 import axios from "axios";
 
-
 export function getCars() {
   return function (dispatch) {
-    dispatch({type: LOADING_ACTION })
+    dispatch({ type: LOADING_ACTION });
     axios
       .get(`/cars`)
       .then((response) => response.data)
@@ -44,11 +43,9 @@ export function getCars() {
 
 export function getCarsDetail(carId) {
   return async function (dispatch) {
-    dispatch({type: LOADING_ACTION })
+    dispatch({ type: LOADING_ACTION });
     try {
-      var json = await axios.get(
-        "/cars/" + carId
-      );
+      var json = await axios.get("/cars/" + carId);
       return dispatch({
         type: GET_CARS_DETAIL,
         payload: json.data,
@@ -62,10 +59,7 @@ export function getCarsDetail(carId) {
 export function postCar(body) {
   return async function (dispatch) {
     try {
-      var car = await axios.post(
-        `/cars`,
-        body
-      );
+      var car = await axios.post(`/cars`, body);
       return dispatch({
         type: POST_CAR,
         payload: car.data,
@@ -148,7 +142,7 @@ export const filterByYearAndBrand = (brand, year) => (dispatch, getState) => {
 
 export function getCarByName(model) {
   return async function (dispatch) {
-    dispatch({type: LOADING_ACTION })
+    dispatch({ type: LOADING_ACTION });
     await axios
       .get(`/cars?model=${model}`)
       .then((response) =>
@@ -159,7 +153,7 @@ export function getCarByName(model) {
 
 export function getCarByBrand(brand) {
   return async function (dispatch) {
-    dispatch({type: LOADING_ACTION })
+    dispatch({ type: LOADING_ACTION });
     await axios
       .get(`/cars?brand=${brand}`)
       .then((response) =>
@@ -185,21 +179,20 @@ export function loadingAction(status) {
   };
 }
 
-export function deleteCar(carId) {
+export function deleteCar(carId, userId) {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(
-        `/cars/${carId}`
-      );
-
-      if (response.status !== 200) {
-        throw new Error("Something went wrong");
-      }
-
-      dispatch({ type: DELETE_CAR });
+      await axios.delete(`/publications/${userId}`, { data: { carId } });
+      return dispatch({
+        type: DELETE_CAR,
+        payload: {
+          userId,
+          carId,
+        },
+      });
     } catch (err) {
       dispatch({
-        type: ERROR_OCCURRED, //Esto sirve para los carteles de error de front, hay que verlo
+        type: ERROR_OCCURRED,
         payload: {
           message: err.message,
         },
@@ -208,13 +201,11 @@ export function deleteCar(carId) {
   };
 }
 
+
 export function updateCar(carId, payload) {
   return async (dispatch) => {
     try {
-      await axios.put(
-        `/cars/${carId}`,
-        payload
-      );
+      await axios.put(`/cars/${carId}`, payload);
       return dispatch({ type: PUT_CAR });
     } catch (err) {
       dispatch({
@@ -230,7 +221,7 @@ export function updateCar(carId, payload) {
 export function addFavorite(userId, carId) {
   return async function (dispatch) {
     try {
-      await axios.post(`/user`, userId, carId);
+      await axios.post(`/favorites/${userId}/${carId}`, { userId, carId }); // Se corrige el segundo argumento
       dispatch({
         type: ADD_FAVORITE,
         payload: {
@@ -239,7 +230,7 @@ export function addFavorite(userId, carId) {
         },
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 }
@@ -247,9 +238,7 @@ export function addFavorite(userId, carId) {
 export const getFavorites = () => {
   return async function (dispatch) {
     try {
-      const allFavorites = await axios.get(
-        `/favorites`
-      );
+      const allFavorites = await axios.get(`/favorites`);
       dispatch({
         type: GET_CAR_FAVORITES,
         payload: allFavorites.data,
@@ -258,25 +247,29 @@ export const getFavorites = () => {
       console.log("Error action allFavorites", error);
     }
   };
-}
+};
 
 export function removeFavorite(userId, carId) {
   return async function (dispatch) {
-    dispatch({
-      type: REMOVE_FAVORITE,
-      payload: {
-        userId,
-        carId,
-      },
-    });
+    try {
+      await axios.delete(`/favorites/${userId}/${carId}`, { userId, carId });
+      dispatch({
+        type: REMOVE_FAVORITE,
+        payload: {
+          userId,
+          carId,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
+
 export const allUsers = () => {
   return async function (dispatch) {
     try {
-      const allUsers = await axios.get(
-        `/user`
-      );
+      const allUsers = await axios.get(`/user`);
       dispatch({
         type: ALL_USERS,
         payload: allUsers.data,
@@ -290,10 +283,7 @@ export const allUsers = () => {
 export const createUs = (payload) => {
   return async function (dispatch) {
     try {
-      const newUs = await axios.post(
-        `/user`,
-        payload
-      );
+      const newUs = await axios.post(`/user`, payload);
       console.log("Server response:", newUs.data); // Agregar este mensaje de registro
       return dispatch({
         type: CREATE_USER,
@@ -307,9 +297,7 @@ export const createUs = (payload) => {
 
 export function getUsersDetails(email) {
   return async function (dispatch) {
-    let json = await axios.get(
-      `/user/${email}`
-    );
+    let json = await axios.get(`/user/${email}`);
     return dispatch({
       type: GET_USER_PROFILE,
       payload: json.data,
@@ -317,9 +305,16 @@ export function getUsersDetails(email) {
   };
 }
 
-export function addToPublications(id){
-  return{
-    type:ADD_TO_PUBLICATIONS,
-    payload:id
-  }
+export function addToPublications(userId, carId) {
+  return async function (dispatch) {
+    try {
+      await axios.post(`/publications/${userId}`, { carId });
+      dispatch({
+        type: ADD_TO_PUBLICATIONS,
+        payload: carId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }

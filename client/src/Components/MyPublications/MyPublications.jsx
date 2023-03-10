@@ -12,13 +12,13 @@ import imgMenu from "../Img/menu.png";
 
 const MyPublications = () => {
   const dispatch = useDispatch();
-  const allcars = useSelector((state) => state.cars);
+  const publications = useSelector((state) => state.usersDetails.publications)
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage, setCountriesPerPage] = useState(3);
   const indexOfLastCar = currentPage * carsPerPage;
   const indexOfFirstCar = indexOfLastCar - carsPerPage;
-  const currentCars = allcars.slice(indexOfFirstCar, indexOfLastCar);
-  const maximo = allcars.length / carsPerPage;
+  // const currentCars = publications.slice(indexOfFirstCar, indexOfLastCar);
+  // const maximo = publications.length / carsPerPage;
 
   useEffect(() => {
     dispatch(cleanState());
@@ -32,12 +32,12 @@ const MyPublications = () => {
         <Link to="/carscreate">
           <button>Create New Post</button>
         </Link>
-        {currentCars.length ? (
-          currentCars.map((e) => {
+        {publications ? (
+          publications.map((e) => {
             return (
-              <div className={style.container}>
+              <div key={e.carId} className={style.container}>
                 <div className={style.flexContainerPublications}>
-                  <img width={200} height={200} src={e.img.secure_url} alt="" />
+                 <Link to={`/carsedit/${e.carId}`}><img width={200} height={200} src={e.img.secure_url} alt="" /></Link>
 
                   <div className={style.itemsDescriptionContainerPublications}>
                     <div className={style.itemsContainerPublications}>
@@ -99,11 +99,11 @@ const MyPublications = () => {
       </div>
       <div></div>
       <div>
-        <Pagination
+        {/* <Pagination
           pagina={currentPage}
           setPagina={setCurrentPage}
           maximo={maximo}
-        />
+        /> */}
       </div>
       <Footer />
     </>

@@ -19,8 +19,6 @@ const [filterYear, setFilterYear] = useState("");
         }
       }
     }
- 
-      console.log("ESTO ES ARR ===============>",arr)
 
     useEffect(() => {
         dispatch(getCars());
@@ -140,7 +138,7 @@ const [filterYear, setFilterYear] = useState("");
                     <option value="All">All</option>
                      {arr?.map((a)=>{
                         return(
-                            <option>{a}</option>
+                            <option key={a}>{a}</option>
                         )
                      })}
                         
