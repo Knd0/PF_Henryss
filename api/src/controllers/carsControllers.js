@@ -16,14 +16,18 @@ const getDbCars = async () => {
     });
 }
 
-const getApiCars = () => {
-    return data.cars;
+const getApiCars = async () => {
+    const info = data.cars;
+    if(info.length){
+        let toDb = await Car.bulkCreate(info)
+    }
 }
 
 const getAllCars = async () => {
         const apiData = await getApiCars();
         const DbData = await getDbCars();
-        const response = [...DbData,...apiData ];
+        const response = DbData;
+        // const response = [...DbData,...apiData ];
         return response;
 }
 
