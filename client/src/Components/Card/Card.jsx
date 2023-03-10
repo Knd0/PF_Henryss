@@ -89,7 +89,7 @@ export default function Card({
         }
         <Link to={`/cars/${carId}`}>
           {" "}
-          <img className="p-15 rounded-t-lg lazy" loading="lazy" src={img} alt="img" />
+          <img className="p-15 rounded-t-lg" src={img} alt="img" />
           {console.log(img)}
         </Link>
         <hr />

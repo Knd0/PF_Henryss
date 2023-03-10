@@ -91,7 +91,6 @@ export default function Cars() {
                         return (
                             <div key={e.carId}>
                                 <Card
-                                    
                                     carId={e.carId || e.id}
                                     brand={e.brand}
                                     img={e.img.secure_url}
@@ -100,7 +99,6 @@ export default function Cars() {
                                     kilometers={e.kilometers}
                                     price={e.price}
                                 />
-                                {console.log(e.img.secure_url)}
                             </div>
                         );
                     })

@@ -19,7 +19,7 @@ import { all } from "axios";
 export default function Home() {
   const { user } = useAuth0();
   const dispatch = useDispatch()
-  const allCars = useSelector((state) => state.allcars)
+  const allCars = useSelector((state) => state.cars)
   useEffect(() => {
     if (user) {
       const payload = {
@@ -76,7 +76,6 @@ export default function Home() {
           />
           </div>
         </div>
-        {console.log(allCars[1].img.secure_url)}
 
         <div  className={style.hideButton}>
           
