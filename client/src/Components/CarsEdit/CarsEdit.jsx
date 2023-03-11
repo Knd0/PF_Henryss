@@ -28,12 +28,7 @@ export default function CarsEdit() {
   let id = useParams()
   let value = id["id"]; // Sintaxis de corchetes
   const cars= useSelector((state)=>state.publications)
-  console.log(cars)
-  var contenido = document.querySelectorAll("input");
-  console.log("ESTO ES CONTENIDO ======================>>>>",contenido)
- var res =  contenido.forEach(c=>c[0])
- console.log("ESTO ES RES ======================>>>>",res)
-
+ 
 
 
   let bla = cars.filter(c => {
@@ -41,9 +36,6 @@ export default function CarsEdit() {
         return c
       }
   });
-
-  console.log("ESTO ES BLA EN CARS EDIT ======================>>>>",bla)
-
 
   const handleBackComponent02 = () => {
     setShowSecondComponent(false);
@@ -163,24 +155,25 @@ export default function CarsEdit() {
   const [errors,setErrors] = useState({}); //estado local para errores
 
   const [car, setCar] = useState({ //estado local para crear el car
-    brand: "",
-    model: "",
-    year: "",
-    color: "",
-    price: "",
-    place: "",
-    phone: "",
-    email: "",
-    kilometers: "",    
-    fuel: "",
-    img: "",
-    engine: "",
-    power: "",
-    transmission: "",
-    drive: "",
-    capacity: "",
-    description: "",
+    brand: bla[0].brand,
+    model:bla[0].model,
+    year:  bla[0].year,
+    color:  bla[0].color,
+    price:  bla[0].price,
+    place:  bla[0].place,
+    phone:  bla[0].phone,
+    email:  bla[0].email,
+    kilometers:bla[0].kilometers,    
+    fuel:  bla[0].fuel,
+    img: bla[0].img,
+    engine:  bla[0].engine,
+    power:  bla[0].power,
+    transmission: bla[0].transmission,
+    drive:  bla[0].drive,
+    capacity: bla[0].capacity,
+    description:  bla[0].description,
   })
+  console.log("ESTOE ES CAR================>",car)
 
   useEffect(() => { //valido el form
     setErrors(validateForm(car));
@@ -195,7 +188,9 @@ function onInputChange(e) { //cambio el estado segun el input
     ...car,
     [e.target.name]: e.target.value,
   });
-}
+
+};
+
 
 
 function onSubmit(e) {
@@ -346,4 +341,4 @@ function onSubmit(e) {
     <Footer/>
     </>    
   );
-}
+   }

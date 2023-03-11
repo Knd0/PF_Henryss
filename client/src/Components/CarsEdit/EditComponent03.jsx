@@ -23,7 +23,7 @@ export function  EditComponent03 (props) {
                         placeholder="$"
                         onChange={onInputChange}
                         name="price"
-                        defaultValue={bla[0].price}
+                        value={car.price}
                         />
 
                       </div>
@@ -35,7 +35,7 @@ export function  EditComponent03 (props) {
                               placeholder="$"
                               onChange={onInputChange}
                               name="price"
-                              defaultValue={bla[0].price}
+                              value={car.price}
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.price}</span> </p>
                         </div>
@@ -50,7 +50,7 @@ export function  EditComponent03 (props) {
                         placeholder="Buenos Aires"
                         onChange={onInputChange}
                         name="place"
-                        defaultValue={bla[0].place}
+                        value={car.place}
                         />
 
                       </div>
@@ -62,7 +62,7 @@ export function  EditComponent03 (props) {
                               placeholder="Buenos Aires"
                               onChange={onInputChange}
                               name="place"
-                              defaultValue={bla[0].place}
+                              value={car.place}
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.place}</span> </p>
                         </div>
