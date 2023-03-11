@@ -119,12 +119,12 @@ export default function Navbar() {
 
             {actualPage.createPost ? (
               <Link
-                to="/carscreate"
+                to="/mypublications "
                 className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
                 name="createPost"
                 onClick={handleActualPage}
               >
-                Create Post
+                My Publications
               </Link>
             ) : (
               <Link

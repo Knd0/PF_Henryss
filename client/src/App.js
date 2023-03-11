@@ -8,8 +8,8 @@ import MyPublications from "./Components/MyPublications/MyPublications";
 import MyFavorites from "./Components/MyFavorites/MyFavorites";
 import AboutUs from "./Components/AboutUs/Aboutus";
 import Page404 from "./Components/Page404/Page404";
+import Payment from "./Components/Payment/Payment"
 import CarsCreate from "./Components/CarFormPage/CarsCreate";
-import CarsEdit from "./Components/CarsEdit/CarsEdit"
 import UserProfile from "./Components/UserProfile/UserProfile";
 import axios from "axios";
 // axios.defaults.baseURL = 'https://pfhenryss-production.up.railway.app/'
@@ -24,8 +24,9 @@ function App() {
           <Route path="/cars" element={<Cars />} />
           <Route path="/carscreate" element={<CarsCreate />} />
           <Route path="/cars/:id" element={<CarsDetails />} />
-           <Route path="/carsedit/:id" element={<CarsEdit />} /> 
+          {/* <Route path="/carsedit" element={<CarsEdit />} /> */}
           <Route path="/mypublications" element={<MyPublications />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/myfavorites" element={<MyFavorites />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<Page404 />} />
