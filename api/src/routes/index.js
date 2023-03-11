@@ -13,7 +13,7 @@ router.use('/brands', brandRoutes)
 router.use('/favorites', favoritesRoutes)
 router.use('/user', usersRoutes)
 router.use('/publications', publicationsRouter)
-router.use('/create-checkout-session', payment)
+router.use('/createcheckoutsession', payment)
 
 
 module.exports = router;
