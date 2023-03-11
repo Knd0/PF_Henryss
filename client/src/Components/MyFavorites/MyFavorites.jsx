@@ -39,26 +39,19 @@ export default function MyFavorites() {
     dispatch(getFavorites(userDetails[0].userId))
   }, [dispatch])
 
-  console.log(userDetails)
 
-
-
-  if (!favorites.length) {
-    return <>
-      <Navbar />
-      <h1>My Favorites</h1>
-      <div className={style.cardModal}>
-        <h3>Nothing to show 🤔</h3>
-      </div>
-    </>
-  }
   return (
     <>
       <Navbar />
       <h1>My Favorites</h1>
       <div className={style.cardconteinerFavorite}>
         {
-          favorites.length ? favorites.map(e =>
+          !favorites.length ? (
+            <div className={style.cardModal}>
+              <h3>Nothing to show 🤔</h3>
+            </div>
+          ): 
+          favorites.map(e =>
             <Card
               carId={e[0].carId}
               brand={e[0].brand}
@@ -67,11 +60,7 @@ export default function MyFavorites() {
               year={e[0].year}
               kilometers={e[0].kilometers}
               price={e[0].price}
-            />) : (
-            <div className={style.cardModal}>
-              <h3>Nothing to show 🤔</h3>
-            </div>
-          )
+            />) 
         }
       </div>
       <div></div>
