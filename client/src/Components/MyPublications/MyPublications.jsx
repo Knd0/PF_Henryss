@@ -12,7 +12,7 @@ import imgMenu from "../Img/menu.png";
 
 const MyPublications = () => {
   const dispatch = useDispatch();
-  const publications = useSelector((state) => state.userDetail.publications)
+  const publications = useSelector((state) => state.usersDetails[0].publications)
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage, setCountriesPerPage] = useState(3);
   const indexOfLastCar = currentPage * carsPerPage;
