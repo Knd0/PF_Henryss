@@ -56,10 +56,10 @@ export function getCarsDetail(carId) {
   };
 }
 
-export function postCar(body) {
+export function postCar(userId, body) {
   return async function (dispatch) {
     try {
-      var car = await axios.post(`/cars`, body);
+      var car = await axios.post(`/cars/${userId}`, body);
       return dispatch({
         type: POST_CAR,
         payload: car.data,
