@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "<http://localhost:3000>",
   "dependencies": {
     "@auth0/auth0-react": "^2.0.1",
     "@cloudinary/react": "^1.11.0",
