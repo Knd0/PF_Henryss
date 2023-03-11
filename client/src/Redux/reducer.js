@@ -19,7 +19,8 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   ADD_TO_PUBLICATIONS,
-  FILTER_BY_YEAR_AND_BRAND
+  FILTER_BY_YEAR_AND_BRAND,
+  GET_CAR_FAVORITES
 } from "./action-types";
 
 const initialState = {
@@ -220,6 +221,11 @@ function Reducer(state = initialState, action) {
       return{
         ...state,
         publications:state.publications.concat()
+      }
+      case GET_CAR_FAVORITES: 
+      return {
+        ...state,
+        favorites:action.payload
       }
 
     default:
