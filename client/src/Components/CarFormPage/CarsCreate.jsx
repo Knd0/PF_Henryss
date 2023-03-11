@@ -229,10 +229,13 @@ function onSubmit(e) {
     draggable: true,
     progress: undefined,
     theme: "colored",   
-    onClose: () => {
-      navigate("/cars");
-    }
+    // onClose: () => {
+    //   navigate("/cars");
+    // }    
     })
+    setTimeout(function() {
+      navigate("/cars");      
+    }, 3000);
   }
 
 const [imageSelected, setImageSelected] = useState("")
