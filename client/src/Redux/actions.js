@@ -196,10 +196,11 @@ export function addFavorite(userId, carId) {
   };
 }
 
-export const getFavorites = () => {
+export const getFavorites = (userId) => {
+  
   return async function (dispatch) {
     try {
-      const allFavorites = await axios.get(`/favorites`);
+      const allFavorites = await axios.get(`/favorites/${userId}`);
       dispatch({
         type: GET_CAR_FAVORITES,
         payload: allFavorites.data,
