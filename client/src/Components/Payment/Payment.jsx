@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Payments.module.css";
 
+const act = "create-checkout-session";
 export default function Payment() {
   return (
     <>
@@ -16,7 +17,7 @@ export default function Payment() {
             <h5 className={style.h5}>$1.00</h5>
           </div>
         </div>
-        <form action="/create-checkout-session" method="POST">
+        <form action='http://localhost:3001/createcheckoutsession' method="POST">
           <button className={style.button} type="submit">
             Checkout
           </button>
