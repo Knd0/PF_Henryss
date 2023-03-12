@@ -103,12 +103,14 @@ export default function Cars() {
                         );
                     })
                 ) :
-                    <div className={style.cardModal}>
-                       <h1>nada</h1>
+
+                handleAlert()
+                    // <div className={style.cardModal}>
+                    //    <h1>nada</h1>
 
 
 
-                    </div>
+                    // </div>
                 }
             </div>)}
             </div>
