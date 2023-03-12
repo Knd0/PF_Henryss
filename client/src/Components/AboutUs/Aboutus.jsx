@@ -430,7 +430,7 @@ export default function Aboutus() {
               <ul className="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/santi_silvera02/"
                     target="_blank"
                     className="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -446,7 +446,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/santiago-silvera-287560145/"
                     target="_blank"
                     className="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -462,7 +462,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://github.com/SantiSilvera02"
                     target="_blank"
                     className="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
