@@ -22,13 +22,15 @@ const addFavorites = async (userId, carId) => {
         where: { userId: userId }
     });
     if (searchUser) {
-        // if (!searchUser.favorites) {
-        //     searchUser.favorites = [];
-        // }
+        const searchCarId = searchUser.favorites.indexOf(carId)
+        if(searchCarId !== -1){
+            return ('You can not repeat favorites')
+        } else {
         searchUser.favorites.push(carId);
         await User.update({ favorites: searchUser.favorites }, {
             where: { userId: userId }
         });
+        }
     }
     return ('add to favorite')
 }

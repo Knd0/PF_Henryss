@@ -17,7 +17,7 @@ server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan("dev"))
 server.use(cors());
-
+server.use(express.static('public'));
 
 
 server.use((req, res, next) => {
@@ -38,3 +38,5 @@ server.use('/', routes)
 
 
 module.exports = server;
+
+

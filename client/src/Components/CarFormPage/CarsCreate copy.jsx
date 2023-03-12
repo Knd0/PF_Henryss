@@ -15,7 +15,6 @@ import { FormComponent03 } from "./FormComponent03";
 import { FormComponent04 } from "./FormComponent04";
 import { FormComponent05 } from "./FormComponent05";
 import { FormComponent06 } from "./FormComponent06";
-import axios from "axios";
 
 export default function CarsCreate() {
   const dispatch = useDispatch();
@@ -122,10 +121,8 @@ export default function CarsCreate() {
         });;
       return;
     }
-    uploadImage() 
     setShowFourthComponent(false);
     setShowFifthComponent(true);
-    
   };
 
   const handleConfirmFifthClick = () => {
@@ -231,35 +228,10 @@ function onSubmit(e) {
     theme: "colored",   
     // onClose: () => {
     //   navigate("/cars");
-    // }    
-    })
-    setTimeout(function() {
-      navigate("/cars");      
-    }, 3000);
-  }
-
-const [imageSelected, setImageSelected] = useState("")
-
-  const uploadImage = async () => {
-    const formData = new FormData()
-    formData.append("file", imageSelected)
-    formData.append("upload_preset", "preset_prueba")
-    try {
-    await axios.post("https://api.cloudinary.com/v1_1/dffjcfxvk/image/upload", formData
-    ).then((response) => {
-      const imageUrl = response.data.url;
-      setCar({
-        ...car,
-        img: imageUrl,
-      });
+    // }
     });
-  } catch (error) {
-    console.log(error.response); // handle error here
-  }
 }
-
 console.log(car)
-console.log(imageSelected)
 console.log(userId)
 
 
@@ -318,9 +290,7 @@ console.log(userId)
               setErrors={setErrors}
               onInputChange={onInputChange}
               handleConfirmFourthClick={handleConfirmFourthClick}
-              handleBackComponent04 ={handleBackComponent04}
-              imageSelected={imageSelected}
-              setImageSelected={setImageSelected}
+              handleBackComponent04 = {handleBackComponent04} 
             />
             )}
           

@@ -7,7 +7,7 @@ import Slider from "../Slider/Slider";
 import PRUEBA from "./Img/PRUEBA.jpg"
 import PRUEBA2 from "./Img/PRUEBA2.jpg"
 import PRUEBA3 from "./Img/PRUEBA3.jpg"
-import { getCars, createUs } from "../../Redux/actions";
+import { getCars, createUs, cleanState, getUsersDetails } from "../../Redux/actions";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -19,7 +19,8 @@ import { all } from "axios";
 export default function Home() {
   const { user } = useAuth0();
   const dispatch = useDispatch()
-  const allCars = useSelector((state) => state.cars)
+  const allCars = useSelector((state) => state.allcars)
+  
   useEffect(() => {
     if (user) {
       const payload = {
@@ -29,12 +30,10 @@ export default function Home() {
         picture: user.picture,
       };
       dispatch(createUs(payload));
+      dispatch(getUsersDetails(user.email));
     }
-  }, [dispatch, user]);
-
-  useEffect(() => {
     dispatch(getCars());
-  }, [dispatch])
+  }, [dispatch, user]);
 
   const images = [
     PRUEBA,
@@ -42,6 +41,7 @@ export default function Home() {
     PRUEBA3
   ];
 
+  if(!allCars.length) { return (<h1>NO FUNCA</h1>)}
   return (
     <div className="flex flex-col">
 
@@ -62,6 +62,7 @@ export default function Home() {
             kilometers={allCars[0].kilometers}
             price={allCars[0].price}
           />
+          
         </div>
 
         <div  className={style.hideButton} >
