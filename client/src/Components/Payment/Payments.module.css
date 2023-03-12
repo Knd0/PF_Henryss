@@ -1,12 +1,21 @@
 .section {
+    position: relative;
+    justify-items: center;
     background: #ffffff;
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 112px;
+    width: 300px;
+    height: 200px;
     border-radius: 6px;
     justify-content: space-between;
     align-items: center;
+    border-width: 1px;
+    margin-left: 800px;
+}
+
+.card {
+  width: 300px;
+  justify-items: center;
 }
 
 .product {
@@ -17,7 +26,8 @@
 }
 
 .description {
-    display: flex;
+    margin-top: 20px;
+    display: grid;
     flex-direction: column;
     justify-content: center;
 }
@@ -40,12 +50,14 @@
 }
 
 .h5 {
+  margin-top: 10px;
   opacity: 0.5;
 }
 
 .button {
   height: 36px;
   background: #556cd6;
+  justify-content: center;
   color: white;
   width: 150px;
   font-size: 14px;
@@ -56,6 +68,7 @@
   border-radius: 0 0 6px 6px;
   transition: all 0.2s ease;
   box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+  position: relative;
 }
 
 .button:hover {
