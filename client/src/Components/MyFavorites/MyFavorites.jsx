@@ -34,7 +34,6 @@ export default function MyFavorites() {
   const maximo = favorites.length / carsPerPage
 
   useEffect(() => {
-    dispatch(cleanState());
     dispatch(getCars())
     dispatch(getUsersDetails(user.email))
     dispatch(getFavorites(userId))
