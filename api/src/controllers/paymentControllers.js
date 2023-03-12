@@ -1,22 +1,18 @@
-const stripe = require('stripe')('sk_test_51MkEizLwPl3TbqY3UnOrOrRTmSkK8iEKzyHdGCK0WkaqwGwTUTeIywzyNAz2omxlmR0cMFIgKADq2yqXyGVvhzBa00UYARhkZF');
-require('dotenv').config();
-const { DB_HOST, DB_PORT } = process.env;
-const YOUR_DOMAIN = `http://${DB_HOST}:${DB_PORT}/`;
+const Stripe = require('stripe')
+const stripe = new Stripe('sk_test_51Mkjw9ETVvdZ62yxIbqQuiRYkXR7hcFJhuj57N2zmwI998nlKYoLsgRBIEyGqkvNVvVyRsl9lMQHSwIAyfmP0A6L00ew0ZdokN')
 
-const pay = async () => {
-    const session = await stripe.checkout.sessions.create({
-        line_items: [
-            {
-            // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: 'price_1MkEmnLwPl3TbqY3INO8LkqY',
-            quantity: 1,
-            },
-        ],
-        mode: 'payment',
-        success_url: `${YOUR_DOMAIN}?success=true`,
-        cancel_url: `${YOUR_DOMAIN}?canceled=true`,
-    });
-    return session
+
+const pay = async (id, amount) => {
+    const payment = await stripe.paymentIntents.create({
+        amount,
+        currency: "USD",
+        description: "nada",
+        payment_method: id,
+        confirm: true
+
+    })
+    console.log(payment);
+    return ('Success payment')
 }
 
 module.exports = {
