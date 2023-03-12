@@ -19,7 +19,10 @@ const [filterYear, setFilterYear] = useState("");
         }
       }
     }
-
+    arr.sort(function(a, b) {
+        return b - a;
+      });
+      
     useEffect(() => {
         dispatch(getCars());
         dispatch(cleanState());
