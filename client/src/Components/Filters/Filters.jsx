@@ -22,7 +22,6 @@ const [filterYear, setFilterYear] = useState("");
 
     useEffect(() => {
         dispatch(getCars());
-        dispatch(cleanState());
     }, [dispatch]);
 
 
