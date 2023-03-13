@@ -69,6 +69,7 @@ export default function Cars() {
         <>
             <Navbar />
             <Filters
+            setCurrentPage={setCurrentPage}
             selectedOptionAlf = {selectedOptionAlf}
             setSelectedOptionAlf ={ setSelectedOptionAlf}
             selectedOptionPrice={selectedOptionPrice}
