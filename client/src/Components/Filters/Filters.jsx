@@ -33,7 +33,7 @@ const [filterYear, setFilterYear] = useState("");
         e.preventDefault();
         dispatch(orderByAlf(e.target.value));
         // setOrder(`Order ${e.target.value}`)
-        // setCurrentPage(1);
+        props.setCurrentPage(1);
         props.setSelectedOptionPrice("")
         props.setSelectedOptionKm("")
 
@@ -57,8 +57,10 @@ const [filterYear, setFilterYear] = useState("");
     function handlefilterByYearAndBrand(e){
     if (e.target.name === "brand") {
         setFilterBrand(e.target.value);
+        props.setCurrentPage(1);
       } else {
        setFilterYear(e.target.value);
+       props.setCurrentPage(1);
       }
       dispatch(filterByYearAndBrand(
         e.target.name === 'year' ? e.target.value : filterYear,
@@ -79,7 +81,7 @@ const [filterYear, setFilterYear] = useState("");
         e.preventDefault();
         dispatch(orderByKM(e.target.value));
         // setOrder(`Order ${e.target.value}`)
-        // setCurrentPage(1);
+        props.setCurrentPage(1);
         props.setSelectedOptionAlf("")
         props.setSelectedOptionPrice("")
     }
@@ -89,7 +91,7 @@ const [filterYear, setFilterYear] = useState("");
         e.preventDefault();
         dispatch(orderByPrice(e.target.value));
         // setOrder(`Order ${e.target.value}`)
-        // setCurrentPage(1);
+        props.setCurrentPage(1);
         props.setSelectedOptionAlf("")
         props.setSelectedOptionKm("")
     }

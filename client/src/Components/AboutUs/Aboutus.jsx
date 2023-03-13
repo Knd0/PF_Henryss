@@ -4,7 +4,8 @@ import imgRamon from "../Img/Ramon.png";
 import imgSantiago from "../Img/Santiago.png";
 import imgDavid from "../Img/David.jpeg"
 import imgLucas from "../Img/Lucas.png"
-import imgIsidro from "../Img/isidro.png"
+import imgDayanna from "../Img/dayanna.jpeg";
+//import imgIsidro from "../Img/isidro.png";
 import Navbar from "../Navbar/Navbar";
 
 export default function Aboutus() {
@@ -159,7 +160,7 @@ export default function Aboutus() {
             <div className="text-center text-gray-500 dark:text-gray-400">
               <img
                 className="mx-auto mb-4 w-36 h-36 rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                src={imgDayanna}
                 alt="Jese Avatar"
               />
               <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
