@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/cars" element={<Cars />} />
-          <Route path="/carscreate" element={<CarsCreate />} />
+          <Route path="/carscreate" element={<ProtectedRoute component={CarsCreate}/>} />
           <Route path="/cars/:id" element={<CarsDetails />} />
           {/* <Route path="/carsedit" element={<CarsEdit />} /> */}
           <Route path="/mypublications" element={<MyPublications />} />
