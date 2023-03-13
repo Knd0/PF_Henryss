@@ -2,8 +2,10 @@ import React from "react";
 import style from "./Payments.module.css";
 import { loadStripe } from "@stripe/stripe-js"
 import axios from "axios";
+
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import { 
   Elements,
   CardElement,
@@ -41,6 +43,7 @@ const CheckoutForm = (props) => {
         amount: 111111
       });
       console.log(data);
+
       elements.getElement(CardElement).clear();   
 
       toast.success('Payment succeeded 🛒', {
