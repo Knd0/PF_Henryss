@@ -13,45 +13,57 @@ export default function UserProfile() {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div>
       <Navbar />
-      <div>
-        <div className={styles.userContainerFlex}>
-          <div>
-            <img
-              className={styles.img}
-              width={400}
-              height={400}
-              src={user.picture}
-              alt="user.img"
-            />
-          </div>
-          <div>
-            <h5>
-            <FontAwesomeIcon icon={solid('user')} />
-              Name: <span>{user.name}</span>
-            </h5>
-
-            <h5>
-            <FontAwesomeIcon icon={solid('envelope')} />
-              Email: <span>{user.email}</span>
-            </h5>
-          </div>
-          <div>
-            <Link to="/mypublications">
-              <button>My Publications</button>
-            </Link>
-            <Link to="/myfavorites">
-              <button>My Favorites</button>
-            </Link>
+      <div className={styles.body}>
+        <div className={styles.contornoGeneral}>
+          <div className={styles.contornoDeImagen}>
+            <img className={styles.avatar} src={user.picture} alt="user.img" />
+            <div className={styles.tarjetaPresentacion}>
+              <h2>My profile</h2>
+              <div className={styles.tarjeta}>
+                <h2>
+                  <FontAwesomeIcon icon={solid("user")} />{" "}
+                  Full Name : {user.name}
+                </h2>
+                <h5>
+                  <FontAwesomeIcon icon={solid("envelope")} />{" "}
+                  Email: <span>{user.email}</span>
+                </h5>
+              </div>
+                <div className={styles.Buttonsss}>
+                  <Link to="/mypublications">
+                    <button className={styles.btn1}>My Publications</button>
+                  </Link>
+                  <Link to="/myfavorites">
+                    <button className={styles.btn1}>My Favorites</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {/*    <div  className={styles.flexButtonsContainer}>
-                  <button>my publications</button>
-                  <button>my favoites</button>
-           </div> */}
-      </div>
       <Footer />
-    </>
+    </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <h5>
+//   <FontAwesomeIcon icon={solid("user")} />
+//   Name: <span>{user.name}</span>
+// </h5>;

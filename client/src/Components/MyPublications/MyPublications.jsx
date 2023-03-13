@@ -21,7 +21,6 @@ const MyPublications = () => {
   // const maximo = publications.length / carsPerPage;
 
   useEffect(() => {
-    dispatch(cleanState());
     dispatch(getCars());
   }, [dispatch]);
 
