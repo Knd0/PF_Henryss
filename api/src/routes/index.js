@@ -9,6 +9,8 @@ const payment = require('./paymentRoutes')
 
 
 
+
+
 const router = Router();
 
 router.use('/cars', carsRoutes);
@@ -23,4 +25,3 @@ router.use('/checkout', payment)
 
 
 module.exports = router;
-
