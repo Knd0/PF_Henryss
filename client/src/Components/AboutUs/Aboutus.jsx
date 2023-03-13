@@ -5,6 +5,7 @@ import imgSantiago from "../Img/Santiago.png";
 import imgDavid from "../Img/David.jpeg"
 import imgLucas from "../Img/Lucas.png"
 import imgDayanna from "../Img/dayanna.jpeg";
+import imgIsidro from "../Img/isidro.png";
 import Navbar from "../Navbar/Navbar";
 
 
