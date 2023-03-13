@@ -23,7 +23,7 @@
     align-content: center;
     flex-direction: column;
     margin: 15px;
-      
+
 }
 
 hr {
@@ -40,7 +40,7 @@ hr {
     height: 200px;
     margin: 0 auto;
     margin-right: 5px;
-        
+
 }
 
 .cardConteiner{
@@ -59,7 +59,7 @@ hr {
     transition: all .3s;
     opacity: 0.;
     border: 3px solid rgba(128, 128, 128, 0.474);
-    
+
 }
 .elementsContainerCard:hover {
     box-shadow: 0px 0px 30px 1px rgba(0, 42, 255, 0.3);
@@ -81,9 +81,9 @@ hr {
     margin-bottom: 15px;
 }
 .elementsContainerCard a{
-  
+
     margin-top: 30px;
-    
+
 }
 .divEnlaceCard{
     position: absolute;
@@ -93,7 +93,7 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
 }
 
 .container input {
@@ -102,9 +102,9 @@ hr {
     cursor: pointer;
     height: 0;
     width: 0;
-    
+
   }
-  
+
   .container {
     position: relative;
     cursor: pointer;
@@ -120,7 +120,7 @@ hr {
     height: 2em;
     width: 2em;
   }
-  
+
   .checkmark {
     top: 0;
     left: 0;
@@ -128,47 +128,46 @@ hr {
     width: 2em;
     transition: 100ms;
     animation: dislike_effect 400ms ease;
-    
+
   }
-  
+
   .container input:checked ~ .checkmark path {
     fill: #FF5353;
     stroke-width: 0;
   }
-  
+
   .container input:checked ~ .checkmark {
     animation: like_effect 400ms ease;
   }
-  
+
   .container:hover {
     transform: scale(1.1);
   }
-  
+
   @keyframes like_effect {
     0% {
       transform: scale(0);
     }
-  
+
     50% {
       transform: scale(1.2);
     }
-  
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes dislike_effect {
-    0% {
-      transform: scale(0);
-    }
-  
-    50% {
-      transform: scale(1.2);
-    }
-  
+
     100% {
       transform: scale(1);
     }
   }
 
+  @keyframes dislike_effect {
+    0% {
+      transform: scale(0);
+    }
+
+    50% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
