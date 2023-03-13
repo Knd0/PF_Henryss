@@ -1,22 +1,22 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom"
-import validateForm from "../Helpers/validateForm"
-import { updateCar } from "../../Redux/actions";
+import { useNavigate } from "react-router-dom"
+import { postCar, addToPublications } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import "./CarsEdit.module.css"
+import "./CarsCreate.css"
+import validateForm from "../Helpers/validateForm";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { EditComponent01 } from "./EditComponent01";
-import { EditComponent02 } from "./EditComponent02";
-import { EditComponent03 } from "./EditComponent03";
-import { EditComponent04 } from "./EditComponent04";
-import { EditComponent05 } from "./EditComponent05";
-import { EditComponent06 } from "./EditComponent06";
+import { FormComponent01 } from "./FormComponent01";
+import { FormComponent02 } from "./FormComponent02";
+import { FormComponent03 } from "./FormComponent03";
+import { FormComponent04 } from "./FormComponent04";
+import { FormComponent05 } from "./FormComponent05";
+import { FormComponent06 } from "./FormComponent06";
 
-export default function CarsEdit() {
+export default function CarsCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate(); //para volver a home
   const [showFirstComponent, setShowFirstComponent] = useState(true);
@@ -25,26 +25,9 @@ export default function CarsEdit() {
   const [showFourthComponent, setShowFourthComponent] = useState(false);
   const [showFifthComponent, setShowFifthComponent] = useState(false);
   const [showSixComponent, setShowSixComponent] = useState(false);
-  let id = useParams()
-  let value = id["id"]; // Sintaxis de corchetes
-  const cars= useSelector((state)=>state.cars)
-  const publications= useSelector((state)=>state.usersDetails[0].publications)
- 
-const valor =value.toString()===publications.toString()? value.toString():null
-console.log("ESTO ES VALOR=============>",valor)
-
-  let bla = cars.filter(c => {
-      if(c.carId.toString()===valor.toString()){
-        return c
-      }
-  });
-  //console.log("ESTO ES BLA============>",bla)
-  const usersDetails = useSelector((state)=>state.usersDetails)
+  const usersDetails = useSelector((state) => state.usersDetails)
   const userId = usersDetails[0].userId
-  console.log("ESTO ES USERID============>",userId)
-
-
-
+  
   const handleBackComponent02 = () => {
     setShowSecondComponent(false);
     setShowFirstComponent(true);    
@@ -163,25 +146,25 @@ console.log("ESTO ES VALOR=============>",valor)
   const [errors,setErrors] = useState({}); //estado local para errores
 
   const [car, setCar] = useState({ //estado local para crear el car
-    id:bla[0].carId,
-    brand: bla[0].brand,
-    model:bla[0].model,
-    year:  bla[0].year,
-    color:  bla[0].color,
-    price:  bla[0].price,
-    place:  bla[0].place,
-    phone:  bla[0].phone,
-    email:  bla[0].email,
-    kilometers:bla[0].kilometers,    
-    fuel:  bla[0].fuel,
-    img: bla[0].img,
-    engine:  bla[0].engine,
-    power:  bla[0].power,
-    transmission: bla[0].transmission,
-    drive:  bla[0].drive,
-    capacity: bla[0].capacity,
-    description:  bla[0].description,
-  })
+    carId:"",
+    brand: "",
+    model: "",
+    year: "",
+    color: "",
+    price: "",
+    place: "",
+    phone: "",
+    email: "",
+    kilometers: "",    
+    fuel: "",
+    img: "",
+    engine: "",
+    power: "",
+    transmission: "",
+    drive: "",
+    capacity: "",
+    description: "",
+  });
 
 
   useEffect(() => { //valido el form
@@ -197,12 +180,9 @@ function onInputChange(e) { //cambio el estado segun el input
     ...car,
     [e.target.name]: e.target.value,
   });
-
-};
-console.log("car:", car);
-const carId = car.id
-console.log("ESTO ES CARID============>",carId)
-
+}
+const bla = car.carId
+console.log("ESTO ES CAR=============>",car)
 
 
 function onSubmit(e) {
@@ -220,10 +200,8 @@ function onSubmit(e) {
       });;
     return;
   }
-  console.log("userId: ", userId);
-console.log("carId: ", carId);
-console.log("car: ", car);
-dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //hago el post, despacho la action
+  dispatch(postCar(userId, car)); //hago el post, despacho la action
+  dispatch(addToPublications(userId,bla))
   setCar({ //reseteo el estado
     brand: "",
     model: "",
@@ -252,11 +230,13 @@ dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //h
     draggable: true,
     progress: undefined,
     theme: "colored",   
-    onClose: () => {
-      navigate("/cars");
-    }
+    // onClose: () => {
+    //   navigate("/cars");
+    // }
     });
 }
+console.log(car)
+console.log(userId)
 
 
   return (
@@ -272,45 +252,42 @@ dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //h
             <form  onSubmit={onSubmit}> 
 
           {showFirstComponent && (  
-            <EditComponent01
+            <FormComponent01
               car={car}
               setCar={setCar}
               errors={errors}
               setErrors={setErrors}
               onInputChange={onInputChange}
               handleConfirmFirstClick={handleConfirmFirstClick}
-              bla={bla}
             />
           )}
             
           {showSecondComponent && (
-            <EditComponent02
+            <FormComponent02
               car={car}
               setCar={setCar}
               errors={errors}
               setErrors={setErrors}
               onInputChange={onInputChange}
               handleConfirmSecondClick={handleConfirmSecondClick}
-              handleBackComponent02 = {handleBackComponent02} 
-              bla={bla}            
+              handleBackComponent02 = {handleBackComponent02}                
             />
             )}
 
           {showThirdComponent && (
-            <EditComponent03
+            <FormComponent03
               car={car}
               setCar={setCar}
               errors={errors}
               setErrors={setErrors}
               onInputChange={onInputChange}
               handleConfirmThirdClick={handleConfirmThirdClick}
-              handleBackComponent03 = {handleBackComponent03} 
-              bla={bla}   
+              handleBackComponent03 = {handleBackComponent03}    
             />
             )}
 
           {showFourthComponent && (
-            <EditComponent04
+            <FormComponent04
               car={car}
               setCar={setCar}
               errors={errors}
@@ -318,32 +295,29 @@ dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //h
               onInputChange={onInputChange}
               handleConfirmFourthClick={handleConfirmFourthClick}
               handleBackComponent04 = {handleBackComponent04} 
-              bla={bla}
             />
             )}
           
           {showFifthComponent && (
-            <EditComponent05
+            <FormComponent05
               car={car}
               setCar={setCar}
               errors={errors}
               setErrors={setErrors}
               onInputChange={onInputChange}       
               handleConfirmFifthClick={handleConfirmFifthClick}
-              handleBackComponent05 = {handleBackComponent05}     
-              bla={bla}   
+              handleBackComponent05 = {handleBackComponent05}        
             />
             )}
 
           {showSixComponent && (
-            <EditComponent06
+            <FormComponent06
               car={car}
               setCar={setCar}
               errors={errors}
               setErrors={setErrors}
               onInputChange={onInputChange}   
-              handleBackComponent06 = {handleBackComponent06}
-              bla={bla}        
+              handleBackComponent06 = {handleBackComponent06}            
             />
             )}
                 
@@ -356,4 +330,4 @@ dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //h
     <Footer/>
     </>    
   );
-   }
+}

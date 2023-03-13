@@ -102,7 +102,10 @@ const validateForm = ({
 
     else if (!onlyphone.test(phone) || phone.length < 7 || phone.length > 16)
       errors.phone = "Only + and numbers, 7-16 characters";
-  
+
+  /*    
+   else if (!img)
+      errors.img = "solo imagenes"; */
     
     else if (
       typeof description !== "string" ||  description.length > 250
@@ -111,7 +114,7 @@ const validateForm = ({
     }
     
 
-
+    console.log("ESTO ES ERROS===============>",errors)
     return errors;
   };
 

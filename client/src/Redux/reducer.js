@@ -20,7 +20,8 @@ import {
   REMOVE_FAVORITE,
   ADD_TO_PUBLICATIONS,
   FILTER_BY_YEAR_AND_BRAND,
-  GET_CAR_FAVORITES
+  GET_CAR_FAVORITES,
+  GET_CAR_PUBLICATIONS
 } from "./action-types";
 
 const initialState = {
@@ -186,6 +187,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: [...state.cars, action.payload],
+        usersDetails:state.usersDetails.publications.concat(action.payload)
       };
     case LOADING_ACTION: {
   
@@ -227,6 +229,16 @@ function Reducer(state = initialState, action) {
         ...state,
         favorites:action.payload
       }
+      case PUT_CAR:
+        return{
+          ...state,
+          cars:[...state.cars,action.payload]
+        }
+        case GET_CAR_PUBLICATIONS: 
+        return {
+          ...state,
+          publications:[...state.publications,action.payload]
+        }
 
     default:
       return state;
