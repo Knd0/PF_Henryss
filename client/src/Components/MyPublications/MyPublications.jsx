@@ -16,11 +16,9 @@ const MyPublications = () => {
   const usersDetails = useSelector((state) => state.usersDetails)
   const userId = usersDetails[0].userId
   const publications = useSelector((state) => state.usersDetails[0].publications)
-  const publicados = cars.filter((c)=>{
-    if(c.carId.toString()===publications.toString()){
-      return c
-    }
-  })
+  const publicados = cars.filter((c) => publications.includes(c.carId.toString()));
+
+    
   console.log("ESTOE ES PUBLICATIONS===================>",publications)
   console.log("ESTOE ES PUBLICADOS===================>",publicados)
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,12 +29,8 @@ const MyPublications = () => {
   // const maximo = publications.length / carsPerPage;
 
   useEffect(() => {
-<<<<<<< HEAD
     dispatch(cleanState());
     dispatch(getpublications(userId));
-=======
-    dispatch(getCars());
->>>>>>> b2e812d69d930ba1c391b425fc624371bddb3031
   }, [dispatch]);
 
   return (

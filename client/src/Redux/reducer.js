@@ -237,7 +237,7 @@ function Reducer(state = initialState, action) {
         case GET_CAR_PUBLICATIONS: 
         return {
           ...state,
-          publications:action.payload
+          publications:[...state.publications,action.payload]
         }
 
     default:
