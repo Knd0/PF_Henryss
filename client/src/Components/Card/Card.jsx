@@ -120,16 +120,6 @@ export default function Card({
         <span className={styles.titulo}>
           $ <span className={styles.subtitulo}>{price}</span>
         </span>
-
-        <div>
-          <button
-            onClick={(e) => handleDeleteFavorite(e, carId)}
-            id="boton"
-            className={styles.deleteB}
-          >
-            Delete
-          </button>
-        </div>
       </div>
     </div>
   );
