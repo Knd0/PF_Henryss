@@ -31,8 +31,12 @@ const MyPublications = () => {
   // const maximo = publications.length / carsPerPage;
 
   useEffect(() => {
+<<<<<<< HEAD
     dispatch(cleanState());
     dispatch(getpublications(userId));
+=======
+    dispatch(getCars());
+>>>>>>> b2e812d69d930ba1c391b425fc624371bddb3031
   }, [dispatch]);
 
   return (
