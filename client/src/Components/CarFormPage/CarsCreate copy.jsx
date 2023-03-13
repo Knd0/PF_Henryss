@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
-import { postCar } from "../../Redux/actions";
+import { postCar, addToPublications } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import "./CarsCreate.css"
@@ -146,6 +146,7 @@ export default function CarsCreate() {
   const [errors,setErrors] = useState({}); //estado local para errores
 
   const [car, setCar] = useState({ //estado local para crear el car
+    carId:"",
     brand: "",
     model: "",
     year: "",
@@ -180,6 +181,8 @@ function onInputChange(e) { //cambio el estado segun el input
     [e.target.name]: e.target.value,
   });
 }
+const bla = car.carId
+console.log("ESTO ES CAR=============>",car)
 
 
 function onSubmit(e) {
@@ -198,6 +201,7 @@ function onSubmit(e) {
     return;
   }
   dispatch(postCar(userId, car)); //hago el post, despacho la action
+  dispatch(addToPublications(userId,bla))
   setCar({ //reseteo el estado
     brand: "",
     model: "",

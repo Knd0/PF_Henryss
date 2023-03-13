@@ -6,6 +6,8 @@ export const GET_CARS_DETAIL = 'GET_CARS_DETAIL';
 
 export const ORDER_CARS_ALF = 'ORDER_CARS_ALF';
 
+export const GET_CAR_PUBLICATIONS = 'GET_CAR_PUBLICATIONS';
+
 export const ORDER_CARS_KM = 'ORDER_CARS_KM';
 
 export const ORDER_CARS_PRICE = 'ORDER_CARS_PRICE';

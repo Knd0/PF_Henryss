@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { getCars, cleanState } from "../../Redux/actions";
+import { getCars, cleanState, getpublications } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 import style from "../MyPublications/MyPublications.module.css";
 import Pagination from "../Pagination/Pagination";
@@ -12,7 +12,17 @@ import imgMenu from "../Img/menu.png";
 
 const MyPublications = () => {
   const dispatch = useDispatch();
+  const cars = useSelector((state)=>state.cars)
+  const usersDetails = useSelector((state) => state.usersDetails)
+  const userId = usersDetails[0].userId
   const publications = useSelector((state) => state.usersDetails[0].publications)
+  const publicados = cars.filter((c)=>{
+    if(c.carId.toString()===publications.toString()){
+      return c
+    }
+  })
+  console.log("ESTOE ES PUBLICATIONS===================>",publications)
+  console.log("ESTOE ES PUBLICADOS===================>",publicados)
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage, setCountriesPerPage] = useState(3);
   const indexOfLastCar = currentPage * carsPerPage;
@@ -22,7 +32,7 @@ const MyPublications = () => {
 
   useEffect(() => {
     dispatch(cleanState());
-    dispatch(getCars());
+    dispatch(getpublications(userId));
   }, [dispatch]);
 
   return (
@@ -32,8 +42,8 @@ const MyPublications = () => {
         <Link to="/carscreate">
           <button>Create New Post</button>
         </Link>
-        {publications ? (
-          publications.map((e) => {
+        {publicados? (
+          publicados.map((e) => {
             return (
               <div key={e.carId} className={style.container}>
                 <div className={style.flexContainerPublications}>

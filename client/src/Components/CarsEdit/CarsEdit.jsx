@@ -27,15 +27,23 @@ export default function CarsEdit() {
   const [showSixComponent, setShowSixComponent] = useState(false);
   let id = useParams()
   let value = id["id"]; // Sintaxis de corchetes
-  const cars= useSelector((state)=>state.publications)
+  const cars= useSelector((state)=>state.cars)
+  const publications= useSelector((state)=>state.usersDetails[0].publications)
  
-
+const valor =value.toString()===publications.toString()? value.toString():null
+console.log("ESTO ES VALOR=============>",valor)
 
   let bla = cars.filter(c => {
-      if( c.carId.toString() === value.toString()){
+      if(c.carId.toString()===valor.toString()){
         return c
       }
   });
+  //console.log("ESTO ES BLA============>",bla)
+  const usersDetails = useSelector((state)=>state.usersDetails)
+  const userId = usersDetails[0].userId
+  console.log("ESTO ES USERID============>",userId)
+
+
 
   const handleBackComponent02 = () => {
     setShowSecondComponent(false);
@@ -155,6 +163,7 @@ export default function CarsEdit() {
   const [errors,setErrors] = useState({}); //estado local para errores
 
   const [car, setCar] = useState({ //estado local para crear el car
+    id:bla[0].carId,
     brand: bla[0].brand,
     model:bla[0].model,
     year:  bla[0].year,
@@ -173,7 +182,7 @@ export default function CarsEdit() {
     capacity: bla[0].capacity,
     description:  bla[0].description,
   })
-  console.log("ESTOE ES CAR================>",car)
+
 
   useEffect(() => { //valido el form
     setErrors(validateForm(car));
@@ -190,6 +199,9 @@ function onInputChange(e) { //cambio el estado segun el input
   });
 
 };
+console.log("car:", car);
+const carId = car.id
+console.log("ESTO ES CARID============>",carId)
 
 
 
@@ -208,7 +220,10 @@ function onSubmit(e) {
       });;
     return;
   }
-  dispatch(updateCar(car)); //hago el post, despacho la action
+  console.log("userId: ", userId);
+console.log("carId: ", carId);
+console.log("car: ", car);
+dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //hago el post, despacho la action
   setCar({ //reseteo el estado
     brand: "",
     model: "",
