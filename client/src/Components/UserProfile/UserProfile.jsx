@@ -20,7 +20,7 @@ export default function UserProfile() {
           <div className={styles.contornoDeImagen}>
             <img className={styles.avatar} src={user.picture} alt="user.img" />
             <div className={styles.tarjetaPresentacion}>
-              <h2>My profile</h2>
+              <h1>MY PROFILE</h1>
               <div className={styles.tarjeta}>
                 <h2>
                   <FontAwesomeIcon icon={solid("user")} />{" "}

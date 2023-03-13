@@ -60,6 +60,11 @@
     border-radius: 10px;
 }
 
+h1 {
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .btn1:hover {
     background-color: rgb(98, 145, 160);
 }
