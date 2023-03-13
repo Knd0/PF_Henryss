@@ -462,7 +462,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/SantiSilvera02"
+                    href= "https://github.com/SantiSilvera02"
                     target="_blank"
                     className="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
