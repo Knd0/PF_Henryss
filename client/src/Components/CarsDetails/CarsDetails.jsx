@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCarsDetail } from "../../Redux/actions";
+import { getCarsDetail, cleanState } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import styles from "./CarsDetails.module.css"
@@ -9,6 +9,7 @@ import { FeaturesTable } from "./FeaturesTable";
 import { Description } from "./Description";
 import { MainInfoComponent } from "./MainInfoComponent";
 import { ContactInfo } from "./ContactInfo";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function CarsDetail() {
@@ -17,6 +18,7 @@ export default function CarsDetail() {
     const { id } = useParams()
     const carDetail = useSelector((state) => state.detail)
     useEffect(() => {
+        dispatch(cleanState());
         dispatch(getCarsDetail(id))
     }, [dispatch, id])
 
