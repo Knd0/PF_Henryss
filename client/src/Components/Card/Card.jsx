@@ -25,7 +25,7 @@ export default function Card({
     e.preventDefault();
     dispatch(removeFavorite(carId));
   }
-  
+
   const { isAuthenticated } = useAuth0()
   const { user } = useAuth0()
   const notAuthenticated = () => {
@@ -46,15 +46,15 @@ export default function Card({
       })
       dispatch(addFavorite(usersDetails[0].userId,checkbox.id))
       return
-    }else 
+    }else
     setCheckbox({
       ...checkbox,
       checked:false
     })
     dispatch(removeFavorite(usersDetails[0].userId,checkbox.id))
   }
-  
-  
+
+
   return (
     <div className={styles.cardConteiner}>
       <div className={styles.elementsContainerCard}>
