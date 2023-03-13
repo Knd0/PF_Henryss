@@ -12,6 +12,7 @@ import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { all } from "axios";
+import Loading from "../Loading/Loading";
 
 
 
@@ -41,7 +42,7 @@ export default function Home() {
     PRUEBA3
   ];
 
-  if(!allCars.length) { return (<h1>NO FUNCA</h1>)}
+  if(!allCars.length) { return (<Loading/>)}
   return (
     <div className="flex flex-col">
 
