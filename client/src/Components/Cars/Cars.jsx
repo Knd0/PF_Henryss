@@ -93,7 +93,7 @@ export default function Cars() {
                                 <Card
                                     carId={e.carId || e.id}
                                     brand={e.brand}
-                                    img={e.img.secure_url}
+                                    img={e.img.secure_url || e.img}
                                     model={e.model}
                                     year={e.year}
                                     kilometers={e.kilometers}
