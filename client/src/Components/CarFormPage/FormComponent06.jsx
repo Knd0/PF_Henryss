@@ -1,10 +1,13 @@
 import { ProgressBar06 } from "./ProgressBar";
 
+
 export function FormComponent06 (props) {
   const  { 
     car,  
     onInputChange,
-    handleBackComponent06
+    handleBackComponent06,
+    handleConfirmSixClick,
+    showNextButton
    } = props;
     return (
         <>
@@ -25,12 +28,14 @@ export function FormComponent06 (props) {
                         <button type="button" onClick={handleBackComponent06} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                             Back
                         </button>
+                    
+                    {showNextButton && (
+                    <button type="button" onClick={handleConfirmSixClick} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+                        Next
+                    </button>                  
+                    )}
                     </div>
-                    <div class="flex items-center justify-center w-full">
-                        <button type="submit" class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
-                            Publish
-                        </button>
-                </div>
+                    
                 </>
     )
 }
