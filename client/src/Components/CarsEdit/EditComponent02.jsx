@@ -26,7 +26,7 @@ export function EditComponent02 (props) {
                         placeholder="490 hp"
                         onChange={onInputChange}
                         name="power"
-                        defaultValue={bla[0].power}
+                        value={car.power}
                         />
 
                       </div>
@@ -38,7 +38,7 @@ export function EditComponent02 (props) {
                               placeholder="490 hp"
                               onChange={onInputChange}
                               name="power"
-                              defaultValue={bla[0].power}
+                              value={car.power}
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.power}</span> </p>
                         </div>
@@ -54,7 +54,7 @@ export function EditComponent02 (props) {
                         placeholder="6.2L V8"
                         onChange={onInputChange}
                         name="engine"
-                        defaultValue={bla[0].engine}
+                         value={car.engine}
                         />
 
                       </div>
@@ -66,7 +66,7 @@ export function EditComponent02 (props) {
                               placeholder="6.2L V8"
                               onChange={onInputChange}
                               name="engine"
-                              defaultValue={bla[0].engine}
+                               value={car.engine}
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.engine}</span> </p>
                         </div>
@@ -84,7 +84,7 @@ export function EditComponent02 (props) {
                         <select id="username-success" class="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                               onChange={onInputChange}
                               name="fuel"
-                              defaultValue={bla[0].fuel}
+                               value={car.fuel}
                               >
                                 <option value="--select--">--select--</option>
                                 <option value="Diesel">Diesel</option>
@@ -106,7 +106,7 @@ export function EditComponent02 (props) {
                               <select id="username-success" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                               onChange={onInputChange}
                               name="fuel"
-                              defaultValue={bla[0].fuel}
+                               value={car.fuel}
                               >
                                 <option value="--select--">--select--</option>
                                 <option value="Diesel">Diesel</option>
@@ -132,7 +132,7 @@ export function EditComponent02 (props) {
                         <select id="username-success" class="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                               onChange={onInputChange}
                               name="transmission"
-                              defaultValue={bla[0].transmission}
+                               value={car.transmission}
                               >
                                 <option value="--select--">--select--</option>
                                 <option value="Automatic">Automatic</option>
@@ -150,7 +150,7 @@ export function EditComponent02 (props) {
                               <select id="username-success" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                               onChange={onInputChange}
                               name="transmission"
-                              defaultValue={bla[0].transmission}
+                               value={car.transmission}
                               >
                                 <option value="--select--">--select--</option>
                                 <option value="Automatic">Automatic</option>
@@ -174,7 +174,7 @@ export function EditComponent02 (props) {
                         <select id="username-success" class="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                               onChange={onInputChange}
                               name="drive"
-                              defaultValue={bla[0].drive}
+                              value={car.drive}
                               >
                                 <option value="--select--">--select--</option>
                                 <option value="Assisted">Assisted</option>
@@ -192,7 +192,7 @@ export function EditComponent02 (props) {
                               <select id="username-success" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                               onChange={onInputChange}
                               name="drive"
-                              defaultValue={bla[0].drive}
+                              value={car.drive}
                               >
                                 <option value="--select--">--select--</option>
                                 <option value="Assisted">Assisted</option>
@@ -213,7 +213,7 @@ export function EditComponent02 (props) {
                         <select id="username-success" class="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                               onChange={onInputChange}
                               name="capacity"
-                              defaultValue={bla[0].capacity}
+                              value={car.capacity}
                               >
                                 <option value="--select--">--select--</option>
                                 <option value="1">1</option>
@@ -232,7 +232,7 @@ export function EditComponent02 (props) {
                               <select id="username-success" class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                               onChange={onInputChange}
                               name="capacity"
-                              defaultValue={bla[0].capacity}
+                              value={car.capacity}
                               >
                                 <option value="--select--">--select--</option>
                                 <option value="1">1</option>
