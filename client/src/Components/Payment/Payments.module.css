@@ -14,8 +14,8 @@
 }
 
 .card {
-  width: 300px;
-  justify-items: center;
+  max-width: 300px;
+  margin: 0 auto; 
 }
 
 .product {
