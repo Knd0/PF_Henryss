@@ -168,7 +168,7 @@ export default function Navbar() {
                   src={user.picture}
                   alt="Rounded avatar"
                 />
-                <p className="font-serif ...">Profile</p>
+                <p className="mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4">Profile</p>
                 </Link>
               </div>
             )}
