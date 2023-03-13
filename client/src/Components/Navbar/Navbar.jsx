@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import img from "../Img/Home.png";
+import img from "../Img/RadiatorSprings.jpg";
 import LoginButton from "../Login/Login";
 import LogoutButton from "../Login/Logout";
 import style from "./Navbar.module.css";
@@ -23,7 +23,7 @@ export default function Navbar() {
       <nav className="flex items-center justify-between flex-wrap bg-white">
         <div className="flex items-center flex-shrink-0 text-white">
           <img src={img} alt="logo" className="w-20 mt-3 ml-3" />
-          <span className=" text-black ml-2 self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+          <span className=" text-black ml-2 self-center text-xl font-mono whitespace-nowrap dark:text-white">
             Radiator Springs
           </span>
         </div>
@@ -119,12 +119,12 @@ export default function Navbar() {
 
             {actualPage.createPost ? (
               <Link
-                to="/carscreate"
+                to="/mypublications "
                 className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
                 name="createPost"
                 onClick={handleActualPage}
               >
-                Create Post
+                My Publications
               </Link>
             ) : (
               <Link
@@ -168,7 +168,7 @@ export default function Navbar() {
                   src={user.picture}
                   alt="Rounded avatar"
                 />
-                <p className="font-serif ...">Profile</p>
+                <p className="mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4">Profile</p>
                 </Link>
               </div>
             )}

@@ -42,15 +42,14 @@ export default function Cars() {
     }
 
     useEffect(() => {
-        dispatch(cleanState())
         dispatch(getCars())
     }, [dispatch]);
 
 //     useEffect(()=>{
 //         if (currentPage !== 1){
-//            setCurrentPage(1) 
+//            setCurrentPage(1)
 //         }
-        
+
 //     },[currentPage, setCurrentPage, selectedOptionPrice, selectedOptionKm ,selectedOptionYear, selectedOptionBrand, selectedOptionAlf])
 // console.log(selectedOptionPrice)
 
@@ -85,7 +84,7 @@ export default function Cars() {
                 <Search />
             </div>
             <div>
-            {loading ? <Loading/>: 
+            {loading ? <Loading/>:
             (<div className={style.cardconteiner}>
                 {currentCars.length ? (
                     currentCars.map((e) => {
@@ -94,7 +93,7 @@ export default function Cars() {
                                 <Card
                                     carId={e.carId || e.id}
                                     brand={e.brand}
-                                    img={e.img.secure_url}
+                                    img={e.img.secure_url || e.img}
                                     model={e.model}
                                     year={e.year}
                                     kilometers={e.kilometers}
@@ -104,12 +103,14 @@ export default function Cars() {
                         );
                     })
                 ) :
-                    <div className={style.cardModal}>
-                       <h1>nada</h1>
+
+                handleAlert()
+                    // <div className={style.cardModal}>
+                    //    <h1>nada</h1>
 
 
 
-                    </div>
+                    // </div>
                 }
             </div>)}
             </div>
@@ -119,5 +120,3 @@ export default function Cars() {
         </>
     );
 }
-
-

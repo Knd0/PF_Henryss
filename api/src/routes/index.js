@@ -4,6 +4,12 @@ const carsRoutes = require('./carsRoutes')
 const favoritesRoutes = require('./favoritesRoutes');
 const publicationsRouter = require('./publicationsRoutes');
 const usersRoutes = require('./usersRoutes')
+const payment = require('./paymentRoutes')
+
+
+
+
+
 
 const router = Router();
 
@@ -12,5 +18,10 @@ router.use('/brands', brandRoutes)
 router.use('/favorites', favoritesRoutes)
 router.use('/user', usersRoutes)
 router.use('/publications', publicationsRouter)
+router.use('/checkout', payment)
+
+
+
+
 
 module.exports = router;

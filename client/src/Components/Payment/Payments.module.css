@@ -1,0 +1,76 @@
+.section {
+    position: relative;
+    justify-items: center;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    border-radius: 6px;
+    justify-content: space-between;
+    align-items: center;
+    border-width: 1px;
+    margin-left: 800px;
+}
+
+.card {
+  max-width: 300px;
+  margin: 0 auto; 
+}
+
+.product {
+    display: flex;
+    width: 150px;
+    justify-items: center;
+    align-items: center;
+}
+
+.description {
+    margin-top: 20px;
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img {
+  border-radius: 6px;
+  margin: 10px;
+  width: 54px;
+  height: 57px;
+}
+
+.h5 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.154px;
+  color: #242d60;
+  margin: 0;
+}
+
+.h5 {
+  margin-top: 10px;
+  opacity: 0.5;
+}
+
+.button {
+  height: 36px;
+  background: #556cd6;
+  justify-content: center;
+  color: white;
+  width: 150px;
+  font-size: 14px;
+  border: 0;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.6;
+  border-radius: 0 0 6px 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+  position: relative;
+}
+
+.button:hover {
+  opacity: 0.8;
+}

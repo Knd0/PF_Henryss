@@ -22,6 +22,7 @@ import {
   GET_USER_PROFILE,
   GET_CAR_FAVORITES,
   ADD_TO_PUBLICATIONS,
+  FILTER_BY_YEAR_AND_BRAND
 } from "./action-types";
 import axios from "axios";
 
@@ -55,10 +56,10 @@ export function getCarsDetail(carId) {
   };
 }
 
-export function postCar(body) {
+export function postCar(userId, body) {
   return async function (dispatch) {
     try {
-      var car = await axios.post(`/cars`, body);
+      var car = await axios.post(`/cars/${userId}`, body);
       return dispatch({
         type: POST_CAR,
         payload: car.data,
@@ -90,19 +91,15 @@ export function orderByPrice(payload) {
   };
 }
 
-export function filterByYear(payload) {
-  return {
-    type: FILTER_BY_YEAR,
-    payload,
-  };
+
+export function filterByYearAndBrand(year, brand){
+  return{
+    type: FILTER_BY_YEAR_AND_BRAND,
+    year,
+    brand,
+  }
 }
 
-export function filterByBrand(payload) {
-  return {
-    type: FILTER_BY_BRAND,
-    payload,
-  };
-}
 
 export function getCarByName(model) {
   return async function (dispatch) {
@@ -199,10 +196,11 @@ export function addFavorite(userId, carId) {
   };
 }
 
-export const getFavorites = () => {
+export const getFavorites = (userId) => {
+  
   return async function (dispatch) {
     try {
-      const allFavorites = await axios.get(`/favorites`);
+      const allFavorites = await axios.get(`/favorites/${userId}`);
       dispatch({
         type: GET_CAR_FAVORITES,
         payload: allFavorites.data,
