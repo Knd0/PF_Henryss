@@ -121,7 +121,6 @@ export default function AdminUsers() {
                     >
                       Edit user
                     </a>
-                  {console.log(user.userId)}
                     <a
                       onClick={() => handleDelete(user.userId)}
                       href="#"
