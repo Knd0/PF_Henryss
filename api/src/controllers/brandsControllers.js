@@ -6,11 +6,12 @@ const data = require('../../cards.json')
 const getApiBrands = async () => {
     let response = data.cars.map((car) => {
         return {
-            id: car.id,
+            id: car.id || car.carId,
             brand: car.brand,
 
         }
     })
+    console.log(response)
     return response
 }
 
