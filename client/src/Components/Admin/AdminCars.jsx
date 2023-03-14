@@ -97,7 +97,18 @@ export default function AdminCars() {
                     {car.email}
                 </td>
                 <td className="px-6 py-4">
-                    <a href="#" className="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                <a
+                      href="#"
+                      className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >
+                      Edit Car
+                    </a>
+                    <a
+                      href="#"
+                      className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
+                    >
+                      Delete Car
+                    </a>
                 </td>
             </tr>
          ))}
