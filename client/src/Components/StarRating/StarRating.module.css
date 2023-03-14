@@ -1,0 +1,28 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+
+   
+}
+
+
+.containerItems{
+    background-color: rgb(218, 215, 215);
+    width: 50%;
+    border-radius: 5px;
+  
+}
+.containerItems textarea{
+    height: 100px;
+    width: 100%;
+}
+
+.containerItems span{
+    font-size: 30px;
+}
+.containerItems p{
+ font-size: 25px;
+ margin-right: 350px;
+}
