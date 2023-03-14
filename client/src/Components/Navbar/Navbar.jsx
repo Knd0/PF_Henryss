@@ -14,7 +14,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.usersDetails);
   const [barsDropDownMenu, setBarsDropDownMenu] = useState(false);
-  const admin = details[0]?.admin ?? false;
+  const admin = details[0]?.admin;
 
   useEffect(() => {
     if (user) {
