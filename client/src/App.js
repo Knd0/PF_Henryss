@@ -13,6 +13,8 @@ import CarsCreate from "./Components/CarFormPage/CarsCreate";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import AdminUser from "./Components/Admin/AdminUser";
 import AdminCars from "./Components/Admin/AdminCars";
+import StarRating from "./Components/StarRating/StarRating";
+import Reviews from "./Components/Reviews/Reviews"
 import axios from "axios";
 
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
@@ -35,6 +37,8 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/myfavorites" element={<ProtectedRoute component={MyFavorites}/>} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/starsReviews" element={<StarRating/>} />
+          <Route path="/reviews" element={<Reviews/>} />
           <Route path="*" element={<Page404 />} />
           <Route path="/user" element={<UserProfile />} />
           <Route path="/admin/user" element={<AdminUser />} />

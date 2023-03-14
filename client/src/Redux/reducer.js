@@ -21,7 +21,8 @@ import {
   ADD_TO_PUBLICATIONS,
   FILTER_BY_YEAR_AND_BRAND,
   GET_CAR_FAVORITES,
-  GET_CAR_PUBLICATIONS
+  GET_CAR_PUBLICATIONS,
+  ADD_TO_REVIEWS
 } from "./action-types";
 
 const initialState = {
@@ -32,6 +33,7 @@ const initialState = {
   publications: [],
   users: [],
   usersDetails: [],
+  reviews:[],
   loading: true,
 };
 
@@ -245,6 +247,11 @@ function Reducer(state = initialState, action) {
           ...state,
           publications:[...state.publications,action.payload]
         }
+        case ADD_TO_REVIEWS:
+          return{
+            ...state,
+            reviews:[...state.reviews,action.payload]
+          }
 
     default:
       return state;

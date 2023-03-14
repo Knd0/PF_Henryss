@@ -9,7 +9,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import imgBorrar from "../Img/borrar.png";
 import imgMenu from "../Img/menu.png";
-
+import StarRating from "../StarRating/StarRating";
 const MyPublications = () => {
   const dispatch = useDispatch();
   const cars = useSelector((state)=>state.cars)

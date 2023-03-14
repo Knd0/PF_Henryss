@@ -1,0 +1,46 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fechaOpinionContainer{
+    margin-top: 30px;
+    display: flex;
+}
+
+
+.containerItems{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(218, 215, 215);
+    width: 54%;
+    border-radius: 5px;
+    margin-top: 20px;
+  
+}
+.containerItems textarea{
+    height: 100px;
+    width: 100%;
+}
+
+.containerItems span{
+    font-size: 30px;
+}
+.containerItems p{
+ font-size: 25px;
+ margin-right: 350px;
+}
+
+.containerItems p{
+    color: #0f2170;
+}
+.containerItems span{
+    color: #00a30b;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: 700;
+}
