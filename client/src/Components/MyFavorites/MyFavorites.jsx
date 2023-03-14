@@ -63,7 +63,7 @@ export default function MyFavorites() {
             <Card
               carId={e[0].carId}
               brand={e[0].brand}
-              img={e[0].img.secure_url || e.img}
+              img={e[0].img.secure_url || e[0].img}
               model={e[0].model}
               year={e[0].year}
               kilometers={e[0].kilometers}
