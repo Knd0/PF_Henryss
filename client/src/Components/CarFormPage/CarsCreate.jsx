@@ -15,6 +15,8 @@ import { FormComponent03 } from "./FormComponent03";
 import { FormComponent04 } from "./FormComponent04";
 import { FormComponent05 } from "./FormComponent05";
 import { FormComponent06 } from "./FormComponent06";
+import { FormComponent07 } from "./FormComponent07";
+import Payment from "../Payment/Payment";
 import axios from "axios";
 
 export default function CarsCreate() {
@@ -26,6 +28,10 @@ export default function CarsCreate() {
   const [showFourthComponent, setShowFourthComponent] = useState(false);
   const [showFifthComponent, setShowFifthComponent] = useState(false);
   const [showSixComponent, setShowSixComponent] = useState(false);
+  const [showSevenComponent, setShowSevenComponent] = useState(false);
+  const [showNextButton, setShowNextButton] = useState(false);
+  
+  
   const usersDetails = useSelector((state) => state.usersDetails)
   const userId = usersDetails[0].userId
   
@@ -51,7 +57,14 @@ export default function CarsCreate() {
 
   const handleBackComponent06 = () => {
     setShowSixComponent(false);
+    setShowCheckoutButton(false)
     setShowFifthComponent(true);    
+   }
+
+   const handleBackComponent07 = () => {
+    setShowSevenComponent(false);
+    setShowNextButton(true);
+    setShowSixComponent(true);    
    }
   
   const handleConfirmFirstClick = () => {
@@ -142,8 +155,28 @@ export default function CarsCreate() {
         });;
       return;
     }
-    setShowFifthComponent(false);
+    setShowFifthComponent(false); 
+    if (showNextButton === false) {
+    setShowCheckoutButton(true)};  
     setShowSixComponent(true);
+  };
+
+  const handleConfirmSixClick = () => {
+    if (errors.description) { //chequeo si hay errores
+      toast.error('Please correct errors 🚦', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });;
+      return;
+    }
+    setShowSixComponent(false);    
+    setShowSevenComponent(true);
   };
 
   const [errors,setErrors] = useState({}); //estado local para errores
@@ -229,10 +262,13 @@ function onSubmit(e) {
     draggable: true,
     progress: undefined,
     theme: "colored",   
-    onClose: () => {
-      navigate("/cars");
-    }
+    // onClose: () => {
+    //   navigate("/cars");
+    // }    
     })
+    setTimeout(function() {
+      navigate("/cars");      
+    }, 3000);
   }
 
 const [imageSelected, setImageSelected] = useState("")
@@ -255,9 +291,24 @@ const [imageSelected, setImageSelected] = useState("")
   }
 }
 
-console.log(car)
-console.log(imageSelected)
-console.log(userId)
+// console.log(car)
+// console.log(imageSelected)
+// console.log(userId)
+
+const [showCheckoutForm, setShowCheckoutForm] = useState(false);
+const [showCheckoutButton, setShowCheckoutButton] = useState(false);
+
+
+function handleCheckoutClick() {
+  setShowCheckoutButton(false);
+  setShowSixComponent(false);
+  setShowCheckoutForm(true);
+}
+
+
+
+
+
 
 
   return (
@@ -272,6 +323,7 @@ console.log(userId)
           
             <form  onSubmit={onSubmit}> 
 
+          
           {showFirstComponent && (  
             <FormComponent01
               car={car}
@@ -340,12 +392,39 @@ console.log(userId)
               errors={errors}
               setErrors={setErrors}
               onInputChange={onInputChange}   
-              handleBackComponent06 = {handleBackComponent06}            
+              handleBackComponent06 = {handleBackComponent06}
+              handleConfirmSixClick= {handleConfirmSixClick} 
+              showNextButton={showNextButton} 
+              
+            />
+            )}
+
+          {showSevenComponent && (
+            <FormComponent07
+              car={car}
+              setCar={setCar}
+              errors={errors}
+              setErrors={setErrors}
+              onInputChange={onInputChange}   
+              handleBackComponent07 = {handleBackComponent07}
+              handleConfirmSixClick= {handleConfirmSixClick}  
+              
             />
             )}
                 
             </form>
-            
+
+            {showCheckoutButton && (
+            <button type="button" onClick={handleCheckoutClick} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">Proceed to Checkout</button>
+            )}
+            {showCheckoutForm && (
+              <Payment
+              setShowCheckoutForm={setShowCheckoutForm}              
+              setShowSevenComponent={setShowSevenComponent}
+              />
+            )}
+
+
         </div>
     </div>
 </div>

@@ -1,17 +1,55 @@
 import { ProgressBar04 } from "./ProgressBar";
+import { useState } from "react";
 
 export function  EditComponent04 (props) {
   const  { 
+    car,
     handleConfirmFourthClick,
     handleBackComponent04,
     bla
    } = props;
+   const [carImg, setCarImg] = useState("");
+   const onInputChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      setCarImg(event.target.result);
+    };
+
+
+    reader.readAsDataURL(file);
+  };
+  car.img=carImg
     return (
         <>
         <ProgressBar04/>
-        <h2 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl mt-10 lg:text-3xl dark:text-white">Upload your car photos 📸</h2>
-        <h3></h3>
-        <div class="md:flex items-center ">
+        <div>
+        <h2 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl mt-10 lg:text-3xl dark:text-white">
+      Upload your car photos 📸
+    </h2>
+    <h3></h3>
+
+    <div>
+    
+    <input type="file" accept="img/jpg, img/png" onChange={onInputChange} />
+
+      
+    </div>
+  </div>
+
+           
+    <button type="button" onClick={handleBackComponent04} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+                        Back
+                    </button>
+                    <button type="button" onClick={handleConfirmFourthClick} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+                        Next
+                    </button>
+                </>
+    )
+}
+
+    {/*    <div class="md:flex items-center ">
         <div class="flex items-center justify-center w-full">
               <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                   <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -24,14 +62,4 @@ export function  EditComponent04 (props) {
                   </div>                     
                 </div>
 
-                <div class="flex items-center justify-center w-full">
-                    <button type="button" onClick={handleBackComponent04} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
-                        Back
-                    </button>
-                    <button type="button" onClick={handleConfirmFourthClick} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
-                        Next
-                    </button>
-                </div>
-                </>
-    )
-}
+                <div class="flex items-center justify-center w-full"> */}

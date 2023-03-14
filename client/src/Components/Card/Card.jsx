@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import styles from "../Card/Card.module.css";
 import { Link } from "react-router-dom";
@@ -15,6 +16,10 @@ export default function Card({
   carId,
   kilometers,
 }) {
+
+ /*  const[isFav,setIsFav]=useState(false)
+  const favotites =useSelector((state)=>state.favotites)
+  console.log("ESTO ES FAVORITES==================>",favotites) */
   const dispatch = useDispatch();
   function handleDeleteFavorite(e, carId) {
     e.preventDefault();
@@ -53,16 +58,6 @@ export default function Card({
         <span className={styles.titulo}>
           $ <span className={styles.subtitulo}>{price}</span>
         </span>
-
-        <div>
-          <button
-            onClick={(e) => handleDeleteFavorite(e, carId)}
-            id="boton"
-            className={styles.deleteB}
-          >
-            Delete
-          </button>
-        </div>
       </div>
     </div>
   );

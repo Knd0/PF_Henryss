@@ -28,13 +28,21 @@ export default function CarsEdit() {
   let id = useParams()
   let value = id["id"]; // Sintaxis de corchetes
   const cars= useSelector((state)=>state.cars)
-
+  const publications= useSelector((state)=>state.usersDetails[0].publications)
+ 
+const valor =value.toString()===publications.toString()? value.toString():null
+console.log("ESTO ES VALOR=============>",valor)
 
   let bla = cars.filter(c => {
-    return c.carId.toString() === value.toString();
+      if(c.carId.toString()===valor.toString()){
+        return c
+      }
   });
+  //console.log("ESTO ES BLA============>",bla)
+  const usersDetails = useSelector((state)=>state.usersDetails)
+  const userId = usersDetails[0].userId
+  console.log("ESTO ES USERID============>",userId)
 
-  console.log("ESTO ES BLA======================>>>>",bla)
 
 
   const handleBackComponent02 = () => {
@@ -155,24 +163,26 @@ export default function CarsEdit() {
   const [errors,setErrors] = useState({}); //estado local para errores
 
   const [car, setCar] = useState({ //estado local para crear el car
-    brand: "",
-    model: "",
-    year: "",
-    color: "",
-    price: "",
-    place: "",
-    phone: "",
-    email: "",
-    kilometers: "",    
-    fuel: "",
-    img: "",
-    engine: "",
-    power: "",
-    transmission: "",
-    drive: "",
-    capacity: "",
-    description: "",
+    id:bla[0].carId,
+    brand: bla[0].brand,
+    model:bla[0].model,
+    year:  bla[0].year,
+    color:  bla[0].color,
+    price:  bla[0].price,
+    place:  bla[0].place,
+    phone:  bla[0].phone,
+    email:  bla[0].email,
+    kilometers:bla[0].kilometers,    
+    fuel:  bla[0].fuel,
+    img: bla[0].img,
+    engine:  bla[0].engine,
+    power:  bla[0].power,
+    transmission: bla[0].transmission,
+    drive:  bla[0].drive,
+    capacity: bla[0].capacity,
+    description:  bla[0].description,
   })
+
 
   useEffect(() => { //valido el form
     setErrors(validateForm(car));
@@ -187,7 +197,12 @@ function onInputChange(e) { //cambio el estado segun el input
     ...car,
     [e.target.name]: e.target.value,
   });
-}
+
+};
+console.log("car:", car);
+const carId = car.id
+console.log("ESTO ES CARID============>",carId)
+
 
 
 function onSubmit(e) {
@@ -205,7 +220,10 @@ function onSubmit(e) {
       });;
     return;
   }
-  dispatch(updateCar(car)); //hago el post, despacho la action
+  console.log("userId: ", userId);
+console.log("carId: ", carId);
+console.log("car: ", car);
+dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //hago el post, despacho la action
   setCar({ //reseteo el estado
     brand: "",
     model: "",
@@ -338,4 +356,4 @@ function onSubmit(e) {
     <Footer/>
     </>    
   );
-}
+   }

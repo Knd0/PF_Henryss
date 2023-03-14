@@ -52,7 +52,6 @@ export default function Cars() {
     }
 
     useEffect(() => {
-        dispatch(cleanState())
         dispatch(getCars())
     }, []);
 
@@ -81,27 +80,35 @@ export default function Cars() {
     // console.log(selectedOptionPrice)
 
     const setLocalStorage = (e) => {
-        dispatch(getUsersDetails(user.email))
-        console.log(favoritesState);
-        console.log(userDetails)
+        if(!userDetails.length){
+            dispatch(getUsersDetails(user.email))
+            .then(info=>{
+                if (!favoritesState.includes(e.target.value)) {
+
+                    dispatch(addFavorite(userDetails[0].userId, e.target.value))
+        
+                    setFavoritesState([...favoritesState, e.target.value])
+                    return console.log(favoritesState)
+                }
+                if (favoritesState.includes(e.target.value)) {
+        
+                    dispatch(removeFavorite(userDetails[0].userId, e.target.value))
+        
+                    setFavoritesState(favoritesState.filter(car => car !== e.target.value))
+                    return console.log(favoritesState)
+                }
+            })
+        }
         if (!favoritesState.includes(e.target.value)) {
-            console.log("a la ruta que se va a agregar va a ser a: " + userDetails[0].userId + " / " + e.target.value);
 
             dispatch(addFavorite(userDetails[0].userId, e.target.value))
-            
-            console.log(userDetails);
-            console.log([...favoritesState,e.target.value]);
 
             setFavoritesState([...favoritesState, e.target.value])
             return console.log(favoritesState)
         }
         if (favoritesState.includes(e.target.value)) {
-            console.log("a la ruta que se va a deletear va a ser a: " + userDetails[0].userId + " / " + e.target.value);
 
             dispatch(removeFavorite(userDetails[0].userId, e.target.value))
-
-            console.log(userDetails);
-            console.log(favoritesState.filter(car=>car !== e.target.value));
 
             setFavoritesState(favoritesState.filter(car => car !== e.target.value))
             return console.log(favoritesState)
@@ -132,16 +139,17 @@ export default function Cars() {
         <>
             <Navbar />
             <Filters
-                selectedOptionAlf={selectedOptionAlf}
-                setSelectedOptionAlf={setSelectedOptionAlf}
-                selectedOptionPrice={selectedOptionPrice}
-                setSelectedOptionPrice={setSelectedOptionPrice}
-                selectedOptionBrand={selectedOptionBrand}
-                setSelectedOptionBrand={setSelectedOptionBrand}
-                selectedOptionYear={selectedOptionYear}
-                setSelectedOptionYear={setSelectedOptionYear}
-                selectedOptionKm={selectedOptionKm}
-                setSelectedOptionKm={setSelectedOptionKm}
+            setCurrentPage={setCurrentPage}
+            selectedOptionAlf = {selectedOptionAlf}
+            setSelectedOptionAlf ={ setSelectedOptionAlf}
+            selectedOptionPrice={selectedOptionPrice}
+            setSelectedOptionPrice={setSelectedOptionPrice}
+            selectedOptionBrand ={selectedOptionBrand}
+            setSelectedOptionBrand={setSelectedOptionBrand}
+            selectedOptionYear ={selectedOptionYear}
+            setSelectedOptionYear ={setSelectedOptionYear}
+            selectedOptionKm ={selectedOptionKm}
+            setSelectedOptionKm ={setSelectedOptionKm}
             />
             <div>
                 <Search />
@@ -198,7 +206,7 @@ export default function Cars() {
                                         <Card
                                             carId={e.carId || e.id}
                                             brand={e.brand}
-                                            img={e.img.secure_url}
+                                            img={e.img.secure_url || e.img}
                                             model={e.model}
                                             year={e.year}
                                             kilometers={e.kilometers}
@@ -223,5 +231,3 @@ export default function Cars() {
         </>
     );
 }
-
-

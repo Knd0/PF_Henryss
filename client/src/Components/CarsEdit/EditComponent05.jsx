@@ -23,7 +23,7 @@ export function  EditComponent05 (props) {
                         placeholder="mimail@gmail.com"
                         onChange={onInputChange}
                         name="email"
-                        value={bla[0].email}
+                        value={car.email}
                         />
 
                       </div>
@@ -35,7 +35,7 @@ export function  EditComponent05 (props) {
                               placeholder="mimail@gmail.com"
                               onChange={onInputChange}
                               name="email"
-                              defaultValue={bla[0].email}
+                              value={car.email}
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.email}</span> </p>
                         </div>
@@ -50,7 +50,7 @@ export function  EditComponent05 (props) {
                         placeholder="+5492261459851"
                         onChange={onInputChange}
                         name="phone"
-                        defaultValue={bla[0].phone}
+                         value={car.phone}
                         />
 
                       </div>
@@ -62,7 +62,7 @@ export function  EditComponent05 (props) {
                               placeholder="+5492261459851"
                               onChange={onInputChange}
                               name="phone"
-                              defaultValue={bla[0].phone}
+                               value={car.phone}
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.phone}</span> </p>
                         </div>

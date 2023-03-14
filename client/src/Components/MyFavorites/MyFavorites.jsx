@@ -25,17 +25,20 @@ export default function MyFavorites() {
   const [carsPerPage, setCountriesPerPage] = useState(8)
   const indexOfLastCar = currentPage * carsPerPage
   const indexOfFirstCar = indexOfLastCar - carsPerPage
-  const currentCars = favorites.slice(indexOfFirstCar, indexOfLastCar)
+  let currentCars = favorites
+  if (currentCars.length > 8) {
+    currentCars = favorites.slice(indexOfFirstCar, indexOfLastCar)
+  }
   const [input, setInput] = useState("");
   const maximo = favorites.length / carsPerPage
-
   useEffect(() => {
     dispatch(getUsersDetails(user.email))
-    // dispatch(getFavorites(userDetails[0].userId))
   }, [])
-  useEffect(()=>{
-    dispatch(getFavorites(userDetails[0].userId))
-  }, [ userDetails ])
+  useEffect(() => {
+    if (userDetails.length) {
+      dispatch(getFavorites(userDetails[0].userId))
+    }
+  }, [dispatch])
 
   if (favorites === "You dont have favorites") {
     return (
@@ -51,47 +54,53 @@ export default function MyFavorites() {
       </>
     )
   }
-  if(currentCars.length){
+  if (currentCars.length) {
     return (
       <>
         <Navbar />
-        {currentCars.map(e =>
-          <Card
-            carId={e[0].carId}
-            brand={e[0].brand}
-            img={e[0].img.secure_url}
-            model={e[0].model}
-            year={e[0].year}
-            kilometers={e[0].kilometers}
-            price={e[0].price}
-            key={e[0].carId}
-          />
-        )}
-        <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div>
+        <div className={style.cardconteiner}>
+          {currentCars.map((e) => {
+            return <div className={style.containerCard} key={e[0].carId}>
+              <Card
+                carId={e[0].carId}
+                brand={e[0].brand}
+                img={e[0].img.secure_url || e[0].img}
+                model={e[0].model}
+                year={e[0].year}
+                kilometers={e[0].kilometers}
+                price={e[0].price}
+                key={e[0].carId}
+              />
+            </div>
+          }
+          )}
+        </div>
+        {favorites.length > 8 ? <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div> : null}
+
         <Footer />
       </>
     )
   }
   // if (favorites.length) {
-    // return (
-    //   <>
-    //     <Navbar />
-    //     {favorites.map(e =>
-    //       <Card
-    //         carId={e[0].carId}
-    //         brand={e[0].brand}
-    //         img={e[0].img.secure_url}
-    //         model={e[0].model}
-    //         year={e[0].year}
-    //         kilometers={e[0].kilometers}
-    //         price={e[0].price}
-    //         key={e[0].carId}
-    //       />
-    //     )}
-    //     <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div>
-    //     <Footer />
-    //   </>
-    // )
+  // return (
+  //   <>
+  //     <Navbar />
+  //     {favorites.map(e =>
+  //       <Card
+  //         carId={e[0].carId}
+  //         brand={e[0].brand}
+  //         img={e[0].img.secure_url}
+  //         model={e[0].model}
+  //         year={e[0].year}
+  //         kilometers={e[0].kilometers}
+  //         price={e[0].price}
+  //         key={e[0].carId}
+  //       />
+  //     )}
+  //     <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div>
+  //     <Footer />
+  //   </>
+  // )
   // }
   else return (
     <>
