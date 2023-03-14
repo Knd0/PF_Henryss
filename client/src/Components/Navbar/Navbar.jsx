@@ -7,13 +7,14 @@ import LogoutButton from "../Login/Logout";
 import style from "./Navbar.module.css";
 import { createUs, getUsersDetails, cleanState } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
+import Loading from "../Loading/Loading"
 
 export default function Navbar() {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const details = useSelector((state) => state.usersDetails);
   const [barsDropDownMenu, setBarsDropDownMenu] = useState(false);
-  const admin = details[0]?.admin;
+  const admin = details[0]?.admin ?? false;
 
   useEffect(() => {
     if (user) {
