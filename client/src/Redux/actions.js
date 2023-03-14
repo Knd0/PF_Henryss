@@ -23,7 +23,8 @@ import {
   GET_USER_PROFILE,
   GET_CAR_FAVORITES,
   ADD_TO_PUBLICATIONS,
-  FILTER_BY_YEAR_AND_BRAND
+  FILTER_BY_YEAR_AND_BRAND,
+  DELETE_REVIEW
 } from "./action-types";
 import axios from "axios";
 
@@ -295,4 +296,20 @@ export function addToPublications(userId, carId) {
       console.log(error);
     }
   };
+};
+
+export function removeAdminReview(review) {
+  return{
+    type:DELETE_REVIEW,
+    payload:review
+  }
+  
+};
+
+export function DeleteUser(userId) {
+  return{
+    type:DELETE_REVIEW,
+    payload:userId
+  }
+  
 }

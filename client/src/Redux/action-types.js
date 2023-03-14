@@ -10,6 +10,8 @@ export const GET_CAR_PUBLICATIONS = 'GET_CAR_PUBLICATIONS';
 
 export const ORDER_CARS_KM = 'ORDER_CARS_KM';
 
+export const DELETE_REVIEW = ' DELETE_REVIEW';
+
 export const ORDER_CARS_PRICE = 'ORDER_CARS_PRICE';
 
 export const FILTER_BY_YEAR = 'FILTER_BY_YEAR';
