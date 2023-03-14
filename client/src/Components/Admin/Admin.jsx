@@ -19,6 +19,9 @@ export default function Admin() {
           <Link to="/admin/statistics" className={style.btn}>
             <span>Statistics</span>
           </Link>
+          <Link to="/admin/reviews" className={style.btn}>
+            <span>Reviews</span>
+          </Link>
         </div>
       </div>
       <img className={style.img} src="https://media.tenor.com/0u4Oyi32gQ0AAAAd/por-fin-soy-admin.gif" alt="admin" />
