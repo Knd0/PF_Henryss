@@ -2,12 +2,11 @@ import React from "react";
 import imgFranco from "../Img/Franco.png";
 import imgRamon from "../Img/Ramon.png";
 import imgSantiago from "../Img/Santiago.png";
-import imgDavid from "../Img/David.jpeg"
-import imgLucas from "../Img/Lucas.png"
+import imgDavid from "../Img/David.jpeg";
+import imgLucas from "../Img/Lucas.png";
 import imgDayanna from "../Img/dayanna.jpeg";
 import imgIsidro from "../Img/isidro.png";
 import Navbar from "../Navbar/Navbar";
-
 
 export default function Aboutus() {
   return (
@@ -162,7 +161,7 @@ export default function Aboutus() {
               <img
                 className="mx-auto mb-4 w-36 h-36 rounded-full"
                 src={imgDayanna}
-                alt="Dayanna Vidaurre"
+                alt="Jese Avatar"
               />
               <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <a>Dayanna Vidaurre</a>
@@ -171,7 +170,7 @@ export default function Aboutus() {
               <ul className="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
-                    href="https://www.instagram.com/dayannavidaurre/"
+                    href="#"
                     target="_blank"
                     className="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -187,7 +186,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/dayanna-vidaurre-espiritu-a15408242/"
+                    href="#"
                     target="_blank"
                     className="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -203,7 +202,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/dayannavidaurre"
+                    href="#"
                     target="_blank"
                     className="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
@@ -362,7 +361,7 @@ export default function Aboutus() {
                 alt="Leslie Avatar"
               />
               <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a>Isidro Rivera</a>
+                <a>Isidro</a>
               </h3>
               <p>Graphic Designer</p>
               <ul className="flex justify-center mt-4 space-x-4">
@@ -384,7 +383,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/isidro-rivera-bab6971a5/"
+                    href="#"
                     target="_blank"
                     className="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -400,7 +399,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/lyrics05"
+                    href="#"
                     target="_blank"
                     className="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >
@@ -433,7 +432,7 @@ export default function Aboutus() {
               <ul className="flex justify-center mt-4 space-x-4">
                 <li>
                   <a
-                    href="https://www.instagram.com/santi_silvera02/"
+                    href="#"
                     target="_blank"
                     className="text-[#39569c] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -449,7 +448,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/santiago-silvera-287560145/"
+                    href="#"
                     target="_blank"
                     className="text-[#00acee] hover:text-gray-900 dark:hover:text-white"
                   >
@@ -465,7 +464,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <a
-                    href= "https://github.com/SantiSilvera02"
+                    href="#"
                     target="_blank"
                     className="text-gray-900 hover:text-gray-900 dark:hover:text-white dark:text-gray-300"
                   >

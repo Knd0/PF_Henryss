@@ -1,14 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import img from "../Img/RadiatorSprings.jpg";
 import LoginButton from "../Login/Login";
 import LogoutButton from "../Login/Logout";
 import style from "./Navbar.module.css";
+import { createUs, getUsersDetails, cleanState } from "../../Redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import Loading from "../Loading/Loading"
 
 export default function Navbar() {
   const { user, isAuthenticated } = useAuth0();
+  const dispatch = useDispatch();
+  const details = useSelector((state) => state.usersDetails);
   const [barsDropDownMenu, setBarsDropDownMenu] = useState(false);
+  const admin = details[0]?.admin ?? false;
+
+  useEffect(() => {
+    if (user) {
+      const payload = {
+        nickname: user.nickname,
+        email: user.email,
+        name: user.name,
+        picture: user.picture,
+      };
+      dispatch(createUs(payload));
+      dispatch(getUsersDetails(user.email));
+    }
+    if(!isAuthenticated){
+      dispatch(cleanState())
+    }
+  }, [dispatch, user, isAuthenticated]);
+
+  useEffect(() => {
+    if(!isAuthenticated){
+      dispatch(cleanState())
+    }
+  }, [dispatch, isAuthenticated]);
+
   const handleBarsDropDownMenu = () => {
     barsDropDownMenu ? setBarsDropDownMenu(false) : setBarsDropDownMenu(true);
   };
@@ -156,19 +185,34 @@ export default function Navbar() {
                 About Us
               </Link>
             )}
+
+            {admin ? (
+              <Link
+                to="/admin"
+                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+                name="admin"
+                onClick={handleActualPage}
+              >
+                Dashboard Admin
+              </Link>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
         <div className={style.log}>
           <div className={style.profile}>
             {isAuthenticated && (
               <div>
-                <Link to='/user'>
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src={user.picture}
-                  alt="Rounded avatar"
-                />
-                <p className="mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4">Profile</p>
+                <Link to="/user">
+                  <img
+                    className="w-10 h-10 rounded-full"
+                    src={admin ? details[0].picture : user.picture}
+                    alt="Rounded avatar"
+                  />
+                  <p className="mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4">
+                    Profile
+                  </p>
                 </Link>
               </div>
             )}

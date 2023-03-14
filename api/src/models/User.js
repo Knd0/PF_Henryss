@@ -31,9 +31,13 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.STRING),
       defaultValue: [],
     },
+    review:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     admin: {
       type: DataTypes.BOOLEAN,
-      default: false,
+      allowNull: true,
     },
     active: {
       type: DataTypes.BOOLEAN,
