@@ -182,6 +182,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         detail: {},
+        usersDetails:[]
       };
     case POST_CAR:
       return {

@@ -1,31 +1,42 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCars } from "../../Redux/actions";
+import { getCars, deleteCar } from "../../Redux/actions";
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-
+import Search from "../Search/Search";
+import style from "./Admin.module.css";
 
 export default function AdminCars() {
-    const cars = useSelector((state) => state.allcars);
-    const dispatch = useDispatch();
-    console.log(cars)
-    
-    useEffect(() =>{
-        dispatch(getCars());
-    },[dispatch]);
+  const cars = useSelector((state) => state.allcars);
+  const dispatch = useDispatch();
 
-    return (<>
-    <Navbar/>
-    <h1 className="underline">ADMIN CARS</h1>
-<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-<div className="relative content-center items-center justify-between pb-4 bg-white dark:bg-gray-900">
+  useEffect(() => {
+    dispatch(getCars());
+  }, [dispatch]);
+
+  function handleDelete(e) {
+    dispatch(deleteCar(e));
+  }
+
+  return (
+    <>
+      <Navbar />
+      <h1 className="underline">ADMIN CARS</h1>
+      <div className={style.cardconteiner}>
+        <Link to="/admin" className={style.btn}>
+          <span>Back</span>
+        </Link>
+      </div>
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="relative content-center items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <label htmlFor="table-search" className="sr-only">
             Search
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
-                className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                className=" h-5 text-gray-500 dark:text-gray-400"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -46,80 +57,79 @@ export default function AdminCars() {
             />
           </div>
         </div>
-    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" className="px-6 py-3">
-                    <span className="sr-only">Image</span>
-                </th>
-                <th scope="col" className="px-6 py-3">
-                    Brand
-                </th>
-                <th scope="col" className="px-6 py-3">
-                    Model
-                </th>
-                <th scope="col" className="px-6 py-3">
-                    Place
-                </th>
-                <th scope="col" className="px-6 py-3">
-                    Price
-                </th>
-                <th scope="col" className="px-6 py-3">
-                    User Email
-                </th>
-                <th scope="col" className="px-6 py-3">
-                    Action
-                </th>
-                
+              <th scope="col" className="px-6 py-3">
+                Image
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Brand
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Model
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Place
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Price
+              </th>
+              <th scope="col" className="px-6 py-3">
+                User Email
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Action
+              </th>
             </tr>
-        </thead>
-        {cars.length ? (
+          </thead>
+          {cars.length ? (
             <tbody>
               {cars.map((car) => (
-        
-            <tr key={car.carId} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td className="w-32 p-4">
-                    <img src={car.img.secure_url} alt="Apple Watch"/>
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                <tr
+                  key={car.carId}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <td className="w-32 p-4">
+                    <img src={car.img.secure_url || car.img} alt="Car pic" />
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     {car.brand}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     {car.model}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     {car.place}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     {car.price}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     {car.email}
-                </td>
-                <td className="px-6 py-4">
-                <a
+                  </td>
+                  <td className="px-6 py-4">
+                    <a
                       href="#"
                       className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       Edit Car
                     </a>
                     <a
-                      href="#"
+                      onClick={() => handleDelete(car.carId)}
                       className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
                     >
                       Delete Car
                     </a>
-                </td>
-            </tr>
-         ))}
-         </tbody>
-       ) : (
-         <h1>No hay Cars</h1>
-       )}
-    </table>
-</div>
-
-    
-    
-    </>)
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          ) : (
+            <h1>No hay Cars</h1>
+          )}
+        </table>
+      </div>
+    </>
+  );
 }

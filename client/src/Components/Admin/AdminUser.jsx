@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { allUsers } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import { useAuth0 } from "@auth0/auth0-react";
+import style from "./Admin.module.css"
+import { Link } from "react-router-dom";
 
 export default function AdminUsers() {
-    const {user, isAdmin} = useAuth0();
+  const { user, isAdmin } = useAuth0();
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
-  console.log(users)
-  console.log(isAdmin)
   useEffect(() => {
     dispatch(allUsers());
   }, [dispatch]);
@@ -19,6 +19,11 @@ export default function AdminUsers() {
     <>
       <Navbar />
       <h1 className="underline">ADMIN USERS</h1>
+      <div className={style.cardconteiner}>
+        <Link to="/admin" className={style.btn}>
+          <span>Back</span>
+        </Link>
+      </div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="relative content-center items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <label htmlFor="table-search" className="sr-only">
@@ -92,19 +97,17 @@ export default function AdminUsers() {
                     </div>
                   </th>
                   <td className="px-6 py-4">
-                    <div className="flex items-center">
-                      {user.userId}
-                    </div>
+                    <div className="flex items-center">{user.userId}</div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center">
                       <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-                      {user.updatedAt.slice(0,10)}
+                      {user.updatedAt && user.updatedAt.slice(0, 10)}
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center">
-                      {user.publications.length}
+                      {user.publications && user.publications.length}
                     </div>
                   </td>
                   <td className="px-6 py-4">
