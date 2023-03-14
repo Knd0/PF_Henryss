@@ -1,12 +1,13 @@
 .container{
-    position: absolute ;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px;
+    margin: 10%;
+    margin-top: 10%;
     flex-direction: column;
-    height: 80vh;
-    margin-left: 90px;
+    height: 80%;
+    width:  80%;
     
 }
 .container p{
