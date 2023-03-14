@@ -11,11 +11,14 @@ import Page404 from "./Components/Page404/Page404";
 import Payment from "./Components/Payment/Payment"
 import CarsCreate from "./Components/CarFormPage/CarsCreate";
 import UserProfile from "./Components/UserProfile/UserProfile";
+import AdminUser from "./Components/Admin/AdminUser";
+import AdminCars from "./Components/Admin/AdminCars";
 import axios from "axios";
 
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
 // axios.defaults.baseURL = "https://pfhenryss-production.up.railway.app/"
 axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
+
 
 
 function App() {
@@ -34,6 +37,8 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/user" element={<UserProfile />} />
+          <Route path="/admin/user" element={<AdminUser />} />
+          <Route path="/admin/cars" element={<AdminCars />} />
         </Routes>
       </div>
     </BrowserRouter>
