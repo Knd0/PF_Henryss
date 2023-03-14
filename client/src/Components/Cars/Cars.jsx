@@ -88,14 +88,14 @@ export default function Cars() {
                     dispatch(addFavorite(userDetails[0].userId, e.target.value))
         
                     setFavoritesState([...favoritesState, e.target.value])
-                    return console.log(favoritesState)
+                    return 
                 }
                 if (favoritesState.includes(e.target.value)) {
         
                     dispatch(removeFavorite(userDetails[0].userId, e.target.value))
         
                     setFavoritesState(favoritesState.filter(car => car !== e.target.value))
-                    return console.log(favoritesState)
+                    return 
                 }
             })
         }
@@ -104,14 +104,14 @@ export default function Cars() {
             dispatch(addFavorite(userDetails[0].userId, e.target.value))
 
             setFavoritesState([...favoritesState, e.target.value])
-            return console.log(favoritesState)
+            return 
         }
         if (favoritesState.includes(e.target.value)) {
 
             dispatch(removeFavorite(userDetails[0].userId, e.target.value))
 
             setFavoritesState(favoritesState.filter(car => car !== e.target.value))
-            return console.log(favoritesState)
+            return 
         }
     }
 
