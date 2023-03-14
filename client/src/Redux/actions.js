@@ -288,7 +288,6 @@ export function getUsersDetails(email) {
 export function UserDelete(userId) {
   return async function (dispatch) {
     let json = await axios.delete(`/user/${userId}`);
-    console.log("INTENTO DE BORRAR")
     return dispatch({
       type: USER_DELETE,
       payload: json.data,
@@ -317,14 +316,6 @@ export function removeAdminReview(review) {
   }
   
 };
-
-export function DeleteUser(userId) {
-  return{
-    type:DELETE_REVIEW,
-    payload:userId
-  }
-  
-}
 
 export function addToReviews(name,date,body,ratingNum) {
   return {
