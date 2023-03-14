@@ -52,8 +52,14 @@ function Reducer(state = initialState, action) {
         cars: action.payload,
         loading: false,
       };
+    case GET_CAR_BY_BRAND:
+      return {
+        ...state,
+        cars: action.payload,
+        loading:false,
+      }
 
-   
+
     case FILTER_BY_YEAR_AND_BRAND:
   let allcars = [...state.allcars];
   let carfilter = allcars;
@@ -61,17 +67,17 @@ function Reducer(state = initialState, action) {
   if (action.brand !== "" && action.brand !== "All") {
     carfilter = carfilter.filter((e) => e.brand === action.brand);
   }
-  
+
   if (action.year !== "" && action.year !== "All") {
     carfilter = carfilter.filter((e) => e.year === parseInt(action.year));
   }
-  
+
   return {
     ...state,
     cars: carfilter,
   };
-    
-      
+
+
 
     case ORDER_CARS_ALF:
       let sortedcars = [...state.cars];
@@ -93,7 +99,7 @@ function Reducer(state = initialState, action) {
       };
     case ORDER_CARS_PRICE:
      const normalize = price => parseInt(price.replaceAll('.',''),10)
-     
+
       let sortedArrPrice =
         action.payload === "mayp"
           ? state.cars.sort(function (a, b) {
@@ -192,12 +198,12 @@ function Reducer(state = initialState, action) {
         usersDetails:state.usersDetails.publications.concat(action.payload)
       };
     case LOADING_ACTION: {
-  
+
         return {
           ...state,
           loading: true,
         };
-      
+
     }
     case ALL_USERS:
       return {
@@ -226,7 +232,7 @@ function Reducer(state = initialState, action) {
         ...state,
         publications:state.publications.concat()
       }
-      case GET_CAR_FAVORITES: 
+      case GET_CAR_FAVORITES:
       return {
         ...state,
         favorites:action.payload
@@ -236,7 +242,7 @@ function Reducer(state = initialState, action) {
           ...state,
           cars:[...state.cars,action.payload]
         }
-        case GET_CAR_PUBLICATIONS: 
+        case GET_CAR_PUBLICATIONS:
         return {
           ...state,
           publications:[...state.publications,action.payload]

@@ -200,7 +200,7 @@ export function addFavorite(userId, carId) {
 }
 
 export const getFavorites = (userId) => {
-  
+
   return async function (dispatch) {
     try {
       const allFavorites = await axios.get(`/favorites/${userId}`);
@@ -214,7 +214,7 @@ export const getFavorites = (userId) => {
   };
 };
 export const getpublications = (userId) => {
-  
+
   return async function (dispatch) {
     try {
       const allPublications = await axios.get(`/publications/${userId}`);
