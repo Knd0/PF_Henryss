@@ -7,6 +7,7 @@ import LogoutButton from "../Login/Logout";
 import style from "./Navbar.module.css";
 import { createUs, getUsersDetails, cleanState } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
+import Loading from "../Loading/Loading"
 
 export default function Navbar() {
   const { user, isAuthenticated } = useAuth0();

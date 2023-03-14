@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { allUsers } from "../../Redux/actions";
+import { allUsers, UserDelete } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Admin.module.css"
@@ -14,6 +14,10 @@ export default function AdminUsers() {
   useEffect(() => {
     dispatch(allUsers());
   }, [dispatch]);
+
+  function handleDelete(userId) {
+    dispatch(UserDelete(userId))
+  }
 
   return (
     <>
@@ -118,7 +122,7 @@ export default function AdminUsers() {
                       Edit user
                     </a>
                     <a
-                      href="#"
+                      onClick={() => handleDelete(user.userId)}
                       className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
                     >
                       Delete user
