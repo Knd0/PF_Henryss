@@ -49,10 +49,32 @@ const createUserDb = async (nickname, email, name, picture) => {
     }
   };
 
+  const updateToUser = async (userId, user) => {
+    if(!userId) return ('You need to login for see your review')
+    let searchUser = await User.findOne({
+        where: { userId: userId }
+    });
+    if(!searchUser) return ('This user does not exist')
+    await searchUser.update({...user});
+    return ('User updated');
+}
+
+
+const deleteToUser = async (userId) => {
+    if(!userId) return ('You need to login for delete')
+    let user = await User.findOne({
+        where: { userId: userId }
+    });
+    if(!user) return ('This user does not exist')
+    await user.destroy();
+    return ('User deleted')
+}
 
 module.exports = {
     getUsersDb,
     getUserDb, 
     createUserDb,
-    getUserName
+    getUserName,
+    deleteToUser,
+    updateToUser
 };

@@ -1,4 +1,4 @@
-const { getUsersDb, getUserDb, createUserDb, getUserName } = require('../controllers/usersControllers')
+const { getUsersDb, getUserDb, createUserDb, getUserName, deleteToUser, updateToUser } = require('../controllers/usersControllers')
 
 const createUser = async (req, res) => {
     const { nickname, email, name, picture } = req.body
@@ -29,7 +29,28 @@ const getAllUsers = async (req, res) => {
     }
 }
 
+const deleteUser = async (req, res) => {
+    const { userId } = req.params
+    try {
+        const response = await deleteToUser(userId);
+        res.status(200).send(response)
+    } catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+}
+
+const changeUser = async (req, res) => {
+    const { userId } = req.params
+    try {
+        const response = await updateToUser(userId, req.body);
+        res.status(200).send(response)
+    } catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+}
 module.exports = {
     createUser, 
-    getAllUsers, 
+    getAllUsers,
+    changeUser,
+    deleteUser 
 }
