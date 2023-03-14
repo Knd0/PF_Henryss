@@ -11,6 +11,10 @@ export function EditComponent01 (props) {
     bla
    } = props;
    console.log("ESTO ES BLA EN EDITCOMPONENT01",bla)
+   const[input,setInput]=useState(bla[0].brand)
+   function handleChange(){
+    setInput(car.brand)
+   }
     return (
         <>
 
@@ -27,10 +31,10 @@ export function EditComponent01 (props) {
                             placeholder="Mustang"
                             onChange={onInputChange}
                             name="brand"
-                            defaultValue={bla[0].brand}
+                            value={car.brand}
                          
                             />
-
+s
                           </div>
                           ) : (      
                           
@@ -40,7 +44,7 @@ export function EditComponent01 (props) {
                                   placeholder="Ford"
                                   onChange={onInputChange}
                                   name="brand"
-                                  defaultValue={bla[0].brand}
+                                  value={car.brand}
                                  
                                   />
                                   <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.brand}</span> </p>
@@ -56,7 +60,7 @@ export function EditComponent01 (props) {
                             placeholder="Ford"
                             onChange={onInputChange}
                             name="model"
-                            defaultValue={bla[0].model}
+                            value={car.model}
                          
                             />
 
@@ -69,7 +73,7 @@ export function EditComponent01 (props) {
                                   placeholder="Mustang"
                                   onChange={onInputChange}
                                   name="model"
-                                  defaultValue={bla[0].model}
+                                  value={car.model}
                                 
                                   />
                                   <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.model}</span> </p>
@@ -88,7 +92,7 @@ export function EditComponent01 (props) {
                         placeholder="2023"
                         onChange={onInputChange}
                         name="year"
-                        defaultValue={bla[0].year}
+                        value={car.year}
                         />
 
                       </div>
@@ -100,7 +104,7 @@ export function EditComponent01 (props) {
                               placeholder="2023"
                               onChange={onInputChange}
                               name="year"
-                              defaultValue={bla[0].year}
+                              value={car.year}
                              
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.year}</span> </p>
@@ -116,7 +120,7 @@ export function EditComponent01 (props) {
                         placeholder="Red"
                         onChange={onInputChange}
                         name="color"
-                        defaultValue={bla[0].color}
+                        value={car.color}
                         />
 
                       </div>
@@ -128,7 +132,7 @@ export function EditComponent01 (props) {
                               placeholder="Red"
                               onChange={onInputChange}
                               name="color"
-                              defaultValue={bla[0].color}
+                              value={car.color}
                             
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.color}</span> </p>
@@ -145,7 +149,7 @@ export function EditComponent01 (props) {
                         placeholder="0"
                         onChange={onInputChange}
                         name="kilometers"
-                        defaultValue={bla[0].kilometers}
+                        value={car.kilometers}
                        
                         />
 
@@ -158,7 +162,7 @@ export function EditComponent01 (props) {
                               placeholder="0"
                               onChange={onInputChange}
                               name="kilometers"
-                              defaultValue={bla[0].kilometers}
+                              value={car.kilometers}
                              
                               />
                               <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{errors.kilometers}</span> </p>

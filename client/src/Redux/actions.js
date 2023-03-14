@@ -1,4 +1,5 @@
 import {
+  GET_CAR_PUBLICATIONS,
   GET_CARS,
   CLEAN_STATE,
   ORDER_CARS_ALF,
@@ -163,10 +164,10 @@ export function deleteCar(carId, userId) {
 }
 
 
-export function updateCar(carId, payload) {
+export function updateCar(carId, payload,userId) {//pasarle user id
   return async (dispatch) => {
     try {
-      await axios.put(`/cars/${carId}`, payload);
+      await axios.put(`/cars/${userId}/${carId}`, payload);
       return dispatch({ type: PUT_CAR });
     } catch (err) {
       dispatch({
@@ -204,6 +205,20 @@ export const getFavorites = (userId) => {
       dispatch({
         type: GET_CAR_FAVORITES,
         payload: allFavorites.data,
+      });
+    } catch (error) {
+      console.log("Error action allFavorites", error);
+    }
+  };
+};
+export const getpublications = (userId) => {
+  
+  return async function (dispatch) {
+    try {
+      const allPublications = await axios.get(`/publications/${userId}`);
+      dispatch({
+        type: GET_CAR_PUBLICATIONS,
+        payload: allPublications.data,
       });
     } catch (error) {
       console.log("Error action allFavorites", error);
@@ -260,6 +275,7 @@ export const createUs = (payload) => {
 export function getUsersDetails(email) {
   return async function (dispatch) {
     let json = await axios.get(`/user/${email}`);
+    console.log("ESTO ES JSON EN ACTIONS================>",json.data)
     return dispatch({
       type: GET_USER_PROFILE,
       payload: json.data,
