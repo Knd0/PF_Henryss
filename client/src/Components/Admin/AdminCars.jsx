@@ -22,7 +22,7 @@ export default function AdminCars() {
   return (
     <>
       <Navbar />
-      <h1 className="underline">ADMIN CARS</h1>
+      <h2 className="underline">ADMIN CARS</h2>
       <div className={style.cardconteiner}>
         <Link to="/admin" className={style.btn}>
           <span>Back</span>

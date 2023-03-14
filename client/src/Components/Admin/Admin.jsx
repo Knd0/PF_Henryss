@@ -7,7 +7,7 @@ export default function Admin() {
   return (
     <>
       <Navbar />
-      <h1 className="underline">DASHBOARD ADMIN</h1>
+      <h2 className="underline">DASHBOARD ADMIN</h2>
       <div className={style.cardconteiner}>
         <div ontouchstart="">
           <Link to="/admin/cars" className={style.btn}>
@@ -21,6 +21,7 @@ export default function Admin() {
           </Link>
         </div>
       </div>
+      <img className={style.img} src="https://media.tenor.com/0u4Oyi32gQ0AAAAd/por-fin-soy-admin.gif" alt="admin" />
     </>
   );
 }
