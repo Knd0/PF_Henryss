@@ -24,6 +24,7 @@ import {
   GET_CAR_FAVORITES,
   ADD_TO_PUBLICATIONS,
   FILTER_BY_YEAR_AND_BRAND,
+  USER_DELETE
   DELETE_REVIEW,
   ADD_TO_REVIEWS
 } from "./action-types";
@@ -277,9 +278,18 @@ export const createUs = (payload) => {
 export function getUsersDetails(email) {
   return async function (dispatch) {
     let json = await axios.get(`/user/${email}`);
-    console.log("ESTO ES JSON EN ACTIONS================>",json.data)
     return dispatch({
       type: GET_USER_PROFILE,
+      payload: json.data,
+    });
+  };
+}
+
+export function UserDelete(userId) {
+  return async function (dispatch) {
+    let json = await axios.delete(`/user/${userId}`);
+    return dispatch({
+      type: USER_DELETE,
       payload: json.data,
     });
   };
