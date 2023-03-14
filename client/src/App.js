@@ -11,6 +11,8 @@ import Page404 from "./Components/Page404/Page404";
 import Payment from "./Components/Payment/Payment"
 import CarsCreate from "./Components/CarFormPage/CarsCreate";
 import UserProfile from "./Components/UserProfile/UserProfile";
+import AdminUser from "./Components/Admin/AdminUser";
+import AdminCars from "./Components/Admin/AdminCars";
 import StarRating from "./Components/StarRating/StarRating";
 import Reviews from "./Components/Reviews/Reviews"
 import axios from "axios";
@@ -38,6 +40,8 @@ function App() {
           <Route path="/reviews" element={<Reviews/>} />
           <Route path="*" element={<Page404 />} />
           <Route path="/user" element={<UserProfile />} />
+          <Route path="/admin/user" element={<AdminUser />} />
+          <Route path="/admin/cars" element={<AdminCars />} />
         </Routes>
       </div>
     </BrowserRouter>

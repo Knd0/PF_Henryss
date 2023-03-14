@@ -46,9 +46,9 @@ export default function MyFavorites() {
         <div className={style.cardModal}>
           <h3>Nothing to show 🤔</h3>
         </div>
-        <div>
+        {/* <div>
           <Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={maximo} />
-        </div>
+        </div> */}
         <Footer />
       </div>
     </>
