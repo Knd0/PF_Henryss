@@ -317,14 +317,6 @@ export function removeAdminReview(review) {
   
 };
 
-export function DeleteUser(userId) {
-  return{
-    type:DELETE_REVIEW,
-    payload:userId
-  }
-  
-}
-
 export function addToReviews(name,date,body,ratingNum) {
   return {
   
