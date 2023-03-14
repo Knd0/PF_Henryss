@@ -22,6 +22,13 @@ const getUserDb = async (email) => {
     return filteredUsers
 }
 
+const getUserName = async (name) => {
+  const data = await getUsersDb();
+  const filteredUsers = data.filter((user) => user.name.toLowerCase().includes(name.toLowerCase()));
+
+  return filteredUsers
+}
+
 const createUserDb = async (nickname, email, name, picture) => {
     if (!nickname) return "Missing nickname";
     if (!email) return "Missing email";
@@ -46,5 +53,6 @@ const createUserDb = async (nickname, email, name, picture) => {
 module.exports = {
     getUsersDb,
     getUserDb, 
-    createUserDb
+    createUserDb,
+    getUserName
 };
