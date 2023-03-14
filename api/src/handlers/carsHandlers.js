@@ -57,7 +57,7 @@ const putCar = async (req, res) => {
 	try {
         if(id){
 		    const response = await editCar(userId, id, req.body);
-            res.status(200).send({ message: response });
+            res.status(200).send(response);
         }
 	} catch (error) {
 		res.status(500).json({ error: error.message });
@@ -69,7 +69,7 @@ const deleteCar = async (req, res) => {
     const { userId, id } = req.params;
     try {
         const response = await deleteCarById(userId, id);
-        res.status(200).json({message:response});
+        res.status(200).json(response);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
