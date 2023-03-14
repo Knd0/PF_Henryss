@@ -24,7 +24,8 @@ import {
   GET_CAR_FAVORITES,
   ADD_TO_PUBLICATIONS,
   FILTER_BY_YEAR_AND_BRAND,
-  DELETE_REVIEW
+  DELETE_REVIEW,
+  ADD_TO_REVIEWS
 } from "./action-types";
 import axios from "axios";
 
@@ -313,3 +314,16 @@ export function DeleteUser(userId) {
   }
   
 }
+
+export function addToReviews(name,date,body,ratingNum) {
+  return {
+  
+        type: ADD_TO_REVIEWS,
+        payload:{
+          date,
+          body,
+          ratingNum,
+          name
+        }  
+      }
+};

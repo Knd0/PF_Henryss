@@ -8,7 +8,9 @@ export const ORDER_CARS_ALF = 'ORDER_CARS_ALF';
 
 export const GET_CAR_PUBLICATIONS = 'GET_CAR_PUBLICATIONS';
 
-export const ORDER_CARS_KM = 'ORDER_CARS_KM';
+export const ORDER_CARS_KM = 'ORDER_CARS_KM'; 
+
+export const ADD_TO_REVIEWS = 'ADD_TO_REVIEWS';
 
 export const DELETE_REVIEW = ' DELETE_REVIEW';
 

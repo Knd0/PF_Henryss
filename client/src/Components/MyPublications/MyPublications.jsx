@@ -37,7 +37,6 @@ const MyPublications = () => {
     <>
       <div>
         <Navbar />
-        <StarRating/>
         <Link to="/carscreate">
           <button>Create New Post</button>
         </Link>
