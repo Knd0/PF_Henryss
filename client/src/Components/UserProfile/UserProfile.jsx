@@ -22,12 +22,12 @@ export default function UserProfile() {
           <div className={styles.contornoDeImagen}>
             <img className={styles.avatar} src={details[0].picture} alt="user.img" />
             <div className={styles.tarjetaPresentacion}>
-              <h1>My profile</h1>
+              <h2>My profile</h2>
               <div className={styles.tarjeta}>
-                <h2>
+                <h3>
                   <FontAwesomeIcon icon={solid("user")} />{" "}
                   Full Name : {details[0].name}
-                </h2>
+                </h3>
                 <h5>
                   <FontAwesomeIcon icon={solid("envelope")} />{" "}
                   Email: <span>{details[0].email}</span>

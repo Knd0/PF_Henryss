@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCars, deleteCar } from "../../Redux/actions";
+import { getCars, deleteCarAdmin } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Search from "../Search/Search";
@@ -15,8 +15,8 @@ export default function AdminCars() {
     dispatch(getCars());
   }, [dispatch]);
 
-  function handleDelete(e) {
-    dispatch(deleteCar(e));
+  function handleDelete(carId) {
+    dispatch(deleteCarAdmin(carId));
   }
 
   return (
@@ -117,6 +117,7 @@ export default function AdminCars() {
                     </a>
                     <a
                       onClick={() => handleDelete(car.carId)}
+                      href="#"
                       className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
                     >
                       Delete Car
