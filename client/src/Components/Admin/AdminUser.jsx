@@ -18,7 +18,7 @@ export default function AdminUsers() {
   return (
     <>
       <Navbar />
-      <h1 className="underline">ADMIN USERS</h1>
+      <h2 className="underline">ADMIN USERS</h2>
       <div className={style.cardconteiner}>
         <Link to="/admin" className={style.btn}>
           <span>Back</span>

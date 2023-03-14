@@ -12,7 +12,7 @@ export default function Statistics() {
     <>
       <Navbar />
       <div className={style.cardconteiner}>
-        <h1 className="underline">ADMIN STATISTICS</h1>
+        <h2 className="underline">ADMIN STATISTICS</h2>
         <Link to="/admin" className={style.btn}>
           <span>Back</span>
         </Link>
