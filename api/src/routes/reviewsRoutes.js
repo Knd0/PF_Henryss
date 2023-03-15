@@ -1,9 +1,10 @@
 const { Router } = require('express')
-const { getReviews, addToReview, deleteToReview, changeReview } = require('../handlers/reviewsHandler')
+const { getReviews, addToReview, deleteToReview, changeReview, getReview } = require('../handlers/reviewsHandler')
 
 const reviewsRouter = Router();
 
-reviewsRouter.get('/:userId', getReviews)
+reviewsRouter.get('/', getReviews)
+reviewsRouter.get('/:reviewId', getReview)
 reviewsRouter.post('/:userId', addToReview)
 reviewsRouter.delete('/:userId', deleteToReview)
 reviewsRouter.put('/:userId', changeReview)

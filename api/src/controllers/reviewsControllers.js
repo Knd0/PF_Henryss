@@ -1,27 +1,30 @@
-const { User } = require('../db')
+const { User, Reviews } = require('../db')
 
-const getDbReviews = async (userId) => {
-    if(!userId) return ('You need to login for see your favorites')
-    let searchUser = await User.findOne({
-        where: { userId: userId }
-    });
-    if(!searchUser) return ('This user does not exist')
-    if(!searchUser.review) return ('You dont have reviews')
-    const data = searchUser.review
-    return data
+const getAllReviews = async () => {
+    let reviews = await Reviews.findAll();
+    return reviews
 }
 
-const addReview = async (userId, review) => {
+const getDbReviews = async (reviewId) => {
+    if(!reviewId) return ('You need a reviewId to search')
+    const searchReview = await Reviews.findByPk(reviewId);
+    if(!searchReview) return ('You dont have reviews')
+    return searchReview
+}
+
+const addReview = async (userId, name, review, rating) => {
     if(!userId) return ('You need to login for see your review')
     let searchUser = await User.findOne({
         where: { userId: userId }
     });
     if(!searchUser) return ('This user does not exist')
-    searchUser.review = review
-    await User.update({ review: searchUser.review }, {
+    let searchReview = await Reviews.findOne({
         where: { userId: userId }
     });
-    return ('Review added')
+    if(searchReview) return ('You can not create another review')
+    const reviewCreate = await Reviews.create({userId, name, review, rating})
+
+    return reviewCreate 
 }
 
 const updateReview = async (userId, review) => {
@@ -30,9 +33,11 @@ const updateReview = async (userId, review) => {
         where: { userId: userId }
     });
     if(!searchUser) return ('This user does not exist')
-    if(!searchUser.review) return ('You dont have review')
-    searchUser.review = review
-    await User.update({ review: searchUser.review }, {
+    let searchReview = await Reviews.findOne({
+        where: { userId: userId }
+    });
+    if(!searchReview) return ('You do not have reviews')
+    await Reviews.update({ review: review }, {
         where: { userId: userId }
     });
     return ('Review changed')
@@ -45,11 +50,11 @@ const deleteReview = async (userId) => {
         where: { userId: userId }
     });
     if(!searchUser) return ('This user does not exist')
-    if(!searchUser.review) return ('You dont have review')
-    searchUser.review = null;
-    await User.update({ review: searchUser.review }, {
+    let searchReview = await Reviews.findOne({
         where: { userId: userId }
     });
+    if(!searchReview) return ('You dont have review') 
+    await searchReview.destroy()
     return ('Review deleted')
 }
 
@@ -58,5 +63,7 @@ module.exports = {
     getDbReviews,
     addReview,
     deleteReview,
-    updateReview
+    updateReview,
+    getAllReviews
 }
+
