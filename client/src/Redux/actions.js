@@ -354,18 +354,33 @@ export const addReview = (userId,payload) => {
 };
 
 export function getReviews() {
-  return function (dispatch) {
-    dispatch({ type: LOADING_ACTION });
-    axios
-      .get(`/review`)
-      .then((response) => response.data)
-      .then((response) => {
-        dispatch({type: ADD_TO_REVIEWS, payload: response });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  return async function (dispatch) {
+
+
+  try {
+    var json = await axios.get(`/review`);
+    console.log("ESTO ES  JASON==============>",json.data)
+       
+    return dispatch( {
+      type: ADD_TO_REVIEWS,
+        payload: json.data
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
+/*       
+ await axios.get("/review")
+.then((response) => {
+  console.log(response.data)
+   dispatch({type: ADD_TO_REVIEWS, payload: response.data})
+}).catch((error) => {
+    console.log(error)
 }
+)
+  }; */
+}
+}
+
 
 
