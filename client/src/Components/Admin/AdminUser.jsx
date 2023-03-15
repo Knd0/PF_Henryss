@@ -150,7 +150,7 @@ export default function AdminUsers() {
                     </a>
                     <a
                       onClick={() => handleDelete(user.userId)}
-                      className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
+                      className="grid font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
                     >
                       Delete user
                     </a>
