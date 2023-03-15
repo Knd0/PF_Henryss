@@ -32,4 +32,3 @@ const deleteCar = async (id) => {
     module.exports = {
         deleteCar,
         deleteReview
-    }

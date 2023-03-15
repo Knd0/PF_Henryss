@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Search from "../Search/Search";
 import style from "./Admin.module.css";
+import swal from "sweetalert";
 
 export default function AdminCars() {
   const cars = useSelector((state) => state.allcars);
@@ -16,7 +17,33 @@ export default function AdminCars() {
   }, [dispatch]);
 
   function handleDelete(carId) {
-    dispatch(deleteCarAdmin(carId));
+    swal({
+      title: "Are you sure?",
+      text: "This user will be deleted.",
+      icon: "warning",
+      buttons: ["Cancel", "Accept"],
+    }).then((value) => {
+      if (value) {
+        dispatch(deleteCarAdmin(carId));
+        swal({
+          title: "Succes",
+          text: "This user has been deleted.",
+          icon: 'success',
+          button: "Ok"
+        })
+        .then(info=>{
+          if(info){
+            window.location.reload()
+          }
+        })
+      } else {
+        swal({
+          title: "This action has been canceled.",
+          icon: "error",
+          button: "Ok"
+        })
+      }
+    });
   }
 
   return (

@@ -1,3 +1,4 @@
+
 const { deleteCar, deleteReview } = require('../controllers/adminControllers')
 
 const deleteCarByAdmin = async (req, res) => {
@@ -22,4 +23,5 @@ const deleteReviewByAdmin = async (req, res) => {
 module.exports = {
     deleteCarByAdmin,
     deleteReviewByAdmin
+
 }
