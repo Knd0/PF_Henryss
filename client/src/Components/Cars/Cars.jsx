@@ -10,7 +10,7 @@ import { getCars, cleanState, orderByAlf, filterByBrand, filterByYear, orderByKM
 import Search from "../Search/Search";
 import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
-import { useNavigate } from 'react-router-dom';
+
 import Filters from "../Filters/Filters";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
