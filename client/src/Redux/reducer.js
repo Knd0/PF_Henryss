@@ -251,7 +251,7 @@ function Reducer(state = initialState, action) {
         case ADD_TO_REVIEWS:
           return{
             ...state,
-            opinion:[...state.opinion,action.payload]
+            opinion:action.payload
           }
 
     default:
