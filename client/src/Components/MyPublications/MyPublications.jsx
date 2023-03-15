@@ -18,7 +18,7 @@ const MyPublications = () => {
   // const publications = useSelector((state) => state.usersDetails[0].publications)
   const publications = usersDetails.length > 0 ? usersDetails[0].publications : null
 
-  const publicados = cars.filter((c) => publications?.includes(c.carId.toString()));
+  const publicados = cars.filter((c) => publications?.includes(c?.carId.toString()));
 
     
   console.log("ESTOE ES PUBLICATIONS===================>",publications)
