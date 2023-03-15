@@ -62,10 +62,7 @@ export default function CarsDetail() {
                     carDetail={carDetail}
                     />
 
-                    <div className="col-span-2 mt-8">
-                        <input type="text" className="rounded-md h-10"/>
-                        <button type="submit" className="border border-slate-800 bg-blue-600 font-medium h-10 ml-2 text-center px-3.5">Ask</button>
-                    </div>
+                  
                 </div>
                 </div>
             </div>

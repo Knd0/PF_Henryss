@@ -1,9 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from "../StarRating/StarRating.module.css"
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-import { addToReviews } from '../../Redux/actions';
+import { addReview, getCars } from '../../Redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
 
@@ -12,9 +12,12 @@ function StarRating() {
   const [rating, setRating] = useState(0);
   const fechaActual = new Date().toLocaleDateString();
   const [input, setInput] = useState("");
-  const name = useSelector((state)=> state.usersDetails[0].nickname)
+  const usersDetails = useSelector((state) => state.usersDetails)
+  const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
+  const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
   console.log("ESTO ES NAME===========>",name);
   console.log("ESTO ES RATING===========>",rating);
+
 
 
   const handleStarClick = (value) => {
@@ -30,13 +33,15 @@ function StarRating() {
       opinion:opinion,
       name:name
     };
+
+    console.log("ESTO ES PAYLOAD============>",payload)
      if(!opinion){
       swal("This modal will disappear soon!", {
         buttons: false,
         timer: 3000,
       });
      }else{
-      dispatch(addToReviews(payload))
+      dispatch(addReview(userId,payload))
       swal({
         title: "Thanks for your opinion!!!",
       });
