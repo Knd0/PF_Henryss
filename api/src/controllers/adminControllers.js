@@ -1,4 +1,4 @@
-const { Car, User } = require('../db')
+const { Car, User, Reviews } = require('../db')
 const { getUsersDb } = require('./usersControllers')
 const { deleteImage } = require('../utils/cloudinary')
 
@@ -24,6 +24,12 @@ const deleteCar = async (id) => {
         return 'Car successful delete';
     }
 
+    const deleteReview = async (reviewId) => {
+        const review = await Reviews.findByPk(reviewId);
+        await review.destroy()
+        return ('Review deleted')
+    }
     module.exports = {
-        deleteCar
+        deleteCar,
+        deleteReview
     }

@@ -9,11 +9,9 @@ export function  EditComponent06 (props) {
     handleBackComponent06,
     bla
    } = props;
- const dispatch = useDispatch()
- function handleClick(e){
-    e.preventDefault()
-    dispatch(updateCar())
- }
+
+ 
+ 
     return (
         <>
         <ProgressBar06/>
@@ -35,10 +33,10 @@ export function  EditComponent06 (props) {
                         </button>
                     </div>
                     <div class="flex items-center justify-center w-full">
-                        <button onClick={(e)=>handleClick(e)} type="submit" class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
-                            Publish
-                        </button>
-                </div>
+                        <button type="submit" class="mt-9 font-semibold leading-none text-white py-4 px-8 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+                            Publish Car
+                        </button>                        
+                    </div>  
                 </>
     )
 }
