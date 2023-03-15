@@ -292,7 +292,7 @@ export const createUs = (payload) => {
 
 export function getUsersDetails(email) {
   return async function (dispatch) {
-    let json = await axios.get(`/user/${email}`);
+    let json = await axios.get(`/user?email=${email}`);
     return dispatch({
       type: GET_USER_PROFILE,
       payload: json.data,

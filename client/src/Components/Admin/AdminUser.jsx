@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Admin.module.css"
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 export default function AdminUsers() {
   const { user, isAdmin } = useAuth0();
@@ -16,7 +17,33 @@ export default function AdminUsers() {
   }, [dispatch]);
 
   function handleDelete(userId) {
-    dispatch(UserDelete(userId))
+    swal({
+      title: "Are you sure?",
+      text: "This user will be deleted.",
+      icon: "warning",
+      buttons: ["Cancel", "Accept"],
+    }).then((value) => {
+      if (value) {
+        dispatch(UserDelete(userId))
+        swal({
+          title: "Succes",
+          text: "This user has been deleted.",
+          icon: 'success',
+          button: "Ok"
+        })
+        .then(info=>{
+          if(info){
+            window.location.reload()
+          }
+        })
+      } else {
+        swal({
+          title: "This action has been canceled.",
+          icon: "error",
+          button: "Ok"
+        })
+      }
+    });
   }
 
   return (
@@ -123,9 +150,7 @@ export default function AdminUsers() {
                     </a>
                     <a
                       onClick={() => handleDelete(user.userId)}
-                      href="#"
-                      value={user.userId}
-                      className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
+                      className="grid font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
                     >
                       Delete user
                     </a>
