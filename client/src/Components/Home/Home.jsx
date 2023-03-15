@@ -19,6 +19,7 @@ import Loading from "../Loading/Loading";
 
 export default function Home() {
   const { user } = useAuth0();
+  console.log("ESTO ES USER===============>",user)
   const dispatch = useDispatch()
   const allCars = useSelector((state) => state.allcars)
   
