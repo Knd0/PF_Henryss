@@ -28,18 +28,19 @@ export default function CarsEdit() {
   let id = useParams()
   let value = id["id"]; // Sintaxis de corchetes
   const cars= useSelector((state)=>state.cars)
-  const publications= useSelector((state)=>state.usersDetails[0].publications)
+  const usersDetails = useSelector((state)=>state.usersDetails)
+  const publications = usersDetails.length > 0 ? usersDetails[0].publications : null
  
 const valor =value.toString()===publications.toString()? value.toString():null
 console.log("ESTO ES VALOR=============>",valor)
 
-  let bla = cars.filter(c => {
-      if(c.carId.toString()===valor.toString()){
+  let bla = cars?.filter(c => {
+      if(c?.carId===valor.toString()){
         return c
       }
   });
   //console.log("ESTO ES BLA============>",bla)
-  const usersDetails = useSelector((state)=>state.usersDetails)
+  
   const userId = usersDetails[0].userId
   console.log("ESTO ES USERID============>",userId)
 
@@ -200,7 +201,8 @@ function onInputChange(e) { //cambio el estado segun el input
 
 };
 console.log("car:", car);
-const carId = car.id
+const carId = car.id !== undefined ? car.id : null
+
 console.log("ESTO ES CARID============>",carId)
 
 
@@ -220,30 +222,11 @@ function onSubmit(e) {
       });;
     return;
   }
-  console.log("userId: ", userId);
-console.log("carId: ", carId);
-console.log("car: ", car);
-dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //hago el post, despacho la action
-  setCar({ //reseteo el estado
-    brand: "",
-    model: "",
-    year: "",
-    color: "",
-    price: "",
-    place: "",
-    phone: "",
-    email: "",
-    kilometers: "",    
-    fuel: "",
-    img: "",
-    engine: "",
-    power: "",
-    transmission: "",
-    drive: "",
-    capacity: "",
-    description: "",
-  });
-  toast.success('Car published! 🚗', {
+
+dispatch(updateCar(carId, car,userId)) //hago el post, despacho la action
+
+  
+  toast.success('Post edited! 🚗', {
     position: "top-center",
     autoClose: 3000,
     hideProgressBar: false,
@@ -252,10 +235,14 @@ dispatch(updateCar(parseInt(car.id), car,parseInt( usersDetails[0].userId))) //h
     draggable: true,
     progress: undefined,
     theme: "colored",   
-    onClose: () => {
-      navigate("/cars");
-    }
+    // onClose: () => {
+    //   navigate("/mypublications");
+    // }
     });
+
+    setTimeout(function() {
+      navigate("/cars");      
+    }, 3000);
 }
 
 
