@@ -14,9 +14,11 @@ const MyPublications = () => {
   const dispatch = useDispatch();
   const cars = useSelector((state)=>state.cars)
   const usersDetails = useSelector((state) => state.usersDetails)
-  const userId = usersDetails[0].userId
-  const publications = useSelector((state) => state.usersDetails[0].publications)
-  const publicados = cars.filter((c) => publications.includes(c.carId.toString()));
+  const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
+  // const publications = useSelector((state) => state.usersDetails[0].publications)
+  const publications = usersDetails.length > 0 ? usersDetails[0].publications : null
+
+  const publicados = cars.filter((c) => publications?.includes(c.carId.toString()));
 
     
   console.log("ESTOE ES PUBLICATIONS===================>",publications)
