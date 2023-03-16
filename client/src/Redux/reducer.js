@@ -22,7 +22,8 @@ import {
   FILTER_BY_YEAR_AND_BRAND,
   GET_CAR_FAVORITES,
   GET_CAR_PUBLICATIONS,
-  ADD_TO_REVIEWS
+  ADD_TO_REVIEWS,
+  SET_PAGE
 } from "./action-types";
 
 const initialState = {
@@ -75,6 +76,7 @@ function Reducer(state = initialState, action) {
   return {
     ...state,
     cars: carfilter,
+    currentPage: 1,
   };
 
 
@@ -253,7 +255,11 @@ function Reducer(state = initialState, action) {
             ...state,
             reviews:[...state.reviews,action.payload]
           }
-
+        case SET_PAGE:
+          return {
+            ...state,
+            currentPage: action.payload
+        };
     default:
       return state;
   }
