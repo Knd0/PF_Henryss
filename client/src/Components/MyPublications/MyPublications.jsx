@@ -100,7 +100,7 @@ const MyPublications = () => {
 								<div class="flex flex-col">
 									<div class="w-full flex-none text-lg text-gray-800 font-bold leading-none">{e.brand}{" "}{e.model}</div>
 									<div class="flex-auto text-gray-800 my-1">
-										<span class="mr-3 ">Año {e.year}</span><span class="mr-3 border-r border-gray-200  max-h-0"></span><span>{e.kilometers} Km</span>
+										<span class="mr-3 ">Year {e.year}</span><span class="mr-3 border-r border-gray-200  max-h-0"></span><span>{e.kilometers} Km</span>
 									</div>
 								</div>
 							</div>
