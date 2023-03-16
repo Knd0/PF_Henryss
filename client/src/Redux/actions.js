@@ -27,6 +27,7 @@ import {
   USER_DELETE,
   DELETE_REVIEW,
   ADD_TO_REVIEWS,
+  SEARCH_USER_ADMIN 
 } from "./action-types";
 import axios from "axios";
 
@@ -389,6 +390,13 @@ export function updateReview(userId,payload) {
        await axios.put(`/review/${userId}`,payload);
 
 }
+}
+
+export function searchUserAdmin(payload){
+  return{
+    type: SEARCH_USER_ADMIN,
+    payload
+  }
 }
 
 
