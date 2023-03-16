@@ -361,9 +361,9 @@ export default function Aboutus() {
                 alt="Leslie Avatar"
               />
               <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a>Isidro</a>
+                <a>Isidro Rivera</a>
               </h3>
-              <p>Graphic Designer</p>
+              <p>React Developer</p>
               <ul className="flex justify-center mt-4 space-x-4">
                 <li>
                   <a

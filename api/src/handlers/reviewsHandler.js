@@ -43,9 +43,8 @@ const deleteToReview = async (req, res) => {
 
 const changeReview = async (req, res) => {
     const { userId } = req.params
-    const { review } = req.body
     try {
-        const response = await updateReview(userId, review);
+        const response = await updateReview(userId, req.body);
         res.status(200).send(response)
     } catch (error) {
         res.status(400).json({ message: error.message })

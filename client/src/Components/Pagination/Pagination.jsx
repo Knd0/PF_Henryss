@@ -42,39 +42,47 @@ xmlns="http://www.w3.org/2000/svg"
 import React from "react";
 import { useState } from "react";
 import styles from "../Pagination/Pagination.modules.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setPage } from "../../Redux/actions";
 
 
-function Pagination({currentPage, setCurrentPage, maximo}){
-    const [input, setInput] = useState (1)
-
+function Pagination({ maximo }){
+  const currentPage = useSelector((state) => state.currentPage);
+    const dispatch  = useDispatch();
+console.log('esto eslo que necesito', (currentPage))
     const nextPage = () => {
-      setInput (parseInt(input) + 1);
-      setCurrentPage (parseInt(currentPage) + 1);
+      
+      dispatch(setPage (parseInt(currentPage) + 1));
     };
   
     const previousPage = () => {
-      setInput (parseInt(input) - 1);
-      setCurrentPage (parseInt(currentPage) - 1);
+   
+      dispatch(setPage (parseInt(currentPage) - 1));
     };
   
     function onKeyDown (e) {
       if (e.keyCode === 13) {
-        setCurrentPage (parseInt (e.target.value));
+        const page =  parseInt (e.target.value);
         if (
-          parseInt (e.target.value)< 1 ||
-          parseInt (e.target.value) > Math.ceil(maximo) ||
-          isNaN (parseInt (e.target.value))
+          // parseInt (e.target.value)< 1 ||
+          // parseInt (e.target.value) > Math.ceil(maximo) ||
+          // isNaN (parseInt (e.target.value))
+          (page < 1 || page > Math.ceil(maximo) || isNaN(page))
         ) {
-          setCurrentPage (1);
-          setInput (1);
+          dispatch(setPage (1));
+          
         } else {
-          setCurrentPage (parseInt (e.target.value));
+          // setCurrentPage(parseInt (e.target.value));
+          dispatch(setPage(page));
         }
       }
     };
   
     const onChange = e => {
-      setInput (e.target.value);
+      const parseado = parseInt(e.target.value, 10)
+      const nextPage = isNaN(parseado) ? 1 : parseado;
+      // setInput (e.target.value);
+      dispatch(setPage(nextPage))
     };
       return(
         <div>
@@ -93,7 +101,7 @@ function Pagination({currentPage, setCurrentPage, maximo}){
           onKeyDown={e => onKeyDown (e)}
           name="page"
           autoComplete="off"
-          value={input}
+          value={currentPage}
           
         />
         <p> de {Math.ceil(maximo)} </p>
@@ -124,5 +132,5 @@ function Pagination({currentPage, setCurrentPage, maximo}){
 
   };
 
-  export default Pagination
+  export default Pagination;
   
