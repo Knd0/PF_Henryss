@@ -3,11 +3,13 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { allUsers, UserDelete } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
+import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Admin.module.css"
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 export default function AdminUsers() {
+  const { user, isAdmin } = useAuth0();
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   useEffect(() => {
