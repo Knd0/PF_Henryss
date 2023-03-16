@@ -22,7 +22,8 @@ import {
   FILTER_BY_YEAR_AND_BRAND,
   GET_CAR_FAVORITES,
   GET_CAR_PUBLICATIONS,
-  ADD_TO_REVIEWS
+  ADD_TO_REVIEWS,
+  SET_PAGE
 } from "./action-types";
 
 const initialState = {
@@ -58,7 +59,11 @@ function Reducer(state = initialState, action) {
         cars: action.payload,
         loading:false,
       }
-
+      case SET_PAGE:
+        return {
+          ...state,
+          currentPage: action.payload
+      };
 
     case FILTER_BY_YEAR_AND_BRAND:
   let allcars = [...state.allcars];
@@ -75,6 +80,7 @@ function Reducer(state = initialState, action) {
   return {
     ...state,
     cars: carfilter,
+    currentPage: 1,
   };
 
 
@@ -96,6 +102,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: [...sortedcars],
+        currentPage: 1,
       };
     case ORDER_CARS_PRICE:
      const normalize = price => parseInt(price.replaceAll('.',''),10)
@@ -124,7 +131,8 @@ function Reducer(state = initialState, action) {
             console.log(sortedArrPrice)
       return {
         ...state,
-        cars: [...sortedArrPrice]
+        cars: [...sortedArrPrice],
+        currentPage: 1,
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
@@ -150,6 +158,7 @@ function Reducer(state = initialState, action) {
             return {
         ...state,
         cars: [...sortedArrKM],
+        currentPage: 1,
       };
     case GET_CARS_DETAIL:
       return {

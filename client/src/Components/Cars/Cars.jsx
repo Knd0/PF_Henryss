@@ -14,13 +14,14 @@ import { useNavigate } from 'react-router-dom';
 import Filters from "../Filters/Filters";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
+import { setPage } from "../../Redux/actions";
 
 
 
 export default function Cars() {
     const dispatch = useDispatch()
     const allcars = useSelector((state) => state.cars)
-    const [currentPage, setCurrentPage] = useState(1)
+    const currentPage = useSelector((state) => state.currentPage);
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
     const indexOfFirstCar = indexOfLastCar - carsPerPage
@@ -43,6 +44,20 @@ export default function Cars() {
     const favorites = userDetails.length ? userDetails[0].favorites : null
 
     useEffect(() => {
+        console.log(selectedOptionAlf, selectedOptionPrice, selectedOptionBrand, selectedOptionYear, selectedOptionKm)
+        if (currentCars.length === 0 && (selectedOptionAlf !== "" || selectedOptionPrice !== "" || selectedOptionBrand !== "" ||  selectedOptionYear !== "" || selectedOptionKm !== "")) {
+            console.log('reseteando')
+            setSelectedOptionAlf("");
+            setSelectedOptionPrice("");
+            setSelectedOptionBrand("");
+            setSelectedOptionYear("");
+            setSelectedOptionKm("");
+        }
+        console.log('tendria que recibir esto',currentCars.length)
+}, [currentCars,setSelectedOptionAlf,selectedOptionAlf, setSelectedOptionPrice, selectedOptionPrice, setSelectedOptionBrand, selectedOptionBrand,  setSelectedOptionYear,selectedOptionYear,  setSelectedOptionKm,selectedOptionKm  ])
+
+
+    useEffect(() => {
         dispatch(getCars())
         if (user) {
             dispatch(getUsersDetails(user.email))
@@ -51,7 +66,7 @@ export default function Cars() {
 
 
     const page = (pageNumber) => {
-        setCurrentPage(pageNumber)
+        dispatch(setPage(pageNumber))
     }
 
     useEffect(()=>{
@@ -103,7 +118,7 @@ export default function Cars() {
         <>
             <Navbar />
             <Filters
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={page => dispatch(setPage(page))}
             selectedOptionAlf = {selectedOptionAlf}
             setSelectedOptionAlf ={ setSelectedOptionAlf}
             selectedOptionPrice={selectedOptionPrice}
@@ -175,7 +190,7 @@ export default function Cars() {
                             })
                         ) :
                             <div className={style.cardModal}>
-                                <h1>nada</h1>
+                                {handleAlert()}
 
 
 
@@ -183,7 +198,7 @@ export default function Cars() {
                         }
                     </div>)}
             </div>
-            <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div>
+            <div><Pagination maximo={maximo} /></div>
 
             <Footer />
         </>
