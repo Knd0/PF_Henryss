@@ -147,7 +147,7 @@ export default function Navbar() {
             )}
             {actualPage.review ? (
               <Link
-                to="/starsReviews"
+                to="/reviews"
                 className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
                 name="review"
                 onClick={handleActualPage}
@@ -156,7 +156,7 @@ export default function Navbar() {
               </Link>
             ) : (
               <Link
-                to="/starsReviews"
+                to="/reviews"
                 className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
                 name="review"
                 onClick={handleActualPage}
