@@ -1,16 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination"
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { getCars, cleanState, orderByAlf, filterByBrand, filterByYear, orderByKM, orderByPrice, addFavorite, removeFavorite, getUsersDetails, getFavorites } from "../../Redux/actions";
+import { getCars, addFavorite, removeFavorite, getUsersDetails, getFavorites } from "../../Redux/actions";
 import Search from "../Search/Search";
 import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
-
 import Filters from "../Filters/Filters";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -43,18 +41,18 @@ export default function Cars() {
     const userId = userDetails.length ? userDetails[0].userId : null
     const favorites = userDetails.length ? userDetails[0].favorites : null
 
-    useEffect(() => {
-        console.log(selectedOptionAlf, selectedOptionPrice, selectedOptionBrand, selectedOptionYear, selectedOptionKm)
-        if (currentCars.length === 0 && (selectedOptionAlf !== "" || selectedOptionPrice !== "" || selectedOptionBrand !== "" ||  selectedOptionYear !== "" || selectedOptionKm !== "")) {
-            console.log('reseteando')
-            setSelectedOptionAlf("");
-            setSelectedOptionPrice("");
-            setSelectedOptionBrand("");
-            setSelectedOptionYear("");
-            setSelectedOptionKm("");
-        }
-        console.log('tendria que recibir esto',currentCars.length)
-}, [currentCars,setSelectedOptionAlf,selectedOptionAlf, setSelectedOptionPrice, selectedOptionPrice, setSelectedOptionBrand, selectedOptionBrand,  setSelectedOptionYear,selectedOptionYear,  setSelectedOptionKm,selectedOptionKm  ])
+//     useEffect(() => {
+//         console.log(selectedOptionAlf, selectedOptionPrice, selectedOptionBrand, selectedOptionYear, selectedOptionKm)
+//         if (currentCars.length === 0 && (selectedOptionAlf !== "" || selectedOptionPrice !== "" || selectedOptionBrand !== "" ||  selectedOptionYear !== "" || selectedOptionKm !== "")) {
+//             console.log('reseteando')
+//             setSelectedOptionAlf("");
+//             setSelectedOptionPrice("");
+//             setSelectedOptionBrand("");
+//             setSelectedOptionYear("");
+//             setSelectedOptionKm("");
+//         }
+//         console.log('tendria que recibir esto',currentCars.length)
+// }, [currentCars,setSelectedOptionAlf,selectedOptionAlf, setSelectedOptionPrice, selectedOptionPrice, setSelectedOptionBrand, selectedOptionBrand,  setSelectedOptionYear,selectedOptionYear,  setSelectedOptionKm,selectedOptionKm  ])
 
 
     useEffect(() => {
