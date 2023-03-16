@@ -60,6 +60,12 @@ function Reducer(state = initialState, action) {
         cars: action.payload,
         loading:false,
       }
+      
+      case SET_PAGE:
+        return {
+          ...state,
+          currentPage: action.payload
+      };
     
     case GET_CAR_BY_EMAIL:
       return {
