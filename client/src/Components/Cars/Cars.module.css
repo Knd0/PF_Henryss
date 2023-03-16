@@ -1,16 +1,22 @@
-.cardconteiner {
+/* .cardconteiner {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: right;
     width: 90%;
-    
+
+} */
+.containerFilters{
+  margin-top: 300px;
 }
 
 .filtros{
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
+}
+.general{
+  background-image: url('../Img/fondo-de-autos.webp');
 }
 
 .select {
@@ -25,7 +31,7 @@
 
 .inputYear{
     width: 162px;
-    height: 40px;  
+    height: 40px;
 }
 
 .btnYear{
@@ -58,9 +64,9 @@
     cursor: pointer;
     height: 0;
     width: 0;
-    
+
   }
-  
+
   .container {
     position: relative;
     cursor: pointer;
@@ -76,7 +82,7 @@
     height: 2em;
     width: 2em;
   }
-  
+
   .checkmark {
     top: 0;
     left: 0;
@@ -84,45 +90,45 @@
     width: 2em;
     transition: 100ms;
     animation: dislike_effect 400ms ease;
-    
+
   }
-  
+
   .container input:checked ~ .checkmark path {
     fill: #FF5353;
     stroke-width: 0;
   }
-  
+
   .container input:checked ~ .checkmark {
     animation: like_effect 400ms ease;
   }
-  
+
   .container:hover {
     transform: scale(1.1);
   }
-  
+
   @keyframes like_effect {
     0% {
       transform: scale(0);
     }
-  
+
     50% {
       transform: scale(1.2);
     }
-  
+
     100% {
       transform: scale(1);
     }
   }
-  
+
   @keyframes dislike_effect {
     0% {
       transform: scale(0);
     }
-  
+
     50% {
       transform: scale(1.2);
     }
-  
+
     100% {
       transform: scale(1);
     }
