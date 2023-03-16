@@ -31,11 +31,10 @@ export default function CarsEdit() {
   const usersDetails = useSelector((state)=>state.usersDetails)
   const publications = usersDetails.length > 0 ? usersDetails[0].publications : null
  
-const valor =value.toString()===publications.toString()? value.toString():null
-console.log("ESTO ES VALOR=============>",valor)
+const valor =value.toString()
 
   let bla = cars?.filter(c => {
-      if(c?.carId===valor.toString()){
+      if(c?.carId===valor?.toString()){
         return c
       }
   });

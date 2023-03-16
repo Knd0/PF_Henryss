@@ -24,6 +24,8 @@ export const GET_CAR_BY_NAME = 'GET_CAR_BY_NAME';
 
 export const GET_CAR_BY_BRAND = 'GET_CAR_BY_BRAND';
 
+export const GET_CAR_BY_EMAIL = 'GET_CAR_BY_EMAIL';
+
 export const SET_PAGE = 'SET_PAGE';
 
 export const LOADING_ACTION = 'LOADING_ACTION';
