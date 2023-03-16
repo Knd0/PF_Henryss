@@ -2,20 +2,50 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 2%;
+    
 
    
 }
-
+.Title{
+    margin-top: 10vh;
+    font-size: 40px;
+}
+.input_opinion{
+    border: 1px solid black;
+    padding: 8px;
+    width: 20%;
+    min-height: 40%;
+    max-height: 30%;
+    min-width: 10%;
+    max-width: 50%;
+    border-radius: 10px;
+    margin-right: 1vh;
+    margin: 3vh;
+    word-wrap: break-word;
+    resize: vertical;
+    
+    
+}
+.containerItems button {
+    /* margin: 20px 0; */
+    text-align: center;
+    display: inline-block;
+    margin-left: 1vh;
+    margin-bottom: 1vh;
+  }
 
 .containerItems{
-    background-color: rgb(218, 215, 215);
+
+    background-color: rgb(255, 255, 255);
     width: 50%;
-    border-radius: 5px;
-  
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5%;
 }
 .containerItems textarea{
-    height: 100px;
+    height: 100%;
     width: 100%;
 }
 
@@ -24,5 +54,5 @@
 }
 .containerItems p{
  font-size: 25px;
- margin-right: 350px;
+ margin-right: 40%;
 }
