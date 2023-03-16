@@ -7,9 +7,10 @@ import Navbar from "../Navbar/Navbar";
 import Search from "../Search/Search";
 import style from "./Admin.module.css";
 import swal from "sweetalert";
+import CarsSearchBar from "./CarsSearchBar";
 
 export default function AdminCars() {
-  const cars = useSelector((state) => state.allcars);
+  const cars = useSelector((state) => state.cars);  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -76,12 +77,13 @@ export default function AdminCars() {
                 ></path>
               </svg>
             </div>
-            <input
+            <CarsSearchBar/>
+            {/* <input
               type="text"
               id="table-search-users"
               className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search for cars"
-            />
+              placeholder="Search by email or Model"
+            /> */}
           </div>
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -136,12 +138,6 @@ export default function AdminCars() {
                     {car.email}
                   </td>
                   <td className="px-6 py-4">
-                    <a
-                      href="#"
-                      className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Edit Car
-                    </a>
                     <a
                       onClick={() => handleDelete(car.carId)}
                       href="#"
