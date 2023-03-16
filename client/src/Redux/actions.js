@@ -157,7 +157,7 @@ export function loadingAction(status) {
 export function deleteCar(carId, userId) {
   return async (dispatch) => {
     try {
-      await axios.delete(`/publications/${userId}`, { data: { carId } });
+      await axios.delete(`/cars/${userId}/${carId}`);
       return dispatch({
         type: DELETE_CAR,
         payload: {
