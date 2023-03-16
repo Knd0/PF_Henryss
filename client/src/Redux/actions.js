@@ -330,7 +330,7 @@ export function removeAdminReview(review) {
     payload: review,
   };
 }
-
+/* 
 export function addToReviews(name, date, body, ratingNum) {
   return {
     type: ADD_TO_REVIEWS,
@@ -341,4 +341,46 @@ export function addToReviews(name, date, body, ratingNum) {
       name,
     },
   };
+} */
+
+export const addReview = (userId,payload) => {
+  return async function () {
+  
+      const allReviews = await axios.post(`/review/${userId}`,payload);
+      return allReviews
+   
 }
+
+};
+
+export function getReviews() {
+  return async function (dispatch) {
+
+
+  try {
+    var json = await axios.get(`/review`);
+    console.log("ESTO ES  JASON==============>",json.data)
+       
+    return dispatch( {
+      type: ADD_TO_REVIEWS,
+        payload: json.data
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
+/*       
+ await axios.get("/review")
+.then((response) => {
+  console.log(response.data)
+   dispatch({type: ADD_TO_REVIEWS, payload: response.data})
+}).catch((error) => {
+    console.log(error)
+}
+)
+  }; */
+}
+}
+
+
+

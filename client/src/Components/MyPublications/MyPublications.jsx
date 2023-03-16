@@ -7,9 +7,8 @@ import style from "../MyPublications/MyPublications.module.css";
 import Pagination from "../Pagination/Pagination";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import imgBorrar from "../Img/borrar.png";
-import imgMenu from "../Img/menu.png";
-import StarRating from "../StarRating/StarRating";
+
+
 const MyPublications = () => {
   const dispatch = useDispatch();
   const cars = useSelector((state)=>state.cars)
@@ -18,7 +17,7 @@ const MyPublications = () => {
   // const publications = useSelector((state) => state.usersDetails[0].publications)
   const publications = usersDetails.length > 0 ? usersDetails[0].publications : null
 
-  const publicados = cars.filter((c) => publications?.includes(c.carId.toString()));
+  const publicados = cars.filter((c) => publications?.includes(c?.carId.toString()));
 
     
   console.log("ESTOE ES PUBLICATIONS===================>",publications)

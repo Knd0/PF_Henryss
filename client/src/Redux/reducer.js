@@ -34,7 +34,7 @@ const initialState = {
   publications: [],
   users: [],
   usersDetails: [],
-  reviews:[],
+  opinion:[],
   loading: true,
 };
 
@@ -253,7 +253,7 @@ function Reducer(state = initialState, action) {
         case ADD_TO_REVIEWS:
           return{
             ...state,
-            reviews:[...state.reviews,action.payload]
+            opinion:action.payload
           }
         case SET_PAGE:
           return {
