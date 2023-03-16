@@ -1,9 +1,9 @@
-const { getCarByBrand, getCarByModel, getCarDetail, deleteCarById, createCar, editCar, getAllCars } = require("../controllers/carsControllers.js");
+const { getCarByBrand, getCarByModel, getCarDetail, deleteCarById, createCar, editCar, getAllCars, getCarByEmail } = require("../controllers/carsControllers.js");
 const { uploadImage } = require("../utils/cloudinary.js");
 const fs = require('fs-extra')
 
 const getCars = async (req, res) => {
-    const { brand, model } = req.query;
+    const { brand, model, email } = req.query;
 
     try {
         if(brand){
@@ -12,6 +12,10 @@ const getCars = async (req, res) => {
         }
         else if(model){
             const response = await getCarByModel(model);
+            res.status(200).send(response);
+        } 
+        else if(email){
+            const response = await getCarByEmail(email);
             res.status(200).send(response);
         }
         else {
