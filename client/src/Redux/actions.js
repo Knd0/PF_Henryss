@@ -125,7 +125,7 @@ export function getCarByBrand(brand) {
   };
 }
 
-export function setPage(page) {
+export function setCurrentPage(page) {
   return { type: SET_PAGE, payload: page };
 }
 
