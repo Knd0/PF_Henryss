@@ -340,7 +340,7 @@ export function DeleteAdminReview(reviewId) {
   return async function (dispatch) {
     let json = await axios.delete(`/user/${reviewId}`);
     return dispatch({
-      type: USER_DELETE,
+      type: DELETE_CAR,
       payload: json.data,
     });
   };
