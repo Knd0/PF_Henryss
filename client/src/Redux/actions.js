@@ -11,6 +11,7 @@ import {
   LOADING_ACTION,
   GET_CAR_BY_NAME,
   GET_CAR_BY_BRAND,
+  GET_CAR_BY_EMAIL,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -121,6 +122,17 @@ export function getCarByBrand(brand) {
       .get(`/cars?brand=${brand}`)
       .then((response) =>
         dispatch({ type: GET_CAR_BY_BRAND, payload: response.data })
+      );
+  };
+}
+
+export function getCarByEmail(email) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING_ACTION });
+    await axios
+      .get(`/cars?email=${email}`)
+      .then((response) =>
+        dispatch({ type: GET_CAR_BY_EMAIL, payload: response.data })
       );
   };
 }
