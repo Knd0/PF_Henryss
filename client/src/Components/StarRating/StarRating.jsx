@@ -74,9 +74,11 @@ function StarRating() {
   return (
     <>
       <Navbar/>
+      <div className="bg-gradient-to-b from-blue-800 to-blue-600 h-150">
     
       <div className={styles.contenedor}>
         <div className={styles.containerItems}>
+          <p2 className={styles.Title}>Your review is important</p2>
           <p>Rate us   {[...Array(5)].map((_, index) => (
             <span
               key={index}
@@ -99,6 +101,8 @@ function StarRating() {
             </button>}
           </form>
         </div>
+      </div>
+      
       </div>
       <Footer/>
     </>

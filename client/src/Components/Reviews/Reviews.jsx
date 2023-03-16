@@ -24,7 +24,7 @@ useEffect(()=>{
       <Navbar/>
       <h1>Reviews</h1>
      <Link to={"/starsReviews"}> <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-leave us your opinion</button></Link>
+Rate Us!</button></Link>
      <div className={styles.contenedor}>
         {reviews?.map(r=>{
           console.log("ESTO ES R============>",r)
@@ -47,7 +47,7 @@ leave us your opinion</button></Link>
                 <p>User: <span>{r.name}</span></p>
                </div>
                 <div>
-              <p>Fecha: <span>{r.updatedAt}</span></p>
+              <p>Fecha: <span>{r.updatedAt.slice(0,10)}</span></p>
                 </div>
               </div>
             </div>

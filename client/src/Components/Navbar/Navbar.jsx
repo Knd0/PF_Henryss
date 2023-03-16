@@ -145,7 +145,25 @@ export default function Navbar() {
                 My Favorites
               </Link>
             )}
-
+            {actualPage.review ? (
+              <Link
+                to="/reviews"
+                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
+                name="review"
+                onClick={handleActualPage}
+              >
+                Reviews
+              </Link>
+            ) : (
+              <Link
+                to="/reviews"
+                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
+                name="review"
+                onClick={handleActualPage}
+              >
+                Reviews
+              </Link>
+            )}
             {actualPage.createPost ? (
               <Link
                 to="/mypublications "
