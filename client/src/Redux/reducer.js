@@ -198,7 +198,8 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         detail: {},
-        usersDetails:[]
+        usersDetails:[],
+        publications: []
       };
     case POST_CAR:
       return {
