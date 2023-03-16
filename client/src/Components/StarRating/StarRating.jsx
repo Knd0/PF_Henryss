@@ -74,28 +74,21 @@ function StarRating() {
   return (
     <>
       <Navbar/>
-      <div className="bg-gradient-to-b from-blue-800 to-blue-600 h-150">
     
       <div className={styles.contenedor}>
         <div className={styles.containerItems}>
-          <p2 className={styles.Title}>Your review is important</p2>
-         
-          <p> Rate us <span className={styles.starContainer}>
-          {[...Array(5)].map((_, index) => (
-      <span
-        key={index}
-        className={styles.star}
-        style={{
-          cursor: 'pointer',
-          color: index < rating ? 'yellow' : 'grey',
-        }}
-        onClick={() => handleStarClick(index + 1)}
-      >
-        &#9733;
-      </span>
-    ))}
-  </span>
-</p>
+          <p>Rate us   {[...Array(5)].map((_, index) => (
+            <span
+              key={index}
+              style={{
+                cursor: 'pointer',
+                color: index < rating ? 'yellow' : 'white',
+              }}
+              onClick={() => handleStarClick(index + 1)}
+            >
+              &#9733;
+            </span>
+          ))}</p>
           <form className={styles.containerForm} onSubmit={handleSubmit}>
             <label htmlFor="opinion"></label>
             <textarea className={styles.input_opinion}onChange={(e)=>handleChange(e)} type="text" placeholder="Your opinion..."/>
@@ -106,8 +99,6 @@ function StarRating() {
             </button>}
           </form>
         </div>
-      </div>
-      
       </div>
       <Footer/>
     </>

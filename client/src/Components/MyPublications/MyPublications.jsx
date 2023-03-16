@@ -33,7 +33,7 @@ const MyPublications = () => {
 
 
   useEffect(() => {
-    dispatch(cleanState());
+    // dispatch(cleanState());
     dispatch(getpublications(userId));;
   }, [dispatch]);
 
@@ -68,9 +68,9 @@ const MyPublications = () => {
       //   navigate("/cars");
       // }    
       })
-      setTimeout(function() {
-        window.location.reload();      
-      }, 3000);
+      // setTimeout(function() {
+      //   navigate("/cars");      
+      // }, 3000);
   };
 
   return (

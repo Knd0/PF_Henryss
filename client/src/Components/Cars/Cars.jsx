@@ -10,18 +10,17 @@ import { getCars, cleanState, orderByAlf, filterByBrand, filterByYear, orderByKM
 import Search from "../Search/Search";
 import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
-
+import { useNavigate } from 'react-router-dom';
 import Filters from "../Filters/Filters";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
-import { setPage } from "../../Redux/actions";
 
 
 
 export default function Cars() {
     const dispatch = useDispatch()
     const allcars = useSelector((state) => state.cars)
-    const currentPage = useSelector((state) => state.currentPage);
+    const [currentPage, setCurrentPage] = useState(1)
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
     const indexOfFirstCar = indexOfLastCar - carsPerPage
@@ -97,7 +96,7 @@ function updateSelectedOptionsIfNeeded() {
 
 
     const page = (pageNumber) => {
-        dispatch(setPage(pageNumber))
+        setCurrentPage(pageNumber)
     }
 
     useEffect(()=>{
@@ -149,7 +148,7 @@ function updateSelectedOptionsIfNeeded() {
         <>
             <Navbar />
             <Filters
-            setCurrentPage={page => dispatch(setPage(page))}
+            setCurrentPage={setCurrentPage}
             selectedOptionAlf = {selectedOptionAlf}
             setSelectedOptionAlf ={ setSelectedOptionAlf}
             selectedOptionPrice={selectedOptionPrice}
@@ -221,7 +220,7 @@ function updateSelectedOptionsIfNeeded() {
                             })
                         ) :
                             <div className={style.cardModal}>
-                                {handleAlert()}
+                                <h1>nada</h1>
 
 
 
@@ -229,7 +228,7 @@ function updateSelectedOptionsIfNeeded() {
                         }
                     </div>)}
             </div>
-            <div><Pagination maximo={maximo} /></div>
+            <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div>
 
             <Footer />
         </>
