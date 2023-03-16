@@ -108,9 +108,9 @@ const validateForm = ({
       errors.img = "solo imagenes"; */
     
     else if (
-      typeof description !== "string" ||  description.length > 250
+      typeof description !== "string" ||  description.length > 500
     ){
-      errors.description = "No more than 250 characters allowed";    
+      errors.description = "No more than 500 characters allowed";    
     }
     
 
