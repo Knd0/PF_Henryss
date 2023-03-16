@@ -7,7 +7,7 @@ const usersRoutes = require('./usersRoutes')
 const payment = require('./paymentRoutes')
 const reviewsRoutes = require('./reviewsRoutes')
 const adminRoutes = require('./adminRoutes')
-
+const statisticsRoutes = require('./statisticsRoutes')
 
 
 
@@ -21,7 +21,7 @@ router.use('/publications', publicationsRouter);
 router.use('/checkout', payment);
 router.use('/review', reviewsRoutes);
 router.use('/admin', adminRoutes);
-
+router.use('/statistics', statisticsRoutes);
 
 
 

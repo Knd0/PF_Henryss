@@ -1,4 +1,4 @@
-const { getUsersDb, getUserDb, createUserDb, getUserName, deleteToUser, updateToUser } = require('../controllers/usersControllers')
+const { getUsersDb, getUserDb, createUserDb, getUserName, deleteToUser, updateToUser, getUserDbId } = require('../controllers/usersControllers')
 
 const createUser = async (req, res) => {
     const { nickname, email, name, picture } = req.body
@@ -12,7 +12,7 @@ const createUser = async (req, res) => {
 
 
 const getAllUsers = async (req, res) => {
-    const { email, name } = req.query
+    const { email, name, userId } = req.query
     try {
         if(email){
             const response = await getUserDb(email)
@@ -20,7 +20,10 @@ const getAllUsers = async (req, res) => {
         } else if(name) {
             const response = await getUserName(name)
             res.status(200).send(response)
-        } else {
+        } else if(userId){
+            const response = await getUserDbId(userId)
+            res.status(200).send(response)
+        }else {
             const response = await getUsersDb()
             res.status(200).send(response)
         }
@@ -48,6 +51,7 @@ const changeUser = async (req, res) => {
         res.status(400).json({ message: error.message })
     }
 }
+
 module.exports = {
     createUser, 
     getAllUsers,
