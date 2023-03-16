@@ -67,7 +67,7 @@ function StarRating() {
         title: "Thanks for your opinion!!!",
       });
      }
-   
+     navigate("/reviews")
 
   }
 
