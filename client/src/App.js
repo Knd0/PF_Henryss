@@ -17,6 +17,7 @@ import Admin from "./Components/Admin/Admin";
 import Statistics from "./Components/Admin/Statistics"
 import StarRating from "./Components/StarRating/StarRating";
 import Reviews from "./Components/Reviews/Reviews"
+import UpdateReview from "./Components/Reviews/UpdateReview";
 import axios from "axios";
 
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
@@ -40,6 +41,7 @@ function App() {
           <Route path="/myfavorites" element={<ProtectedRoute component={MyFavorites}/>} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/starsReviews" element={<StarRating/>} />
+          <Route path="/updateReview" element={<UpdateReview/>} />
           <Route path="/reviews" element={<Reviews/>} />
           <Route path="*" element={<Page404 />} />
           <Route path="/user" element={<UserProfile />} />

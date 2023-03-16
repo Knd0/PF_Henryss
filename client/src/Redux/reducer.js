@@ -9,6 +9,7 @@ import {
   LOADING_ACTION,
   GET_CAR_BY_NAME,
   GET_CAR_BY_BRAND,
+  GET_CAR_BY_EMAIL,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -59,11 +60,14 @@ function Reducer(state = initialState, action) {
         cars: action.payload,
         loading:false,
       }
-      case SET_PAGE:
-        return {
-          ...state,
-          currentPage: action.payload
-      };
+    
+    case GET_CAR_BY_EMAIL:
+      return {
+        ...state,
+        cars: action.payload,
+        loading:false,
+      }  
+
 
     case FILTER_BY_YEAR_AND_BRAND:
   let allcars = [...state.allcars];
