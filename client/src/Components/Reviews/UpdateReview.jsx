@@ -3,28 +3,25 @@ import { useState, useEffect } from 'react';
 import styles from "../StarRating/StarRating.module.css"
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-import { addReview, getCars } from '../../Redux/actions';
+import {  updateReview } from '../../Redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
 import swal from 'sweetalert';
 
-function StarRating() {
+function UpdateReview() {
+  const usersDetails = useSelector((state) =>state.usersDetails)
+  const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
   const dispatch = useDispatch()
   const [rating, setRating] = useState(0);
   const fechaActual = new Date().toLocaleDateString();
-  const [input, setInput] = useState("");
-  const usersDetails = useSelector((state) => state.usersDetails)
   const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
-  const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
+  const reviews = useSelector((state)=>state.opinion)
   console.log("ESTO ES NAME===========>",name);
   console.log("ESTO ES RATING===========>",rating);
-  const reviews = useSelector((state) => state.opinion)
-  const publico = reviews.filter((r)=> userId===r.userId)
-  const navigate = useNavigate()
-  console.log("ESTO ES PUBLICO===========>",publico);
-
-
-
+ /*  const elemento = reviews.filter((r)=>userId===(r.userId.toString()))*/
+  const [input, setInput] = useState(/* elemento[0].review */ "");
+ 
+/*  console.log("ESTO ES ELEMENTO============>", elemento)  */
+ 
 
   const handleStarClick = (value) => {
     setRating(value);
@@ -34,25 +31,15 @@ function StarRating() {
      setInput(e.target.value)
    }
 
-   function handleAlert(e){
-    e.preventDefault()
-
-    swal({
-      title: "you can't repost, update your post!!!",
-    });
-    navigate("/updateReview")
-    
-  }
-
    console.log("ESTO ES Input===========>",input);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("ESTO ES Input===========>",input);
     const payload = {
-      rating:rating,
       review:input,
-      name:name
+      name:name,
+      rating:rating
     };
 
     console.log("ESTO ES PAYLOAD============>",payload)
@@ -62,12 +49,12 @@ function StarRating() {
         timer: 3000,
       });
      }else{
-      dispatch(addReview(userId,payload))
+      dispatch(updateReview(userId,payload))
       swal({
         title: "Thanks for your opinion!!!",
       });
      }
-     navigate("/reviews")
+   
 
   }
 
@@ -92,11 +79,9 @@ function StarRating() {
           <form className={styles.containerForm} onSubmit={handleSubmit}>
             <label htmlFor="opinion"></label>
              <input onChange={(e)=>handleChange(e)} type="text" />
-             {publico.length? <button onClick={(e)=>handleAlert(e)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-             Update
-            </button>: <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
              Publish
-            </button>}
+            </button>
           </form>
         </div>
       </div>
@@ -105,4 +90,4 @@ function StarRating() {
   );
 }
 
-export default StarRating;
+export default UpdateReview;
