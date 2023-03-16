@@ -395,4 +395,13 @@ export function getReviews() {
 }
 
 
+export function updateReview(userId,payload) {
+  return async function (dispatch) {
+
+       await axios.put(`/review/${userId}`,payload);
+
+}
+}
+
+
 
