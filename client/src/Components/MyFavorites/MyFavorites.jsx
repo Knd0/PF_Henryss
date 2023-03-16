@@ -7,11 +7,7 @@ import { getCars, cleanState, getUsersDetails, getFavorites, addFavorite, remove
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
 import style from "../MyFavorites/MyFavorites.module.css";
-// import swal from 'sweetalert';
 import { useAuth0 } from "@auth0/auth0-react";
-import Loading from "../Loading/Loading";
-// import LoginButton from "../Login/Login";
-// import Loading from "../Loading/Loading";
 
 
 
@@ -25,20 +21,26 @@ export default function MyFavorites() {
   const [carsPerPage, setCountriesPerPage] = useState(8)
   const indexOfLastCar = currentPage * carsPerPage
   const indexOfFirstCar = indexOfLastCar - carsPerPage
-  let currentCars = favorites
-  if (currentCars.length > 8) {
-    currentCars = favorites.slice(indexOfFirstCar, indexOfLastCar)
-  }
+  const userId = userDetails.length ? userDetails[0].userId : null
+  const [currentCars,setCurrentCars] = useState([])
   const [input, setInput] = useState("");
   const maximo = favorites.length / carsPerPage
   useEffect(() => {
     dispatch(getUsersDetails(user.email))
   }, [])
   useEffect(() => {
-    if (userDetails.length) {
-      dispatch(getFavorites(userDetails[0].userId))
-    }
-  }, [dispatch])
+    dispatch(getFavorites(userId))
+  }, [])
+  useEffect(()=>{
+    setCurrentCars(favorites)
+  }, [ favorites ])
+
+  const deleteFavorites = (e) => {
+    dispatch(removeFavorite(userId,e.target.value))
+    setCurrentCars(currentCars.filter(car=>car[0].carId.toString() !== e.target.value.toString()))
+  }
+
+  
 
   if (favorites === "You dont have favorites") {
     return (
@@ -61,6 +63,22 @@ export default function MyFavorites() {
         <div className={style.cardconteiner}>
           {currentCars.map((e) => {
             return <div className={style.containerCard} key={e[0].carId}>
+              <div className={style.divEnlaceCard}>
+                <label className={style.container}>
+                  <input onChange={deleteFavorites} checked={true} type="checkbox" value={e[0].carId} />
+                  <div className={style.checkmark}>
+                    <svg viewBox="0 0 256 256">
+                      <rect fill="none" height="256" width="256"></rect>
+                      <path
+                        d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
+                        strokeWidth="20px"
+                        stroke="#000"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </div>
+                </label>
+              </div>
               <Card
                 carId={e[0].carId}
                 brand={e[0].brand}
@@ -75,7 +93,6 @@ export default function MyFavorites() {
           }
           )}
         </div>
-        {favorites.length > 8 ? <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div> : null}
 
         <Footer />
       </>

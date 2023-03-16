@@ -27,7 +27,7 @@ const addReview = async (userId, name, review, rating) => {
     return reviewCreate 
 }
 
-const updateReview = async (userId, review) => {
+const updateReview = async (userId, reviewUpdates) => {
     if(!userId) return ('You need to login for see your review')
     let searchUser = await User.findOne({
         where: { userId: userId }
@@ -37,7 +37,7 @@ const updateReview = async (userId, review) => {
         where: { userId: userId }
     });
     if(!searchReview) return ('You do not have reviews')
-    await Reviews.update({ review: review }, {
+    await Reviews.update({...reviewUpdates}, {
         where: { userId: userId }
     });
     return ('Review changed')
