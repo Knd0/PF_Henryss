@@ -83,5 +83,15 @@
 }
 .containerItems p{
  font-size: 25px;
+ flex-direction: column;
+ display: flex;
  /* margin-right: 60%; */
 }
+.starContainer {
+    display: inline-block;
+  }
+  
+  .star {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
