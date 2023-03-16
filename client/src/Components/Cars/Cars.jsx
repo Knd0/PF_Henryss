@@ -6,21 +6,22 @@ import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination"
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { getCars, cleanState, orderByAlf, filterByBrand, filterByYear, orderByKM, orderByPrice, addFavorite, removeFavorite, getUsersDetails } from "../../Redux/actions";
+import { getCars, cleanState, orderByAlf, filterByBrand, filterByYear, orderByKM, orderByPrice, addFavorite, removeFavorite, getUsersDetails, getFavorites } from "../../Redux/actions";
 import Search from "../Search/Search";
 import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
-import { useNavigate } from 'react-router-dom';
+
 import Filters from "../Filters/Filters";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
+import { setPage } from "../../Redux/actions";
 
 
 
 export default function Cars() {
     const dispatch = useDispatch()
     const allcars = useSelector((state) => state.cars)
-    const [currentPage, setCurrentPage] = useState(1)
+    const currentPage = useSelector((state) => state.currentPage);
     const [carsPerPage, setCountriesPerPage] = useState(8)
     const indexOfLastCar = currentPage * carsPerPage
     const indexOfFirstCar = indexOfLastCar - carsPerPage
@@ -39,8 +40,25 @@ export default function Cars() {
     const [favoritesState, setFavoritesState] = useState([])
     const { user, isAuthenticated } = useAuth0()
     const userDetails = useSelector((state) => state.usersDetails)
+    const userId = userDetails.length ? userDetails[0].userId : null
+    const favorites = userDetails.length ? userDetails[0].favorites : null
 
     useEffect(() => {
+        console.log(selectedOptionAlf, selectedOptionPrice, selectedOptionBrand, selectedOptionYear, selectedOptionKm)
+        if (currentCars.length === 0 && (selectedOptionAlf !== "" || selectedOptionPrice !== "" || selectedOptionBrand !== "" ||  selectedOptionYear !== "" || selectedOptionKm !== "")) {
+            console.log('reseteando')
+            setSelectedOptionAlf("");
+            setSelectedOptionPrice("");
+            setSelectedOptionBrand("");
+            setSelectedOptionYear("");
+            setSelectedOptionKm("");
+        }
+        console.log('tendria que recibir esto',currentCars.length)
+}, [currentCars,setSelectedOptionAlf,selectedOptionAlf, setSelectedOptionPrice, selectedOptionPrice, setSelectedOptionBrand, selectedOptionBrand,  setSelectedOptionYear,selectedOptionYear,  setSelectedOptionKm,selectedOptionKm  ])
+
+
+    useEffect(() => {
+        dispatch(getCars())
         if (user) {
             dispatch(getUsersDetails(user.email))
         }
@@ -48,67 +66,28 @@ export default function Cars() {
 
 
     const page = (pageNumber) => {
-        setCurrentPage(pageNumber)
+        dispatch(setPage(pageNumber))
     }
 
-    useEffect(() => {
-        dispatch(getCars())
-    }, []);
+    useEffect(()=>{
+        getFavorites(userId)
+    }, [  ])
 
+    useEffect(()=>{
+        setFavoritesState(favorites)
+    }, [ favorites ])
 
-    useEffect(() => {
-        const data = localStorage.getItem("favorites")
-        if (data) {
-            setFavoritesState(JSON.parse(data))
-            console.log(favoritesState)
-        }
-    }, [])
-
-
-    useEffect(() => {
-        window.localStorage.setItem("favorites", JSON.stringify(favoritesState))
-        // console.log(favoritesState)
-    }, [favoritesState])
-
-
-    // useEffect(() => {
-    //     if (currentPage !== 1) {
-    //         setCurrentPage(1)
-    //     }
-
-    // }, [currentPage, setCurrentPage, selectedOptionPrice, selectedOptionKm, selectedOptionYear, selectedOptionBrand, selectedOptionAlf])
-    // console.log(selectedOptionPrice)
-
-    const setLocalStorage = (e) => {
-        if(!userDetails.length){
-            dispatch(getUsersDetails(user.email))
-            .then(info=>{
-                if (!favoritesState.includes(e.target.value)) {
-
-                    dispatch(addFavorite(userDetails[0].userId, e.target.value))
-        
-                    setFavoritesState([...favoritesState, e.target.value])
-                    return 
-                }
-                if (favoritesState.includes(e.target.value)) {
-        
-                    dispatch(removeFavorite(userDetails[0].userId, e.target.value))
-        
-                    setFavoritesState(favoritesState.filter(car => car !== e.target.value))
-                    return 
-                }
-            })
-        }
+    const setFavorites = (e) => {
         if (!favoritesState.includes(e.target.value)) {
 
-            dispatch(addFavorite(userDetails[0].userId, e.target.value))
+            dispatch(addFavorite(userId, e.target.value))
 
             setFavoritesState([...favoritesState, e.target.value])
             return 
         }
         if (favoritesState.includes(e.target.value)) {
 
-            dispatch(removeFavorite(userDetails[0].userId, e.target.value))
+            dispatch(removeFavorite(userId, e.target.value))
 
             setFavoritesState(favoritesState.filter(car => car !== e.target.value))
             return 
@@ -139,7 +118,7 @@ export default function Cars() {
         <>
             <Navbar />
             <Filters
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={page => dispatch(setPage(page))}
             selectedOptionAlf = {selectedOptionAlf}
             setSelectedOptionAlf ={ setSelectedOptionAlf}
             selectedOptionPrice={selectedOptionPrice}
@@ -154,12 +133,6 @@ export default function Cars() {
             <div>
                 <Search />
             </div>
-            {
-                isAuthenticated ?
-                    <button onClick={e => userDetails[0].favorites.map(carConId => dispatch(removeFavorite(userDetails[0].userId, carConId)))}>deletear</button>
-                    :
-                    null
-            }
             <div>
                 {loading ? <Loading /> :
                     (<div className={style.cardconteiner}>
@@ -171,7 +144,7 @@ export default function Cars() {
                                             isAuthenticated ?
                                             <div className={style.divEnlaceCard}>
                                                 <label className={style.container}>
-                                                    <input onChange={setLocalStorage} checked={favoritesState.includes(e.carId.toString())} type="checkbox" value={e.carId} />
+                                                    <input onChange={setFavorites} checked={favoritesState.includes(e.carId.toString())} type="checkbox" value={e.carId} />
                                                     <div className={style.checkmark}>
                                                         <svg viewBox="0 0 256 256">
                                                             <rect fill="none" height="256" width="256"></rect>
@@ -217,7 +190,7 @@ export default function Cars() {
                             })
                         ) :
                             <div className={style.cardModal}>
-                                <h1>nada</h1>
+                                {handleAlert()}
 
 
 
@@ -225,7 +198,7 @@ export default function Cars() {
                         }
                     </div>)}
             </div>
-            <div><Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} maximo={maximo} /></div>
+            <div><Pagination maximo={maximo} /></div>
 
             <Footer />
         </>

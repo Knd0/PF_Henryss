@@ -1,22 +1,24 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { getCars, cleanState, getpublications } from "../../Redux/actions";
+import { getCars, cleanState, getpublications, deleteCar } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 import style from "../MyPublications/MyPublications.module.css";
 import Pagination from "../Pagination/Pagination";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import imgBorrar from "../Img/borrar.png";
-import imgMenu from "../Img/menu.png";
-import StarRating from "../StarRating/StarRating";
+import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+
 const MyPublications = () => {
   const dispatch = useDispatch();
   const cars = useSelector((state)=>state.cars)
   const usersDetails = useSelector((state) => state.usersDetails)
-  const userId = usersDetails[0].userId
-  const publications = useSelector((state) => state.usersDetails[0].publications)
-  const publicados = cars.filter((c) => publications.includes(c.carId.toString()));
+  const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
+  // const publications = useSelector((state) => state.usersDetails[0].publications)
+  const publications = usersDetails.length > 0 ? usersDetails[0].publications : null
+
+  const publicados = cars.filter((c) => publications?.includes(c?.carId.toString()));
 
     
   console.log("ESTOE ES PUBLICATIONS===================>",publications)
@@ -27,85 +29,108 @@ const MyPublications = () => {
   const indexOfFirstCar = indexOfLastCar - carsPerPage;
   // const currentCars = publications.slice(indexOfFirstCar, indexOfLastCar);
   // const maximo = publications.length / carsPerPage;
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     dispatch(cleanState());
-    dispatch(getpublications(userId));
+    dispatch(getpublications(userId));;
   }, [dispatch]);
 
+  const handleDelete = (e) => {
+    // if (errors.description) { //chequeo si hay errores
+    //   toast.error('Please correct errors 🚦', {
+    //     position: "top-center",
+    //     autoClose: 3000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "colored",
+    //     });;
+    //   return;
+    // }
+    const id = e.target.dataset.id
+    console.log("this is carId ramon>>>", id)
+    console.log("this is userId ramon>>>", userId)
+    dispatch(deleteCar(id, userId))
+    toast.success('Car has been deleted 🗑️', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",   
+      // onClose: () => {
+      //   navigate("/cars");
+      // }    
+      })
+      setTimeout(function() {
+        window.location.reload();      
+      }, 3000);
+  };
+
   return (
+    
     <>
-      <div>
-        <Navbar />
+    <Navbar />
         <Link to="/carscreate">
-          <button>Create New Post</button>
+          <button className="mt-9 font-semibold leading-none text-white py-3  bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">Create New Post</button>
         </Link>
-        {publicados? (
+		<div class="mt-5 max-w-3xl w-full mx-auto z-10 bg-blue">
+		<div class="flex flex-col">
+      
+    {publicados? (
           publicados.map((e) => {
             return (
-              <div key={e.carId} className={style.container}>
-                <div className={style.flexContainerPublications}>
-                 <Link to={`/carsedit/${e.carId}`}><img width={200} height={200} src={e.img.secure_url} alt="" /></Link>
 
-                  <div className={style.itemsDescriptionContainerPublications}>
-                    <div className={style.itemsContainerPublications}>
-                      <h5 className={style.titulo}>
-                        Marca:{" "}
-                        <span className={style.subtitulo}>{e.brand}</span>
-                      </h5>
-                      <h5 className={style.titulo}>
-                        Modelo:{" "}
-                        <span className={style.subtitulo}>{e.model}</span>
-                      </h5>
-                      <h5 className={style.titulo}>
-                        Año: <span className={style.subtitulo}>{e.year}</span>
-                      </h5>
-                      <h5 className={style.titulo}>
-                        Km: <span className={style.subtitulo}>{e.kilometers}</span>
-                      </h5>
-                    </div>
-                    <div className={style.descriptionContainer}>
-                      <h5 className={style.titulo}>descrition</h5>
-                      <div className={style.decriptiontext}>
-                        {" "}
-                        <p className={style.subtitulo}>
-                          {e.description.slice(0, 100)}...
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  {/* div de itemsDescriptionContainerPublications */}
-                  <div>
-                    <div className={style.deleteEditarContainer}>
-                      <button className={style.btn}>
-                        <svg
-                          viewBox="0 0 15 17.5"
-                          height="25"
-                          width="22"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className={style.icon}
-                        >
-                          <path
-                            transform="translate(-2.5 -1.25)"
-                            d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z"
-                            id="Fill"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>{" "}
-                {/* div de flexContainerPublication  */}
-              </div>
-            );
-          })
-        ) : (
-          <div className={style.cardModal}>
-            <h3>Nothing to show 🤔</h3>
-          </div>
-        )}
-      </div>
-      <div></div>
+			<div class="bg-blue-600 border border-white shadow-lg  rounded-3xl p-4 m-4">
+				<div class="flex-none sm:flex">
+					<div class="flex-none h-32 w-42   ">
+            <Link to={`/carsedit/${e.carId}`}><img class=" max-w-full h-32 object-cover rounded-2xl" src={e.img.secure_url || e?.img} alt="" /></Link>
+						
+						
+					</div>
+					<div class="flex-auto sm:ml-5 justify-evenly">
+						<div class="flex items-center justify-between sm:mt-2">
+							<div class="flex items-center">
+								<div class="flex flex-col">
+									<div class="w-full flex-none text-lg text-gray-800 font-bold leading-none">{e.brand}{" "}{e.model}</div>
+									<div class="flex-auto text-gray-800 my-1">
+										<span class="mr-3 ">Year {e.year}</span><span class="mr-3 border-r border-gray-200  max-h-0"></span><span>{e.kilometers} Km</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						  <div class="flex flex-row items-center text-base font-semibold ">
+            <span class="mr-3 ">Description</span><span class="mr-3 border-r border-gray-200  max-h-0"></span>
+							</div>
+							<div class="flex  text-sm text-gray-800">
+								<div class="flex-1 items-start">
+									
+									<p class="">{e.description.slice(0, 90)}...</p>
+								</div>
+								
+								<button type="button" data-id={e.carId} onClick={(event) => handleDelete(event)} class="flex-none h-10 w-42 bg-red-700 hover:bg-red-800 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-300 hover:border-green-500 text-white rounded-3xl transition ease-in duration-300">Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+	
+              );
+            })
+          ) : (
+            <div className={style.cardModal}>
+              <h3>Nothing to show 🤔</h3>
+            </div>
+          )}
+    </div>
+		</div>
+
       <div>
         {/* <Pagination
           pagina={currentPage}
@@ -113,6 +138,9 @@ const MyPublications = () => {
           maximo={maximo}
         /> */}
       </div>
+
+
+      <ToastContainer />
       <Footer />
     </>
   );

@@ -11,6 +11,7 @@ import {
   LOADING_ACTION,
   GET_CAR_BY_NAME,
   GET_CAR_BY_BRAND,
+  GET_CAR_BY_EMAIL,
   PUT_CAR,
   DELETE_CAR,
   POST_CAR,
@@ -125,7 +126,18 @@ export function getCarByBrand(brand) {
   };
 }
 
-export function setCurrentPage(page) {
+export function getCarByEmail(email) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING_ACTION });
+    await axios
+      .get(`/cars?email=${email}`)
+      .then((response) =>
+        dispatch({ type: GET_CAR_BY_EMAIL, payload: response.data })
+      );
+  };
+}
+
+export function setPage(page) {
   return { type: SET_PAGE, payload: page };
 }
 
@@ -145,7 +157,7 @@ export function loadingAction(status) {
 export function deleteCar(carId, userId) {
   return async (dispatch) => {
     try {
-      await axios.delete(`/publications/${userId}`, { data: { carId } });
+      await axios.delete(`/cars/${userId}/${carId}`);
       return dispatch({
         type: DELETE_CAR,
         payload: {
@@ -324,13 +336,16 @@ export function addToPublications(userId, carId) {
   };
 }
 
-export function removeAdminReview(review) {
-  return {
-    type: DELETE_REVIEW,
-    payload: review,
+export function DeleteAdminReview(reviewId) {
+  return async function (dispatch) {
+    let json = await axios.delete(`/user/${reviewId}`);
+    return dispatch({
+      type: DELETE_CAR,
+      payload: json.data,
+    });
   };
 }
-
+/* 
 export function addToReviews(name, date, body, ratingNum) {
   return {
     type: ADD_TO_REVIEWS,
@@ -341,4 +356,55 @@ export function addToReviews(name, date, body, ratingNum) {
       name,
     },
   };
+} */
+
+export const addReview = (userId,payload) => {
+  return async function () {
+  
+      const allReviews = await axios.post(`/review/${userId}`,payload);
+      return allReviews
+   
 }
+
+};
+
+export function getReviews() {
+  return async function (dispatch) {
+
+
+  try {
+    var json = await axios.get(`/review`);
+    console.log("ESTO ES  JASON==============>",json.data)
+       
+    return dispatch( {
+      type: ADD_TO_REVIEWS,
+        payload: json.data
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
+/*       
+ await axios.get("/review")
+.then((response) => {
+  console.log(response.data)
+   dispatch({type: ADD_TO_REVIEWS, payload: response.data})
+}).catch((error) => {
+    console.log(error)
+}
+)
+  }; */
+}
+}
+
+
+export function updateReview(userId,payload) {
+  return async function (dispatch) {
+
+       await axios.put(`/review/${userId}`,payload);
+
+}
+}
+
+
+

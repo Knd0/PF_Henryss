@@ -40,6 +40,12 @@ const getCarByModel = async (model) => {
         return filteredCars
 }
 
+const getCarByEmail = async (email) => {
+    const data = await getAllCars();
+    const filteredCars = data.filter((car) => car.email.toLowerCase().includes(email.toLowerCase()));
+    return filteredCars
+}
+
 const getCarDetail = async (id) => {
     const data = await getAllCars();
     const filteredCars = data.filter((car) => car.id == id||car.carId==id );
@@ -116,5 +122,6 @@ module.exports = {
     deleteCarById,
     createCar,
     editCar,
-    getAllCars
+    getAllCars,
+    getCarByEmail
 };
