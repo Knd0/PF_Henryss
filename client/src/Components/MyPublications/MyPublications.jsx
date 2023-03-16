@@ -89,8 +89,8 @@ const MyPublications = () => {
 
 			<div class="bg-blue-600 border border-white shadow-lg  rounded-3xl p-4 m-4">
 				<div class="flex-none sm:flex">
-					<div class=" relative h-32 w-64   sm:mb-0 mb-3">
-            <Link to={`/carsedit/${e.carId}`}><img class=" w-42 h-32 object-cover rounded-2xl" src={e.img.secure_url || e?.img} alt="" /></Link>
+					<div class="flex-none h-32 w-42   ">
+            <Link to={`/carsedit/${e.carId}`}><img class=" max-w-full h-32 object-cover rounded-2xl" src={e.img.secure_url || e?.img} alt="" /></Link>
 						
 						
 					</div>
@@ -111,10 +111,10 @@ const MyPublications = () => {
 							<div class="flex  text-sm text-gray-800">
 								<div class="flex-1 items-start">
 									
-									<p class="">{e.description.slice(0, 115)}...</p>
+									<p class="">{e.description.slice(0, 90)}...</p>
 								</div>
 								
-								<button type="button" data-id={e.carId} onClick={(event) => handleDelete(event)} class="flex-no-shrink bg-red-700 hover:bg-red-800 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-300 hover:border-green-500 text-white rounded-3xl transition ease-in duration-300">Delete</button>
+								<button type="button" data-id={e.carId} onClick={(event) => handleDelete(event)} class="flex-none h-10 w-42 bg-red-700 hover:bg-red-800 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-300 hover:border-green-500 text-white rounded-3xl transition ease-in duration-300">Delete</button>
 							</div>
 						</div>
 					</div>
