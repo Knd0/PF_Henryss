@@ -1,31 +1,31 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { allUsers, UserDelete } from "../../Redux/actions";
+import { getReviews, DeleteAdminReview } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import style from "./Admin.module.css"
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
-export default function AdminUsers() {
-  const users = useSelector((state) => state.users);
+export default function AdminReviews() {
+  const reviews = useSelector((state) => state.opinion);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(allUsers());
+    dispatch(getReviews());
   }, [dispatch]);
 
-  function handleDelete(userId) {
+  function handleDelete(reviewId) {
     swal({
       title: "Are you sure?",
-      text: "This user will be deleted.",
+      text: "This review will be deleted.",
       icon: "warning",
       buttons: ["Cancel", "Accept"],
     }).then((value) => {
       if (value) {
-        dispatch(UserDelete(userId))
+        dispatch(DeleteAdminReview(reviewId))
         swal({
           title: "Succes",
-          text: "This user has been deleted.",
+          text: "This review has been deleted.",
           icon: 'success',
           button: "Ok"
         })
@@ -47,7 +47,7 @@ export default function AdminUsers() {
   return (
     <>
       <Navbar />
-      <h2 className="underline">ADMIN USERS</h2>
+      <h2 className="underline">ADMIN REVIEWS</h2>
       <div className={style.cardconteiner}>
         <Link to="/admin" className={style.btn}>
           <span>Back</span>
@@ -102,11 +102,11 @@ export default function AdminUsers() {
               </th>
             </tr>
           </thead>
-          {users.length ? (
+          {reviews.length ? (
             <tbody>
-              {users.map((user) => (
+              {reviews.map((review) => (
                 <tr
-                  key={user.userId}
+                  key={review.reviewId}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
                   <th
@@ -115,28 +115,28 @@ export default function AdminUsers() {
                   >
                     <img
                       className="w-10 h-10 rounded-full"
-                      src={user.picture}
+                      src={review.rating}
                       alt="Jese image"
                     />
                     <div className="pl-3">
-                      <div className="text-base font-semibold">{user.name}</div>
+                      <div className="text-base font-semibold">{review.name}</div>
                       <div className="font-normal text-gray-500">
-                        {user.email}
+                        {review.email}
                       </div>
                     </div>
                   </th>
                   <td className="px-6 py-4">
-                    <div className="flex items-center">{user.userId}</div>
+                    <div className="flex items-center">{review.userId}</div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center">
                       <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-                      {user.updatedAt && user.updatedAt.slice(0, 10)}
+                      {review.updatedAt && review.updatedAt.slice(0, 10)}
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center">
-                      {user.publications && user.publications.length}
+                      {review.publications && review.publications.length}
                     </div>
                   </td>
                   <td className="px-6 py-4">
@@ -144,20 +144,20 @@ export default function AdminUsers() {
                       href="#"
                       className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
-                      Edit user
+                      Edit review
                     </a>
                     <a
-                      onClick={() => handleDelete(user.userId)}
+                      onClick={() => handleDelete(review.userId)}
                       className="grid font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
                     >
-                      Delete user
+                      Delete review
                     </a>
                   </td>
                 </tr>
               ))}
             </tbody>
           ) : (
-            <h1>No hay Users</h1>
+            <h1>No hay Reviews</h1>
           )}
         </table>
       </div>
