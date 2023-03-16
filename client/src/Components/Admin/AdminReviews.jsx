@@ -1,17 +1,17 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { allUsers, UserDelete } from "../../Redux/actions";
+import { getReviews, DeleteAdminReview } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import style from "./Admin.module.css"
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
-export default function AdminUsers() {
+export default function AdminReviews() {
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(allUsers());
+    dispatch(getReviews());
   }, [dispatch]);
 
   function handleDelete(userId) {

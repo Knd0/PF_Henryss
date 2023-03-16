@@ -324,10 +324,13 @@ export function addToPublications(userId, carId) {
   };
 }
 
-export function removeAdminReview(review) {
-  return {
-    type: DELETE_REVIEW,
-    payload: review,
+export function DeleteAdminReview(reviewId) {
+  return async function (dispatch) {
+    let json = await axios.delete(`/user/${reviewId}`);
+    return dispatch({
+      type: USER_DELETE,
+      payload: json.data,
+    });
   };
 }
 /* 
