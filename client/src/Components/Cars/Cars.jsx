@@ -41,6 +41,51 @@ export default function Cars() {
     const userId = userDetails.length ? userDetails[0].userId : null
     const favorites = userDetails.length ? userDetails[0].favorites : null
 
+//     useEffect(() => {
+//         console.log(selectedOptionAlf, selectedOptionPrice, selectedOptionBrand, selectedOptionYear, selectedOptionKm)
+//         if (currentCars.length === 0 && (selectedOptionAlf !== "" || selectedOptionPrice !== "" || selectedOptionBrand !== "" ||  selectedOptionYear !== "" || selectedOptionKm !== "")) {
+//             console.log('reseteando')
+//             setSelectedOptionAlf("");
+//             setSelectedOptionPrice("");
+//             setSelectedOptionBrand("");
+//             setSelectedOptionYear("");
+//             setSelectedOptionKm("");
+//         }
+//         console.log('tendria que recibir esto',currentCars.length)
+// }, [currentCars,setSelectedOptionAlf,selectedOptionAlf, setSelectedOptionPrice, selectedOptionPrice, setSelectedOptionBrand, selectedOptionBrand,  setSelectedOptionYear,selectedOptionYear,  setSelectedOptionKm,selectedOptionKm  ])
+function updateSelectedOptionsIfNeeded() {
+    if (currentCars.length === 0) {
+      if (selectedOptionAlf !== "") {
+        setSelectedOptionAlf("");
+      }
+      if (selectedOptionPrice !== "") {
+        setSelectedOptionPrice("");
+      }
+      if (selectedOptionBrand !== "") {
+        setSelectedOptionBrand("");
+      }
+      if (selectedOptionYear !== "") {
+        setSelectedOptionYear("");
+      }
+      if (selectedOptionKm !== "") {
+        setSelectedOptionKm("");
+      }
+    }
+  }
+  
+  useEffect(() => {
+    console.log(
+      selectedOptionAlf,
+      selectedOptionPrice,
+      selectedOptionBrand,
+      selectedOptionYear,
+      selectedOptionKm
+    );
+    console.log("tendria que recibir esto", currentCars.length);
+    updateSelectedOptionsIfNeeded();
+  }, [  currentCars.length,  selectedOptionAlf,  selectedOptionPrice,  selectedOptionBrand,  selectedOptionYear,  selectedOptionKm,]);
+
+
     useEffect(() => {
         dispatch(getCars())
         if (user) {
@@ -210,7 +255,7 @@ export default function Cars() {
                   })
                 ) : (
                   <div className={style.cardModal}>
-                    <h1>nada</h1>
+                    {handleAlert()}
                   </div>
                 )}
               </div>
