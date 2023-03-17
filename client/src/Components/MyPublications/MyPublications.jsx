@@ -68,9 +68,9 @@ const MyPublications = () => {
       //   navigate("/cars");
       // }    
       })
-      // setTimeout(function() {
-      //   navigate("/cars");      
-      // }, 3000);
+      setTimeout(function() {
+        navigate("/cars");      
+      }, 3000);
   };
 
   return (
