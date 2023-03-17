@@ -24,7 +24,8 @@ import {
   GET_CAR_FAVORITES,
   GET_CAR_PUBLICATIONS,
   ADD_TO_REVIEWS,
-  SEARCH_USER_ADMIN 
+  SEARCH_USER_ADMIN ,
+  SET_PAGE,
 } from "./action-types";
 
 const initialState = {
@@ -87,7 +88,11 @@ function Reducer(state = initialState, action) {
     cars: carfilter,
   };
 
-
+  case SET_PAGE:
+    return {
+      ...state,
+      currentPage: action.payload
+  };
 
     case ORDER_CARS_ALF:
       let sortedcars = [...state.cars];

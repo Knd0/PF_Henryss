@@ -55,18 +55,17 @@ const [filterYear, setFilterYear] = useState("");
 
 
     function handlefilterByYearAndBrand(e){
-    if (e.target.name === "brand") {
-        setFilterBrand(e.target.value);
-        props.setCurrentPage(1);
-      } else {
-       setFilterYear(e.target.value);
-       props.setCurrentPage(1);
+      if (e.target.name === "brand") {
+          props.setSelectedOptionBrand(e.target.value);
+        } else {
+          props.setSelectedOptionYear(e.target.value);
+     
+        }
+        dispatch(filterByYearAndBrand(
+          e.target.name === 'year' ? e.target.value : props.selectedOptionYear,
+          e.target.name === 'brand' ? e.target.value : props.selectedOptionBrand,
+          ))
       }
-      dispatch(filterByYearAndBrand(
-        e.target.name === 'year' ? e.target.value : filterYear,
-        e.target.name === 'brand' ? e.target.value : filterBrand,
-        ))
-    }
 
     // function handleSortAlf(e) {
     //     e.preventDefault();
@@ -102,12 +101,12 @@ const [filterYear, setFilterYear] = useState("");
 
     return (
       // <div className={style.filtros}>
-      <div class="col-lg-4 col-sm-30">
+      <div className="col-lg-4 col-sm-30">
         <div className={style.contenedor_opciones}>
           <div className={style.separacion}>
             Order alphabetically:
             <select
-              class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={props.selectedOptionAlf}
               onChange={handleSortAlf}
             >
@@ -121,7 +120,7 @@ const [filterYear, setFilterYear] = useState("");
           <div className={style.separacion}>
             Order by price:
             <select
-              class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               // className={style.select}
               value={props.selectedOptionPrice}
               onChange={(e) => handleSortPrice(e)}
@@ -137,7 +136,7 @@ const [filterYear, setFilterYear] = useState("");
           <div>
             Order by KM:
             <select
-              class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               // className={style.select}
               value={props.selectedOptionKm}
               onChange={(e) => handleSortKM(e)}
@@ -153,10 +152,10 @@ const [filterYear, setFilterYear] = useState("");
           <div>
             Filter by year:
             <select
-              class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               // className={style.select}
               name="year"
-              value={filterYear}
+              value={ props.selectedOptionYear}
               onChange={(e) => handlefilterByYearAndBrand(e)}
             >
               <option value="" disabled>
@@ -171,10 +170,10 @@ const [filterYear, setFilterYear] = useState("");
           <div>
             Filter by brand:
             <select
-              class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               // className={style.select}
               name="brand"
-              value={filterBrand}
+              value={ props.selectedOptionBrand}
               onChange={(e) => handlefilterByYearAndBrand(e)}
             >
               <option value="" disabled>

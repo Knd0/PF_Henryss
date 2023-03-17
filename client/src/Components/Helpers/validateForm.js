@@ -114,7 +114,7 @@ const validateForm = ({
     }
     
 
-    console.log("ESTO ES ERROS===============>",errors)
+    
     return errors;
   };
 
