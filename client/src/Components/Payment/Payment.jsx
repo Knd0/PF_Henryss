@@ -70,32 +70,32 @@ const CheckoutForm = (props) => {
   }
   return(
     <>
-    <h2 class="mb-8 text-4x1 font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white mt-10">Checkout 🛒</h2>
+    <h2 className="mb-8 text-4x1 font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white mt-10">Checkout 🛒</h2>
         
         <div >
-          <form  class="max-w-[400px] mx-auto bg-[blue] rounded-lg p-8" onSubmit={handleSubmit}>
+          <form  className="max-w-[400px] mx-auto bg-[blue] rounded-lg p-8" onSubmit={handleSubmit}>
             
-              <label for="username-success" class="text-white block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Total</label>
-              <label class="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400">$50</label>
+              <label for="username-success" className="text-white block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Total</label>
+              <label className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400">$50</label>
             
             <div >
-                            <label for="username-success" class="text-white block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Name on Card</label>
-                            <input type="text" id="username-success" class="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
+                            <label for="username-success" className="text-white block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Name on Card</label>
+                            <input type="text" id="username-success" className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                             placeholder="John Doe"                    
                             />
 
             </div>
             
         <div >
-        <div class="">
-          <label for="username-success" class="text-white text-left block mb-2 text-sm font-medium text-black-700 dark:text-blue-500 ">Card Information</label>
+        <div className="">
+          <label for="username-success" className="text-white text-left block mb-2 text-sm font-medium text-black-700 dark:text-blue-500 ">Card Information</label>
         </div>
 
                           </div>
-      <div class="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400">
+      <div className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400">
         <CardElement/>
       </div>
-              <button disabled={!stripe} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-black rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">Pay</button>
+              <button disabled={!stripe} className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-black rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">Pay</button>
             </form>
     </div>
     </>
