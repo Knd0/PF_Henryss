@@ -27,6 +27,7 @@ h1{
 .divEnlaceCard{
     position: absolute;
     margin-top: 10px;
+    z-index: 20;
 }
 
 .container input {
