@@ -118,8 +118,7 @@ export default function Cars() {
           <Search />
         </div>
           <div className="relative grid grid-cols-5 gap-4">
-          <img src={img} alt="img" className="absolute top-0 left-0 h-full"/>
-            <div className="z-10 col-start-1 col-end-2">
+            <div className="z-10 col-start-1 col-end-2 bg-slate-200 rounded">
               <Filters
                 setCurrentPage={setCurrentPage}
                 selectedOptionAlf={selectedOptionAlf}
@@ -148,7 +147,7 @@ export default function Cars() {
                             <label className={style.container}>
                               <input
                                 onChange={setFavorites}
-                                checked={favoritesState.includes(
+                                checked={favoritesState?.includes(
                                   e.carId.toString()
                                 )}
                                 type="checkbox"
