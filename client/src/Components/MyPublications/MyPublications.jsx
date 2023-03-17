@@ -12,11 +12,13 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const MyPublications = () => {
   const dispatch = useDispatch();
-  const cars = useSelector((state)=>state.cars)
+  const cars = useSelector((state)=>state.allcars)
   const usersDetails = useSelector((state) => state.usersDetails)
   const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
   // const publications = useSelector((state) => state.usersDetails[0].publications)
   const publications = usersDetails.length > 0 ? usersDetails[0].publications : null
+
+  
 
   const publicados = cars.filter((c) => publications?.includes(c?.carId.toString()));
 
@@ -33,7 +35,8 @@ const MyPublications = () => {
 
 
   useEffect(() => {
-    // dispatch(cleanState());
+    dispatch(cleanState());
+    dispatch(getCars())
     dispatch(getpublications(userId));;
   }, [dispatch]);
 
@@ -54,7 +57,7 @@ const MyPublications = () => {
     const id = e.target.dataset.id
     console.log("this is carId ramon>>>", id)
     console.log("this is userId ramon>>>", userId)
-    dispatch(deleteCar(id, userId))
+    dispatch(deleteCar(id, userId))    
     toast.success('Car has been deleted 🗑️', {
       position: "top-center",
       autoClose: 3000,
@@ -69,7 +72,7 @@ const MyPublications = () => {
       // }    
       })
       setTimeout(function() {
-        navigate("/cars");      
+        window.location.reload();      
       }, 3000);
   };
 
