@@ -17,7 +17,7 @@ export function FormComponent03 (props) {
                         
                     {!errors.price ? (
                       <div >
-                        <label for="username-success" className="block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Price</label>
+                        <label htmlFor="username-success" className="block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Price</label>
                         <input type="number" id="username-success" className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                         placeholder="$"
                         onChange={onInputChange}
@@ -29,7 +29,7 @@ export function FormComponent03 (props) {
                       ) : (      
                       
                         <div >
-                              <label for="username-error" className="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Price</label>
+                              <label htmlFor="username-error" className="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Price</label>
                               <input type="number" id="username-error" className="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                               placeholder="$"
                               onChange={onInputChange}
@@ -44,7 +44,7 @@ export function FormComponent03 (props) {
                         
                     {!errors.place ? (
                       <div >
-                        <label for="username-success" className="block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Place</label>
+                        <label htmlFor="username-success" className="block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Place</label>
                         <input type="text" id="username-success" className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                         placeholder="Buenos Aires"
                         onChange={onInputChange}
@@ -56,7 +56,7 @@ export function FormComponent03 (props) {
                       ) : (      
                       
                         <div >
-                              <label for="username-error" className="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Place</label>
+                              <label htmlFor="username-error" className="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Place</label>
                               <input type="text" id="username-error" className="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                               placeholder="Buenos Aires"
                               onChange={onInputChange}
