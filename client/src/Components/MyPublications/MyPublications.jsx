@@ -21,8 +21,7 @@ const MyPublications = () => {
   const publicados = cars.filter((c) => publications?.includes(c?.carId.toString()));
 
     
-  console.log("ESTOE ES PUBLICATIONS===================>",publications)
-  console.log("ESTOE ES PUBLICADOS===================>",publicados)
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage, setCountriesPerPage] = useState(3);
   const indexOfLastCar = currentPage * carsPerPage;
@@ -52,8 +51,6 @@ const MyPublications = () => {
     //   return;
     // }
     const id = e.target.dataset.id
-    console.log("this is carId ramon>>>", id)
-    console.log("this is userId ramon>>>", userId)
     dispatch(deleteCar(id, userId))
     toast.success('Car has been deleted 🗑️', {
       position: "top-center",

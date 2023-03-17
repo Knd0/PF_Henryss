@@ -17,9 +17,7 @@ export default function Card({
   kilometers,
 }) {
 
- /*  const[isFav,setIsFav]=useState(false)
-  const favotites =useSelector((state)=>state.favotites)
-  console.log("ESTO ES FAVORITES==================>",favotites) */
+
   const dispatch = useDispatch();
   function handleDeleteFavorite(e, carId) {
     e.preventDefault();

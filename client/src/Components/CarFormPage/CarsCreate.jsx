@@ -291,9 +291,7 @@ const [imageSelected, setImageSelected] = useState("")
   }
 }
 
-// console.log(car)
-// console.log(imageSelected)
-// console.log(userId)
+
 
 const [showCheckoutForm, setShowCheckoutForm] = useState(false);
 const [showCheckoutButton, setShowCheckoutButton] = useState(false);
