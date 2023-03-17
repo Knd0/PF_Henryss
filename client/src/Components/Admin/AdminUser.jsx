@@ -189,7 +189,7 @@ export default function AdminUsers() {
                 ))}
               </tbody>
             ) : (
-              <h1>No hay Users</h1>
+              <h1>No Users Registered</h1>
             )}
           </table>
         </div>

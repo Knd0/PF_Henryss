@@ -41,18 +41,6 @@ export default function Cars() {
     const userId = userDetails.length ? userDetails[0].userId : null
     const favorites = userDetails.length ? userDetails[0].favorites : null
 
-//     useEffect(() => {
-//         console.log(selectedOptionAlf, selectedOptionPrice, selectedOptionBrand, selectedOptionYear, selectedOptionKm)
-//         if (currentCars.length === 0 && (selectedOptionAlf !== "" || selectedOptionPrice !== "" || selectedOptionBrand !== "" ||  selectedOptionYear !== "" || selectedOptionKm !== "")) {
-//             console.log('reseteando')
-//             setSelectedOptionAlf("");
-//             setSelectedOptionPrice("");
-//             setSelectedOptionBrand("");
-//             setSelectedOptionYear("");
-//             setSelectedOptionKm("");
-//         }
-//         console.log('tendria que recibir esto',currentCars.length)
-// }, [currentCars,setSelectedOptionAlf,selectedOptionAlf, setSelectedOptionPrice, selectedOptionPrice, setSelectedOptionBrand, selectedOptionBrand,  setSelectedOptionYear,selectedOptionYear,  setSelectedOptionKm,selectedOptionKm  ])
 function updateSelectedOptionsIfNeeded() {
     if (currentCars.length === 0) {
       if (selectedOptionAlf !== "") {
@@ -74,14 +62,7 @@ function updateSelectedOptionsIfNeeded() {
   }
   
   useEffect(() => {
-    console.log(
-      selectedOptionAlf,
-      selectedOptionPrice,
-      selectedOptionBrand,
-      selectedOptionYear,
-      selectedOptionKm
-    );
-    console.log("tendria que recibir esto", currentCars.length);
+    
     updateSelectedOptionsIfNeeded();
   }, [  currentCars.length,  selectedOptionAlf,  selectedOptionPrice,  selectedOptionBrand,  selectedOptionYear,  selectedOptionKm,]);
 
@@ -163,8 +144,7 @@ function updateSelectedOptionsIfNeeded() {
           <Search />
         </div>
           <div className="relative grid grid-cols-5 gap-4">
-          <img src={img} alt="img" className="absolute top-0 left-0 h-full"/>
-            <div className="z-10 col-start-1 col-end-2">
+            <div className="z-10 col-start-1 col-end-2 bg-slate-200 rounded">
               <Filters
                 setCurrentPage={setCurrentPage}
                 selectedOptionAlf={selectedOptionAlf}
@@ -193,7 +173,7 @@ function updateSelectedOptionsIfNeeded() {
                             <label className={style.container}>
                               <input
                                 onChange={setFavorites}
-                                checked={favoritesState.includes(
+                                checked={favoritesState?.includes(
                                   e.carId.toString()
                                 )}
                                 type="checkbox"

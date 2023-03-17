@@ -10,7 +10,7 @@ export function EditComponent01 (props) {
     handleConfirmFirstClick,
     bla
    } = props;
-   console.log("ESTO ES BLA EN EDITCOMPONENT01",bla)
+  
    const[input,setInput]=useState(bla[0].brand)
    function handleChange(){
     setInput(car.brand)
