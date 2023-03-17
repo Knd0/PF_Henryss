@@ -86,6 +86,7 @@ function Reducer(state = initialState, action) {
   return {
     ...state,
     cars: carfilter,
+    currentPage: 1,
   };
 
   case SET_PAGE:
@@ -111,6 +112,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: [...sortedcars],
+        currentPage: 1,
       };
     case ORDER_CARS_PRICE:
      const normalize = price => parseInt(price.replaceAll('.',''),10)
@@ -139,7 +141,8 @@ function Reducer(state = initialState, action) {
             console.log(sortedArrPrice)
       return {
         ...state,
-        cars: [...sortedArrPrice]
+        cars: [...sortedArrPrice],
+        currentPage: 1,
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
@@ -165,6 +168,7 @@ function Reducer(state = initialState, action) {
             return {
         ...state,
         cars: [...sortedArrKM],
+        currentPage: 1,
       };
     case GET_CARS_DETAIL:
       return {

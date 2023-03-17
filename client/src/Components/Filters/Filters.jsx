@@ -33,7 +33,7 @@ const [filterYear, setFilterYear] = useState("");
         e.preventDefault();
         dispatch(orderByAlf(e.target.value));
         // setOrder(`Order ${e.target.value}`)
-        props.setCurrentPage(1);
+       
         props.setSelectedOptionPrice("")
         props.setSelectedOptionKm("")
 
@@ -80,7 +80,7 @@ const [filterYear, setFilterYear] = useState("");
         e.preventDefault();
         dispatch(orderByKM(e.target.value));
         // setOrder(`Order ${e.target.value}`)
-        props.setCurrentPage(1);
+        
         props.setSelectedOptionAlf("")
         props.setSelectedOptionPrice("")
     }
@@ -90,7 +90,7 @@ const [filterYear, setFilterYear] = useState("");
         e.preventDefault();
         dispatch(orderByPrice(e.target.value));
         // setOrder(`Order ${e.target.value}`)
-        props.setCurrentPage(1);
+       
         props.setSelectedOptionAlf("")
         props.setSelectedOptionKm("")
     }
