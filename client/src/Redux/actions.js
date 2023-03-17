@@ -138,7 +138,7 @@ export function getCarByEmail(email) {
   };
 }
 
-export function setCurrentPage(page) {
+export function setPage(page) {
   return { type: SET_PAGE, payload: page };
 }
 

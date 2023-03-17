@@ -55,18 +55,17 @@ const [filterYear, setFilterYear] = useState("");
 
 
     function handlefilterByYearAndBrand(e){
-    if (e.target.name === "brand") {
-        setFilterBrand(e.target.value);
-        props.setCurrentPage(1);
-      } else {
-       setFilterYear(e.target.value);
-       props.setCurrentPage(1);
+      if (e.target.name === "brand") {
+          props.setSelectedOptionBrand(e.target.value);
+        } else {
+          props.setSelectedOptionYear(e.target.value);
+     
+        }
+        dispatch(filterByYearAndBrand(
+          e.target.name === 'year' ? e.target.value : props.selectedOptionYear,
+          e.target.name === 'brand' ? e.target.value : props.selectedOptionBrand,
+          ))
       }
-      dispatch(filterByYearAndBrand(
-        e.target.name === 'year' ? e.target.value : filterYear,
-        e.target.name === 'brand' ? e.target.value : filterBrand,
-        ))
-    }
 
     // function handleSortAlf(e) {
     //     e.preventDefault();
@@ -156,7 +155,7 @@ const [filterYear, setFilterYear] = useState("");
               class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               // className={style.select}
               name="year"
-              value={filterYear}
+              value={ props.selectedOptionYear}
               onChange={(e) => handlefilterByYearAndBrand(e)}
             >
               <option value="" disabled>
@@ -174,7 +173,7 @@ const [filterYear, setFilterYear] = useState("");
               class="block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               // className={style.select}
               name="brand"
-              value={filterBrand}
+              value={ props.selectedOptionBrand}
               onChange={(e) => handlefilterByYearAndBrand(e)}
             >
               <option value="" disabled>
