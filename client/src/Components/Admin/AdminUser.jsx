@@ -91,7 +91,8 @@ function handleSubmit(e){
                 ></path>
               </svg>
             </div>
-            <form onSubmit={(e)=>handleSubmit(e)}>
+           <div>
+             <form onSubmit={(e)=>handleSubmit(e)}>
               <input
               onChange={(e)=>handleChange(e)}
               type="text"
@@ -101,6 +102,7 @@ function handleSubmit(e){
             />
               <button type="submit">✔</button>
               </form>
+           </div>
           </div>
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -167,12 +169,14 @@ function handleSubmit(e){
             </div>
           </td>
           <td className="px-6 py-4">
+          <Link to={`/admin/user/${user.userId}`}>
             <a
               href="#"
               className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >
               Edit user
             </a>
+            </Link>
             <a
               onClick={() => handleDelete(user.userId)}
               className="grid font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"

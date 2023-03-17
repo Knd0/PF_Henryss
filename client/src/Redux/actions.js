@@ -409,6 +409,14 @@ export function searchUserAdmin(payload){
     type: SEARCH_USER_ADMIN,
     payload
   }
+};
+
+export function updateUser(userId,payload) {
+  return async function () {
+
+       await axios.put(`/user/${userId}`,payload);
+
+}
 }
 
 
