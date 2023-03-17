@@ -75,11 +75,11 @@ const CheckoutForm = (props) => {
         <div >
           <form  className="max-w-[400px] mx-auto bg-[blue] rounded-lg p-8" onSubmit={handleSubmit}>
             
-              <label for="username-success" className="text-white block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Total</label>
+              <label htmlFor="username-success" className="text-white block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Total</label>
               <label className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400">$50</label>
             
             <div >
-                            <label for="username-success" className="text-white block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Name on Card</label>
+                            <label htmlFor="username-success" className="text-white block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Name on Card</label>
                             <input type="text" id="username-success" className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                             placeholder="John Doe"                    
                             />
@@ -88,7 +88,7 @@ const CheckoutForm = (props) => {
             
         <div >
         <div className="">
-          <label for="username-success" className="text-white text-left block mb-2 text-sm font-medium text-black-700 dark:text-blue-500 ">Card Information</label>
+          <label htmlFor="username-success" className="text-white text-left block mb-2 text-sm font-medium text-black-700 dark:text-blue-500 ">Card Information</label>
         </div>
 
                           </div>

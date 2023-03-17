@@ -18,7 +18,7 @@ export function  EditComponent05 (props) {
                           
                       {!errors.email ? (
                       <div >
-                        <label for="username-success" className="block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Email</label>
+                        <label htmlFor="username-success" className="block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Email</label>
                         <input type="text" id="username-success" className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                         placeholder="mimail@gmail.com"
                         onChange={onInputChange}
@@ -30,7 +30,7 @@ export function  EditComponent05 (props) {
                       ) : (      
                       
                         <div >
-                              <label for="username-error" className="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Email</label>
+                              <label htmlFor="username-error" className="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Email</label>
                               <input type="text" id="username-error" className="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                               placeholder="mimail@gmail.com"
                               onChange={onInputChange}
@@ -45,7 +45,7 @@ export function  EditComponent05 (props) {
                           
                       {!errors.phone ? (
                       <div >
-                        <label for="username-success" className="block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Phone</label>
+                        <label htmlFor="username-success" className="block mb-2 text-sm font-medium text-black-700 dark:text-blue-500">Phone</label>
                         <input type="text" id="username-success" className="bg-blue-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-blue-100 dark:border-blue-400" 
                         placeholder="+5492261459851"
                         onChange={onInputChange}
@@ -57,7 +57,7 @@ export function  EditComponent05 (props) {
                       ) : (      
                       
                         <div >
-                              <label for="username-error" className="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Phone</label>
+                              <label htmlFor="username-error" className="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">Phone</label>
                               <input type="text" id="username-error" className="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" 
                               placeholder="+5492261459851"
                               onChange={onInputChange}
