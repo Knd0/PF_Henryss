@@ -23,7 +23,8 @@ import {
   FILTER_BY_YEAR_AND_BRAND,
   GET_CAR_FAVORITES,
   GET_CAR_PUBLICATIONS,
-  ADD_TO_REVIEWS
+  ADD_TO_REVIEWS,
+  SEARCH_USER_ADMIN 
 } from "./action-types";
 
 const initialState = {
@@ -33,6 +34,7 @@ const initialState = {
   favorites: [],
   publications: [],
   users: [],
+  allUsers:[],
   usersDetails: [],
   opinion:[],
   loading: true,
@@ -218,6 +220,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         users: action.payload,
+        allUsers:action.payload
       };
     case CREATE_USER:
       return {
@@ -260,6 +263,16 @@ function Reducer(state = initialState, action) {
           return{
             ...state,
             opinion:action.payload
+          }
+        case SEARCH_USER_ADMIN:
+          const filterUsers = state.allUsers.filter((u) =>
+              (u.nickname && u.nickname.includes(action.payload)) || // busca por nickname
+              (u.userId && u.userId.includes(action.payload)) || // busca por userId
+              (u.email && u.email.includes(action.payload)) // busca por email
+          );
+          return{
+            ...state,
+            users:filterUsers
           }
 
     default:
