@@ -91,8 +91,8 @@ function handleSubmit(e){
                 ></path>
               </svg>
             </div>
-           <div>
-             <form onSubmit={(e)=>handleSubmit(e)}>
+            <form onSubmit={(e)=>handleSubmit(e)}>
+
               <input
               onChange={(e)=>handleChange(e)}
               type="text"
@@ -102,7 +102,6 @@ function handleSubmit(e){
             />
               <button type="submit">✔</button>
               </form>
-           </div>
           </div>
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -176,6 +175,7 @@ function handleSubmit(e){
             >
               Edit user
             </a>
+
             </Link>
             <a
               onClick={() => handleDelete(user.userId)}

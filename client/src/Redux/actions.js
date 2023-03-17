@@ -417,6 +417,7 @@ export function updateUser(userId,payload) {
        await axios.put(`/user/${userId}`,payload);
 
 }
+
 }
 
 
