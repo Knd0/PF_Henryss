@@ -137,7 +137,7 @@ export function getCarByEmail(email) {
   };
 }
 
-export function setPage(page) {
+export function setCurrentPage(page) {
   return { type: SET_PAGE, payload: page };
 }
 
@@ -338,13 +338,14 @@ export function addToPublications(userId, carId) {
 
 export function DeleteAdminReview(reviewId) {
   return async function (dispatch) {
-    let json = await axios.delete(`/user/${reviewId}`);
+    let json = await axios.delete(`/review/${reviewId}`);
     return dispatch({
-      type: DELETE_CAR,
+      type: DELETE_REVIEW,
       payload: json.data,
     });
   };
 }
+
 /* 
 export function addToReviews(name, date, body, ratingNum) {
   return {

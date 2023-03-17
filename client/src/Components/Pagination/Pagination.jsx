@@ -42,40 +42,39 @@ xmlns="http://www.w3.org/2000/svg"
 import React from "react";
 import { useState } from "react";
 import styles from "../Pagination/Pagination.modules.css";
-import { useDispatch, useSelector } from "react-redux";
-import { setPage } from "../../Redux/actions";
 
-function Pagination({ maximo }){
-  const currentPage = useSelector((state) => state.currentPage);
-  const dispatch  = useDispatch();
+
+function Pagination({currentPage, setCurrentPage, maximo}){
+    const [input, setInput] = useState (1)
 
     const nextPage = () => {
-      dispatch(setPage (parseInt(currentPage) + 1));
+      setInput (parseInt(input) + 1);
+      setCurrentPage (parseInt(currentPage) + 1);
     };
   
     const previousPage = () => {
-      dispatch(setPage (parseInt(currentPage) - 1));
+      setInput (parseInt(input) - 1);
+      setCurrentPage (parseInt(currentPage) - 1);
     };
   
     function onKeyDown (e) {
       if (e.keyCode === 13) {
-        const page =  parseInt (e.target.value);
-      
+        setCurrentPage (parseInt (e.target.value));
         if (
-          (page < 1 || page > Math.ceil(maximo) || isNaN(page))
+          parseInt (e.target.value)< 1 ||
+          parseInt (e.target.value) > Math.ceil(maximo) ||
+          isNaN (parseInt (e.target.value))
         ) {
-          dispatch(setPage (1));
-          
+          setCurrentPage (1);
+          setInput (1);
         } else {
-          dispatch(setPage(page));
+          setCurrentPage (parseInt (e.target.value));
         }
       }
     };
   
     const onChange = e => {
-      const parseado = parseInt(e.target.value, 10)
-      const nextPage = isNaN(parseado) ? 1 : parseado;
-      dispatch(setPage(nextPage))
+      setInput (e.target.value);
     };
       return(
         <div>
@@ -94,7 +93,7 @@ function Pagination({ maximo }){
           onKeyDown={e => onKeyDown (e)}
           name="page"
           autoComplete="off"
-          value={currentPage}
+          value={input}
           
         />
         <p> de {Math.ceil(maximo)} </p>
