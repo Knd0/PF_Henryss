@@ -25,8 +25,8 @@ export default function Card({
     e.preventDefault();
     dispatch(removeFavorite(carId));
   }
-  
-  
+
+
   return (
     <div className={styles.cardConteiner}>
       <div className={styles.elementsContainerCard}>
@@ -35,22 +35,22 @@ export default function Card({
           <img className="p-15 rounded-t-lg" src={img} alt="img" />
         </Link>
         <hr />
-        <h5 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
+        <h5 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white text-left ml-2">
           {" "}
           Brand: <span className={styles.subtitulo}>{brand}</span>
         </h5>
 
-        <h3 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
+        <h3 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white text-left ml-2">
           {" "}
           Model: <span className={styles.subtitulo}>{model}</span>
         </h3>
 
-        <p className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
+        <p className="text-xl font-semibold tracking-tight text-white-900 dark:text-white text-left ml-2">
           {" "}
           Year: <span className={styles.subtitulo}>{year}</span>
         </p>
 
-        <p className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
+        <p className="text-xl font-semibold tracking-tight text-white-900 dark:text-white text-left ml-2">
           {" "}
           KM: <span className={styles.subtitulo}>{kilometers}</span>
         </p>
