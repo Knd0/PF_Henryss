@@ -15,7 +15,7 @@ export default function Admin() {
         <Navbar />
         <h2 className="underline">DASHBOARD ADMIN</h2>
         <div className={style.cardconteiner}>
-          <div ontouchstart="">
+          <div onTouchStart="">
             <Link to="/admin/cars" className={style.btn}>
               <span>Cars</span>
             </Link>

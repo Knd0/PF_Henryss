@@ -12,7 +12,7 @@ function Reviews() {
   const reviews = useSelector((state) => state.opinion);
   const fechaActual = new Date();
   const dispatch = useDispatch();
-  console.log("ESTO ES REVIEWS===============>", reviews);
+ 
   useEffect(() => {
     dispatch(getReviews());
   }, [dispatch]);
@@ -29,7 +29,7 @@ function Reviews() {
       </Link>
       <div className={styles.contenedor}>
         {reviews?.map((r) => {
-          console.log("ESTO ES R============>", r);
+          
           return (
             <div className={styles.containerItems}>
               <p>

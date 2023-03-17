@@ -182,7 +182,7 @@ function onInputChange(e) { //cambio el estado segun el input
   });
 }
 const bla = car.carId
-console.log("ESTO ES CAR=============>",car)
+
 
 
 function onSubmit(e) {
@@ -235,8 +235,7 @@ function onSubmit(e) {
     // }
     });
 }
-console.log(car)
-console.log(userId)
+
 
 
   return (

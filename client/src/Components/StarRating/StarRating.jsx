@@ -16,12 +16,11 @@ function StarRating() {
   const usersDetails = useSelector((state) => state.usersDetails)
   const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
   const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
-  console.log("ESTO ES NAME===========>",name);
-  console.log("ESTO ES RATING===========>",rating);
+
   const reviews = useSelector((state) => state.opinion)
   const publico = reviews.filter((r)=> userId===r.userId)
   const navigate = useNavigate()
-  console.log("ESTO ES PUBLICO===========>",publico);
+
 
 
 
@@ -44,18 +43,18 @@ function StarRating() {
     
   }
 
-   console.log("ESTO ES Input===========>",input);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("ESTO ES Input===========>",input);
+   
     const payload = {
       rating:rating,
       review:input,
       name:name
     };
 
-    console.log("ESTO ES PAYLOAD============>",payload)
+   
      if(!input){
       swal("you need to write something!", {
         buttons: false,
