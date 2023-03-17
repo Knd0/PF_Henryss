@@ -124,7 +124,7 @@ export default function AdminReviews() {
             </thead>
             {reviews.length? (
               <tbody>
-                {allReviews.map((review) => (
+                {reviews.map((review) => (
                   <tr
                     key={review.reviewId}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
