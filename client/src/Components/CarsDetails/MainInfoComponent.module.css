@@ -1,36 +1,10 @@
-.cardconteinerFavorite {
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 90%;
-    
-}
-
-.cardconteiner {
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 90%;
-    
-}
-
-.cardconteinerFavorite svg{
-    display: none;
-}
-h1{
-    font-size: 50px;
-    font-weight: 700;
-}
-
-.divEnlaceCard{
+.MainInfoComponent_divEnlaceCard{
     position: absolute;
-    margin-top: 10px;
-    z-index: 20;
+    margin: 0 auto;
 }
 
-.container input {
+
+.MainInfoComponent_container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -39,7 +13,7 @@ h1{
     
   }
   
-  .container {
+  .MainInfoComponent_container {
     position: relative;
     cursor: pointer;
     font-size: 20px;
@@ -48,14 +22,8 @@ h1{
     width: 7%;
     margin: 0px;
   }
-  .checkmarkNotRegistered {
-    top: 0;
-    left: 0;
-    height: 2em;
-    width: 2em;
-  }
   
-  .checkmark {
+  .MainInfoComponent_checkmark {
     top: 0;
     left: 0;
     height: 2em;
@@ -65,16 +33,16 @@ h1{
     
   }
   
-  .container input:checked ~ .checkmark path {
+  .MainInfoComponent_container input:checked ~ .MainInfoComponent_checkmark path {
     fill: #FF5353;
     stroke-width: 0;
   }
   
-  .container input:checked ~ .checkmark {
+  .MainInfoComponent_container input:checked ~ .MainInfoComponent_checkmark {
     animation: like_effect 400ms ease;
   }
   
-  .container:hover {
+  .MainInfoComponent_container:hover {
     transform: scale(1.1);
   }
   

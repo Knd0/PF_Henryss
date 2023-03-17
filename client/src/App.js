@@ -18,11 +18,13 @@ import Statistics from "./Components/Admin/Statistics"
 import StarRating from "./Components/StarRating/StarRating";
 import Reviews from "./Components/Reviews/Reviews"
 import UpdateReview from "./Components/Reviews/UpdateReview";
+import AdminEditUser from "./Components/Admin/AdminEditUser";
 import axios from "axios";
+import AdminReviews from "./Components/Admin/AdminReviews";
 
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
-// axios.defaults.baseURL = "https://pfhenryss-production.up.railway.app/"
-axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
+axios.defaults.baseURL = "https://pfhenryss-production.up.railway.app/"
+// axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
 
 
 
@@ -49,6 +51,8 @@ function App() {
           <Route path="/admin/user" element={<AdminUser />} />
           <Route path="/admin/cars" element={<AdminCars />} />
           <Route path="/admin/statistics" element={<Statistics />} />
+          <Route path="/admin/reviews" element={<AdminReviews />} />
+          <Route path="/admin/user/:id" element={<AdminEditUser/>} />
         </Routes>
       </div>
     </BrowserRouter>
