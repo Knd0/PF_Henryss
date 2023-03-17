@@ -1,7 +1,7 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getReviews, DeleteAdminReview } from "../../Redux/actions";
+import { getReviews, DeleteAdminReview,  searchReviewAdmin } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import style from "./Admin.module.css";
 import { Link } from "react-router-dom";
@@ -13,9 +13,20 @@ export default function AdminReviews() {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.usersDetails);
   const admin = details[0]?.admin;
+  const[input,setInput]= useState("")
   useEffect(() => {
     dispatch(getReviews());
   }, [dispatch]);
+
+  //allReviews.filter((r)=>r.nickmane.includes(reviews.nickname))
+ function handleChangeSearch(e){
+       e.preventDefault()
+       setInput(e.target.value)
+ }
+  function handleSubmit(e){
+    e.preventDefault()
+   dispatch(searchReviewAdmin(input))
+  }
 
   function handleDelete(reviewId) {
     swal({
@@ -77,12 +88,15 @@ export default function AdminReviews() {
                   ></path>
                 </svg>
               </div>
-              <input
+               <form onSubmit={(e)=>handleSubmit(e)}>
+               <input
+                onChange={(e)=>handleChangeSearch(e)}
                 type="text"
                 id="table-search-users"
                 className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search for users"
               />
+               </form>
             </div>
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -108,9 +122,9 @@ export default function AdminReviews() {
                 </th>
               </tr>
             </thead>
-            {reviews.length ? (
+            {reviews.length? (
               <tbody>
-                {reviews.map((review) => (
+                {allReviews.map((review) => (
                   <tr
                     key={review.reviewId}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
