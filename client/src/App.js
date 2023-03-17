@@ -18,6 +18,7 @@ import Statistics from "./Components/Admin/Statistics"
 import StarRating from "./Components/StarRating/StarRating";
 import Reviews from "./Components/Reviews/Reviews"
 import UpdateReview from "./Components/Reviews/UpdateReview";
+import AdminEditUser from "./Components/Admin/AdminEditUser";
 import axios from "axios";
 
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
@@ -49,6 +50,7 @@ function App() {
           <Route path="/admin/user" element={<AdminUser />} />
           <Route path="/admin/cars" element={<AdminCars />} />
           <Route path="/admin/statistics" element={<Statistics />} />
+          <Route path="/admin/user/:id" element={<AdminEditUser/>} />
         </Routes>
       </div>
     </BrowserRouter>
