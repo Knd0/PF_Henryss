@@ -7,7 +7,6 @@ import LogoutButton from "../Login/Logout";
 import style from "./Navbar.module.css";
 import { createUs, getUsersDetails, cleanState } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import Loading from "../Loading/Loading"
 
 export default function Navbar() {
   const { user, isAuthenticated } = useAuth0();
@@ -165,6 +164,27 @@ export default function Navbar() {
                 My Publications
               </Link>
             )}
+
+            {actualPage.Reviews ? (
+              <Link
+                to="/reviews "
+                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
+                name="createPost"
+                onClick={handleActualPage}
+              >
+                Reviews
+              </Link>
+            ) : (
+              <Link
+                to="/reviews"
+                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
+                name="createPost"
+                onClick={handleActualPage}
+              >
+                Reviews
+              </Link>
+            )}
+
 
             {actualPage.aboutUs ? (
               <Link

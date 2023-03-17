@@ -1,39 +1,34 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { allUsers, UserDelete } from "../../Redux/actions";
+import { getReviews, DeleteAdminReview } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
-import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Admin.module.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { searchUserAdmin } from "../../Redux/actions";
 import swal from "sweetalert";
 import Page404 from "../Page404/Page404";
 
-export default function AdminUsers() {
-  
-  const [input, setInput] = useState("");
-  const users = useSelector((state) => state.users);
+export default function AdminReviews() {
+  const reviews = useSelector((state) => state.opinion);
   const dispatch = useDispatch();
   const details = useSelector((state) => state.usersDetails);
   const admin = details[0]?.admin;
   useEffect(() => {
-    dispatch(allUsers());
+    dispatch(getReviews());
   }, [dispatch]);
 
-  function handleDelete(userId) {
+  function handleDelete(reviewId) {
     swal({
       title: "Are you sure?",
-      text: "This user will be deleted.",
+      text: "This review will be deleted.",
       icon: "warning",
       buttons: ["Cancel", "Accept"],
     }).then((value) => {
       if (value) {
-        dispatch(UserDelete(userId));
+        dispatch(DeleteAdminReview(reviewId));
         swal({
           title: "Succes",
-          text: "This user has been deleted.",
+          text: "This review has been deleted.",
           icon: "success",
           button: "Ok",
         }).then((info) => {
@@ -51,21 +46,11 @@ export default function AdminUsers() {
     });
   }
 
-  function handleChange(e) {
-    e.preventDefault();
-    setInput(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(searchUserAdmin(input));
-  }
-
   if (admin) {
     return (
       <>
         <Navbar />
-        <h2 className="underline">ADMIN USERS</h2>
+        <h2 className="underline">ADMIN REVIEWS</h2>
         <div className={style.cardconteiner}>
           <Link to="/admin" className={style.btn}>
             <span>Back</span>
@@ -77,7 +62,7 @@ export default function AdminUsers() {
               Search
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 mt-2 items-center pl-3 pointer-events-none">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
                   className="w-5 h-5 text-gray-500 dark:text-gray-400"
                   aria-hidden="true"
@@ -92,16 +77,12 @@ export default function AdminUsers() {
                   ></path>
                 </svg>
               </div>
-              <form onSubmit={(e) => handleSubmit(e)}>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  id="table-search-users"
-                  className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Search for users"
-                />
-                <button type="submit">✔</button>
-              </form>
+              <input
+                type="text"
+                id="table-search-users"
+                className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for users"
+              />
             </div>
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -111,85 +92,72 @@ export default function AdminUsers() {
                   Name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  ID
+                  Review ID
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Email
+                  User ID
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Last Connection
+                  Description
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Publications
+                  Rating
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Action
                 </th>
               </tr>
             </thead>
-            {users.length ? (
+            {reviews.length ? (
               <tbody>
-                {users.map((user) => (
+                {reviews.map((review) => (
                   <tr
-                    key={user.userId}
+                    key={review.reviewId}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                   >
                     <th
                       scope="row"
                       className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                     >
-                      <img
-                        className="w-10 h-10 rounded-full"
-                        src={user.picture}
-                        alt="Jese image"
-                      />
                       <div className="pl-3">
                         <div className="text-base font-semibold">
-                          {user.nickname}
-                        </div>
-                        <div className="font-normal text-gray-500">
-                          {user.nickname}
+                          {review.name}
                         </div>
                       </div>
                     </th>
                     <td className="px-6 py-4">
-                      <div className="flex items-center">{user.userId}</div>
+                      <div className="flex items-center">{review.reviewId}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex items-center">{user.email}</div>
+                      <div className="flex items-center">{review.userId}</div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 w-60 truncate">
+                      <div className="flex items-center w-60 truncate">{review.review}</div>
+                    </td>
+                    <td className="px-6 py-4 w-60 ">
                       <div className="flex items-center">
-                        <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-                        {user.updatedAt && user.updatedAt.slice(0, 10)}
+                        {review.rating}
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex items-center">
-                        {user.publications && user.publications.length}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <Link to={`/admin/user/${user.userId}`}>
-                        <a
-                          href="#"
-                          className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                        >
-                          Edit user
-                        </a>
-                      </Link>
                       <a
-                        onClick={() => handleDelete(user.userId)}
+                        href="#"
+                        className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
+                        Edit review
+                      </a>
+                      <a
+                        onClick={() => handleDelete(review.userId)}
                         className="grid font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
                       >
-                        Delete user
+                        Delete review
                       </a>
                     </td>
                   </tr>
                 ))}
               </tbody>
             ) : (
-              <h1>No hay Users</h1>
+              <h1>No hay Reviews</h1>
             )}
           </table>
         </div>

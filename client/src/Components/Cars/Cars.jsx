@@ -1,16 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination"
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { getCars, cleanState, orderByAlf, filterByBrand, filterByYear, orderByKM, orderByPrice, addFavorite, removeFavorite, getUsersDetails, getFavorites } from "../../Redux/actions";
+import { getCars, addFavorite, removeFavorite, getUsersDetails, getFavorites } from "../../Redux/actions";
 import Search from "../Search/Search";
 import swal from 'sweetalert';
 import style from "../Cars/Cars.module.css"
-import { useNavigate } from 'react-router-dom';
+
 import Filters from "../Filters/Filters";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
