@@ -11,7 +11,7 @@ function UpdateReview() {
   const usersDetails = useSelector((state) =>state.usersDetails)
   const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
   const dispatch = useDispatch()
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const fechaActual = new Date().toLocaleDateString();
   const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
   const reviews = useSelector((state)=>state.opinion)

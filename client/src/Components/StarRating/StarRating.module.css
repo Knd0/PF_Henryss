@@ -14,7 +14,7 @@
     border-radius: 5px;
   
 }
-.containerItems textarea{
+.containerItems input{
     height: 100px;
     width: 100%;
 }
@@ -26,3 +26,8 @@
  font-size: 25px;
  margin-right: 350px;
 }
+
+::placeholder{
+    font-size: 20px;
+}
+
