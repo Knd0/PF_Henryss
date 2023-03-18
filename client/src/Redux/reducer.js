@@ -26,6 +26,7 @@ import {
   ADD_TO_REVIEWS,
   SEARCH_USER_ADMIN ,
   SET_PAGE,
+  SEARCH_REVIEW_ADMIN
 } from "./action-types";
 
 const initialState = {
@@ -38,6 +39,7 @@ const initialState = {
   allUsers:[],
   usersDetails: [],
   opinion:[],
+  allOpinion:[],
   loading: true,
 };
 
@@ -86,6 +88,7 @@ function Reducer(state = initialState, action) {
   return {
     ...state,
     cars: carfilter,
+    currentPage: 1,
   };
 
   case SET_PAGE:
@@ -111,6 +114,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         cars: [...sortedcars],
+        currentPage: 1,
       };
     case ORDER_CARS_PRICE:
      const normalize = price => parseInt(price.replaceAll('.',''),10)
@@ -139,7 +143,8 @@ function Reducer(state = initialState, action) {
             console.log(sortedArrPrice)
       return {
         ...state,
-        cars: [...sortedArrPrice]
+        cars: [...sortedArrPrice],
+        currentPage: 1,
       };
     case ORDER_CARS_KM:
       let sortedArrKM =
@@ -165,6 +170,7 @@ function Reducer(state = initialState, action) {
             return {
         ...state,
         cars: [...sortedArrKM],
+        currentPage: 1,
       };
     case GET_CARS_DETAIL:
       return {
@@ -267,7 +273,8 @@ function Reducer(state = initialState, action) {
         case ADD_TO_REVIEWS:
           return{
             ...state,
-            opinion:action.payload
+            opinion:action.payload,
+            allOpinion:action.payload
           }
         case SEARCH_USER_ADMIN:
           const filterUsers = state.allUsers.filter((u) =>
@@ -279,6 +286,16 @@ function Reducer(state = initialState, action) {
             ...state,
             users:filterUsers
           }
+          case SEARCH_REVIEW_ADMIN:
+            const filterReviews = state.allOpinion.filter((u) =>
+                (u.name && u.name.includes(action.payload)) || // busca por nickname
+                (u.userId && u.userId.includes(action.payload)) || // busca por userId
+                (u.email && u.email.includes(action.payload)) // busca por email
+            );
+            return{
+              ...state,
+              opinion:filterReviews
+            }
 
     default:
       return state;
