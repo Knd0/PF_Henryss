@@ -1,37 +1,45 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCars, deleteCarAdmin } from "../../Redux/actions";
-import { Link } from "react-router-dom";
+import { getReviews, DeleteAdminReview,  searchReviewAdmin } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
-import Search from "../Search/Search";
 import style from "./Admin.module.css";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import CarsSearchBar from "./CarsSearchBar";
 import Page404 from "../Page404/Page404";
 
-export default function AdminCars() {
-  const cars = useSelector((state) => state.cars);
+export default function AdminReviews() {
+  const reviews = useSelector((state) => state.opinion);
   const dispatch = useDispatch();
   const details = useSelector((state) => state.usersDetails);
   const admin = details[0]?.admin;
-
+  const[input,setInput]= useState("")
   useEffect(() => {
-    dispatch(getCars());
+    dispatch(getReviews());
   }, [dispatch]);
 
-  function handleDelete(carId) {
+  //allReviews.filter((r)=>r.nickmane.includes(reviews.nickname))
+ function handleChangeSearch(e){
+       e.preventDefault()
+       setInput(e.target.value)
+ }
+  function handleSubmit(e){
+    e.preventDefault()
+   dispatch(searchReviewAdmin(input))
+  }
+
+  function handleDelete(reviewId) {
     swal({
       title: "Are you sure?",
-      text: "This user will be deleted.",
+      text: "This review will be deleted.",
       icon: "warning",
       buttons: ["Cancel", "Accept"],
     }).then((value) => {
       if (value) {
-        dispatch(deleteCarAdmin(carId));
+        dispatch(DeleteAdminReview(reviewId));
         swal({
           title: "Succes",
-          text: "This user has been deleted.",
+          text: "This review has been deleted.",
           icon: "success",
           button: "Ok",
         }).then((info) => {
@@ -53,7 +61,7 @@ export default function AdminCars() {
     return (
       <>
         <Navbar />
-        <h2 className="underline">ADMIN CARS</h2>
+        <h2 className="underline">ADMIN REVIEWS</h2>
         <div className={style.cardconteiner}>
           <Link to="/admin" className={style.btn}>
             <span>Back</span>
@@ -67,7 +75,7 @@ export default function AdminCars() {
             <div className="relative">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
-                  className=" h-5 text-gray-500 dark:text-gray-400"
+                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
                   aria-hidden="true"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -80,80 +88,90 @@ export default function AdminCars() {
                   ></path>
                 </svg>
               </div>
-              <CarsSearchBar />
-              {/* <input
-              type="text"
-              id="table-search-users"
-              className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search by email or Model"
-            /> */}
+               <form onSubmit={(e)=>handleSubmit(e)}>
+               <input
+                onChange={(e)=>handleChangeSearch(e)}
+                type="text"
+                id="table-search-users"
+                className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for users"
+              />
+               </form>
             </div>
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="px-6 py-3">
-                  Image
+                  Name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Brand
+                  Review ID
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Model
+                  User ID
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Place
+                  Description
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Price
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  User Email
+                  Rating
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Action
                 </th>
               </tr>
             </thead>
-            {cars.length ? (
+            {reviews.length? (
               <tbody>
-                {cars.map((car) => (
+                {reviews.map((review) => (
                   <tr
-                    key={car.carId}
+                    key={review.reviewId}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                   >
-                    <td className="w-32 p-4">
-                      <img src={car.img.secure_url || car.img} alt="Car pic" />
+                    <th
+                      scope="row"
+                      className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      <div className="pl-3">
+                        <div className="text-base font-semibold">
+                          {review.name}
+                        </div>
+                      </div>
+                    </th>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center">{review.reviewId}</div>
                     </td>
-                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                      {car.brand}
+                    <td className="px-6 py-4">
+                      <div className="flex items-center">{review.userId}</div>
                     </td>
-                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                      {car.model}
+                    <td className="px-6 py-4 w-60 truncate">
+                      <div className="flex items-center w-60 truncate">{review.review}</div>
                     </td>
-                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                      {car.place}
-                    </td>
-                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                      {car.price}
-                    </td>
-                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                      {car.email}
+                    <td className="px-6 py-4 w-60 ">
+                      <div className="flex items-center">
+                        {review.rating}
+                      </div>
                     </td>
                     <td className="px-6 py-4">
                       <a
-                        onClick={() => handleDelete(car.carId)}
                         href="#"
-                        className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
+                        className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       >
-                        Delete Car
+                        Edit review
+                      </a>
+                      <a
+                        onClick={() => handleDelete(review.userId)}
+                        className="grid font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
+                      >
+                        Delete review
                       </a>
                     </td>
                   </tr>
                 ))}
               </tbody>
             ) : (
-              <h1>No hay Cars</h1>
+              <h1>No hay Reviews</h1>
             )}
           </table>
         </div>

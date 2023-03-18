@@ -11,16 +11,14 @@ function UpdateReview() {
   const usersDetails = useSelector((state) =>state.usersDetails)
   const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
   const dispatch = useDispatch()
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const fechaActual = new Date().toLocaleDateString();
   const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
   const reviews = useSelector((state)=>state.opinion)
-  console.log("ESTO ES NAME===========>",name);
-  console.log("ESTO ES RATING===========>",rating);
  /*  const elemento = reviews.filter((r)=>userId===(r.userId.toString()))*/
   const [input, setInput] = useState(/* elemento[0].review */ "");
  
-/*  console.log("ESTO ES ELEMENTO============>", elemento)  */
+
  
 
   const handleStarClick = (value) => {
@@ -31,18 +29,18 @@ function UpdateReview() {
      setInput(e.target.value)
    }
 
-   console.log("ESTO ES Input===========>",input);
+   
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("ESTO ES Input===========>",input);
+   
     const payload = {
       review:input,
       name:name,
       rating:rating
     };
 
-    console.log("ESTO ES PAYLOAD============>",payload)
+    
      if(!input){
       swal("you need to write something!", {
         buttons: false,

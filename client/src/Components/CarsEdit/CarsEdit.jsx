@@ -38,10 +38,10 @@ const valor =value.toString()
         return c
       }
   });
-  //console.log("ESTO ES BLA============>",bla)
+ 
   
   const userId = usersDetails[0].userId
-  console.log("ESTO ES USERID============>",userId)
+
 
 
 
@@ -199,10 +199,10 @@ function onInputChange(e) { //cambio el estado segun el input
   });
 
 };
-console.log("car:", car);
+
 const carId = car.id !== undefined ? car.id : null
 
-console.log("ESTO ES CARID============>",carId)
+
 
 
 

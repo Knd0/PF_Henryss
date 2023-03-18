@@ -10,18 +10,19 @@ import swal from 'sweetalert';
 
 function StarRating() {
   const dispatch = useDispatch()
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const fechaActual = new Date().toLocaleDateString();
   const [input, setInput] = useState("");
   const usersDetails = useSelector((state) => state.usersDetails)
   const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
   const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
-  console.log("ESTO ES NAME===========>",name);
-  console.log("ESTO ES RATING===========>",rating);
+  console.log("ESTO ES INPUT============>",input)
+
   const reviews = useSelector((state) => state.opinion)
   const publico = reviews.filter((r)=> userId===r.userId)
+  console.log("ESTO ES  PUBLICO============>",publico)
   const navigate = useNavigate()
-  console.log("ESTO ES PUBLICO===========>",publico);
+
 
 
 
@@ -44,18 +45,18 @@ function StarRating() {
     
   }
 
-   console.log("ESTO ES Input===========>",input);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("ESTO ES Input===========>",input);
+   
     const payload = {
       rating:rating,
       review:input,
       name:name
     };
-
     console.log("ESTO ES PAYLOAD============>",payload)
+  
      if(!input){
       swal("you need to write something!", {
         buttons: false,
@@ -63,11 +64,12 @@ function StarRating() {
       });
      }else{
       dispatch(addReview(userId,payload))
+      console.log("ESTO ES INPUT DESPUES DEL SUBMIT============>",input)
       swal({
         title: "Thanks for your opinion!!!",
       });
+      navigate("/reviews")
      }
-     navigate("/reviews")
 
   }
 
@@ -91,7 +93,7 @@ function StarRating() {
           ))}</p>
           <form className={styles.containerForm} onSubmit={handleSubmit}>
             <label htmlFor="opinion"></label>
-             <input onChange={(e)=>handleChange(e)} type="text" />
+            <input onChange={(e)=>handleChange(e)} type="text" placeholder='your opinion...'/>
              {publico.length? <button onClick={(e)=>handleAlert(e)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
              Update
             </button>: <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
