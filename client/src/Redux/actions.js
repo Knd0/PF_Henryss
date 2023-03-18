@@ -28,7 +28,8 @@ import {
   USER_DELETE,
   DELETE_REVIEW,
   ADD_TO_REVIEWS,
-  SEARCH_USER_ADMIN 
+  SEARCH_USER_ADMIN,
+  SEARCH_REVIEW_ADMIN
 } from "./action-types";
 import axios from "axios";
 
@@ -423,6 +424,13 @@ export function updateUser(userId,payload) {
 }
 
 }
+
+export function searchReviewAdmin(payload){
+  return{
+    type: SEARCH_REVIEW_ADMIN,
+    payload
+  }
+};
 
 
 

@@ -34,6 +34,8 @@ export const PUT_CAR = 'PUT_CAR';
 
 export const SEARCH_USER_ADMIN = 'SEARCH_USER_ADMIN ';
 
+export const SEARCH_REVIEW_ADMIN= 'SEARCH_REVIEW_ADMIN';
+
 export const DELETE_CAR = 'DELETE_CAR';
 
 export const POST_CAR = 'POST_CAR';
