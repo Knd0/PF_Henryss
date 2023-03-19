@@ -34,7 +34,7 @@ export function EditComponent01 (props) {
                             value={car.brand}
                          
                             />
-s
+
                           </div>
                           ) : (      
                           
