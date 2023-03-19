@@ -108,10 +108,21 @@ const validateForm = ({
       errors.img = "solo imagenes"; */
     
     else if (
-      typeof description !== "string" ||  description.length > 500
+      typeof description !== "string" || description.length < 90 || description.length > 500
     ){
-      errors.description = "No more than 500 characters allowed";    
+      errors.description = "Must have between 90-500 characters";    
     }
+
+    else {
+  const words = description.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > 25) {
+      errors.description = "Each word cannot have more than 25 characters";
+      break;
+    }
+  }
+  }
+    
     
 
     
