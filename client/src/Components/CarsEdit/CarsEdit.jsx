@@ -15,6 +15,7 @@ import { EditComponent03 } from "./EditComponent03";
 import { EditComponent04 } from "./EditComponent04";
 import { EditComponent05 } from "./EditComponent05";
 import { EditComponent06 } from "./EditComponent06";
+import axios from "axios";
 
 export default function CarsEdit() {
   const dispatch = useDispatch();
@@ -245,6 +246,44 @@ dispatch(updateCar(carId, car,userId)) //hago el post, despacho la action
 }
 
 
+const handleUpload = (e) => {
+  e.preventDefault();
+  uploadImage() 
+}
+
+
+const [imageSelected, setImageSelected] = useState("")
+
+  const uploadImage = async () => {
+    toast('Uploading Image', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+    const formData = new FormData()
+    formData.append("file", imageSelected)
+    formData.append("upload_preset", "preset_prueba")
+    try {
+    await axios.post("https://api.cloudinary.com/v1_1/dffjcfxvk/image/upload", formData
+    ).then((response) => {
+      const imageUrl = response.data.url;
+      setCar({
+        ...car,
+        img: imageUrl,
+      });
+    });
+  } catch (error) {
+    console.log(error.response); // handle error here
+  }
+}
+
+
+
   return (
     
     <>
@@ -303,7 +342,10 @@ dispatch(updateCar(carId, car,userId)) //hago el post, despacho la action
               setErrors={setErrors}
               onInputChange={onInputChange}
               handleConfirmFourthClick={handleConfirmFourthClick}
-              handleBackComponent04 = {handleBackComponent04} 
+              handleBackComponent04 ={handleBackComponent04}
+              imageSelected={imageSelected}
+              setImageSelected={setImageSelected}
+              handleUpload={handleUpload}
               bla={bla}
             />
             )}
