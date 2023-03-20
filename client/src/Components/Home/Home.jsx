@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { all } from "axios";
 import Loading from "../Loading/Loading";
+import ReviewSlider from "../ReviewSlider/ReviewSlider";
 
 export default function Home() {
   const { user } = useAuth0();
@@ -87,6 +88,7 @@ export default function Home() {
           </button>
         </Link>
       </div>
+      <ReviewSlider/>
       <Footer />
     </div>
   );
