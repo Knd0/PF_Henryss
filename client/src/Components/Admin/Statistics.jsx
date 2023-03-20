@@ -1,17 +1,27 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import style from "./Admin.module.css";
 import { Link } from "react-router-dom";
 import Page404 from "../Page404/Page404";
+import { getCarsStatistics, getUsersStatistcs } from "../../Redux/actions";
 
 export default function Statistics() {
+  const dispatch = useDispatch()
   const cars = useSelector((state) => state.allcars.length);
   const users = useSelector((state) => state.users.length);
   const earnings = cars * 50;
   const details = useSelector((state) => state.usersDetails);
   const reviews = useSelector((state) => state.opinion.length);
   const admin = details[0]?.admin;
+  const statisticsUsers = useSelector((state) => state.statisticsUsers) // Para los gráficos con chartJS
+  const statisticsCars = useSelector((state) => state.statisticsCars) // Para los gráficos con chartJS
+  console.log(statisticsCars);
+  console.log(statisticsUsers);
+  useEffect(() => {
+    dispatch(getUsersStatistcs())
+    dispatch(getCarsStatistics())
+  }, [])
 
   if (admin) {
     return (

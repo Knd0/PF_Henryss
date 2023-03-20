@@ -26,7 +26,9 @@ import {
   ADD_TO_REVIEWS,
   SEARCH_USER_ADMIN ,
   SET_PAGE,
-  SEARCH_REVIEW_ADMIN
+  SEARCH_REVIEW_ADMIN,
+  GET_USERS_STATISTICS,
+  GET_CARS_STATISTICS
 } from "./action-types";
 
 const initialState = {
@@ -41,7 +43,9 @@ const initialState = {
   opinion:[],
   allOpinion:[],
   loading: true,
-  currentPage:1
+  currentPage:1,
+  statisticsUsers:[],
+  statisticsCars:[]
 };
 
 function Reducer(state = initialState, action) {
@@ -296,6 +300,17 @@ function Reducer(state = initialState, action) {
             return{
               ...state,
               opinion:filterReviews
+            }
+          case GET_USERS_STATISTICS:
+            return {
+              ...state,
+              statisticsUsers:action.payload
+            }
+          case GET_CARS_STATISTICS:
+            console.log(action.payload);
+            return {
+              ...state,
+              statisticsCars:action.payload
             }
 
     default:
