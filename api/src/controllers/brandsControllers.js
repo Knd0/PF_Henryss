@@ -11,7 +11,6 @@ const getApiBrands = async () => {
 
         }
     })
-    console.log(response)
     return response
 }
 
