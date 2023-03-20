@@ -272,7 +272,7 @@ function onSubmit(e) {
     // }    
     })
     setTimeout(function() {
-      navigate("/cars");      
+      navigate("/mypublications");      
     }, 3000);
   }
 

@@ -223,7 +223,7 @@ function onSubmit(e) {
     return;
   }
 
-dispatch(updateCar(carId, car,userId)) //hago el post, despacho la action
+  dispatch(updateCar(carId, car,userId)) //hago el post, despacho la action
 
   
   toast.success('Post edited! 🚗', {
@@ -241,7 +241,7 @@ dispatch(updateCar(carId, car,userId)) //hago el post, despacho la action
     });
 
     setTimeout(function() {
-      navigate("/cars");      
+      navigate("/mypublications");      
     }, 3000);
 }
 
