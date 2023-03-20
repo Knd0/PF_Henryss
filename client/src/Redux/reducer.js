@@ -41,6 +41,7 @@ const initialState = {
   opinion:[],
   allOpinion:[],
   loading: true,
+  currentPage:1
 };
 
 function Reducer(state = initialState, action) {
