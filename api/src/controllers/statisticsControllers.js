@@ -3,63 +3,47 @@ const { getUsersDb } = require('./usersControllers');
 
 
 const getCarsStatistics = async () => {
-    const objetos = await getAllCars();
-    const estadisticas = {};
-    objetos.forEach((objeto) => {
-    const fechaCreacion = new Date(objeto.createdAt).toDateString();
-    if (!estadisticas[fechaCreacion]) {
-    estadisticas[fechaCreacion] = [];
+    const objetos = await getAllCars()
+    const estadisticaPorMes = new Map();
+
+objetos.forEach(objeto => {
+    const fechaCreacion = new Date(objeto.createdAt);
+    const mesCreacion = fechaCreacion.getMonth() + 1;
+    const anioCreacion = fechaCreacion.getFullYear();
+    const clave = `${mesCreacion}-${anioCreacion}`;
+
+    if (estadisticaPorMes.has(clave)) {
+    estadisticaPorMes.set(clave, estadisticaPorMes.get(clave) + 1);
+    } else {
+    estadisticaPorMes.set(clave, 1);
     }
-    estadisticas[fechaCreacion].push(objeto);
 });
-
-const resultados = [];
-for (const fechaCreacion in estadisticas) {
-    const cantidad = estadisticas[fechaCreacion].length;
-    resultados.push({ fechaCreacion, cantidad });
-}
-
-const tablaEstadistica = crearTablaEstadistica(estadisticas);
-
-    console.table(resultados);
-    return { table: tablaEstadistica };
+const estadisticaPorMesObj = Object.fromEntries(estadisticaPorMes);
+    if(estadisticaPorMesObj.length) return estadisticaPorMesObj;
+    return ('There are no cars yet')
 }
 
 const getUsersStatistics = async () => {
     const objetos = await getUsersDb();
-    const estadisticas = {};
-    objetos.forEach((objeto) => {
-    const fechaCreacion = new Date(objeto.createdAt).toDateString();
-    if (!estadisticas[fechaCreacion]) {
-    estadisticas[fechaCreacion] = [];
+    const estadisticaPorMes = new Map();
+
+objetos.forEach(objeto => {
+    const fechaCreacion = new Date(objeto.createdAt);
+    const mesCreacion = fechaCreacion.getMonth() + 1;
+    const anioCreacion = fechaCreacion.getFullYear();
+    const clave = `${mesCreacion}-${anioCreacion}`;
+
+    if (estadisticaPorMes.has(clave)) {
+    estadisticaPorMes.set(clave, estadisticaPorMes.get(clave) + 1);
+    } else {
+    estadisticaPorMes.set(clave, 1);
     }
-    estadisticas[fechaCreacion].push(objeto);
 });
-
-const resultados = [];
-for (const fechaCreacion in estadisticas) {
-    const cantidad = estadisticas[fechaCreacion].length;
-    resultados.push({ fechaCreacion, cantidad });
+const estadisticaPorMesObj = Object.fromEntries(estadisticaPorMes);
+    if(estadisticaPorMesObj.length) return estadisticaPorMesObj;
+    return ('There are no users yet')
 }
 
-const tablaEstadistica = crearTablaEstadistica(estadisticas);
-
-    console.table(resultados);
-    return { table: tablaEstadistica };
-}
-
-function crearTablaEstadistica(estadisticas) {
-    let tabla = '<table><thead><tr><th>Fecha de Creación</th><th>Cantidad de Objetos</th></tr></thead><tbody>';
-
-    for (const fechaCreacion in estadisticas) {
-        const cantidad = estadisticas[fechaCreacion].length;
-        tabla += `<tr><td>${fechaCreacion}</td><td>${cantidad}</td></tr>`;
-    }
-
-    tabla += '</tbody></table>';
-
-    return tabla;
-}
 
 
 
@@ -67,3 +51,5 @@ module.exports = {
     getCarsStatistics,
     getUsersStatistics
 }
+
+

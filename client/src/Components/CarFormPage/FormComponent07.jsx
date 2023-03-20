@@ -13,7 +13,7 @@ export function FormComponent07 (props) {
                     
                     
                     <div className="flex items-center justify-center w-full">
-                        <button type="submit" className="mt-9 font-semibold leading-none text-white py-4 px-8 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+                        <button type="submit" className="mt-9 font-semibold leading-none text-white py-4 px-6 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                             Publish Car
                         </button>                        
                     </div>                    
