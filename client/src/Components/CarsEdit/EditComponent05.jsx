@@ -70,11 +70,11 @@ export function  EditComponent05 (props) {
                       </div>
                   </div>  
                   
-                  <div className="flex items-center justify-center w-full">
-                    <button type="button" onClick={handleBackComponent05} className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+                  <div className="flex items-center justify-center w-full space-x-2">
+                    <button type="button" onClick={handleBackComponent05} className="mt-12 font-semibold leading-none text-white py-3 px-6 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                         Back
                     </button>
-                      <button type="button" onClick={handleConfirmFifthClick} className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+                      <button type="button" onClick={handleConfirmFifthClick} className="mt-12 font-semibold leading-none text-white py-3 px-6 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                           Next
                       </button>
                   </div>
