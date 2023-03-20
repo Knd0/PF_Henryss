@@ -135,11 +135,16 @@ export default function CarsCreate() {
         });;
       return;
     }
-    uploadImage() 
+    
     setShowFourthComponent(false);
     setShowFifthComponent(true);
     
   };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    uploadImage() 
+  }
 
   const handleConfirmFifthClick = () => {
     if (errors.email || errors.phone) { //chequeo si hay errores
@@ -267,13 +272,23 @@ function onSubmit(e) {
     // }    
     })
     setTimeout(function() {
-      navigate("/cars");      
+      navigate("/mypublications");      
     }, 3000);
   }
 
 const [imageSelected, setImageSelected] = useState("")
 
   const uploadImage = async () => {
+    toast('Uploading Image', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
     const formData = new FormData()
     formData.append("file", imageSelected)
     formData.append("upload_preset", "preset_prueba")
@@ -368,6 +383,7 @@ function handleCheckoutClick() {
               handleBackComponent04 ={handleBackComponent04}
               imageSelected={imageSelected}
               setImageSelected={setImageSelected}
+              handleUpload={handleUpload}
             />
             )}
           

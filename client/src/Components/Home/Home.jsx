@@ -75,7 +75,7 @@ export default function Home() {
           <Card
             carId={allCars[2].carId || allCars[2].id}
             brand={allCars[2].brand}
-            img={allCars[2].img.secure_url || allCars[3].img}
+            img={allCars[2].img.secure_url || allCars[2].img}
             model={allCars[2].model}
             year={allCars[2].year}
             kilometers={allCars[2].kilometers}

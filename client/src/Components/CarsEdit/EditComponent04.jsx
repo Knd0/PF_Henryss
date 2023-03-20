@@ -1,50 +1,61 @@
 import { ProgressBar04 } from "./ProgressBar";
+import UploadButton from "./UploadButtonEdit";
 import { useState } from "react";
 
-export function  EditComponent04 (props) {
+export function EditComponent04 (props) {
   const  { 
-    car,
+    errors,
     handleConfirmFourthClick,
     handleBackComponent04,
-    bla
+    imageSelected,
+    setImageSelected,
+    handleUpload
    } = props;
-   const [carImg, setCarImg] = useState("");
-   const onInputChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = (event) => {
-      setCarImg(event.target.result);
-    };
+   
 
 
-    reader.readAsDataURL(file);
-  };
-  car.img=carImg
     return (
         <>
         <ProgressBar04/>
-        <div>
-        <h2 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl mt-10 lg:text-3xl dark:text-white">
-      Upload your car photos 📸
-    </h2>
-    <h3></h3>
+        <h2 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl mt-10 lg:text-3xl dark:text-white">You may change your car photo 📸</h2>
+        
+        {!errors.img ? (
+          <div class="flex justify-center items-center flex gap-4 ">                    
+            <UploadButton
+            imageSelected={imageSelected}
+            setImageSelected={setImageSelected}
+            />
+            <button onClick={handleUpload} className="font-semibold leading-none text-white py-3 px-5 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+              Upload
+              </button>
+          </div>
+        ) : (
+          <div>
+          <div class="flex justify-center items-center flex gap-4 ">                    
+            <UploadButton
+            imageSelected={imageSelected}
+            setImageSelected={setImageSelected}
+            />
+            <button onClick={handleUpload} className="font-semibold leading-none text-white py-3 px-5 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+              Upload
+            </button>
+          </div>
+          <div>
+            <p className="mt-2 text-sm text-red-600 dark:text-red-500"><span className="font-medium">{errors.img}</span> </p>
+          </div>
+          </div>
+        )}
 
-    <div>
-    
-    <input type="file" accept="img/jpg, img/png" onChange={onInputChange} />
 
-      
-    </div>
-  </div>
 
-           
-    <button type="button" onClick={handleBackComponent04} className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+                <div className="flex items-center justify-center w-full">
+                    <button type="button" onClick={handleBackComponent04} className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                         Back
                     </button>
                     <button type="button" onClick={handleConfirmFourthClick} className="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
                         Next
                     </button>
+                </div>
                 </>
     )
 }
