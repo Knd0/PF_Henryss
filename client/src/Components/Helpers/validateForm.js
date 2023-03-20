@@ -95,17 +95,17 @@ const validateForm = ({
       errors.place = "Please write between 2-25 letters";    
     }
 
-    // else if (!urlRegex.test(img))
-    //   errors.img = "Provide a valid URL for the image"; 
+
+    else if (!img)
+      errors.img = "Please select an image and Upload";
+
     else if (!onlyEmail.test(email) || email.length > 40)
       errors.email = "Provide a valid email address, with less than 40 characters";       
 
     else if (!onlyphone.test(phone) || phone.length < 7 || phone.length > 16)
       errors.phone = "Only + and numbers, 7-16 characters";
 
-  /*    
-   else if (!img)
-      errors.img = "solo imagenes"; */
+
     
     else if (
       typeof description !== "string" || description.length < 90 || description.length > 500
