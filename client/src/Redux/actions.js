@@ -29,7 +29,9 @@ import {
   DELETE_REVIEW,
   ADD_TO_REVIEWS,
   SEARCH_USER_ADMIN,
-  SEARCH_REVIEW_ADMIN
+  SEARCH_REVIEW_ADMIN,
+  GET_CARS_STATISTICS,
+  GET_USERS_STATISTICS
 } from "./action-types";
 import axios from "axios";
 
@@ -432,5 +434,34 @@ export function searchReviewAdmin(payload){
   }
 };
 
+export function getUsersStatistcs(){
+  return async function(dispatch) {
+    try {
+      const response = (await axios.get("/statistics/users")).data
+      return dispatch(
+        {
+          type: GET_USERS_STATISTICS,
+          payload:response
+        }
+      ) 
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
 
-
+export function getCarsStatistics(){
+  return async function(dispatch) {
+    try {
+      const response = (await axios.get("/statistics/cars")).data
+      return dispatch(
+        {
+          type: GET_CARS_STATISTICS,
+          payload:response
+        }
+      ) 
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
