@@ -155,12 +155,6 @@ export default function AdminReviews() {
                     </td>
                     <td className="px-6 py-4">
                       <a
-                        href="#"
-                        className="grid font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                      >
-                        Edit review
-                      </a>
-                      <a
                         onClick={() => handleDelete(review.userId)}
                         className="grid font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
                       >
