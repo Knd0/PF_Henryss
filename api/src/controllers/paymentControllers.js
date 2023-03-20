@@ -11,7 +11,6 @@ const pay = async (id, amount) => {
         confirm: true
 
     })
-    console.log(payment);
     return ('Success payment')
 }
 

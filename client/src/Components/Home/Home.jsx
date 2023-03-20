@@ -88,7 +88,7 @@ export default function Home() {
           </button>
         </Link>
       </div>
-      <ReviewSlider/>
+      {/* <ReviewSlider/> */}
       <Footer />
     </div>
   );

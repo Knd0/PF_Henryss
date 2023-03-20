@@ -27,11 +27,6 @@
  margin-right: 350px;
 }
 
-::placeholder{
-    font-size: 20px;
-}
- */
-
  .contenedor{
     display: flex;
     justify-content: center;
