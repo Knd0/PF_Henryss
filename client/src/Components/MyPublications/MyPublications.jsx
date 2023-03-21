@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { getCars, cleanState, getpublications, deleteCar } from "../../Redux/actions";
+import { getCars, cleanCars, getpublications, deleteCar } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 import style from "../MyPublications/MyPublications.module.css";
 import Pagination from "../Pagination/Pagination";
@@ -34,18 +34,26 @@ const MyPublications = () => {
   const navigate = useNavigate();
 
 
+
+
   useEffect(() => {
-    dispatch(cleanState());
     dispatch(getCars())
     dispatch(getpublications(userId));;
   }, [dispatch]);
 
-  const handleDelete = (e) => {
+
+
+  const handleDelete = async (e) => {
   
     const id = e.target.dataset.id
     // console.log("this is carId ramon>>>", id)
     // console.log("this is userId ramon>>>", userId)
-    dispatch(deleteCar(id, userId))    
+    try {
+      await new Promise((resolve, reject) => {
+        dispatch(deleteCar(id, userId))
+          .then(() => resolve())
+          .catch((error) => reject(error));
+      }); 
     toast.success('Car has been deleted 🗑️', {
       position: "top-center",
       autoClose: 3000,
@@ -58,11 +66,18 @@ const MyPublications = () => {
       // onClose: () => {
       //   navigate("/cars");
       // }    
-      })
-      setTimeout(function() {
-        window.location.reload();      
-      }, 3000);
-  };
+      })   
+      await new Promise((resolve, reject) => {
+        dispatch(getCars())
+          .then(() => resolve())
+          .catch((error) => reject(error));
+      }); 
+    } catch (error) {
+      
+      
+    }
+  };   
+ 
 
   
 
