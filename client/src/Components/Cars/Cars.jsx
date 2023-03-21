@@ -244,7 +244,7 @@ function updateSelectedOptionsIfNeeded() {
               </div>
             )}
 
-            <div>
+            <div className="col-start-1 col-span-6">
             <Pagination
                 // currentPage={currentPage}
                 // setCurrentPage={setCurrentPage}
