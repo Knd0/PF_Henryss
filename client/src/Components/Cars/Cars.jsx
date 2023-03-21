@@ -245,7 +245,7 @@ function updateSelectedOptionsIfNeeded() {
             )}
 
             <div>
-              <Pagination
+            <Pagination
                 // currentPage={currentPage}
                 // setCurrentPage={setCurrentPage}
                 maximo={maximo}
