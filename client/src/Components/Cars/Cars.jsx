@@ -237,7 +237,7 @@ function updateSelectedOptionsIfNeeded() {
                   })
                 ) : (
                   <div className={style.cardModal}>
-                    {handleAlert()}
+                   
                   </div>
                 )}
               </div>
@@ -245,7 +245,7 @@ function updateSelectedOptionsIfNeeded() {
             )}
 
             <div>
-              <Pagination
+            <Pagination
                 // currentPage={currentPage}
                 // setCurrentPage={setCurrentPage}
                 maximo={maximo}
