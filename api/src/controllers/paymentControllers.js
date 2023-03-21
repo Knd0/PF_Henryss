@@ -1,12 +1,17 @@
+require('dotenv').config();
+const {
+    API_KEY_NODEMAILER,
+    API_KEY_STRIPE
+  } = process.env;
 const Stripe = require('stripe')
-const stripe = new Stripe('sk_test_51Mkjw9ETVvdZ62yxIbqQuiRYkXR7hcFJhuj57N2zmwI998nlKYoLsgRBIEyGqkvNVvVyRsl9lMQHSwIAyfmP0A6L00ew0ZdokN')
+const stripe = new Stripe(API_KEY_STRIPE)
 const nodemailer = require("nodemailer");
-const sgTransport = require('nodemailer-sendgrid-transport');
+const sgTransport = require("nodemailer-sendgrid-transport");
 const { User } = require('../db');
 
 const options = {
   auth: {
-    api_key: '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'
+    api_key: API_KEY_NODEMAILER
   }
 };
 
