@@ -113,7 +113,7 @@ export default function Navbar() {
                 to="/aboutus"
                 className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
               >
-                Home
+                About us
               </NavLink>
 
             {admin ? (
