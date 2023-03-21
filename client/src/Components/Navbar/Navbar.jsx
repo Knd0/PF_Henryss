@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link ,NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import img from "../Img/RadiatorSprings.jpg";
 import LoginButton from "../Login/Login";
@@ -40,12 +40,6 @@ export default function Navbar() {
   const handleBarsDropDownMenu = () => {
     barsDropDownMenu ? setBarsDropDownMenu(false) : setBarsDropDownMenu(true);
   };
-  const [actualPage, setActualPage] = useState({});
-  const handleActualPage = (e) => {
-    setActualPage({
-      [e.target.name]: e.target.name,
-    });
-  };
   return (
     <>
       <nav className="flex items-center justify-between flex-wrap bg-white">
@@ -85,136 +79,50 @@ export default function Navbar() {
           }
         >
           <div className="text-sm sm:flex-grow">
-            {actualPage.home ? (
-              <Link
+              <NavLink
                 to="/"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
-                name="home"
-                onClick={handleActualPage}
+                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
               >
                 Home
-              </Link>
-            ) : (
-              <Link
-                to="/"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
-                name="home"
-                onClick={handleActualPage}
-              >
-                Home
-              </Link>
-            )}
-
-            {actualPage.cars ? (
-              <Link
+              </NavLink>
+              <NavLink
                 to="/cars"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
-                name="cars"
-                onClick={handleActualPage}
+                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
               >
                 Cars
-              </Link>
-            ) : (
-              <Link
-                to="/cars"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
-                name="cars"
-                onClick={handleActualPage}
-              >
-                Cars
-              </Link>
-            )}
-
-            {actualPage.myFavorites ? (
-              <Link
+              </NavLink>
+              <NavLink
                 to="/myfavorites"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
-                name="myFavorites"
-                onClick={handleActualPage}
+                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
               >
-                My Favorites
-              </Link>
-            ) : (
-              <Link
-                to="/myfavorites"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
-                name="myFavorites"
-                onClick={handleActualPage}
-              >
-                My Favorites
-              </Link>
-            )}
-
-            {actualPage.createPost ? (
-              <Link
-                to="/mypublications "
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
-                name="createPost"
-                onClick={handleActualPage}
-              >
-                My Publications
-              </Link>
-            ) : (
-              <Link
+                My favorites
+              </NavLink>
+              <NavLink
                 to="/mypublications"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
-                name="createPost"
-                onClick={handleActualPage}
+                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
               >
-                My Publications
-              </Link>
-            )}
-
-            {actualPage.Reviews ? (
-              <Link
-                to="/reviews "
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
-                name="createPost"
-                onClick={handleActualPage}
-              >
-                Reviews
-              </Link>
-            ) : (
-              <Link
+                My publications
+              </NavLink>
+              <NavLink
                 to="/reviews"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
-                name="createPost"
-                onClick={handleActualPage}
+                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
               >
                 Reviews
-              </Link>
-            )}
-
-
-            {actualPage.aboutUs ? (
-              <Link
+              </NavLink>
+              <NavLink
                 to="/aboutus"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline"
-                name="aboutUs"
-                onClick={handleActualPage}
+                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
               >
-                About Us
-              </Link>
-            ) : (
-              <Link
-                to="/aboutus"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4"
-                name="aboutUs"
-                onClick={handleActualPage}
-              >
-                About Us
-              </Link>
-            )}
+                About us
+              </NavLink>
 
             {admin ? (
-              <Link
+              <NavLink
                 to="/admin"
-                className="font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 underline font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
-                name="admin"
-                onClick={handleActualPage}
+                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 underline" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 no-underline"}`}
               >
                 Dashboard Admin
-              </Link>
+              </NavLink>
             ) : (
               <></>
             )}
