@@ -237,7 +237,7 @@ function updateSelectedOptionsIfNeeded() {
                   })
                 ) : (
                   <div className={style.cardModal}>
-                   
+                      {handleAlert()}
                   </div>
                 )}
               </div>

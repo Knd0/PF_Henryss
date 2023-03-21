@@ -61,7 +61,7 @@ export default function AdminUsers() {
     dispatch(searchUserAdmin(input));
   }
 
-  if (admin) {
+  if (admin?.length !== 0) {
     return (
       <>
         <Navbar />
