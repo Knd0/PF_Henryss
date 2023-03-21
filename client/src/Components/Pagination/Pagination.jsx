@@ -100,7 +100,7 @@ function Pagination({ maximo }){
           value={currentPage}
 
         />
-        <p> de {Math.ceil(maximo)} </p>
+        <p className="m-0"> de {Math.ceil(maximo)} </p>
         <button
           className={currentPage === Math.ceil (maximo) || currentPage > Math.ceil (maximo)?styles.disabled:null}
           disabled={currentPage === Math.ceil (maximo) || currentPage > Math.ceil (maximo)}

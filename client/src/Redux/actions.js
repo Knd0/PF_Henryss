@@ -14,6 +14,7 @@ import {
   GET_CAR_BY_EMAIL,
   PUT_CAR,
   DELETE_CAR,
+  DELETE_CAR_ADMIN,
   POST_CAR,
   GET_CARS_DETAIL,
   ERROR_OCCURRED,
@@ -183,10 +184,10 @@ export function deleteCar(carId, userId) {
 export function deleteCarAdmin(carId) {
   return async (dispatch) => {
     try {
-      await axios.delete(`/cars/${carId}`);
+      await axios.delete(`/admin/${carId}`);
       return dispatch({
-        type: DELETE_CAR,
-        payload: carId,
+        type: DELETE_CAR_ADMIN,
+        payload: carId
       });
     } catch (err) {
       dispatch({
@@ -198,6 +199,9 @@ export function deleteCarAdmin(carId) {
     }
   };
 }
+
+
+
 
 export function updateCar(carId, payload, userId) {
   //pasarle user id
@@ -375,12 +379,8 @@ export const addReview = (userId,payload) => {
 
 export function getReviews() {
   return async function (dispatch) {
-
-
   try {
     var json = await axios.get(`/review`);
-    console.log("ESTO ES  JASON==============>",json.data)
-       
     return dispatch( {
       type: ADD_TO_REVIEWS,
         payload: json.data

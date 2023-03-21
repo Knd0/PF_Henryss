@@ -19,8 +19,7 @@ objetos.forEach(objeto => {
     }
 });
 const estadisticaPorMesObj = Object.fromEntries(estadisticaPorMes);
-    if(estadisticaPorMesObj.length) return estadisticaPorMesObj;
-    return ('There are no cars yet')
+    return estadisticaPorMesObj;
 }
 
 const getUsersStatistics = async () => {
@@ -40,8 +39,7 @@ objetos.forEach(objeto => {
     }
 });
 const estadisticaPorMesObj = Object.fromEntries(estadisticaPorMes);
-    if(estadisticaPorMesObj.length) return estadisticaPorMesObj;
-    return ('There are no users yet')
+return estadisticaPorMesObj;
 }
 
 
@@ -53,3 +51,22 @@ module.exports = {
 }
 
 
+
+
+// const objetos = await getUsersDb();
+// const estadisticas = {};
+// objetos.forEach((objeto) => {
+// const fechaCreacion = new Date(objeto.createdAt).toDateString();
+// if (!estadisticas[fechaCreacion]) {
+// estadisticas[fechaCreacion] = [];
+// }
+// estadisticas[fechaCreacion].push(objeto);
+// });
+
+// const resultados = [];
+// for (const fechaCreacion in estadisticas) {
+// const cantidad = estadisticas[fechaCreacion].length;
+// resultados.push({ fechaCreacion, cantidad });
+// }
+// console.log(resultados);
+// return resultados;

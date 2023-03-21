@@ -23,7 +23,7 @@ export default function Statistics() {
     dispatch(getCarsStatistics())
   }, [])
 
-  if (admin) {
+  if (admin?.length !== 0) {
     return (
       <>
         <Navbar />

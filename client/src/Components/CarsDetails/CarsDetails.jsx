@@ -37,7 +37,7 @@ export default function CarsDetail() {
 
     useEffect(()=>{
         if(userDetails.length){
-        setIsFav(userDetails[0].favorites.includes(carDetail[0]?.carId.toString()))
+        setIsFav(userDetails[0].favorites?.includes(carDetail[0]?.carId.toString()))
         }
     }, [ carDetail ])
 
