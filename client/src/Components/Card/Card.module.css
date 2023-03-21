@@ -1,38 +1,22 @@
-.card {
+.cardComponent_cardConteiner{
+    background-color: #fdfdfd;
+    box-shadow: -1px 2px 26px -2px rgba(0,0,0,1);
+    -webkit-box-shadow: -1px 2px 10px -2px rgba(0,0,0,1);
+    -moz-box-shadow: -1px 2px 10px -2px rgba(0,0,0,1);
+    transition:1.5s;
     width: 350px;
-    height: 700px;
-    border-width: 3px;
-    border-color: #0f2170;
-    background-color: linear-gradient(163deg, #362FD9 0%, #dbdbdb 100%);
-    border-radius: 20px;
-    transition: all .3s;
-    opacity: 0.9;
+    height: 400px;
+    border-radius: 4%;
+    border: 2px solid #ecf0f3;
+    margin: .3rem;
+    overflow: hidden;
 }
 
-
-
-.card{
-    border-radius: 3%;
-    border-width: 3px;
-    border-color: #0f2170;
-    background-color: rgba(255, 255, 255, 0.443);
-    height: 300px;
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    margin: 15px;
-
+.cardComponent_cardConteiner:hover{
+    transform: scale(1.02);
 }
 
-hr {
-    position: relative;
-    margin-top: 10px;
-    width: 3px;
-}
-
-.cardConteiner img{
+.cardComponent_cardConteiner img{
     border-radius: 4% 4% 0 0;
     border-color: #0f2170;
     border-bottom: 2px solid #BBE1FA;
@@ -43,29 +27,7 @@ hr {
 
 }
 
-.cardConteiner{
-    margin-left: 15px;
-    margin-top: 10px;
-    width: 350px;
-    height: 400px;
-    border-radius: 4%;
-    border: 2px solid #BBE1FA;
-}
-
-/* .elementsContainerCard{
-    width: 350px;
-    height: 400px;
-    border-radius: 13px;
-    transition: all .3s;
-    opacity: 0.;
-    border: 3px solid rgba(128, 128, 128, 0.474);
-
-}
-.elementsContainerCard:hover {
-    box-shadow: 0px 0px 30px 1px rgba(0, 42, 255, 0.3);
-} */
-
-.titulo{
+.cardComponent_titulo{
     color: #00a30b;
     font-weight: bolder;
     font-size: x-large;
@@ -75,99 +37,8 @@ hr {
     white-space: nowrap;
 }
 
-.subtitulo {
+.cardComponent_subtitulo {
     color: #0f2170;
     text-align: center;
     margin-bottom: 15px;
 }
-.elementsContainerCard a{
-
-    margin-top: 30px;
-
-}
-.divEnlaceCard{
-    position: absolute;
-    margin-top: 10px;
-}
-.flexItems{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-
-  }
-
-  .container {
-    position: relative;
-    cursor: pointer;
-    font-size: 20px;
-    user-select: none;
-    transition: 100ms;
-    width: 7%;
-    margin: 0px;
-  }
-  .checkmarkNotRegistered {
-    top: 0;
-    left: 0;
-    height: 2em;
-    width: 2em;
-  }
-
-  .checkmark {
-    top: 0;
-    left: 0;
-    height: 2em;
-    width: 2em;
-    transition: 100ms;
-    animation: dislike_effect 400ms ease;
-
-  }
-
-  .container input:checked ~ .checkmark path {
-    fill: #FF5353;
-    stroke-width: 0;
-  }
-
-  .container input:checked ~ .checkmark {
-    animation: like_effect 400ms ease;
-  }
-
-  .container:hover {
-    transform: scale(1.1);
-  }
-
-  @keyframes like_effect {
-    0% {
-      transform: scale(0);
-    }
-
-    50% {
-      transform: scale(1.2);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes dislike_effect {
-    0% {
-      transform: scale(0);
-    }
-
-    50% {
-      transform: scale(1.2);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }

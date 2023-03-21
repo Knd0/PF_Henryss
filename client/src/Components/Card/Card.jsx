@@ -17,48 +17,43 @@ export default function Card({
   kilometers,
 }) {
 
- /*  const[isFav,setIsFav]=useState(false)
-  const favotites =useSelector((state)=>state.favotites)
-  console.log("ESTO ES FAVORITES==================>",favotites) */
+
   const dispatch = useDispatch();
   function handleDeleteFavorite(e, carId) {
     e.preventDefault();
     dispatch(removeFavorite(carId));
   }
-  
-  
+
+
   return (
-    <div className={styles.cardConteiner}>
-      <div className={styles.elementsContainerCard}>
+    <div className={styles.cardComponent_cardConteiner}>
         <Link to={`/cars/${carId}`}>
           {" "}
           <img className="p-15 rounded-t-lg" src={img} alt="img" />
         </Link>
-        <hr />
-        <h5 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
+        <h5 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white text-left ml-2">
           {" "}
-          Brand: <span className={styles.subtitulo}>{brand}</span>
+          Brand: <span className={styles.cardComponent_subtitulo}>{brand}</span>
         </h5>
 
-        <h3 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
+        <h3 className="text-xl font-semibold tracking-tight text-white-900 dark:text-white text-left ml-2">
           {" "}
-          Model: <span className={styles.subtitulo}>{model}</span>
+          Model: <span className={styles.cardComponent_subtitulo}>{model}</span>
         </h3>
 
-        <p className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
+        <p className="text-xl font-semibold tracking-tight text-white-900 dark:text-white text-left ml-2">
           {" "}
-          Year: <span className={styles.subtitulo}>{year}</span>
+          Year: <span className={styles.cardComponent_subtitulo}>{year}</span>
         </p>
 
-        <p className="text-xl font-semibold tracking-tight text-white-900 dark:text-white">
+        <p className="text-xl font-semibold tracking-tight text-white-900 dark:text-white text-left ml-2">
           {" "}
-          KM: <span className={styles.subtitulo}>{kilometers}</span>
+          KM: <span className={styles.cardComponent_subtitulo}>{kilometers}</span>
         </p>
 
-        <span className={styles.titulo}>
-          $ <span className={styles.subtitulo}>{price}</span>
+        <span className={styles.cardComponent_titulo}>
+          $ <span className={styles.cardComponent_subtitulo}>{price}</span>
         </span>
-      </div>
     </div>
   );
 }

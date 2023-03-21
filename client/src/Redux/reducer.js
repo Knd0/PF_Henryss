@@ -24,7 +24,11 @@ import {
   GET_CAR_FAVORITES,
   GET_CAR_PUBLICATIONS,
   ADD_TO_REVIEWS,
-  SET_PAGE
+  SEARCH_USER_ADMIN ,
+  SET_PAGE,
+  SEARCH_REVIEW_ADMIN,
+  GET_USERS_STATISTICS,
+  GET_CARS_STATISTICS
 } from "./action-types";
 
 const initialState = {
@@ -34,9 +38,14 @@ const initialState = {
   favorites: [],
   publications: [],
   users: [],
+  allUsers:[],
   usersDetails: [],
   opinion:[],
+  allOpinion:[],
   loading: true,
+  currentPage:1,
+  statisticsUsers:[],
+  statisticsCars:[]
 };
 
 function Reducer(state = initialState, action) {
@@ -60,12 +69,6 @@ function Reducer(state = initialState, action) {
         cars: action.payload,
         loading:false,
       }
-      
-      case SET_PAGE:
-        return {
-          ...state,
-          currentPage: action.payload
-      };
     
     case GET_CAR_BY_EMAIL:
       return {
@@ -93,7 +96,11 @@ function Reducer(state = initialState, action) {
     currentPage: 1,
   };
 
-
+  case SET_PAGE:
+    return {
+      ...state,
+      currentPage: action.payload
+  };
 
     case ORDER_CARS_ALF:
       let sortedcars = [...state.cars];
@@ -209,8 +216,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         detail: {},
-        usersDetails:[],
-        publications: []
+        usersDetails:[]
       };
     case POST_CAR:
       return {
@@ -230,6 +236,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         users: action.payload,
+        allUsers:action.payload
       };
     case CREATE_USER:
       return {
@@ -271,8 +278,40 @@ function Reducer(state = initialState, action) {
         case ADD_TO_REVIEWS:
           return{
             ...state,
-            opinion:action.payload
+            opinion:action.payload,
+            allOpinion:action.payload
           }
+        case SEARCH_USER_ADMIN:
+          const filterUsers = state.allUsers.filter((u) =>
+              (u.nickname && u.nickname.includes(action.payload)) || // busca por nickname
+              (u.userId && u.userId.includes(action.payload)) || // busca por userId
+              (u.email && u.email.includes(action.payload)) // busca por email
+          );
+          return{
+            ...state,
+            users:filterUsers
+          }
+          case SEARCH_REVIEW_ADMIN:
+            const filterReviews = state.allOpinion.filter((u) =>
+                (u.name && u.name.includes(action.payload)) || // busca por nickname
+                (u.userId && u.userId.includes(action.payload)) || // busca por userId
+                (u.email && u.email.includes(action.payload)) // busca por email
+            );
+            return{
+              ...state,
+              opinion:filterReviews
+            }
+          case GET_USERS_STATISTICS:
+            return {
+              ...state,
+              statisticsUsers:action.payload
+            }
+          case GET_CARS_STATISTICS:
+            console.log(action.payload);
+            return {
+              ...state,
+              statisticsCars:action.payload
+            }
 
     default:
       return state;

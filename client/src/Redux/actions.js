@@ -28,6 +28,10 @@ import {
   USER_DELETE,
   DELETE_REVIEW,
   ADD_TO_REVIEWS,
+  SEARCH_USER_ADMIN,
+  SEARCH_REVIEW_ADMIN,
+  GET_CARS_STATISTICS,
+  GET_USERS_STATISTICS
 } from "./action-types";
 import axios from "axios";
 
@@ -338,13 +342,14 @@ export function addToPublications(userId, carId) {
 
 export function DeleteAdminReview(reviewId) {
   return async function (dispatch) {
-    let json = await axios.delete(`/user/${reviewId}`);
+    let json = await axios.delete(`/review/${reviewId}`);
     return dispatch({
-      type: DELETE_CAR,
+      type: DELETE_REVIEW,
       payload: json.data,
     });
   };
 }
+
 /* 
 export function addToReviews(name, date, body, ratingNum) {
   return {
@@ -406,5 +411,57 @@ export function updateReview(userId,payload) {
 }
 }
 
+export function searchUserAdmin(payload){
+  return{
+    type: SEARCH_USER_ADMIN,
+    payload
+  }
+};
 
+export function updateUser(userId,payload) {
+  return async function () {
 
+       await axios.put(`/user/${userId}`,payload);
+
+}
+
+}
+
+export function searchReviewAdmin(payload){
+  return{
+    type: SEARCH_REVIEW_ADMIN,
+    payload
+  }
+};
+
+export function getUsersStatistcs(){
+  return async function(dispatch) {
+    try {
+      const response = (await axios.get("/statistics/users")).data
+      return dispatch(
+        {
+          type: GET_USERS_STATISTICS,
+          payload:response
+        }
+      ) 
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+export function getCarsStatistics(){
+  return async function(dispatch) {
+    try {
+      const response = (await axios.get("/statistics/cars")).data
+      return dispatch(
+        {
+          type: GET_CARS_STATISTICS,
+          payload:response
+        }
+      ) 
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}

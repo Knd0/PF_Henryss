@@ -135,11 +135,16 @@ export default function CarsCreate() {
         });;
       return;
     }
-    uploadImage() 
+    
     setShowFourthComponent(false);
     setShowFifthComponent(true);
     
   };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    uploadImage() 
+  }
 
   const handleConfirmFifthClick = () => {
     if (errors.email || errors.phone) { //chequeo si hay errores
@@ -267,13 +272,23 @@ function onSubmit(e) {
     // }    
     })
     setTimeout(function() {
-      navigate("/cars");      
+      navigate("/mypublications");      
     }, 3000);
   }
 
 const [imageSelected, setImageSelected] = useState("")
 
   const uploadImage = async () => {
+    toast('Uploading Image', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
     const formData = new FormData()
     formData.append("file", imageSelected)
     formData.append("upload_preset", "preset_prueba")
@@ -291,9 +306,7 @@ const [imageSelected, setImageSelected] = useState("")
   }
 }
 
-// console.log(car)
-// console.log(imageSelected)
-// console.log(userId)
+
 
 const [showCheckoutForm, setShowCheckoutForm] = useState(false);
 const [showCheckoutButton, setShowCheckoutButton] = useState(false);
@@ -370,6 +383,7 @@ function handleCheckoutClick() {
               handleBackComponent04 ={handleBackComponent04}
               imageSelected={imageSelected}
               setImageSelected={setImageSelected}
+              handleUpload={handleUpload}
             />
             )}
           
@@ -415,7 +429,7 @@ function handleCheckoutClick() {
             </form>
 
             {showCheckoutButton && (
-            <button type="button" onClick={handleCheckoutClick} class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">Proceed to Checkout</button>
+            <button type="button" onClick={handleCheckoutClick} className="mt-9 font-semibold leading-none text-white py-4 px-6 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">Proceed to Checkout</button>
             )}
             {showCheckoutForm && (
               <Payment

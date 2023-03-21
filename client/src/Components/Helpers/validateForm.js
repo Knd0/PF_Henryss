@@ -26,15 +26,15 @@ const validateForm = ({
     
    
     if (
-      typeof brand !== "string" || brand.length < 2 || brand.length > 25 || onlyLetters.test(brand) 
+      typeof brand !== "string" || brand.length < 2 || brand.length > 20 || onlyLetters.test(brand) 
     ){
-      errors.brand = "Please write between 2-25 letters";    
+      errors.brand = "Please write between 2-20 letters";    
     }
   
     else if (
-      typeof model !== "string" || model.length < 2 || model.length > 25 || onlyLettersNumbers.test(model) 
+      typeof model !== "string" || model.length < 2 || model.length > 20 || onlyLettersNumbers.test(model) 
     ){
-      errors.model = "No more than 2-25 letters/numbers";    
+      errors.model = "No more than 2-20 letters/numbers";    
     }
       
   
@@ -86,8 +86,8 @@ const validateForm = ({
       errors.capacity = "Please choose an option";    
     }
   
-    else if (isNaN(price) || !onlyNumbers.test(price) || price < 1)
-      errors.price = "Price must be more than 0";
+    else if (isNaN(price) || !onlyNumbers.test(price) || price < 1 || price.length > 10 )
+      errors.price = "Must be more than 0; and less than 10 characters";
   
     else if (
       typeof place !== "string" || place.length < 2 || place.length > 25 || onlyLetters.test(place) 
@@ -95,26 +95,37 @@ const validateForm = ({
       errors.place = "Please write between 2-25 letters";    
     }
 
-    // else if (!urlRegex.test(img))
-    //   errors.img = "Provide a valid URL for the image"; 
-    else if (!onlyEmail.test(email))
-      errors.email = "Provide a valid email address";       
+
+    else if (!img)
+      errors.img = "Please select an image and Upload";
+
+    else if (!onlyEmail.test(email) || email.length > 40)
+      errors.email = "Provide a valid email address, with less than 40 characters";       
 
     else if (!onlyphone.test(phone) || phone.length < 7 || phone.length > 16)
       errors.phone = "Only + and numbers, 7-16 characters";
 
-  /*    
-   else if (!img)
-      errors.img = "solo imagenes"; */
+
     
     else if (
-      typeof description !== "string" ||  description.length > 500
+      typeof description !== "string" || description.length < 90 || description.length > 500
     ){
-      errors.description = "No more than 500 characters allowed";    
+      errors.description = "Must have between 90-500 characters";    
     }
+
+    else {
+  const words = description.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > 25) {
+      errors.description = "Each word cannot have more than 25 characters";
+      break;
+    }
+  }
+  }
+    
     
 
-    console.log("ESTO ES ERROS===============>",errors)
+    
     return errors;
   };
 

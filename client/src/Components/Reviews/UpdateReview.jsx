@@ -11,16 +11,14 @@ function UpdateReview() {
   const usersDetails = useSelector((state) =>state.usersDetails)
   const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
   const dispatch = useDispatch()
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const fechaActual = new Date().toLocaleDateString();
   const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
   const reviews = useSelector((state)=>state.opinion)
-  console.log("ESTO ES NAME===========>",name);
-  console.log("ESTO ES RATING===========>",rating);
  /*  const elemento = reviews.filter((r)=>userId===(r.userId.toString()))*/
   const [input, setInput] = useState(/* elemento[0].review */ "");
  
-/*  console.log("ESTO ES ELEMENTO============>", elemento)  */
+
  
 
   const handleStarClick = (value) => {
@@ -31,18 +29,18 @@ function UpdateReview() {
      setInput(e.target.value)
    }
 
-   console.log("ESTO ES Input===========>",input);
+   
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("ESTO ES Input===========>",input);
+   
     const payload = {
       review:input,
       name:name,
       rating:rating
     };
 
-    console.log("ESTO ES PAYLOAD============>",payload)
+    
      if(!input){
       swal("you need to write something!", {
         buttons: false,
@@ -61,7 +59,7 @@ function UpdateReview() {
   return (
     <>
       <Navbar/>
-    
+      <div className="bg-gradient-to-b from-blue-800 to-blue-600 h-150">
       <div className={styles.contenedor}>
         <div className={styles.containerItems}>
           <p>Rate us   {[...Array(5)].map((_, index) => (
@@ -78,12 +76,13 @@ function UpdateReview() {
           ))}</p>
           <form className={styles.containerForm} onSubmit={handleSubmit}>
             <label htmlFor="opinion"></label>
-             <input onChange={(e)=>handleChange(e)} type="text" />
+             <input onChange={(e)=>handleChange(e)} type="text" placeholder='Update your review!!' />
             <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
              Publish
             </button>
           </form>
         </div>
+      </div>
       </div>
       <Footer/>
     </>

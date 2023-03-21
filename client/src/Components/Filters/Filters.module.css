@@ -10,3 +10,14 @@
     color: rgb(0, 0, 0);
     margin-left: 5px;
 }
+
+.contenedor_opciones{
+    /* display: block; */
+    padding: 30px 35px 30px 35px;
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    width: 100%;
+    margin-top: 20px;
+}

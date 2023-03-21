@@ -15,16 +15,16 @@ import AdminUser from "./Components/Admin/AdminUser";
 import AdminCars from "./Components/Admin/AdminCars";
 import Admin from "./Components/Admin/Admin";
 import Statistics from "./Components/Admin/Statistics"
-import AdminReviews from "./Components/Admin/AdminReviews";
 import StarRating from "./Components/StarRating/StarRating";
 import Reviews from "./Components/Reviews/Reviews"
 import UpdateReview from "./Components/Reviews/UpdateReview";
+import AdminEditUser from "./Components/Admin/AdminEditUser";
 import axios from "axios";
-import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
-import AdminUsers from "./Components/Admin/AdminUser";
+import AdminReviews from "./Components/Admin/AdminReviews";
 
-// axios.defaults.baseURL = "https://pfhenryss-production.up.railway.app/"
-axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
+import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
+axios.defaults.baseURL = "https://pfhenryss-production.up.railway.app/"
+//  axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
 
 
 
@@ -48,10 +48,11 @@ function App() {
           <Route path="*" element={<Page404 />} />
           <Route path="/user" element={<UserProfile />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/user" element={<AdminUsers />} />
+          <Route path="/admin/user" element={<AdminUser />} />
           <Route path="/admin/cars" element={<AdminCars />} />
           <Route path="/admin/statistics" element={<Statistics />} />
           <Route path="/admin/reviews" element={<AdminReviews />} />
+          <Route path="/admin/user/:id" element={<AdminEditUser/>} />
         </Routes>
       </div>
     </BrowserRouter>

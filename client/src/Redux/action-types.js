@@ -8,9 +8,9 @@ export const ORDER_CARS_ALF = 'ORDER_CARS_ALF';
 
 export const GET_CAR_PUBLICATIONS = 'GET_CAR_PUBLICATIONS';
 
-export const ORDER_CARS_KM = 'ORDER_CARS_KM'; 
+export const ORDER_CARS_KM = 'ORDER_CARS_KM';
 
-export const ADD_TO_REVIEWS = 'ADD_TO_REVIEWS';
+export const ADD_TO_REVIEWS = 'ADD_TO_REVIEWS'; 
 
 export const DELETE_REVIEW = ' DELETE_REVIEW';
 
@@ -31,6 +31,10 @@ export const SET_PAGE = 'SET_PAGE';
 export const LOADING_ACTION = 'LOADING_ACTION';
 
 export const PUT_CAR = 'PUT_CAR';
+
+export const SEARCH_USER_ADMIN = 'SEARCH_USER_ADMIN ';
+
+export const SEARCH_REVIEW_ADMIN= 'SEARCH_REVIEW_ADMIN';
 
 export const DELETE_CAR = 'DELETE_CAR';
 
@@ -55,3 +59,7 @@ export const GET_CAR_FAVORITES = 'GET_CAR_FAVORITES';
 export const FILTER_BY_YEAR_AND_BRAND = 'FILTER_BY_YEAR_AND_BRAND';
 
 export const USER_DELETE = "USER_DELETE";
+
+export const GET_USERS_STATISTICS =  "GET_USERS_STATISTICS"
+
+export const GET_CARS_STATISTICS = "GET_CARS_STATISTICS"
