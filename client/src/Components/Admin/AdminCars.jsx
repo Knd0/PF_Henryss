@@ -20,10 +20,33 @@ export default function AdminCars() {
     dispatch(getCars());
   }, [dispatch]);
 
-  function handleDelete(carId,e) {
-    e.preventDefault()
-    console.log("hice clik")
-    dispatch(deleteCarAdmin(carId));
+  function handleDelete(carId) {
+    swal({
+      title: "Are you sure?",
+      text: "This user will be deleted.",
+      icon: "warning",
+      buttons: ["Cancel", "Accept"],
+    }).then((value) => {
+      if (value) {
+        dispatch(deleteCarAdmin(carId));
+        swal({
+          title: "Succes",
+          text: "This user has been deleted.",
+          icon: "success",
+          button: "Ok",
+        }).then((info) => {
+          if (info) {
+            window.location.reload();
+          }
+        });
+      } else {
+        swal({
+          title: "This action has been canceled.",
+          icon: "error",
+          button: "Ok",
+        });
+      }
+    });
   }
 
   if (admin) {
@@ -119,7 +142,7 @@ export default function AdminCars() {
                     </td>
                     <td className="px-6 py-4">
                       <a
-                        onClick={(e) => handleDelete(car.carId,e)}
+                        onClick={() => handleDelete(car.carId)}
                         href="#"
                         className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
                       >
