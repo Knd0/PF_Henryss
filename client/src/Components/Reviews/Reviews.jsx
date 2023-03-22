@@ -6,12 +6,18 @@ import Footer from "../Footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { getReviews } from "../../Redux/actions";
 import { Link } from "react-router-dom";
-
+import Pagination from "../Pagination/Pagination";
 function Reviews() {
   const [rating, setRating] = useState(0);
   const reviews = useSelector((state) => state.opinion);
   const fechaActual = new Date();
   const dispatch = useDispatch();
+  const [page,setPage] = useState(1)
+    const[reviewsPage,setRecipesPage]= useState(3)
+    const quantityReviewPage = page * reviewsPage;
+    const firstReviewPage =  quantityReviewPage - reviewsPage; 
+    const showReviewsPage = reviews.slice(firstReviewPage,quantityReviewPage); 
+    const maximo = reviews.length / reviewsPage;
  
   useEffect(() => {
     dispatch(getReviews());
@@ -28,7 +34,7 @@ function Reviews() {
         </button>
       </Link>
       <div className={styles.contenedor}>
-        {reviews?.map((r) => {
+        {showReviewsPage?.map((r) => {
           
           return (
             <div className={styles.containerItems}>
@@ -62,6 +68,7 @@ function Reviews() {
           );
         })}
       </div>
+      <Pagination maximo={maximo}/>
       <Footer />
     </>
   );
