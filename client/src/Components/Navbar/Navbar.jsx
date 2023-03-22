@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link ,NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import img from "../Img/RadiatorSprings.jpg";
 import LoginButton from "../Login/Login";
@@ -26,14 +26,14 @@ export default function Navbar() {
       dispatch(createUs(payload));
       dispatch(getUsersDetails(user.email));
     }
-    if(!isAuthenticated){
-      dispatch(cleanState())
+    if (!isAuthenticated) {
+      dispatch(cleanState());
     }
   }, [dispatch, user, isAuthenticated]);
 
   useEffect(() => {
-    if(!isAuthenticated){
-      dispatch(cleanState())
+    if (!isAuthenticated) {
+      dispatch(cleanState());
     }
   }, [dispatch, isAuthenticated]);
 
@@ -43,12 +43,14 @@ export default function Navbar() {
   return (
     <>
       <nav className="flex items-center justify-between flex-wrap bg-white">
-        <div className="flex items-center flex-shrink-0 text-white">
-          <img src={img} alt="logo" className="w-20 mt-3 ml-3" />
-          <span className=" text-black ml-2 self-center text-xl font-bold whitespace-nowrap dark:text-white">
-            Radiator Springs
-          </span>
-        </div>
+        <NavLink to="/">
+          <div className="flex items-center flex-shrink-0 text-white">
+            <img src={img} alt="logo" className="w-20 mt-3 ml-3" />
+            <span className=" text-black ml-2 self-center text-xl font-bold whitespace-nowrap dark:text-white">
+              Radiator Springs
+            </span>
+          </div>
+        </NavLink>
         <div className="block sm:hidden">
           <button
             onClick={handleBarsDropDownMenu}
@@ -79,47 +81,89 @@ export default function Navbar() {
           }
         >
           <div className="text-sm sm:flex-grow">
-              <NavLink
-                to="/"
-                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/cars"
-                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
-              >
-                Cars
-              </NavLink>
-              <NavLink
-                to="/myfavorites"
-                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
-              >
-                My favorites
-              </NavLink>
-              <NavLink
-                to="/mypublications"
-                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
-              >
-                My publications
-              </NavLink>
-              <NavLink
-                to="/reviews"
-                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
-              >
-                Reviews
-              </NavLink>
-              <NavLink
-                to="/aboutus"
-                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"}`}
-              >
-                About us
-              </NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4"
+                    : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"
+                }`
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/cars"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4"
+                    : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"
+                }`
+              }
+            >
+              Cars
+            </NavLink>
+            <NavLink
+              to="/myfavorites"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4"
+                    : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"
+                }`
+              }
+            >
+              My favorites
+            </NavLink>
+            <NavLink
+              to="/mypublications"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4"
+                    : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"
+                }`
+              }
+            >
+              My publications
+            </NavLink>
+            <NavLink
+              to="/reviews"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4"
+                    : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"
+                }`
+              }
+            >
+              Reviews
+            </NavLink>
+            <NavLink
+              to="/aboutus"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline underline mr-4"
+                    : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline no-underline mr-4"
+                }`
+              }
+            >
+              About us
+            </NavLink>
 
             {admin ? (
               <NavLink
                 to="/admin"
-                className={({isActive}) => `${isActive ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 underline" : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 no-underline"}`}
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 underline"
+                      : "font-bold block mt-4 sm:inline-block sm:mt-0 text-gray-700 hover:underline mr-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 no-underline"
+                  }`
+                }
               >
                 Dashboard Admin
               </NavLink>
