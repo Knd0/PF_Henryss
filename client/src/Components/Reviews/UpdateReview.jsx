@@ -45,11 +45,13 @@ function UpdateReview() {
       swal("you need to write something!", {
         buttons: false,
         timer: 3000,
+        icon: "warning",
       });
      }else{
       dispatch(updateReview(userId,payload))
       swal({
         title: "Thanks for your opinion!!!",
+        icon: "success",
       });
      }
    
@@ -59,26 +61,28 @@ function UpdateReview() {
   return (
     <>
       <Navbar/>
-      <div className="bg-gradient-to-b from-blue-800 to-blue-600 h-150">
+      <div className="font-bold bg-gradient-to-b from-blue-800 to-blue-600 h-150">
       <div className={styles.contenedor}>
         <div className={styles.containerItems}>
-          <p>Rate us   {[...Array(5)].map((_, index) => (
-            <span
+        <p2 className={styles.Title}>Your review is important</p2>
+        <p2 className={styles.subTitle}>Rate us!</p2>
+          <p className={styles.stars} >   {[...Array(5)].map((_, index) => (
+            <div 
               key={index}
               style={{
                 cursor: 'pointer',
-                color: index < rating ? 'yellow' : 'white',
+                color: index < rating ? 'yellow' : 'grey',
               }}
               onClick={() => handleStarClick(index + 1)}
             >
               &#9733;
-            </span>
+            </div>
           ))}</p>
           <form className={styles.containerForm} onSubmit={handleSubmit}>
             <label htmlFor="opinion"></label>
-             <input onChange={(e)=>handleChange(e)} type="text" placeholder='Update your review!!' />
+             <textarea className={styles.input_opinion} onChange={(e)=>handleChange(e)} type="text" placeholder='Update your review!!' />
             <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-             Publish
+             Update
             </button>
           </form>
         </div>
@@ -88,5 +92,6 @@ function UpdateReview() {
     </>
   );
 }
+
 
 export default UpdateReview;

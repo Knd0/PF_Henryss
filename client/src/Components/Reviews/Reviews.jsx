@@ -18,6 +18,8 @@ function Reviews() {
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage
   const showReviewsPage = reviews.slice(indexOfFirstReview, indexOfLastReview)
     const maximo = reviews.length / reviewsPerPage;
+
+
  
   useEffect(() => {
     dispatch(getReviews());
