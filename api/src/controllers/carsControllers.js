@@ -81,6 +81,7 @@ const deleteCarById = async(userId, id) => {
             if(searchUser.publications.indexOf(id) === -1) return ('you can not delete this car')
             else {
                 searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
+                searchUser.favorites = searchUser.favorites.filter((carId) => carId !== id)
             }
         }
         if (!car) return ('Car not found');
