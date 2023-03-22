@@ -12,13 +12,12 @@ import swal from "sweetalert";
 import Page404 from "../Page404/Page404";
 
 export default function AdminUsers() {
-  
   const [input, setInput] = useState("");
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const details = useSelector((state) => state.usersDetails);
   const admin = details[0]?.admin;
-  const[backButton, setBackButton] = useState(false)
+  const [backButton, setBackButton] = useState(false);
   useEffect(() => {
     dispatch(allUsers());
   }, [dispatch]);
@@ -60,12 +59,12 @@ export default function AdminUsers() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(searchUserAdmin(input));
-    setBackButton(true)
+    setBackButton(true);
   }
-  function handleBackClick(e){
-    e.preventDefault()
-    window.location.reload(true)
-    setBackButton(false)
+  function handleBackClick(e) {
+    e.preventDefault();
+    window.location.reload(true);
+    setBackButton(false);
   }
 
   if (admin?.length !== 0) {
@@ -77,6 +76,14 @@ export default function AdminUsers() {
           <Link to="/admin" className={style.btn}>
             <span>Back</span>
           </Link>
+          {backButton ? (
+                <button
+                  onClick={(e) => handleBackClick(e)}
+                  className={style.btn}
+                >
+                  Reset
+                </button>
+              ) : null}
         </div>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <div className="relative content-center items-center justify-between pb-4 bg-white dark:bg-gray-900">
@@ -99,9 +106,7 @@ export default function AdminUsers() {
                   ></path>
                 </svg>
               </div>
-              {backButton? <button onClick={(e)=>handleBackClick(e)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Back
-          </button>:null}
+              
               <form onSubmit={(e) => handleSubmit(e)}>
                 <input
                   onChange={(e) => handleChange(e)}
