@@ -66,7 +66,9 @@ function StarRating() {
         title: "Thanks for your opinion!!!",
         icon: "success",
       });
-      navigate("/reviews")
+       setTimeout(()=>{
+        navigate("/reviews")
+       },3000)
      }
 
   }
