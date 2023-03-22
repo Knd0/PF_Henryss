@@ -74,7 +74,6 @@ function Reviews() {
           );
         })}
       </div>
-      <Pagination maximo={maximo}/>
       <Footer />
 
     </>

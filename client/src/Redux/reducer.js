@@ -273,7 +273,7 @@ function Reducer(state = initialState, action) {
         case GET_CAR_PUBLICATIONS:
         return {
           ...state,
-          publications:[...state.publications,action.payload]
+          publications:action.payload
         }
         case ADD_TO_REVIEWS:
           return{

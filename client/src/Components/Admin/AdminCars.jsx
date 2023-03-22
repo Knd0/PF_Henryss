@@ -49,7 +49,7 @@ export default function AdminCars() {
     });
   }
 
-  if (admin) {
+  if (admin?.length !== 0) {
     return (
       <>
         <Navbar />
@@ -141,13 +141,12 @@ export default function AdminCars() {
                       {car.email}
                     </td>
                     <td className="px-6 py-4">
-                      <a
-                        onClick={() => handleDelete(car.carId)}
-                        href="#"
+                      <button
+                        onClick={() => handleDelete(car.carId)}                       
                         className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
                       >
                         Delete Car
-                      </a>
+                        </button>
                     </td>
                   </tr>
                 ))}
