@@ -165,7 +165,7 @@ function updateSelectedOptionsIfNeeded() {
             ) : (
               <div className="col-start-2 col-span-5 z-10">
               <div className="flex flex-wrap">
-                {currentCars.length ? (
+                {currentCars?.length ? (
                   currentCars.map((e) => {
                     return (
                       <div className={style.containerCard} key={e.carId}>
@@ -175,7 +175,7 @@ function updateSelectedOptionsIfNeeded() {
                               <input
                                 onChange={setFavorites}
                                 checked={favoritesState?.includes(
-                                  e.carId.toString()
+                                  e.carId
                                 )}
                                 type="checkbox"
                                 value={e.carId}
