@@ -34,8 +34,7 @@ const CheckoutForm = (props) => {
   const elements = useElements();
   const usersDetails = useSelector((state) => state.usersDetails)
   const userId = usersDetails[0].userId
-  
-  console.log(userId)
+    
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +54,22 @@ const CheckoutForm = (props) => {
       type: "card",
       card: elements.getElement(CardElement)      
     });
+
+    
+
     if(!error){
+
+      toast('Checking information', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
       const { id } = paymentMethod;
       const { data } = await axios.post('/checkout',{
         id,

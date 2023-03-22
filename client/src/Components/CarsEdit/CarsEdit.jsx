@@ -15,6 +15,7 @@ import { EditComponent03 } from "./EditComponent03";
 import { EditComponent04 } from "./EditComponent04";
 import { EditComponent05 } from "./EditComponent05";
 import { EditComponent06 } from "./EditComponent06";
+import { EditComponent07 } from "./EditComponent07";
 import axios from "axios";
 
 export default function CarsEdit() {
@@ -26,6 +27,8 @@ export default function CarsEdit() {
   const [showFourthComponent, setShowFourthComponent] = useState(false);
   const [showFifthComponent, setShowFifthComponent] = useState(false);
   const [showSixComponent, setShowSixComponent] = useState(false);
+  const [showSevenComponent, setShowSevenComponent] = useState(false);
+
   let id = useParams()
   let value = id["id"]; // Sintaxis de corchetes
   const cars= useSelector((state)=>state.cars)
@@ -44,6 +47,32 @@ const valor =value.toString()
   const userId = usersDetails[0].userId
 
 
+  function removeDots(string) {
+    return string.replace(/\./g, "");
+  }
+
+ 
+
+
+function addDots(number) {
+  
+    let numStr = String(number);
+    let numLen = numStr.length;
+  
+   if (numLen < 4) {
+      return numStr;
+    }
+  
+    let firstDotPos = numLen % 3 || 3;
+  
+    let result = numStr.slice(0, firstDotPos);
+  
+   for (let i = firstDotPos; i < numLen; i += 3) {
+      result += "." + numStr.slice(i, i + 3);
+    }
+  
+    return result;
+  }
 
 
   const handleBackComponent02 = () => {
@@ -69,6 +98,11 @@ const valor =value.toString()
   const handleBackComponent06 = () => {
     setShowSixComponent(false);
     setShowFifthComponent(true);    
+   }
+
+  const handleBackComponent07 = () => {
+    setShowSevenComponent(false);    
+    setShowSixComponent(true);    
    }
   
   const handleConfirmFirstClick = () => {
@@ -161,6 +195,48 @@ const valor =value.toString()
     setShowSixComponent(true);
   };
 
+
+  const handleConfirmSixClick = () => {
+    if (errors.description) { //chequeo si hay errores
+      toast.error('Please correct errors 🚦', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });;
+      return;
+    }
+    setCarDos({
+      brand: car.brand,
+      model: car.model,
+      year: car.year,
+      color: car.color,
+      price: addDots(car.price),
+      place: car.place,
+      phone: car.phone,
+      email: car.email,
+      kilometers: addDots(car.kilometers),    
+      fuel: car.fuel,
+      img: car.img,
+      engine: car.engine,
+      power: car.power,
+      transmission: car.transmission,
+      drive: car.drive,
+      capacity: car.capacity,
+      description: car.description,
+      
+    })
+    
+    setShowSixComponent(false);    
+    setShowSevenComponent(true);
+  };
+
+
+
   const [errors,setErrors] = useState({}); //estado local para errores
 
   const [car, setCar] = useState({ //estado local para crear el car
@@ -169,11 +245,11 @@ const valor =value.toString()
     model:bla[0].model,
     year:  bla[0].year,
     color:  bla[0].color,
-    price:  bla[0].price,
+    price:  removeDots(bla[0].price),
     place:  bla[0].place,
     phone:  bla[0].phone,
     email:  bla[0].email,
-    kilometers:bla[0].kilometers,    
+    kilometers: removeDots(bla[0].kilometers),    
     fuel:  bla[0].fuel,
     img: bla[0].img,
     engine:  bla[0].engine,
@@ -183,6 +259,27 @@ const valor =value.toString()
     capacity: bla[0].capacity,
     description:  bla[0].description,
   })
+
+
+  const [carDos, setCarDos] = useState({ //estado local para crear el car
+    brand: "",
+    model: "",
+    year: "",
+    color: "",
+    price: "",
+    place: "",
+    phone: "",
+    email: "",
+    kilometers: "",    
+    fuel: "",
+    img: "",
+    engine: "",
+    power: "",
+    transmission: "",
+    drive: "",
+    capacity: "",
+    description: "",
+  });
 
 
   useEffect(() => { //valido el form
@@ -223,8 +320,47 @@ function onSubmit(e) {
     return;
   }
 
-  dispatch(updateCar(carId, car,userId)) //hago el post, despacho la action
+  dispatch(updateCar(carId, carDos,userId)) //hago el post, despacho la action
 
+  setCar({ 
+    brand: "",
+    model: "",
+    year: "",
+    color: "",
+    price: "",
+    place: "",
+    phone: "",
+    email: "",
+    kilometers: "",    
+    fuel: "",
+    img: "",
+    engine: "",
+    power: "",
+    transmission: "",
+    drive: "",
+    capacity: "",
+    description: "",
+  });
+
+  setCarDos({ 
+    brand: "",
+    model: "",
+    year: "",
+    color: "",
+    price: "",
+    place: "",
+    phone: "",
+    email: "",
+    kilometers: "",    
+    fuel: "",
+    img: "",
+    engine: "",
+    power: "",
+    transmission: "",
+    drive: "",
+    capacity: "",
+    description: "",
+  });
   
   toast.success('Post edited! 🚗', {
     position: "top-center",
@@ -371,6 +507,19 @@ const [imageSelected, setImageSelected] = useState("")
               setErrors={setErrors}
               onInputChange={onInputChange}   
               handleBackComponent06 = {handleBackComponent06}
+              handleConfirmSixClick= {handleConfirmSixClick} 
+              bla={bla}        
+            />
+            )}
+
+          {showSevenComponent && (
+            <EditComponent07
+              car={car}
+              setCar={setCar}
+              errors={errors}
+              setErrors={setErrors}
+              onInputChange={onInputChange}   
+              handleBackComponent07 = {handleBackComponent07}
               bla={bla}        
             />
             )}
