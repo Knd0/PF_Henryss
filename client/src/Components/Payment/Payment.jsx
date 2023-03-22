@@ -34,8 +34,7 @@ const CheckoutForm = (props) => {
   const elements = useElements();
   const usersDetails = useSelector((state) => state.usersDetails)
   const userId = usersDetails[0].userId
-  
-  console.log(userId)
+    
 
   const handleSubmit = async (e) => {
     e.preventDefault();
