@@ -1,5 +1,5 @@
 import React from "react";
-import { getCars, getCarByName, getCarByBrand } from "../../Redux/actions";
+import { getCars, getCarByName, getCarByBrand, setPage } from "../../Redux/actions";
 import {useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import styles from "../Search/Search.module.css";
@@ -40,6 +40,7 @@ const Search  = ()=>{
           setBtonBackCar(true);
           dispatch(getCarByName(input));
         }
+        dispatch(setPage(1))
       }
     
       setInput("");
@@ -66,7 +67,7 @@ const Search  = ()=>{
            {btonBackCar?  <button
               onClick={(e)=>handleClick(e)}
               type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className=" my-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               back to cars
             </button>:null}
