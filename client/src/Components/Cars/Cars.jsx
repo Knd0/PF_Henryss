@@ -89,6 +89,13 @@ function updateSelectedOptionsIfNeeded() {
     }, [ favorites ])
 
     const setFavorites = (e) => {
+        if (favoritesState === null) {
+
+          dispatch(addFavorite(userId, e.target.value))
+
+          setFavoritesState([e.target.value])
+          return
+        }
         if (!favoritesState.includes(e.target.value)) {
 
             dispatch(addFavorite(userId, e.target.value))
