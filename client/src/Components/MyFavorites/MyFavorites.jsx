@@ -37,7 +37,7 @@ export default function MyFavorites() {
 
   const deleteFavorites = (e) => {
     dispatch(removeFavorite(userId,e.target.value))
-    setCurrentCars(currentCars.filter(car=>car[0].carId.toString() !== e.target.value.toString()))
+    setCurrentCars(currentCars.filter(car=>car[0]?.carId.toString() !== e.target.value.toString()))
   }
 
   
@@ -62,11 +62,11 @@ export default function MyFavorites() {
         <Navbar />
         <h1 className="font-bold underline text-4xl mb-10">My Favorites</h1>
         <div className={style.cardconteiner}>
-          {currentCars.map((e) => {
-            return <div className={style.containerCard} key={e[0].carId}>
+          {currentCars?.map((e) => {
+            return <div className={style.containerCard} key={e[0]?.carId}>
               <div className={style.divEnlaceCard}>
                 <label className={style.container}>
-                  <input onChange={deleteFavorites} checked={true} type="checkbox" value={e[0].carId} />
+                  <input onChange={deleteFavorites} checked={true} type="checkbox" value={e[0]?.carId} />
                   <div className={style.checkmark}>
                     <svg viewBox="0 0 256 256">
                       <rect fill="none" height="256" width="256"></rect>
