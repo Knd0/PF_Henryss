@@ -106,7 +106,7 @@ function AdminEditUser() {
             <h5 className='text-left pl-10 mb-1'>Email:</h5>
             <input onChange={(e) => handleChange(e)} value={input.email} type="text" name="email" className='block p-0 w-9/12 text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ml-10' />
           </div>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 mb-4" type='submit'>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 mb-4" type='submit'>
             Send
           </button>
         </form>
