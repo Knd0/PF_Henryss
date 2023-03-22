@@ -49,7 +49,7 @@ export default function AdminCars() {
     });
   }
 
-  if (admin) {
+  if (admin?.length !== 0) {
     return (
       <>
         <Navbar />
