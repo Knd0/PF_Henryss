@@ -26,15 +26,15 @@ const validateForm = ({
     
    
     if (
-      typeof brand !== "string" || brand.length < 2 || brand.length > 20 || onlyLetters.test(brand) 
+      typeof brand !== "string" || brand.length < 2 || brand.length > 15 || onlyLetters.test(brand) 
     ){
-      errors.brand = "Please write between 2-20 letters";    
+      errors.brand = "Please write between 2-15 letters";    
     }
   
     else if (
-      typeof model !== "string" || model.length < 2 || model.length > 20 || onlyLettersNumbers.test(model) 
+      typeof model !== "string" || model.length < 2 || model.length > 15 || onlyLettersNumbers.test(model) 
     ){
-      errors.model = "No more than 2-20 letters/numbers";    
+      errors.model = "No more than 2-15 letters/numbers";    
     }
       
   
@@ -47,8 +47,8 @@ const validateForm = ({
       errors.color = "Up to 2-25 letters";    
     }
 
-    else if (!onlyNumbers.test(kilometers) || kilometers < 0)
-      errors.kilometers = "Kilometers can't be less than 0";
+    else if (!onlyNumbers.test(kilometers) || kilometers < 0 || kilometers.length > 7)
+      errors.kilometers = "Can't be less than 0/ Up to 7 char.";
 
     else if (
       typeof power !== "string" || power.length < 2 || power.length > 25 
@@ -86,8 +86,8 @@ const validateForm = ({
       errors.capacity = "Please choose an option";    
     }
   
-    else if (isNaN(price) || !onlyNumbers.test(price) || price < 1 || price.length > 10 )
-      errors.price = "Must be more than 0; and less than 10 characters";
+    else if (isNaN(price) || !onlyNumbers.test(price) || price < 1 || price.length > 9 )
+      errors.price = "Must be more than 0; and less than 9 characters";
   
     else if (
       typeof place !== "string" || place.length < 2 || place.length > 25 || onlyLetters.test(place) 
