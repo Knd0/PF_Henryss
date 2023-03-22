@@ -2,8 +2,9 @@
 
 
 .contenedor{
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    display:flex;
+    margin-top: 10px;
     justify-content: center;
     align-items: center;
 }
