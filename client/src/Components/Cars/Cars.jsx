@@ -175,7 +175,7 @@ function updateSelectedOptionsIfNeeded() {
                               <input
                                 onChange={setFavorites}
                                 checked={favoritesState?.includes(
-                                  e.carId
+                                  e.carId.toString()
                                 )}
                                 type="checkbox"
                                 value={e.carId}
