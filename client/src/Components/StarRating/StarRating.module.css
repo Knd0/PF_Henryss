@@ -9,9 +9,16 @@
 
 
 .containerItems{
-    background-color: rgb(218, 215, 215);
-    width: 50%;
-    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    width: 55%;
+    border: 1px solid black;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 0.25rem;
+    padding: 2rem;
+   
+    
   
 }
 .containerItems input{
@@ -21,24 +28,13 @@
 
 .containerItems span{
     font-size: 30px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+
 }
 .containerItems p{
  font-size: 25px;
- margin-right: 350px;
 }
-
- .contenedor{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    
-
-   
-}
-.containerItems span {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  }
 
 .Title{
     font-size: 35px;
@@ -72,19 +68,6 @@
     align-items: center;
   }
 
-.containerItems{
-
-    background-color: rgb(255, 255, 255);
-    width: 55%;
-    border: 1px solid black;
-    margin-bottom: 5vh;
-    margin-top: 5vh;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    border-radius: 0.25rem;
-    padding: 2rem;
-   
-    
-}
 .containerForm{
     display: flex;
     align-items: center;
@@ -97,18 +80,13 @@
     width: 100%;
 }
 
-.containerItems span{
-    font-size: 30px;
-    
-}
-.containerItems p{
- font-size: 25px;
-}
+
 
 .stars{
    transform: scale(1.7);
-   display: flex;
+   display:flex;
    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    align-items: center;
 
    justify-content: center;
 }

@@ -29,7 +29,7 @@ function Reviews() {
       <h1 className="text-4xl font-bold text-gray-800 mb-8">Reviews</h1>
       <Link to={"/starsReviews"}>
         {" "}
-        <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <button className="mb-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Rate us!
         </button>
       </Link>
@@ -68,8 +68,8 @@ function Reviews() {
                   </span>
                 ))}
               </div>
-              <div className="bg-white rounded-lg p-4 shadow-md w-full">
-                <p className="w-full h-40 resize-none text-lg">{r.review}</p>
+              <div className="bg-white rounded-lg p-4 shadow-md w-full h-auto max-h-200 overflow-auto ">
+                <p className="w-full h-40 resize-none text-lg break-words ">{r.review}</p>
               </div>
             </div>
           );
