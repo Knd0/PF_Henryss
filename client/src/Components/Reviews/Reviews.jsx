@@ -6,13 +6,19 @@ import Footer from "../Footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { getReviews } from "../../Redux/actions";
 import { Link } from "react-router-dom";
-
+import Pagination from "../Pagination/Pagination";
 function Reviews() {
   const [rating, setRating] = useState(0);
   const reviews = useSelector((state) => state.opinion);
   const fechaActual = new Date();
   const dispatch = useDispatch();
-
+  const currentPage = useSelector((state) => state.currentPage);
+  const [reviewsPerPage, setReviewsPerPage] = useState(3)
+  const indexOfLastReview = currentPage * reviewsPerPage
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage
+  const showReviewsPage = reviews.slice(indexOfFirstReview, indexOfLastReview)
+    const maximo = reviews.length / reviewsPerPage;
+ 
   useEffect(() => {
     dispatch(getReviews());
   }, [dispatch]);
@@ -28,7 +34,9 @@ function Reviews() {
         </button>
       </Link>
       <div className={styles.contenedor}>
-        {reviews?.map((r) => {
+        {showReviewsPage?.map((r) => {
+          
+
           return (
             <div className="w-96 h-82 flex flex-col items-start justify-start gap-4 p-4 bg-gray-200 rounded-lg shadow-md ml-8">
               <div className="mt-8 flex flex-row justify-between w-full text-lg text-gray-400">
@@ -67,7 +75,9 @@ function Reviews() {
           );
         })}
       </div>
-      <Footer/>
+      <Pagination maximo={maximo}/>
+      <Footer />
+
     </>
   );
 }
