@@ -18,6 +18,7 @@ export default function AdminUsers() {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.usersDetails);
   const admin = details[0]?.admin;
+  const[backButton, setBackButton] = useState(false)
   useEffect(() => {
     dispatch(allUsers());
   }, [dispatch]);
@@ -59,9 +60,15 @@ export default function AdminUsers() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(searchUserAdmin(input));
+    setBackButton(true)
+  }
+  function handleBackClick(e){
+    e.preventDefault()
+    window.location.reload(true)
+    setBackButton(false)
   }
 
-  if (admin) {
+  if (admin?.length !== 0) {
     return (
       <>
         <Navbar />
@@ -92,6 +99,9 @@ export default function AdminUsers() {
                   ></path>
                 </svg>
               </div>
+              {backButton? <button onClick={(e)=>handleBackClick(e)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Back
+          </button>:null}
               <form onSubmit={(e) => handleSubmit(e)}>
                 <input
                   onChange={(e) => handleChange(e)}
