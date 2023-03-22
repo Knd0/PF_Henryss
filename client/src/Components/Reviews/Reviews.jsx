@@ -12,12 +12,12 @@ function Reviews() {
   const reviews = useSelector((state) => state.opinion);
   const fechaActual = new Date();
   const dispatch = useDispatch();
-  const [page,setPage] = useState(1)
-    const[reviewsPage,setRecipesPage]= useState(3)
-    const quantityReviewPage = page * reviewsPage;
-    const firstReviewPage =  quantityReviewPage - reviewsPage; 
-    const showReviewsPage = reviews.slice(firstReviewPage,quantityReviewPage); 
-    const maximo = reviews.length / reviewsPage;
+  const currentPage = useSelector((state) => state.currentPage);
+  const [reviewsPerPage, setReviewsPerPage] = useState(3)
+  const indexOfLastReview = currentPage * reviewsPerPage
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage
+  const showReviewsPage = reviews.slice(indexOfFirstReview, indexOfLastReview)
+    const maximo = reviews.length / reviewsPerPage;
  
   useEffect(() => {
     dispatch(getReviews());
