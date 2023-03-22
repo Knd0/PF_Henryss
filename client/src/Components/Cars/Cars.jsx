@@ -174,7 +174,7 @@ export default function Cars() {
           <Loading />
         ) : (
           <div className="col-start-2 col-span-5 z-10">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap justify-center">
               {currentCars?.length ? (
                 currentCars.map((e) => {
                   return (
@@ -252,7 +252,7 @@ export default function Cars() {
           </div>
         )}
 
-        <div className="col-start-1 col-span-6">
+        <div className="col-start-2 col-span-6">
           <Pagination
             // currentPage={currentPage}
             // setCurrentPage={setCurrentPage}
