@@ -1,7 +1,7 @@
 const Stripe = require('stripe')
 require('dotenv').config()
 const { API_KEY_STRIPE, email, password } = process.env
-const stripe = new Stripe(API_KEY_STRIPE)
+const stripe = new Stripe("sk_test_51Mkjw9ETVvdZ62yxIbqQuiRYkXR7hcFJhuj57N2zmwI998nlKYoLsgRBIEyGqkvNVvVyRsl9lMQHSwIAyfmP0A6L00ew0ZdokN")
 const nodemailer = require("nodemailer");
 const { User } = require('../db')
 
