@@ -22,7 +22,6 @@ const addFavorites = async (userId, carId) => {
         where: { userId: userId }
     });
     if (searchUser) {
-        if(!searchUser.favorites.length) return ('You dont have publications')
         const searchCarId = searchUser.favorites.indexOf(carId)
         if(searchCarId !== -1){
             return ('You can not repeat favorites')
