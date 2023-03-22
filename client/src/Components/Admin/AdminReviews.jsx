@@ -1,7 +1,11 @@
 import React from "react";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getReviews, DeleteAdminReview,  searchReviewAdmin } from "../../Redux/actions";
+import {
+  getReviews,
+  DeleteAdminReview,
+  searchReviewAdmin,
+} from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import style from "./Admin.module.css";
 import { Link } from "react-router-dom";
@@ -13,20 +17,30 @@ export default function AdminReviews() {
   const dispatch = useDispatch();
   const details = useSelector((state) => state.usersDetails);
   const admin = details[0]?.admin;
-  const[input,setInput]= useState("")
+  const [input, setInput] = useState("");
+  const[backButton, setBackButton] = useState(false)
+
   useEffect(() => {
     dispatch(getReviews());
   }, [dispatch]);
 
   //allReviews.filter((r)=>r.nickmane.includes(reviews.nickname))
- function handleChangeSearch(e){
-       e.preventDefault()
-       setInput(e.target.value)
- }
-  function handleSubmit(e){
-    e.preventDefault()
-   dispatch(searchReviewAdmin(input))
+  function handleChangeSearch(e) {
+    e.preventDefault();
+    setInput(e.target.value);
   }
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(searchReviewAdmin(input));
+    setBackButton(true)
+  }
+
+  function handleBackClick(e){
+    e.preventDefault()
+    window.location.reload(true)
+    setBackButton(false)
+  }
+
 
   function handleDelete(reviewId) {
     swal({
@@ -57,7 +71,7 @@ export default function AdminReviews() {
     });
   }
 
-  if (admin) {
+  if (admin?.length !== 0) {
     return (
       <>
         <Navbar />
@@ -88,15 +102,18 @@ export default function AdminReviews() {
                   ></path>
                 </svg>
               </div>
-               <form onSubmit={(e)=>handleSubmit(e)}>
-               <input
-                onChange={(e)=>handleChangeSearch(e)}
-                type="text"
-                id="table-search-users"
-                className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search for users"
-              />
-               </form>
+              {backButton? <button onClick={(e)=>handleBackClick(e)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Back
+          </button>:null}
+              <form onSubmit={(e) => handleSubmit(e)}>
+                <input
+                  onChange={(e) => handleChangeSearch(e)}
+                  type="text"
+                  id="table-search-users"
+                  className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search for users"
+                />
+              </form>
             </div>
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -122,7 +139,7 @@ export default function AdminReviews() {
                 </th>
               </tr>
             </thead>
-            {reviews.length? (
+            {reviews.length ? (
               <tbody>
                 {reviews.map((review) => (
                   <tr
@@ -146,12 +163,12 @@ export default function AdminReviews() {
                       <div className="flex items-center">{review.userId}</div>
                     </td>
                     <td className="px-6 py-4 w-60 truncate">
-                      <div className="flex items-center w-60 truncate">{review.review}</div>
+                      <div className="flex items-center w-60 truncate">
+                        {review.review}
+                      </div>
                     </td>
                     <td className="px-6 py-4 w-60 ">
-                      <div className="flex items-center">
-                        {review.rating}
-                      </div>
+                      <div className="flex items-center">{review.rating}</div>
                     </td>
                     <td className="px-6 py-4">
                       <a

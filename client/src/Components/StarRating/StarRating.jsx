@@ -16,11 +16,8 @@ function StarRating() {
   const usersDetails = useSelector((state) => state.usersDetails)
   const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
   const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
-  console.log("ESTO ES INPUT============>",input)
-
   const reviews = useSelector((state) => state.opinion)
   const publico = reviews.filter((r)=> userId===r.userId)
-  console.log("ESTO ES  PUBLICO============>",publico)
   const navigate = useNavigate()
 
 
@@ -55,7 +52,6 @@ function StarRating() {
       review:input,
       name:name
     };
-    console.log("ESTO ES PAYLOAD============>",payload)
   
      if(!input){
       swal("You need to write something!", {
@@ -66,7 +62,6 @@ function StarRating() {
       });
      }else{
       dispatch(addReview(userId,payload))
-      console.log("ESTO ES INPUT DESPUES DEL SUBMIT============>",input)
       swal({
         title: "Thanks for your opinion!!!",
         icon: "success",
@@ -79,11 +74,11 @@ function StarRating() {
   return (
     <>
       <Navbar/>
-      <div className="bg-gradient-to-b from-blue-800 to-blue-600 h-150">
+      <div className="font-bold bg-gradient-to-b from-blue-800 to-blue-600 h-150">
       <div className={styles.contenedor}>
         <div className={styles.containerItems}>
         <p2 className={styles.Title}>Your review is important</p2>
-        <p2 className={styles.subTitle}>Rate us</p2>
+        <p2 className={styles.subTitle}>Rate us!</p2>
           <p className={styles.stars} >   {[...Array(5)].map((_, index) => (
             <div 
               key={index}

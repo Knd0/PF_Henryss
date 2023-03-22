@@ -4,6 +4,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import { useEffect, useState } from "react";
 import validateCheckout from "../Helpers/validateCheckout";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,12 +26,15 @@ const stripePromise = loadStripe("pk_test_51Mkjw9ETVvdZ62yxAbbo4ZMtivK65brWg5vL5
 
 
 const CheckoutForm = (props) => {
-  const  { 
+  const  {     
     setShowCheckoutForm={setShowCheckoutForm},    
     setShowSevenComponent={setShowSevenComponent}
    } = props;
   const stripe = useStripe();
   const elements = useElements();
+  const usersDetails = useSelector((state) => state.usersDetails)
+  const userId = usersDetails[0].userId
+    
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,13 +52,29 @@ const CheckoutForm = (props) => {
       return;}
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
-      card: elements.getElement(CardElement),
+      card: elements.getElement(CardElement)      
     });
+
+    
+
     if(!error){
+
+      toast('Checking information', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
       const { id } = paymentMethod;
       const { data } = await axios.post('/checkout',{
         id,
-        amount: 111111
+        amount: 111111,
+        userId: userId
       });
       
 

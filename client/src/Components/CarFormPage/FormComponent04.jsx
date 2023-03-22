@@ -20,7 +20,7 @@ export function FormComponent04 (props) {
         <h2 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl mt-10 lg:text-3xl dark:text-white">Upload your car photo 📸</h2>
         
         {!errors.img ? (
-          <div class="flex justify-center items-center flex gap-4 ">                    
+          <div className="flex justify-center items-center flex gap-4 ">                    
             <UploadButton
             imageSelected={imageSelected}
             setImageSelected={setImageSelected}
@@ -31,7 +31,7 @@ export function FormComponent04 (props) {
           </div>
         ) : (
           <div>
-          <div class="flex justify-center items-center flex gap-4 ">                    
+          <div className="flex justify-center items-center flex gap-4 ">                    
             <UploadButton
             imageSelected={imageSelected}
             setImageSelected={setImageSelected}

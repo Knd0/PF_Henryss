@@ -38,6 +38,8 @@ export const SEARCH_REVIEW_ADMIN= 'SEARCH_REVIEW_ADMIN';
 
 export const DELETE_CAR = 'DELETE_CAR';
 
+export const DELETE_CAR_ADMIN = 'DELETE_CAR_ADMIN';
+
 export const POST_CAR = 'POST_CAR';
 
 export const CLEAN_STATE = 'CLEAN_STATE';

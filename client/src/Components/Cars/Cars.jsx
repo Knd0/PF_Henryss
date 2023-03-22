@@ -89,6 +89,13 @@ function updateSelectedOptionsIfNeeded() {
     }, [ favorites ])
 
     const setFavorites = (e) => {
+        if (favoritesState === null) {
+
+          dispatch(addFavorite(userId, e.target.value))
+
+          setFavoritesState([e.target.value])
+          return
+        }
         if (!favoritesState.includes(e.target.value)) {
 
             dispatch(addFavorite(userId, e.target.value))
@@ -165,7 +172,7 @@ function updateSelectedOptionsIfNeeded() {
             ) : (
               <div className="col-start-2 col-span-5 z-10">
               <div className="flex flex-wrap">
-                {currentCars.length ? (
+                {currentCars?.length ? (
                   currentCars.map((e) => {
                     return (
                       <div className={style.containerCard} key={e.carId}>
@@ -237,7 +244,7 @@ function updateSelectedOptionsIfNeeded() {
                   })
                 ) : (
                   <div className={style.cardModal}>
-                   
+                      {handleAlert()}
                   </div>
                 )}
               </div>

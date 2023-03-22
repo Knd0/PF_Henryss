@@ -60,6 +60,7 @@ export default function MyFavorites() {
     return (
       <>
         <Navbar />
+        <h1 className="font-bold underline text-4xl mb-10">My Favorites</h1>
         <div className={style.cardconteiner}>
           {currentCars.map((e) => {
             return <div className={style.containerCard} key={e[0].carId}>
