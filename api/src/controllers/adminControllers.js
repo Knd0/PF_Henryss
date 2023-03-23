@@ -5,12 +5,12 @@ const { deleteImage } = require('../utils/cloudinary')
 const deleteCar = async (id) => {
     const car = await Car.findByPk(id);
     const data = await getUsersDb();
-    const users = data.filter((user) => user.publications.indexOf(id) !== -1 )
+    const users = data.filter((user) => user.publications && user.publications.indexOf(id) !== -1 )
     let searchUser = await User.findOne({
         where: { userId: users[0].userId }
     });
     if(searchUser){
-        if(searchUser.publications?.indexOf(id) === -1) return ('you can not delete this car')
+        if(searchUser.publications && searchUser.publications.indexOf(id) === -1) return ('you can not delete this car')
         else {
             searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
         }
