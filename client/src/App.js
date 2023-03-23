@@ -24,7 +24,7 @@ import AdminReviews from "./Components/Admin/AdminReviews";
 
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
 axios.defaults.baseURL = "https://pfhenryss-production.up.railway.app/"
-// axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
+//axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
 
 
 
@@ -43,8 +43,8 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/myfavorites" element={<ProtectedRoute component={MyFavorites}/>} />
           <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/starsReviews" element={<StarRating/>} />
-          <Route path="/updateReview" element={<UpdateReview/>} />
+          <Route path="/starsReviews" element={<ProtectedRoute component={StarRating}/>} />
+          <Route path="/updateReview" element={<ProtectedRoute component={UpdateReview}/>} />
           <Route path="/reviews" element={<Reviews/>} />
           <Route path="*" element={<Page404 />} />
           <Route path="/user" element={<UserProfile />} />

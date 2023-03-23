@@ -4,7 +4,102 @@
 .contenedor{
     position: relative;
     display:flex;
+    flex-wrap: wrap;
     margin-top: 10px;
     justify-content: center;
     align-items: center;
+}
+
+
+
+
+.containerItems{
+    background-color: rgb(255, 255, 255);
+    width: 55%;
+    border: 1px solid black;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 0.25rem;
+    padding: 2rem;
+
+
+
+}
+.containerItems input{
+    height: 100px;
+    width: 100%;
+}
+
+.containerItems span{
+    font-size: 30px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+
+}
+.containerItems p{
+ font-size: 25px;
+}
+
+.Title{
+    font-size: 35px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+
+}
+.input_opinion{
+    border: 1px solid blue;
+    padding: 8px;
+    width: 20%;
+
+    min-height: 15vh;
+    max-height: 50vh;
+    min-width: 20%;
+    max-width: 70%;
+    border-radius: 10px;
+    margin-right: 1vh;
+    margin: 3vh;
+    word-wrap: break-word;
+    resize: vertical;
+    background-color: #F3F4F6;
+
+}
+.containerItems button {
+    text-align: center;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+  }
+
+.containerForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.containerItems textarea{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.stars{
+   transform: scale(1.7);
+   display:flex;
+   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    align-items: center;
+
+   justify-content: center;
+   margin-left: 30px;
+}
+.subTitle{
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
 }
