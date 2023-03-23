@@ -10,7 +10,7 @@ const deleteCar = async (id) => {
         where: { userId: users[0].userId }
     });
     if(searchUser){
-        if(searchUser.publications.indexOf(id) === -1) return ('you can not delete this car')
+        if(searchUser.publications?.indexOf(id) === -1) return ('you can not delete this car')
         else {
             searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
         }
