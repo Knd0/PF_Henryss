@@ -9,21 +9,19 @@ import { getCarsStatistics, getUsersStatistcs } from "../../Redux/actions";
 export default function Statistics() {
   const dispatch = useDispatch()
   const cars = useSelector((state) => state.allcars.length);
-  const users = useSelector((state) => state.users.length);
+  const users = useSelector((state) => state.users);
   const earnings = cars * 50;
   const details = useSelector((state) => state.usersDetails);
   const reviews = useSelector((state) => state.opinion.length);
   const admin = details[0]?.admin;
   const statisticsUsers = useSelector((state) => state.statisticsUsers) // Para los gráficos con chartJS
   const statisticsCars = useSelector((state) => state.statisticsCars) // Para los gráficos con chartJS
-  console.log(statisticsCars);
-  console.log(statisticsUsers);
   useEffect(() => {
     dispatch(getUsersStatistcs())
     dispatch(getCarsStatistics())
   }, [])
 
-  if (admin?.length !== 0) {
+  if (admin == "admin" && admin?.length !== 0) {
     return (
       <>
         <Navbar />
@@ -76,7 +74,7 @@ export default function Statistics() {
                 </svg>
               </div>
               <h6 className="text-4xl font-bold text-deep-purple-accent-400">
-                {users}
+                {users.length}
               </h6>
               <p className="mb-2 font-bold text-md">Users</p>
               <p className="text-gray-700">

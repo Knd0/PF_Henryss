@@ -70,7 +70,7 @@ export default function AdminUsers() {
     setBackButton(false);
   }
 
-  if (admin?.length !== 0 && admin) {
+  if (admin?.length !== 0 && admin == "admin") {
     return (
       <>
         <Navbar />
