@@ -123,7 +123,7 @@ export default function AdminCars() {
                     <td className="px-6 py-4">
                       <button
                         onClick={() => handleDelete(car.carId)}                       
-                        className="grid font-medium text-red-600 dark:text-red-500 hover:underline"
+                        className={style.btndelete}
                       >
                         Delete Car
                         </button>

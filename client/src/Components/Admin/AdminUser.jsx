@@ -64,7 +64,9 @@ export default function AdminUsers() {
   }
   function handleBackClick(e) {
     e.preventDefault();
-    window.location.reload(true);
+    dispatch(searchUserAdmin(""));
+    navigate('/admin/user');
+    
     setBackButton(false);
   }
 
@@ -80,9 +82,9 @@ export default function AdminUsers() {
           {backButton ? (
                 <button
                   onClick={(e) => handleBackClick(e)}
-                  className={style.btn}
+                  className="bg-blue-500 mt-5 mr-2 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
                 >
-                  Reset
+                  <span>Reset</span>
                 </button>
               ) : null}
         </div>
@@ -116,7 +118,7 @@ export default function AdminUsers() {
                   className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Search for users"
                 />
-                <button type="submit">✔</button>
+              
               </form>
             </div>
           </div>
