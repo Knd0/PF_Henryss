@@ -10,7 +10,7 @@ export default function Admin() {
   const details = useSelector((state) => state.usersDetails);
   const admin = details[0]?.admin;
   
-  if (admin?.length !== 0 && admin) {
+  if (admin?.length !== 0 && admin == "admin") {
     return (
       <>
         <Navbar />

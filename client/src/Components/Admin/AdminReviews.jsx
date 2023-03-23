@@ -72,7 +72,7 @@ export default function AdminReviews() {
     });
   }
 
-  if (admin?.length !== 0 && admin) {
+  if (admin?.length !== 0 && admin == "admin") {
     return (
       <>
         <Navbar />

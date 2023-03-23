@@ -50,7 +50,7 @@ export default function AdminCars() {
     });
   }
 
-  if (admin == true && admin?.length !== 0) {
+  if (admin?.length !== 0 && admin == "admin") {
     return (
       <>
         <Navbar />
