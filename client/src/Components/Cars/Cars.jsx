@@ -252,7 +252,7 @@ export default function Cars() {
           </div>
         )}
 
-        <div className="col-start-2 col-span-6">
+        <div className="col-start-1 col-span-6">
           <Pagination
             // currentPage={currentPage}
             // setCurrentPage={setCurrentPage}
