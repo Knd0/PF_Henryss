@@ -106,7 +106,7 @@ function StarRating() {
           ))}</p>
           <form className={styles.containerForm} onSubmit={(e)=>handleSubmit(e)}>
             <label htmlFor="opinion"></label>
-            <input className={styles.input_opinion}onChange={(e)=>handleChange(e)} type="text" placeholder="Your opinion..."/>
+            <input onKeyDown={(e)=>{if(e.key==="Enter"){e.preventDefault()}}} className={styles.input_opinion}onChange={(e)=>handleChange(e)} type="text" placeholder="Your opinion..."/>
              {publico.length? <button onClick={(e)=>handleAlert(e)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
              Update
             </button>: <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
