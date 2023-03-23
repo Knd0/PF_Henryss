@@ -110,7 +110,7 @@ const editCar = async (userId, id, carUpdates) => {
             where: { userId: userId }
         });
         if(searchUser){
-            if(searchUser.publications.indexOf(id) === -1) return ('you can not edit this car')
+            if(searchUser.publications && searchUser.publications.indexOf(id) === -1) return ('you can not edit this car')
             else {
                 await car.update({...carUpdates});
         return 'The car was updated';
