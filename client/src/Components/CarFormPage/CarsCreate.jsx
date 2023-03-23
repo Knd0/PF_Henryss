@@ -30,7 +30,7 @@ export default function CarsCreate() {
   const [showSixComponent, setShowSixComponent] = useState(false);
   const [showSevenComponent, setShowSevenComponent] = useState(false);
   const [showNextButton, setShowNextButton] = useState(false);
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const usersDetails = useSelector((state) => state.usersDetails)
   const userId = usersDetails[0].userId
@@ -302,8 +302,9 @@ const onSubmit = async (e) => {
     return;
   }
 
+  setIsSubmitting(true);
   
-  
+  try {
   dispatch(postCar(userId, carDos)); 
   setCar({ 
     brand: "",
@@ -361,7 +362,12 @@ const onSubmit = async (e) => {
     setTimeout(function() {
       navigate("/mypublications");      
     }, 3000);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setIsSubmitting(false);
   }
+};
 
 const [imageSelected, setImageSelected] = useState("")
 
@@ -522,6 +528,7 @@ function handleCheckoutClick() {
 
           {showSevenComponent && (
             <FormComponent07
+              isSubmitting={isSubmitting}
               car={car}
               setCar={setCar}
               errors={errors}
