@@ -154,7 +154,7 @@ export default function Navbar() {
               About us
             </NavLink>
 
-            {admin ? (
+            {admin == "admin" ? (
               <NavLink
                 to="/admin"
                 className={({ isActive }) =>

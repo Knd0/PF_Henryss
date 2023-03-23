@@ -74,7 +74,7 @@ function AdminEditUser() {
       }
     });
   };
-  if (admin == true && admin?.length !== 0) {
+  if (admin == "admin" && admin?.length !== 0) {
     return (
       <>
         <Navbar />
