@@ -13,13 +13,13 @@ function StarRating() {
   const [rating, setRating] = useState(1);
   const fechaActual = new Date().toLocaleDateString();
   const [input, setInput] = useState("");
+  console.log(input)
   const usersDetails = useSelector((state) => state.usersDetails)
   const name = usersDetails.length > 0 ? usersDetails[0].nickname : null
   const userId = usersDetails.length > 0 ? usersDetails[0].userId : null
   const reviews = useSelector((state) => state.opinion)
   const publico = reviews.filter((r)=> userId===r.userId)
   const navigate = useNavigate()
-
 
 
 
@@ -60,15 +60,26 @@ function StarRating() {
         icon: "warning",
 
       });
+     }else if(input.length > 150){
+      swal("Your text is too long, maximum 150 characters!", {
+        buttons: false,
+        timer: 4000,
+        icon: "warning",
+          
+      });
      }else{
       dispatch(addReview(userId,payload))
       swal({
         title: "Thanks for your opinion!!!",
         icon: "success",
+        buttons: false,
+        timer:3000
       });
-       setTimeout(()=>{
+
+      setTimeout(()=>{
         navigate("/reviews")
-       },3000)
+      },3000)
+
      }
 
   }
@@ -93,9 +104,9 @@ function StarRating() {
               &#9733;
             </div>
           ))}</p>
-          <form className={styles.containerForm} onSubmit={handleSubmit}>
+          <form className={styles.containerForm} onSubmit={(e)=>handleSubmit(e)}>
             <label htmlFor="opinion"></label>
-            <textarea className={styles.input_opinion}onChange={(e)=>handleChange(e)} type="text" placeholder="Your opinion..."/>
+            <input className={styles.input_opinion}onChange={(e)=>handleChange(e)} type="text" placeholder="Your opinion..."/>
              {publico.length? <button onClick={(e)=>handleAlert(e)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
              Update
             </button>: <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
