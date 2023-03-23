@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { allUsers, UserDelete } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./Admin.module.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { searchUserAdmin } from "../../Redux/actions";
 import swal from "sweetalert";
 import Page404 from "../Page404/Page404";
@@ -15,6 +15,7 @@ export default function AdminUsers() {
   const [input, setInput] = useState("");
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
+  const navigate = useNavigate ();
   const details = useSelector((state) => state.usersDetails);
   const admin = details[0]?.admin;
   const [backButton, setBackButton] = useState(false);
@@ -38,7 +39,7 @@ export default function AdminUsers() {
           button: "Ok",
         }).then((info) => {
           if (info) {
-            window.location.reload();
+            navigate('/admin');
           }
         });
       } else {
@@ -67,7 +68,7 @@ export default function AdminUsers() {
     setBackButton(false);
   }
 
-  if (admin?.length !== 0) {
+  if (admin?.length !== 0 && admin) {
     return (
       <>
         <Navbar />

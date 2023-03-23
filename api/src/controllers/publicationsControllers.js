@@ -1,5 +1,5 @@
-const { User } = require('../db')
-const { getCarDetail } = require('./carsControllers')
+const { User } = require('../db');
+const { getCarDetail } = require('./carsControllers');
 
 
 const getPublications = async (userId) => {
