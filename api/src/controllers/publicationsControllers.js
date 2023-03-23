@@ -1,5 +1,5 @@
-const { User } = require('../db');
-const { getCarDetail } = require('./carsControllers');
+const { User } = require('../db')
+const { getCarDetail } = require('./carsControllers')
 
 
 const getPublications = async (userId) => {
@@ -17,7 +17,23 @@ const getPublications = async (userId) => {
     return await Promise.all(promises)
 }
 
+const deletePublications = async (userId, carId) => {
+    if(!userId) return ('You need to login for see your publication')
+    let searchUser = await User.findOne({
+        where: { userId: userId }
+    });
+    if (searchUser) {
+        if(searchUser.publications.length){
+        searchUser.publications = searchUser.publications.filter((id) => id !== carId)
+        await User.update({ publications: searchUser.publications }, {
+            where: { userId: userId }
+        });
+        } else return ('You dont have publications')
+    }
+    return ('delete to publication')
+}
 
 module.exports = {
-    getPublications
+    getPublications,
+    deletePublications
 }
