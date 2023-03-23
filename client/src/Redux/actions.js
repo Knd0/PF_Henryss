@@ -380,7 +380,7 @@ export const addReview = (userId,payload) => {
 export function getReviews() {
   return async function (dispatch) {
   try {
-    var json = await axios.get(`/reviews`);
+    var json = await axios.get(`/review`);
     return dispatch( {
       type: ADD_TO_REVIEWS,
         payload: json.data
