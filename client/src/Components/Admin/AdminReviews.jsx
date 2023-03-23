@@ -8,7 +8,7 @@ import {
 } from "../../Redux/actions";
 import Navbar from "../Navbar/Navbar";
 import style from "./Admin.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import swal from "sweetalert";
 import Page404 from "../Page404/Page404";
 
@@ -19,6 +19,7 @@ export default function AdminReviews() {
   const admin = details[0]?.admin;
   const [input, setInput] = useState("");
   const[backButton, setBackButton] = useState(false)
+  const navigate = useNavigate ();
 
   useEffect(() => {
     dispatch(getReviews());
@@ -58,7 +59,7 @@ export default function AdminReviews() {
           button: "Ok",
         }).then((info) => {
           if (info) {
-            window.location.reload();
+            navigate('/admin');
           }
         });
       } else {
@@ -71,7 +72,7 @@ export default function AdminReviews() {
     });
   }
 
-  if (admin?.length !== 0) {
+  if (admin?.length !== 0 && admin) {
     return (
       <>
         <Navbar />

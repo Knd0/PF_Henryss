@@ -16,7 +16,7 @@ export default function Navbar() {
   const admin = details[0]?.admin;
 
   useEffect(() => {
-    if (user) {
+    if (user && details) {
       const payload = {
         nickname: user.nickname,
         email: user.email,
