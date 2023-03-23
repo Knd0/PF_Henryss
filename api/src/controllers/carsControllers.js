@@ -80,6 +80,12 @@ const deleteCarById = async(userId, id) => {
         where: { userId: userId }
     });
     if(!searchUser) return ('This User not exist')
+    if (!car) return ('Car not found');
+    if(car.img.public_id) {
+        const deleteImg = await deleteImage(car.img.public_id)
+        }
+
+    await car.destroy();
     if(searchUser.publications.length){
         searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
         await User.update({ publications: searchUser.publications }, {
@@ -92,12 +98,7 @@ const deleteCarById = async(userId, id) => {
             where: { userId: userId }
         });
     } else return ('You dont have favorites')
-    if (!car) return ('Car not found');
-    if(car.img.public_id) {
-        const deleteImg = await deleteImage(car.img.public_id)
-        }
 
-    await car.destroy();
     return 'Car successful delete';
     }
 
