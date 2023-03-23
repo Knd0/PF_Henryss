@@ -1,8 +1,7 @@
 const data = require('../../cards.json');
 const { Car, Brand, User } = require('../db')
 const { deleteImage } = require('../utils/cloudinary')
-const { deleteFavorites } = require('./favoritesControllers')
-const { deletePublications } = require('./publicationsControllers')
+
 
 const getDbCars = async () => {
     return await Car.findAll({
@@ -75,26 +74,32 @@ const createCar = async ({ brand, model, year, price, img, ...restOfcar }, userI
 
 
 const deleteCarById = async(userId, id) => {
-        const car = await Car.findByPk(id);
-        let searchUser = await User.findOne({
+    if(!userId) return ('You need to login for delete a car')
+    const car = await Car.findByPk(id);
+    let searchUser = await User.findOne({
+        where: { userId: userId }
+    });
+    if(!searchUser) return ('This User not exist')
+    if(searchUser.publications.length){
+        searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
+        await User.update({ publications: searchUser.publications }, {
             where: { userId: userId }
         });
-        if(searchUser){
-            if(searchUser.publications.indexOf(id) === -1) return ('you can not delete this car')
-            else {
-                searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
-                let filtroFavorites =await deleteFavorites(userId, id)
-                let filtroPublications =await deletePublications(userId, id)
-            }
+    } else return ('You dont have publications')
+    if(searchUser.favorites.length){
+        searchUser.favorites = searchUser.favorites.filter((carId) => carId !== id)
+        await User.update({ favorites: searchUser.favorites }, {
+            where: { userId: userId }
+        });
+    } else return ('You dont have favorites')
+    if (!car) return ('Car not found');
+    if(car.img.public_id) {
+        const deleteImg = await deleteImage(car.img.public_id)
         }
-        if (!car) return ('Car not found');
-        if(car.img.public_id) {
-            const deleteImg = await deleteImage(car.img.public_id)
-            }
 
-        await car.destroy();
-        return 'Car successful delete';
-        }
+    await car.destroy();
+    return 'Car successful delete';
+    }
 
 
 const editCar = async (userId, id, carUpdates) => {
