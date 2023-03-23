@@ -3,7 +3,7 @@ const { getCarDetail } = require('./carsControllers');
 
 
 const getPublications = async (userId) => {
-    if(!userId) return ('You need to login for see your publications')
+    if(!userId) return ('You need to login for see your hola')
     let searchUser = await User.findOne({
         where: { userId: userId }
     });
