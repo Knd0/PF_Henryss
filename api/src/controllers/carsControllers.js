@@ -1,6 +1,8 @@
 const data = require('../../cards.json');
 const { Car, Brand, User } = require('../db')
 const { deleteImage } = require('../utils/cloudinary')
+const { deleteFavorites } = require('./favoritesControllers')
+const { deletePublications } = require('./publicationsControllers')
 
 const getDbCars = async () => {
     return await Car.findAll({
@@ -81,7 +83,8 @@ const deleteCarById = async(userId, id) => {
             if(searchUser.publications.indexOf(id) === -1) return ('you can not delete this car')
             else {
                 searchUser.publications = searchUser.publications.filter((carId) => carId !== id)
-                searchUser.favorites = searchUser.favorites.filter((carId) => carId !== id)
+                let filtroFavorites =await deleteFavorites(userId, id)
+                let filtroPublications =await deletePublications(userId, id)
             }
         }
         if (!car) return ('Car not found');
