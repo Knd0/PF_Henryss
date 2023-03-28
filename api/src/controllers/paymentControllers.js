@@ -32,7 +32,6 @@ const pay = async (id, amount, userId) => {
         confirm: true
 
     })
-    // Configura el objeto de correo electrónico
 
     if (payment.status === 'succeeded') {
         const mailOptions = {

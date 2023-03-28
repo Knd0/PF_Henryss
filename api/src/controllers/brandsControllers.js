@@ -8,7 +8,6 @@ const getApiBrands = async () => {
         return {
             id: car.id || car.carId,
             brand: car.brand,
-
         }
     })
     return response

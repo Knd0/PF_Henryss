@@ -5,7 +5,6 @@ const cors = require("cors");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
-const { application } = require('express');
 
 const server = express();
 server.use(fileUpload({

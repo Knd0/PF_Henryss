@@ -30,10 +30,10 @@ const getUserDb = async (email) => {
 }
 
 const getUserName = async (name) => {
-  const data = await getUsersDb();
-  const filteredUsers = data.filter((user) => user.name.toLowerCase().includes(name.toLowerCase()));
+    const data = await getUsersDb();
+    const filteredUsers = data.filter((user) => user.name.toLowerCase().includes(name.toLowerCase()));
 
-  return filteredUsers
+    return filteredUsers
 }
 
 const createUserDb = async (nickname, email, name, picture) => {
@@ -43,20 +43,18 @@ const createUserDb = async (nickname, email, name, picture) => {
     if (!picture) return "Missing picture";
     
     try {
-      let searchUser = await User.findOne({
-        where: { name: name }
-      });
-      
-      if (searchUser) return "Existing user";
-      
-      let userCreate = await User.create({ nickname, email, name, picture });
-      return userCreate;
+        let searchUser = await User.findOne({
+            where: { name: name }
+        });
+    if (searchUser) return "Existing user";
+    let userCreate = await User.create({ nickname, email, name, picture });
+        return userCreate;
     } catch (error) {
-      throw new Error(error.message);
+        throw new Error(error.message);
     }
-  };
+};
 
-  const updateToUser = async (userId, user) => {
+const updateToUser = async (userId, user) => {
     if(!userId) return ('You need to login for see your review')
     let searchUser = await User.findOne({
         where: { userId: userId }

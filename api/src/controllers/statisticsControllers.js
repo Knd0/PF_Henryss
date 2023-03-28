@@ -49,24 +49,3 @@ module.exports = {
     getCarsStatistics,
     getUsersStatistics
 }
-
-
-
-
-// const objetos = await getUsersDb();
-// const estadisticas = {};
-// objetos.forEach((objeto) => {
-// const fechaCreacion = new Date(objeto.createdAt).toDateString();
-// if (!estadisticas[fechaCreacion]) {
-// estadisticas[fechaCreacion] = [];
-// }
-// estadisticas[fechaCreacion].push(objeto);
-// });
-
-// const resultados = [];
-// for (const fechaCreacion in estadisticas) {
-// const cantidad = estadisticas[fechaCreacion].length;
-// resultados.push({ fechaCreacion, cantidad });
-// }
-// console.log(resultados);
-// return resultados;
